@@ -234,7 +234,7 @@ namespace Mlos.Agent.Server
                 }
             }
 
-            // Print any exceptions if occured.
+            // Print any exceptions if occurred.
             //
             if (mlosAgentTask.Exception != null)
             {
