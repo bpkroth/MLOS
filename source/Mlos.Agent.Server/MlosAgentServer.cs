@@ -69,6 +69,7 @@ namespace Mlos.Agent.Server
             //
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2Support", true);
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+            ////AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
 
             string executableFilePath = null;
             Uri optimizerAddressUri = null;

@@ -7,6 +7,7 @@
 // -----------------------------------------------------------------------
 
 using System;
+using Grpc.Core;
 using Grpc.Net.Client;
 
 using Mlos.Core;
@@ -54,7 +55,40 @@ namespace Mlos.Model.Services.Client.BayesianOptimizer
 
         private BayesianOptimizerProxy CreateRemoteOptimizer(OptimizationProblem optimizationProblem)
         {
+            // Should have already been set, but let's double check explict.
+            //
+            var switch_names = new[] { "System.Net.Http.SocketsHttpHandler.Http2Support", "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport" };
+            foreach (string switch_name in switch_names)
+            {
+                bool isEnabled = false;
+                if (AppContext.TryGetSwitch(switch_name, out isEnabled))
+                {
+                    Console.Error.WriteLine($"switch_name {switch_name} was set: {isEnabled}");
+                }
+                else
+                {
+                    Console.Error.WriteLine($"switch_name {switch_name} wasn't set.");
+                }
+
+                if (isEnabled != true)
+                {
+                    throw new Exception($"Expected {switch_name} to be true.");
+                }
+            }
+
+            /* Attempt to be more explicit about what version we use (still doesn't help).
+            GrpcChannel channel = GrpcChannel.ForAddress(optimizerAddressUri, new GrpcChannelOptions
+                {
+                    HttpClient = new System.Net.Http.HttpClient()
+                    {
+                        DefaultRequestVersion = new Version(2, 0),
+                    },
+                    Credentials = ChannelCredentials.Insecure,
+                });
+            */
+
             GrpcChannel channel = GrpcChannel.ForAddress(optimizerAddressUri);
+
             var client = new MlosOptimizerService.OptimizerServiceClient(channel);
 
             OptimizerHandle optimizerHandle = client.CreateOptimizer(
