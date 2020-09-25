@@ -104,10 +104,6 @@ namespace Mlos.Agent.Server
             {
                 Console.WriteLine("Connecting to the Mlos.Optimizer");
 
-                // This switch must be set before creating the GrpcChannel/HttpClient.
-                //
-                AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-
                 // This populates a variable for the various settings registry
                 // callback handlers to use (by means of their individual
                 // AssemblyInitializers) to know how they can connect with the
