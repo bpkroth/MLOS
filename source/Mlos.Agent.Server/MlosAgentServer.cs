@@ -13,11 +13,17 @@ using System.Threading.Tasks;
 
 using CommandLine;
 
+/*
+Reduce some complexity while debugging.
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
+*/
 
 using Mlos.Core;
+
+using Mlos.Model.Services;
+using Mlos.Model.Services.Spaces;
 
 using MlosOptimizer = Mlos.Model.Services.Client.BayesianOptimizer;
 
@@ -30,6 +36,7 @@ namespace Mlos.Agent.Server
     /// </summary>
     public static class MlosAgentServer
     {
+        /* Reduce some complexity while debugging.
         /// <summary>
         /// Starts a grpc server listening for requests from the notebook to drive
         /// the agent interactively.
@@ -48,6 +55,7 @@ namespace Mlos.Agent.Server
                     });
                     webBuilder.UseStartup<GrpcServer.Startup>();
                 });
+                */
 
         /// <summary>
         /// The main external agent server.
@@ -55,6 +63,13 @@ namespace Mlos.Agent.Server
         /// <param name="args">command line arguments.</param>
         public static void Main(string[] args)
         {
+            // This switch must be set before creating the GrpcChannel/HttpClient.
+            //
+            // Make these the very first thing we do.
+            //
+            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2Support", true);
+            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+
             string executableFilePath = null;
             Uri optimizerAddressUri = null;
 
@@ -104,6 +119,34 @@ namespace Mlos.Agent.Server
                 MlosContext.OptimizerFactory = new MlosOptimizer.BayesianOptimizerFactory(optimizerAddressUri);
             }
 
+            // hack for testing:
+            // try to register an optimization problem, without even loading the shared memory or another assembly
+            //
+            IOptimizerProxy optimizerProxy = null;
+            if (MlosContext.OptimizerFactory != null)
+            {
+                Hypergrid searchSpace = new Hypergrid("x", new DiscreteDimension("x", 0, 10));
+                Hypergrid objectiveSpace = new Hypergrid("y", new ContinuousDimension("y", 0, 100));
+                OptimizationProblem optimizationProblem = new OptimizationProblem
+                {
+                    ParameterSpace = searchSpace,
+                    ContextSpace = null,
+                    ObjectiveSpace = objectiveSpace,
+                };
+                optimizationProblem.Objectives.Add(new OptimizationObjective
+                    {
+                        Name = "y",
+                        Minimize = false,
+                    });
+
+                Console.Error.WriteLine("Creating OptimizerProxy in Mlos.Agent.Server");
+                optimizerProxy = MlosContext.OptimizerFactory.CreateRemoteOptimizer(optimizationProblem: optimizationProblem);
+                Console.Error.WriteLine("Created OptimizerProxy in Mlos.Agent.Server");
+            }
+
+            // hacking: quit before mucking around with any of the shared memory, executable, their assemblies, etc.
+            Environment.Exit(1);
+
             // Create (or open) the circular buffer shared memory before running the target process.
             //
             using var mainAgent = new MainAgent();
@@ -127,7 +170,7 @@ namespace Mlos.Agent.Server
 
             var cancellationTokenSource = new CancellationTokenSource();
 
-            Task grpcServerTask = CreateHostBuilder(Array.Empty<string>()).Build().RunAsync(cancellationTokenSource.Token);
+            Task grpcServerTask = null; //// FIXME: CreateHostBuilder(Array.Empty<string>()).Build().RunAsync(cancellationTokenSource.Token);
 
             // Start the MainAgent message processing loop as a background thread.
             //
@@ -212,9 +255,9 @@ namespace Mlos.Agent.Server
             targetProcessManager?.Dispose();
 
             cancellationTokenSource.Cancel();
-            grpcServerTask.Wait();
+            grpcServerTask?.Wait();
 
-            grpcServerTask.Dispose();
+            grpcServerTask?.Dispose();
             cancellationTokenSource.Dispose();
 
             Console.WriteLine("Mlos.Agent exited.");

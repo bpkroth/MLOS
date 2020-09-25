@@ -11,14 +11,21 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <Import Project="$(BaseDir)\build\Mlos.NetCore.props" />
+  <!--
   <Import Project="$(BaseDir)\build\Mlos.NetCore.SingleFile.props" />
+  -->
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" GeneratePathProperty="true" />
     <BinplaceFile Include="$(PkgCommandLineParser)/lib/netstandard2.0/CommandLine.dll" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.8" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="$(SourceDir)\Mlos.Agent\Mlos.Agent.csproj" />
+    <!--
     <ProjectReference Include="$(SourceDir)\Mlos.Agent.GrpcServer\Mlos.Agent.GrpcServer.csproj" />
+    -->
     <ProjectReference Include="$(SourceDir)\Mlos.Streaming\Mlos.Streaming.csproj" />
     <ProjectReference Include="$(SourceDir)\Mlos.Model.Services.Client\Mlos.Model.Services.Client.csproj" />
     <ProjectReference Include="$(SourceDir)\Mlos.Model.Services\Mlos.Model.Services.csproj" />
