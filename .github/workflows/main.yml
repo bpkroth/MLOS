@@ -12,6 +12,19 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
+  test-vars:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        UbuntuVersion: [16.04, 18.04, 20.04]
+    steps:
+    - name: Dump matrix context
+      shell: bash
+      env:
+        MATRIX_CONTEXT: ${{ toJson(matrix) }}
+      run: echo "$MATRIX_CONTEXT"
+
   # Run the debug/retail msbuild jobs separately so they can be executed in parallel.
 
   windows-msbuild:
