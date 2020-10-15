@@ -1,13 +1,15 @@
 # See Also: https://github.com/marketplace/actions/fork-sync-with-upstream
-#
-name: RegularForkSync
+
+name: ForkSync
 
 on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Manual ForkSync'
   schedule:
     # Every few hours attempt to update main from the upstream fork.
-    #- cron: "0 3,8,13,18,23 * * *"
-    # FIXME: For testing:
-    - cron: "*/5 * * * *"
+    - cron: "0 3,8,13,18,23 * * *"
 
 jobs:
   sync_with_upstream:
@@ -26,9 +28,9 @@ jobs:
       uses: aormsby/Fork-Sync-With-Upstream-action@v2.0
       with:
         upstream_repository: microsoft/mlos
-      upstream_branch: main
-      target_branch: main
-      git_pull_args: --ff-only
+        upstream_branch: main
+        target_branch: main
+        git_pull_args: --ff-only
     # Step 3: Display a message if 'sync' step had new commits (simple test)
     - name: Check for new commits
       if: steps.sync.outputs.has-new-commits
