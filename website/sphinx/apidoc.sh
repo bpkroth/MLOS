@@ -30,3 +30,5 @@ export PATH="$PATH:$HOME/.local/bin"
 echo "Generating Python API rst files"
 
 sphinx-apidoc -o api -t _templates $MLOS_ROOT/source/Mlos.Python/mlos $MLOS_ROOT/source/Mlos.Python/mlos/unit_tests/* -d 1 -f -e
+
+# test
