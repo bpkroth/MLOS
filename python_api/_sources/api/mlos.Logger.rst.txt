@@ -1,0 +1,7 @@
+mlos.Logger
+===========
+
+.. automodule:: mlos.Logger
+   :members:
+   :undoc-members:
+   :show-inheritance:

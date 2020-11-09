@@ -1,0 +1,7 @@
+mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction
+==================================================================================
+
+.. automodule:: mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction
+   :members:
+   :undoc-members:
+   :show-inheritance:

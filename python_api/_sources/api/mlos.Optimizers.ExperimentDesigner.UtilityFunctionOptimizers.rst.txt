@@ -1,0 +1,21 @@
+mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers
+============================================================
+
+
+.. automodule:: mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.GlowWormSwarmOptimizer
+   mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.RandomSearchOptimizer
+   mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.UtilityFunctionOptimizer
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests

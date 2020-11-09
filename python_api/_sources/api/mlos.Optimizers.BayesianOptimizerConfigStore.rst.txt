@@ -1,0 +1,7 @@
+mlos.Optimizers.BayesianOptimizerConfigStore
+============================================
+
+.. automodule:: mlos.Optimizers.BayesianOptimizerConfigStore
+   :members:
+   :undoc-members:
+   :show-inheritance:

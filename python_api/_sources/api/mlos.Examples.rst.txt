@@ -1,0 +1,12 @@
+mlos.Examples
+=============
+
+
+.. automodule:: mlos.Examples
+   :members:
+   :undoc-members:
+   :show-inheritance:
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Examples.SmartCache

@@ -1,0 +1,7 @@
+mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.RandomSearchOptimizer
+==================================================================================
+
+.. automodule:: mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.RandomSearchOptimizer
+   :members:
+   :undoc-members:
+   :show-inheritance:

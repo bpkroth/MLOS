@@ -1,0 +1,19 @@
+mlos.OptimizerEvaluationTools.SyntheticFunctions
+================================================
+
+
+.. automodule:: mlos.OptimizerEvaluationTools.SyntheticFunctions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.Flower
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.NestedPolynomialObjective
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjective
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjectiveWrapper
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.ThreeLevelQuadratic
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.sample_functions

@@ -1,0 +1,7 @@
+mlos.MlosOptimizationServices.ModelsDatabase.Relations.SimpleModel
+==================================================================
+
+.. automodule:: mlos.MlosOptimizationServices.ModelsDatabase.Relations.SimpleModel
+   :members:
+   :undoc-members:
+   :show-inheritance:

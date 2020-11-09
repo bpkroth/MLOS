@@ -1,0 +1,1334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlos.Spaces &mdash; mlos  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/mlos.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mlos.Spaces.Hypergrid" href="mlos.Spaces.Hypergrid.html" />
+    <link rel="prev" title="mlos.Optimizers.unit_tests.TestBayesianOptimizer" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> mlos
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://microsoft.github.io/MLOS/">Main website</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mlos.html">mlos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mlos.Exceptions.html">mlos.Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.Logger.html">mlos.Logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.Tracer.html">mlos.Tracer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.global_values.html">mlos.global_values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.start_optimizer_microservice.html">mlos.start_optimizer_microservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.Examples.html">mlos.Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Examples.SmartCache.html">mlos.Examples.SmartCache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Examples.SmartCache.SmartCache.html">mlos.Examples.SmartCache.SmartCache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Examples.SmartCache.SmartCacheWorkloadGenerator.html">mlos.Examples.SmartCache.SmartCacheWorkloadGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Examples.SmartCache.SmartCacheWorkloadLauncher.html">mlos.Examples.SmartCache.SmartCacheWorkloadLauncher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Examples.SmartCache.CacheImplementations.html">mlos.Examples.SmartCache.CacheImplementations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Examples.SmartCache.MlosInterface.html">mlos.Examples.SmartCache.MlosInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Examples.SmartCache.TelemetryAggregators.html">mlos.Examples.SmartCache.TelemetryAggregators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Examples.SmartCache.unit_tests.html">mlos.Examples.SmartCache.unit_tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.Grpc.html">mlos.Grpc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.BayesianOptimizerProxy.html">mlos.Grpc.BayesianOptimizerProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerMicroservice.html">mlos.Grpc.OptimizerMicroservice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerMicroserviceServer.html">mlos.Grpc.OptimizerMicroserviceServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerMonitor.html">mlos.Grpc.OptimizerMonitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerService_pb2.html">mlos.Grpc.OptimizerService_pb2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerService_pb2_grpc.html">mlos.Grpc.OptimizerService_pb2_grpc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.Mlos.html">mlos.Mlos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Mlos.Infrastructure.html">mlos.Mlos.Infrastructure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.CommunicationChannel.html">mlos.Mlos.Infrastructure.CommunicationChannel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.ConfigurationManager.html">mlos.Mlos.Infrastructure.ConfigurationManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.ExperimentManager.html">mlos.Mlos.Infrastructure.ExperimentManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.RuntimeDecisionsManager.html">mlos.Mlos.Infrastructure.RuntimeDecisionsManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.SharedConfig.html">mlos.Mlos.Infrastructure.SharedConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.SmartComponentManager.html">mlos.Mlos.Infrastructure.SmartComponentManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.TelemetryManager.html">mlos.Mlos.Infrastructure.TelemetryManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.Infrastructure.unit_tests.html">mlos.Mlos.Infrastructure.unit_tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Mlos.SDK.html">mlos.Mlos.SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosAgent.html">mlos.Mlos.SDK.MlosAgent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosExperiment.html">mlos.Mlos.SDK.MlosExperiment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosGlobalContext.html">mlos.Mlos.SDK.MlosGlobalContext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosObject.html">mlos.Mlos.SDK.MlosObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosRuntimeDecisionContext.html">mlos.Mlos.SDK.MlosRuntimeDecisionContext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosSmartComponentRuntimeAttributes.html">mlos.Mlos.SDK.MlosSmartComponentRuntimeAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosSmartComponentSelector.html">mlos.Mlos.SDK.MlosSmartComponentSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.MlosTelemetryAggregator.html">mlos.Mlos.SDK.MlosTelemetryAggregator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.mlos_globals.html">mlos.Mlos.SDK.mlos_globals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.CommonAggregators.html">mlos.Mlos.SDK.CommonAggregators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.Utils.html">mlos.Mlos.SDK.Utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.SDK.unit_tests.html">mlos.Mlos.SDK.unit_tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Mlos.unit_tests.html">mlos.Mlos.unit_tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Mlos.unit_tests.TestE2EScenarios.html">mlos.Mlos.unit_tests.TestE2EScenarios</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.MlosOptimizationServices.html">mlos.MlosOptimizationServices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.MlosOptimizationServices.Distributable.html">mlos.MlosOptimizationServices.Distributable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.MlosOptimizationServices.MlosOptimizationRuntime.html">mlos.MlosOptimizationServices.MlosOptimizationRuntime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.MlosOptimizationServices.MlosOptimizationServicesProxy.html">mlos.MlosOptimizationServices.MlosOptimizationServicesProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.MlosOptimizationServices.ModelsDatabase.html">mlos.MlosOptimizationServices.ModelsDatabase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.MlosOptimizationServices.ModelsDatabase.ConnectionString.html">mlos.MlosOptimizationServices.ModelsDatabase.ConnectionString</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.MlosOptimizationServices.ModelsDatabase.DatabaseConnector.html">mlos.MlosOptimizationServices.ModelsDatabase.DatabaseConnector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.MlosOptimizationServices.ModelsDatabase.ModelsDatabase.html">mlos.MlosOptimizationServices.ModelsDatabase.ModelsDatabase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.MlosOptimizationServices.ModelsDatabase.Relations.html">mlos.MlosOptimizationServices.ModelsDatabase.Relations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.OptimizerEvaluationTools.html">mlos.OptimizerEvaluationTools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.ObjectiveFunctionBase.html">mlos.OptimizerEvaluationTools.ObjectiveFunctionBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.ObjectiveFunctionConfigStore.html">mlos.OptimizerEvaluationTools.ObjectiveFunctionConfigStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.ObjectiveFunctionFactory.html">mlos.OptimizerEvaluationTools.ObjectiveFunctionFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.OptimizerEvaluationReport.html">mlos.OptimizerEvaluationTools.OptimizerEvaluationReport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.OptimizerEvaluator.html">mlos.OptimizerEvaluationTools.OptimizerEvaluator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.OptimizerEvaluatorConfigStore.html">mlos.OptimizerEvaluationTools.OptimizerEvaluatorConfigStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.OptimumOverTime.html">mlos.OptimizerEvaluationTools.OptimumOverTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.SyntheticFunctions.html">mlos.OptimizerEvaluationTools.SyntheticFunctions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.SyntheticFunctions.Flower.html">mlos.OptimizerEvaluationTools.SyntheticFunctions.Flower</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.SyntheticFunctions.NestedPolynomialObjective.html">mlos.OptimizerEvaluationTools.SyntheticFunctions.NestedPolynomialObjective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjective.html">mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjectiveWrapper.html">mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjectiveWrapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.SyntheticFunctions.ThreeLevelQuadratic.html">mlos.OptimizerEvaluationTools.SyntheticFunctions.ThreeLevelQuadratic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.SyntheticFunctions.sample_functions.html">mlos.OptimizerEvaluationTools.SyntheticFunctions.sample_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerEvaluationTools.unit_tests.html">mlos.OptimizerEvaluationTools.unit_tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.unit_tests.TestObjectiveFunctionFactory.html">mlos.OptimizerEvaluationTools.unit_tests.TestObjectiveFunctionFactory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator.html">mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective.html">mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.OptimizerMonitoring.html">mlos.OptimizerMonitoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerMonitoring.GoodnessOfFitTensorboardWriter.html">mlos.OptimizerMonitoring.GoodnessOfFitTensorboardWriter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.OptimizerMonitoring.Tomograph.html">mlos.OptimizerMonitoring.Tomograph</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerMonitoring.Tomograph.Heatmap.html">mlos.OptimizerMonitoring.Tomograph.Heatmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.OptimizerMonitoring.Tomograph.ModelTomograph.html">mlos.OptimizerMonitoring.Tomograph.ModelTomograph</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mlos.Optimizers.html">mlos.Optimizers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.BayesianOptimizer.html">mlos.Optimizers.BayesianOptimizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.BayesianOptimizerConfigStore.html">mlos.Optimizers.BayesianOptimizerConfigStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.BayesianOptimizerConvergenceState.html">mlos.Optimizers.BayesianOptimizerConvergenceState</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.BayesianOptimizerFactory.html">mlos.Optimizers.BayesianOptimizerFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizationProblem.html">mlos.Optimizers.OptimizationProblem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.RegressionModels.html">mlos.Optimizers.RegressionModels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.DecisionTreeConfigStore.html">mlos.Optimizers.RegressionModels.DecisionTreeConfigStore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.DecisionTreeRegressionModel.html">mlos.Optimizers.RegressionModels.DecisionTreeRegressionModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.GoodnessOfFitMetrics.html">mlos.Optimizers.RegressionModels.GoodnessOfFitMetrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.HomogeneousRandomForestConfigStore.html">mlos.Optimizers.RegressionModels.HomogeneousRandomForestConfigStore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.HomogeneousRandomForestFitState.html">mlos.Optimizers.RegressionModels.HomogeneousRandomForestFitState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.HomogeneousRandomForestRegressionModel.html">mlos.Optimizers.RegressionModels.HomogeneousRandomForestRegressionModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.Prediction.html">mlos.Optimizers.RegressionModels.Prediction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel.html">mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.RegressionModel.html">mlos.Optimizers.RegressionModels.RegressionModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.RegressionModelFitState.html">mlos.Optimizers.RegressionModels.RegressionModelFitState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig.html">mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig.html">mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.SklearnRidgeRegressionModelConfig.html">mlos.Optimizers.RegressionModels.SklearnRidgeRegressionModelConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.unit_tests.html">mlos.Optimizers.RegressionModels.unit_tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.long_haul_tests.html">mlos.Optimizers.long_haul_tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.long_haul_tests.LongHaulTestBayesianOptimizer.html">mlos.Optimizers.long_haul_tests.LongHaulTestBayesianOptimizer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mlos.Spaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.Hypergrid.html">mlos.Spaces.Hypergrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.HypergridsJsonEncoderDecoder.html">mlos.Spaces.HypergridsJsonEncoderDecoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.Point.html">mlos.Spaces.Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.SimpleHypergrid.html">mlos.Spaces.SimpleHypergrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.Configs.html">mlos.Spaces.Configs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Configs.ComponentConfigStore.html">mlos.Spaces.Configs.ComponentConfigStore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Configs.DefaultConfigMeta.html">mlos.Spaces.Configs.DefaultConfigMeta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Configs.NamedConfig.html">mlos.Spaces.Configs.NamedConfig</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.Dimensions.html">mlos.Spaces.Dimensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.CategoricalDimension.html">mlos.Spaces.Dimensions.CategoricalDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.CompositeDimension.html">mlos.Spaces.Dimensions.CompositeDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.ContinuousDimension.html">mlos.Spaces.Dimensions.ContinuousDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html">mlos.Spaces.Dimensions.Dimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.DimensionCalculator.html">mlos.Spaces.Dimensions.DimensionCalculator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.DiscreteDimension.html">mlos.Spaces.Dimensions.DiscreteDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.EmptyDimension.html">mlos.Spaces.Dimensions.EmptyDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.IntervalTree.html">mlos.Spaces.Dimensions.IntervalTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.NaiveCompositeDimension.html">mlos.Spaces.Dimensions.NaiveCompositeDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.OrdinalDimension.html">mlos.Spaces.Dimensions.OrdinalDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.Dimensions.SortedBinaryTree.html">mlos.Spaces.Dimensions.SortedBinaryTree</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.html">mlos.Spaces.HypergridAdapters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.CategoricalToDiscreteHypergridAdapter.html">mlos.Spaces.HypergridAdapters.CategoricalToDiscreteHypergridAdapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.CategoricalToOneHotEncodedHypergridAdapter.html">mlos.Spaces.HypergridAdapters.CategoricalToOneHotEncodedHypergridAdapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.DiscreteToUnitContinuousHypergridAdapter.html">mlos.Spaces.HypergridAdapters.DiscreteToUnitContinuousHypergridAdapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.HierarchicalToFlatHypergridAdapter.html">mlos.Spaces.HypergridAdapters.HierarchicalToFlatHypergridAdapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.HypergridAdapter.html">mlos.Spaces.HypergridAdapters.HypergridAdapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.unit_tests.html">mlos.Spaces.HypergridAdapters.unit_tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.stress_tests.html">mlos.Spaces.stress_tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.stress_tests.StressTestIntervalTree.html">mlos.Spaces.stress_tests.StressTestIntervalTree</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.unit_tests.html">mlos.Spaces.unit_tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestCategoricalDimension.html">mlos.Spaces.unit_tests.TestCategoricalDimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestDimensions.html">mlos.Spaces.unit_tests.TestDimensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestFilteringOutInvalidRows.html">mlos.Spaces.unit_tests.TestFilteringOutInvalidRows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestHierarchicalHypergrid.html">mlos.Spaces.unit_tests.TestHierarchicalHypergrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestHierarchicalHypergrid2.html">mlos.Spaces.unit_tests.TestHierarchicalHypergrid2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestHierarchicalHypergrid3.html">mlos.Spaces.unit_tests.TestHierarchicalHypergrid3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestHierarchicalHypergridJSONEncoderDecoder.html">mlos.Spaces.unit_tests.TestHierarchicalHypergridJSONEncoderDecoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestHypergridJsonEncoderDecoderForDimensions.html">mlos.Spaces.unit_tests.TestHypergridJsonEncoderDecoderForDimensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestIntervalTree.html">mlos.Spaces.unit_tests.TestIntervalTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestSimpleHypergrid.html">mlos.Spaces.unit_tests.TestSimpleHypergrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.unit_tests.TestSortedBinaryTree.html">mlos.Spaces.unit_tests.TestSortedBinaryTree</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlos</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="mlos.html">mlos</a> &raquo;</li>
+        
+      <li>mlos.Spaces</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/mlos.Spaces.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-mlos.Spaces">
+<span id="mlos-spaces"></span><h1>mlos.Spaces<a class="headerlink" href="#module-mlos.Spaces" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="mlos.Spaces.CategoricalDimension">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">CategoricalDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">values</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.Dimension.Dimension</span></code></a></p>
+<p>A dimension whose values are categorical and ordering among them is unspecified.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.contains_dimension">
+<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.difference_categorical_dimension">
+<code class="sig-name descname">difference_categorical_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.difference_categorical_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.equals">
+<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.intersection">
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.intersection_categorical_dimension">
+<code class="sig-name descname">intersection_categorical_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.intersection_categorical_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.intersects">
+<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.intersects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.linspace">
+<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.linspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to numpy’s linspace. Returns an iterable of num elements linearly distributed along the dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.random">
+<code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.union">
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.union" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CategoricalDimension.union_categorical_dimension">
+<code class="sig-name descname">union_categorical_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CategoricalDimension.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CategoricalDimension.union_categorical_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.CompositeDimension">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">CompositeDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">chunks_type</span></em>, <em class="sig-param"><span class="n">chunks</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.Dimension.Dimension</span></code></a></p>
+<p>Models a union of discontinuous ContinuousDimensions or DiscreteDimensions.</p>
+<p>A union or difference operation on two ContinuousDimensions (or two DiscreteDimensions) can lead to
+a result comprised by discontinuous sets. In order to support further efficient operations on the
+result, we maintain such a union in an interval tree data structure.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.contains_dimension">
+<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.contains_number">
+<code class="sig-name descname">contains_number</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.contains_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.enumerate_chunks">
+<code class="sig-name descname">enumerate_chunks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.enumerate_chunks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.equals">
+<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.intersection">
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.intersects">
+<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.intersects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.linspace">
+<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.linspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates an iterable of numbers linearly distributed between min and max of the dimension.</p>
+<p>To do that we need to:
+1. Find the range of this dimension (diff between smallest and largest member)
+2. Find how much of the range is occupied.
+3. For each chunk, enumerate a number of elements proportional to it’s size in the range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.pop_adjacent_chunks">
+<code class="sig-name descname">pop_adjacent_chunks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chunk</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.pop_adjacent_chunks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.pop_overlapping_chunks">
+<code class="sig-name descname">pop_overlapping_chunks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chunk</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.pop_overlapping_chunks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.push">
+<code class="sig-name descname">push</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chunk</span></em>, <em class="sig-param"><span class="n">skip_checks</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.push" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.random">
+<code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/CompositeDimension.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.CompositeDimension.union">
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.CompositeDimension.union" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.ContinuousDimension">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">ContinuousDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">min</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">include_min</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">include_max</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.Dimension.Dimension</span></code></a></p>
+<p>Models a dimension that can assume continuous values.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.contains_continuous_dimension">
+<code class="sig-name descname">contains_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.contains_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.contains_dimension">
+<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.equals">
+<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.intersection">
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.intersection_continuous_dimension">
+<code class="sig-name descname">intersection_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.intersection_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.intersects">
+<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.intersects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.intersects_continuous_dimension">
+<code class="sig-name descname">intersects_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.intersects_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.is_contiguous_with">
+<code class="sig-name descname">is_contiguous_with</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.is_contiguous_with" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.linspace">
+<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.linspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to numpy’s linspace. Returns an iterable of num elements linearly distributed along the dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.make_empty">
+<code class="sig-name descname">make_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.make_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.random">
+<code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.split_on">
+<code class="sig-name descname">split_on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.split_on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits self on the other continuous dimension.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.union">
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.union" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.union_overlapping_continuous_dimension">
+<code class="sig-name descname">union_overlapping_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.union_overlapping_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.ContinuousDimension.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#mlos.Spaces.ContinuousDimension.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.Dimension">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">Dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>An abstract class representing a set of values a given parameter can take.</p>
+<p>This is a base class for: EmptyDimension, ContinuousDimension, DiscreteDimension, OrdinalDimension,
+CategoricalDimension, and CompositeDimension.</p>
+<p>We want to ascertain that all of those subclasses implement the Dimension interface.</p>
+<p>Dimensions are generally used to represent legal values for a parameter. When we take a cross-product of several
+dimensions we end up with a hypergrid.</p>
+<p>Notably, Dimensions have set semantics - we should be able to efficiently perform union, intersection, and
+difference operations, as well as determine membership of a value in this set or generate random values along
+a dimension from any given distribution.</p>
+<dl class="py attribute">
+<dt id="mlos.Spaces.Dimension.INNUMERABLY_LARGE">
+<code class="sig-name descname">INNUMERABLY_LARGE</code><em class="property"> = 1000000</em><a class="headerlink" href="#mlos.Spaces.Dimension.INNUMERABLY_LARGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.copy">
+<em class="property">abstract </em><code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.difference">
+<em class="property">abstract </em><code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.flatten_dimension_name">
+<em class="property">classmethod </em><code class="sig-name descname">flatten_dimension_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dimension_name</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.flatten_dimension_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.flatten_name">
+<code class="sig-name descname">flatten_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.flatten_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.intersection">
+<em class="property">abstract </em><code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.intersects">
+<em class="property">abstract </em><code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.intersects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.is_innumerably_large">
+<em class="property">property </em><code class="sig-name descname">is_innumerably_large</code><a class="headerlink" href="#mlos.Spaces.Dimension.is_innumerably_large" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.linspace">
+<em class="property">abstract </em><code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.linspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to numpy’s linspace. Returns an iterable of num elements linearly distributed along the dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.random">
+<em class="property">abstract </em><code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.random_state">
+<em class="property">property </em><code class="sig-name descname">random_state</code><a class="headerlink" href="#mlos.Spaces.Dimension.random_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.split_dimension_name">
+<em class="property">classmethod </em><code class="sig-name descname">split_dimension_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dimension_name</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.split_dimension_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.to_string">
+<em class="property">abstract </em><code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Dimension.union">
+<em class="property">abstract </em><code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/Dimension.py#L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimension.union" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.DiscreteDimension">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">DiscreteDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">min</span></em>, <em class="sig-param"><span class="n">max</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.Dimension.Dimension</span></code></a></p>
+<p>Models a dimension whose values can assume uniformly spaced discrete values.</p>
+<p>#TODO: rename to IntegerDimension.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.contains_dimension">
+<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.equals">
+<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.greatest_common_divisor">
+<em class="property">static </em><code class="sig-name descname">greatest_common_divisor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L276"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.greatest_common_divisor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.intersection">
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.intersection_discrete_dimension">
+<code class="sig-name descname">intersection_discrete_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.intersection_discrete_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.intersects">
+<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.intersects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.is_contiguous_with">
+<code class="sig-name descname">is_contiguous_with</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.is_contiguous_with" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.least_common_multiple">
+<em class="property">static </em><code class="sig-name descname">least_common_multiple</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L282"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.least_common_multiple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.linspace">
+<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L286"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.linspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to numpy’s linspace. Returns an iterable of num elements linearly distributed along the dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.make_empty">
+<code class="sig-name descname">make_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.make_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.random">
+<code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L295"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.split_on">
+<code class="sig-name descname">split_on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">split_value</span></em>, <em class="sig-param"><span class="n">include_in_left</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">include_in_right</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.split_on" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.union">
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.union" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.DiscreteDimension.union_contiguous_discrete_dimension">
+<code class="sig-name descname">union_contiguous_discrete_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DiscreteDimension.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.DiscreteDimension.union_contiguous_discrete_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.EmptyDimension">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">EmptyDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/EmptyDimension.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.Dimension.Dimension</span></code></a></p>
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.contains_dimension">
+<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/EmptyDimension.py#L30"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.equals">
+<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.intersection">
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.intersects">
+<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.intersects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.is_innumerably_large">
+<em class="property">property </em><code class="sig-name descname">is_innumerably_large</code><a class="headerlink" href="#mlos.Spaces.EmptyDimension.is_innumerably_large" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.linspace">
+<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/EmptyDimension.py#L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.linspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to numpy’s linspace. Returns an iterable of num elements linearly distributed along the dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.random">
+<code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/EmptyDimension.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/EmptyDimension.py#L18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.EmptyDimension.union">
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.EmptyDimension.union" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.Hypergrid">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">Hypergrid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Hypergrid.py#L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Hypergrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>A base class for all search-space-like classes.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.dimension_names">
+<em class="property">property </em><code class="sig-name descname">dimension_names</code><a class="headerlink" href="#mlos.Spaces.Hypergrid.dimension_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.dimensions">
+<em class="property">abstract property </em><code class="sig-name descname">dimensions</code><a class="headerlink" href="#mlos.Spaces.Hypergrid.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.filter_out_invalid_rows">
+<code class="sig-name descname">filter_out_invalid_rows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">original_dataframe</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="n">exclude_extra_columns</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Tracer.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Hypergrid.filter_out_invalid_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dataframe containing only valid rows from the original_dataframe.</p>
+<p>Valid rows are rows with no NaNs and with values for all dimensions in the required ranges.
+If there are additional columns, they will be dropped unless exclude_extra_columns == False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.get_dimensions_for_point">
+<em class="property">abstract </em><code class="sig-name descname">get_dimensions_for_point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span></em>, <em class="sig-param"><span class="n">return_join_dimensions</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Hypergrid.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Hypergrid.get_dimensions_for_point" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.is_hierarchical">
+<em class="property">abstract </em><code class="sig-name descname">is_hierarchical</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Hypergrid.py#L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Hypergrid.is_hierarchical" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.join">
+<em class="property">abstract </em><code class="sig-name descname">join</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subgrid</span></em>, <em class="sig-param"><span class="n">on_external_dimension</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension">mlos.Spaces.Dimensions.Dimension.Dimension</a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Hypergrid.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Hypergrid.join" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.random">
+<em class="property">abstract </em><code class="sig-name descname">random</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Hypergrid.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Hypergrid.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.random_dataframe">
+<code class="sig-name descname">random_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_samples</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Tracer.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Hypergrid.random_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Hypergrid.random_state">
+<em class="property">abstract property </em><code class="sig-name descname">random_state</code><a class="headerlink" href="#mlos.Spaces.Hypergrid.random_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.OrdinalDimension">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">OrdinalDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">ordered_values</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ascending</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/OrdinalDimension.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.CategoricalDimension.html#mlos.Spaces.Dimensions.CategoricalDimension.CategoricalDimension" title="mlos.Spaces.Dimensions.CategoricalDimension.CategoricalDimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.CategoricalDimension.CategoricalDimension</span></code></a></p>
+<p>A dimension whose values have a total ordering but the distance between consecutive values is unspecified.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.contains_dimension">
+<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/OrdinalDimension.py#L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.difference_ordinal_dimension">
+<code class="sig-name descname">difference_ordinal_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/OrdinalDimension.py#L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.difference_ordinal_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.equals">
+<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.intersection">
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.intersection_ordinal_dimension">
+<code class="sig-name descname">intersection_ordinal_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/OrdinalDimension.py#L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.intersection_ordinal_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.intersects">
+<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.intersects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.max">
+<em class="property">property </em><code class="sig-name descname">max</code><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.min">
+<em class="property">property </em><code class="sig-name descname">min</code><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.union">
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.union" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.OrdinalDimension.union_ordinal_dimension">
+<code class="sig-name descname">union_ordinal_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Dimensions/OrdinalDimension.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.OrdinalDimension.union_ordinal_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.Point">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">Point</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Models a point in a Hypergrid.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.Point.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Point.flat_copy">
+<code class="sig-name descname">flat_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.flat_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a copy of the point but all dimension names are flattened.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Point.from_dataframe">
+<em class="property">classmethod </em><code class="sig-name descname">from_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.from_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Point.from_json">
+<em class="property">classmethod </em><code class="sig-name descname">from_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json_str</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.from_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Point.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dimension_name</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Point.to_dataframe">
+<code class="sig-name descname">to_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Point.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.Point.to_json">
+<code class="sig-name descname">to_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/Point.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Point.to_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mlos.Spaces.SimpleHypergrid">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.</code><code class="sig-name descname">SimpleHypergrid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">dimensions</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Hypergrid.html#mlos.Spaces.Hypergrid.Hypergrid" title="mlos.Spaces.Hypergrid.Hypergrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Hypergrid.Hypergrid</span></code></a></p>
+<p>Models a space comprized of Continuous, Discrete, Ordinal and Categorical Dimensions.</p>
+<p>Can be flat or hierarchical, depending if any join operations were performed.</p>
+<dl class="py class">
+<dt id="mlos.Spaces.SimpleHypergrid.JoinedSubgrid">
+<em class="property">class </em><code class="sig-name descname">JoinedSubgrid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subgrid</span></em>, <em class="sig-param"><span class="n">join_dimension</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L17"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.JoinedSubgrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Allows a subgrid to be joined on a dimension that’s not in that subgrid.</p>
+<dl class="simple">
+<dt>Think how in SQL you can do:</dt><dd><p>SELECT * FROM Employee JOIN Employer ON Employee.Name = ‘John’;</p>
+</dd>
+</dl>
+<p>The JOIN predicate does not reference any column in Employer so we end up with a cross product of all John’s with
+all employers.</p>
+<p>That’s kinda the idea here. We want to join a subgrid on an arbitrary predicate expressed by that join_dimension.</p>
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.JoinedSubgrid.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.JoinedSubgrid.to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns it’s own string representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indent</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.add_dimension">
+<code class="sig-name descname">add_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dimension</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.add_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.add_subgrid_on_external_dimension">
+<code class="sig-name descname">add_subgrid_on_external_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_hypergrid</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Hypergrid.html#mlos.Spaces.Hypergrid.Hypergrid" title="mlos.Spaces.Hypergrid.Hypergrid">mlos.Spaces.Hypergrid.Hypergrid</a></span></em>, <em class="sig-param"><span class="n">external_dimension</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension">mlos.Spaces.Dimensions.Dimension.Dimension</a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.add_subgrid_on_external_dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.contains_point">
+<code class="sig-name descname">contains_point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Point.html#mlos.Spaces.Point.Point" title="mlos.Spaces.Point.Point">mlos.Spaces.Point.Point</a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.contains_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if point belongs to the  hypergrid.</p>
+<p>We must first see if for every dimension of the root hypergrid, the Point:
+a) specifies the dimension
+b) the value along that dimension is within bounds</p>
+<p>Then for every pivotal dimension present in the point we must:
+a) find the corresponding subgrid that might have been joined
+b) check if the value along pivotal dimension belongs to that subgrid
+c) if b) is true, then for every dimension in the subgrid, check if the points dimension</p>
+<blockquote>
+<div><p>values are within bounds.</p>
+</div></blockquote>
+<p>This has to be recursive, because any of the subgrids can be hierarchical already.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.contains_space">
+<code class="sig-name descname">contains_space</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_space</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.contains_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if other_space is a subspace of this one.</p>
+<dl class="simple">
+<dt>For another space to be a subspace of this one:</dt><dd><ol class="arabic simple">
+<li><p>all of the other_space.dimensions must be in self.dimensions</p></li>
+<li><p>every dimension in other_space.dimensions must be contained by the corresponding dimension in this space.</p></li>
+</ol>
+</dd>
+</dl>
+<p>However the complication arises for hierarchical hypergrids so we’ll tackle this more complex problem down the road.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other_space</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.dimensions">
+<em class="property">property </em><code class="sig-name descname">dimensions</code><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dimension_or_subgrid_name</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.get_dimensions_for_point">
+<code class="sig-name descname">get_dimensions_for_point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span></em>, <em class="sig-param"><span class="n">return_join_dimensions</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.get_dimensions_for_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns dimensions that the given point belongs to.</p>
+<p>For join dimensions, it can return the joined_subgrid.join_dimension if return_join_dimensions == True,
+else it returns the original dimension.</p>
+<p>In a hierarchical hypergrid, coordiantes of a point in the root hypergrid determine which of the subgrids will be ‘activated’ (meaningful). For example
+if point.base_boosting_regression_model_name == “LassoRegression” then the subgrid describing the configuration for Lasso Regression becomes ‘activated’
+that is to say, specifying parameters for Lasso Regression becomes meaningful. If point.base_boosting_regression_model_name == “RidgeRegression”, we can
+still specify the Lasso Regression parameters, but they would never be consumed (by the smart component) so are meaningless and effectively noise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.is_hierarchical">
+<code class="sig-name descname">is_hierarchical</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.is_hierarchical" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.join">
+<code class="sig-name descname">join</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subgrid</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Hypergrid.html#mlos.Spaces.Hypergrid.Hypergrid" title="mlos.Spaces.Hypergrid.Hypergrid">mlos.Spaces.Hypergrid.Hypergrid</a></span></em>, <em class="sig-param"><span class="n">on_external_dimension</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension">mlos.Spaces.Dimensions.Dimension.Dimension</a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Joins the subgrid on the specified dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subgrid</strong> – </p></li>
+<li><p><strong>on_external_dimension</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.random">
+<code class="sig-name descname">random</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L231"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.random_state">
+<em class="property">property </em><code class="sig-name descname">random_state</code><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.random_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.root_dimensions">
+<em class="property">property </em><code class="sig-name descname">root_dimensions</code><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.root_dimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.SimpleHypergrid.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Spaces/SimpleHypergrid.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.SimpleHypergrid.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.Hypergrid.html">mlos.Spaces.Hypergrid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.HypergridsJsonEncoderDecoder.html">mlos.Spaces.HypergridsJsonEncoderDecoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.Point.html">mlos.Spaces.Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.SimpleHypergrid.html">mlos.Spaces.SimpleHypergrid</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.Configs.html">mlos.Spaces.Configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.Dimensions.html">mlos.Spaces.Dimensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.html">mlos.Spaces.HypergridAdapters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.stress_tests.html">mlos.Spaces.stress_tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlos.Spaces.unit_tests.html">mlos.Spaces.unit_tests</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mlos.Spaces.Hypergrid.html" class="btn btn-neutral float-right" title="mlos.Spaces.Hypergrid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html" class="btn btn-neutral float-left" title="mlos.Optimizers.unit_tests.TestBayesianOptimizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Microsoft
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+mlos.Optimizers.BayesianOptimizerFactory
+========================================
+
+.. automodule:: mlos.Optimizers.BayesianOptimizerFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:

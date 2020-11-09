@@ -1,0 +1,7 @@
+mlos.Mlos.Infrastructure.RuntimeDecisionsManager
+================================================
+
+.. automodule:: mlos.Mlos.Infrastructure.RuntimeDecisionsManager
+   :members:
+   :undoc-members:
+   :show-inheritance:

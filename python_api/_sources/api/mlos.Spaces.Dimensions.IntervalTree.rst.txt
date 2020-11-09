@@ -1,0 +1,7 @@
+mlos.Spaces.Dimensions.IntervalTree
+===================================
+
+.. automodule:: mlos.Spaces.Dimensions.IntervalTree
+   :members:
+   :undoc-members:
+   :show-inheritance:

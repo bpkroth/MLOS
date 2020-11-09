@@ -1,0 +1,7 @@
+mlos.Grpc.BayesianOptimizerProxy
+================================
+
+.. automodule:: mlos.Grpc.BayesianOptimizerProxy
+   :members:
+   :undoc-members:
+   :show-inheritance:

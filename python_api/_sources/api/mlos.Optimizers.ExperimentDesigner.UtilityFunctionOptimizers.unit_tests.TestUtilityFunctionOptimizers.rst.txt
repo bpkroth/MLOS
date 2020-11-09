@@ -1,0 +1,7 @@
+mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit\_tests.TestUtilityFunctionOptimizers
+======================================================================================================
+
+.. automodule:: mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers
+   :members:
+   :undoc-members:
+   :show-inheritance:

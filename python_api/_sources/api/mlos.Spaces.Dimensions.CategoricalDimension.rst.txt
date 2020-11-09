@@ -1,0 +1,7 @@
+mlos.Spaces.Dimensions.CategoricalDimension
+===========================================
+
+.. automodule:: mlos.Spaces.Dimensions.CategoricalDimension
+   :members:
+   :undoc-members:
+   :show-inheritance:

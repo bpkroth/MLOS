@@ -1,0 +1,7 @@
+mlos.Optimizers.RegressionModels.unit\_tests.TestDecisionTreeRegressionModel
+============================================================================
+
+.. automodule:: mlos.Optimizers.RegressionModels.unit_tests.TestDecisionTreeRegressionModel
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+mlos.OptimizerMonitoring.Tomograph.Heatmap
+==========================================
+
+.. automodule:: mlos.OptimizerMonitoring.Tomograph.Heatmap
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+mlos.Mlos.Infrastructure.SmartComponentManager
+==============================================
+
+.. automodule:: mlos.Mlos.Infrastructure.SmartComponentManager
+   :members:
+   :undoc-members:
+   :show-inheritance:

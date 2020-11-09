@@ -1,0 +1,7 @@
+mlos.OptimizerEvaluationTools.SyntheticFunctions.ThreeLevelQuadratic
+====================================================================
+
+.. automodule:: mlos.OptimizerEvaluationTools.SyntheticFunctions.ThreeLevelQuadratic
+   :members:
+   :undoc-members:
+   :show-inheritance:

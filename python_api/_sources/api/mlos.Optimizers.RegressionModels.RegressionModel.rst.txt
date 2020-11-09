@@ -1,0 +1,7 @@
+mlos.Optimizers.RegressionModels.RegressionModel
+================================================
+
+.. automodule:: mlos.Optimizers.RegressionModels.RegressionModel
+   :members:
+   :undoc-members:
+   :show-inheritance:

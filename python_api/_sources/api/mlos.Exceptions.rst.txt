@@ -1,0 +1,7 @@
+mlos.Exceptions
+===============
+
+.. automodule:: mlos.Exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

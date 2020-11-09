@@ -1,0 +1,7 @@
+mlos.MlosOptimizationServices.ModelsDatabase.Relations.Optimizer
+================================================================
+
+.. automodule:: mlos.MlosOptimizationServices.ModelsDatabase.Relations.Optimizer
+   :members:
+   :undoc-members:
+   :show-inheritance:

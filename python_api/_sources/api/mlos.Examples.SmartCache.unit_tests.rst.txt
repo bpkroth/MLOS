@@ -1,0 +1,14 @@
+mlos.Examples.SmartCache.unit\_tests
+====================================
+
+
+.. automodule:: mlos.Examples.SmartCache.unit_tests
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Examples.SmartCache.unit_tests.TestSmartCache

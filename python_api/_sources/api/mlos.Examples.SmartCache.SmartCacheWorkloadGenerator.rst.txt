@@ -1,0 +1,7 @@
+mlos.Examples.SmartCache.SmartCacheWorkloadGenerator
+====================================================
+
+.. automodule:: mlos.Examples.SmartCache.SmartCacheWorkloadGenerator
+   :members:
+   :undoc-members:
+   :show-inheritance:

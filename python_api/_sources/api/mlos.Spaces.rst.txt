@@ -1,0 +1,26 @@
+mlos.Spaces
+===========
+
+
+.. automodule:: mlos.Spaces
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Spaces.Hypergrid
+   mlos.Spaces.HypergridsJsonEncoderDecoder
+   mlos.Spaces.Point
+   mlos.Spaces.SimpleHypergrid
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Spaces.Configs
+   mlos.Spaces.Dimensions
+   mlos.Spaces.HypergridAdapters
+   mlos.Spaces.stress_tests
+   mlos.Spaces.unit_tests

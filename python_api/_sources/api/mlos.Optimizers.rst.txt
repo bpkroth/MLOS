@@ -1,0 +1,28 @@
+mlos.Optimizers
+===============
+
+
+.. automodule:: mlos.Optimizers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Optimizers.BayesianOptimizer
+   mlos.Optimizers.BayesianOptimizerConfigStore
+   mlos.Optimizers.BayesianOptimizerConvergenceState
+   mlos.Optimizers.BayesianOptimizerFactory
+   mlos.Optimizers.OptimizationProblem
+   mlos.Optimizers.OptimizerBase
+   mlos.Optimizers.OptimumDefinition
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Optimizers.ExperimentDesigner
+   mlos.Optimizers.RegressionModels
+   mlos.Optimizers.long_haul_tests
+   mlos.Optimizers.unit_tests

@@ -1,0 +1,7 @@
+mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction
+===================================================================
+
+.. automodule:: mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction
+   :members:
+   :undoc-members:
+   :show-inheritance:

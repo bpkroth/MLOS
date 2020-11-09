@@ -1,0 +1,7 @@
+mlos.Mlos.Infrastructure.SharedConfig
+=====================================
+
+.. automodule:: mlos.Mlos.Infrastructure.SharedConfig
+   :members:
+   :undoc-members:
+   :show-inheritance:

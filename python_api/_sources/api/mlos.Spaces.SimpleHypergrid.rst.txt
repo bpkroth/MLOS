@@ -1,0 +1,7 @@
+mlos.Spaces.SimpleHypergrid
+===========================
+
+.. automodule:: mlos.Spaces.SimpleHypergrid
+   :members:
+   :undoc-members:
+   :show-inheritance:

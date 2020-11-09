@@ -1,0 +1,7 @@
+mlos.Spaces.HypergridAdapters.HierarchicalToFlatHypergridAdapter
+================================================================
+
+.. automodule:: mlos.Spaces.HypergridAdapters.HierarchicalToFlatHypergridAdapter
+   :members:
+   :undoc-members:
+   :show-inheritance:
