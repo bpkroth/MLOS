@@ -10,4 +10,4 @@ set -eu
 scriptdir=$(readlink -f "$(dirname "$0")")
 cd "$scriptdir/.."
 
-pytest -svxl -W error source/Mlos.Python $*
+pytest -svxl -W error -W "default::FutureWarning" source/Mlos.Python $*
