@@ -217,8 +217,8 @@ class TestRegressionEnhancedRandomForestRegressionModel:
         unexplained_variance = residual_sum_of_squares / total_sum_of_squares
 
         test_threshold = 10 ** -3
-        assert (unexplained_variance < test_threshold,
-                        f'1 - R^2 = {unexplained_variance} larger than expected ({test_threshold})')
+        assert unexplained_variance < test_threshold, \
+                        f'1 - R^2 = {unexplained_variance} larger than expected ({test_threshold})'
 
     def test_lasso_categorical_predictions(self):
         rerf = RegressionEnhancedRandomForestRegressionModel(
@@ -265,8 +265,8 @@ class TestRegressionEnhancedRandomForestRegressionModel:
         total_sum_of_squares = ((y_test - y_test.mean()) ** 2).sum()
         unexplained_variance = residual_sum_of_squares / total_sum_of_squares
         test_threshold = 10 ** -3
-        assert (unexplained_variance < test_threshold,
-                        f'1 - R^2 = {unexplained_variance} larger than expected ({test_threshold})')
+        assert unexplained_variance < test_threshold, \
+                        f'1 - R^2 = {unexplained_variance} larger than expected ({test_threshold})'
 
     def test_lasso_hierarchical_categorical_predictions(self):
         random.seed(11001)
