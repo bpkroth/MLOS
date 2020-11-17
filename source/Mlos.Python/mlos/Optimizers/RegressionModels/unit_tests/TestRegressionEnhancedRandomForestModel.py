@@ -283,7 +283,7 @@ class TestRegressionEnhancedRandomForestRegressionModel:
         # The input space consists of 3 2-d domains 200 x 200 units.  Hence random samples smaller than a certain size will produce too few points to
         # train reliable models.
         # TODO: Good place to use a non-random training set design
-        num_train_x = 600
+        num_train_x = 750
         x_train_df = objective_function.parameter_space.random_dataframe(num_samples=num_train_x)
         y_train_df = objective_function.evaluate_dataframe(x_train_df)
         rerf.fit(x_train_df, y_train_df)
