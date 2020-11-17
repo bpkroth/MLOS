@@ -228,7 +228,7 @@ class TestRegressionEnhancedRandomForestRegressionModel:
         )
 
         # input space consists of 6 2-d domains that are 5 x 5 units wide.  Hence placing 25 points in each domain.
-        num_train_x = 100
+        num_train_x = 150
         x_train_df, y_train_df = self.generate_points_nonhierarchical_categorical_quadratic(num_train_x)
         rerf.fit(x_train_df, y_train_df)
 
