@@ -267,6 +267,7 @@
 <li class="toctree-l3"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.html">mlos.Spaces.HypergridAdapters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.CategoricalToDiscreteHypergridAdapter.html">mlos.Spaces.HypergridAdapters.CategoricalToDiscreteHypergridAdapter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.CategoricalToOneHotEncodedHypergridAdapter.html">mlos.Spaces.HypergridAdapters.CategoricalToOneHotEncodedHypergridAdapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.html">mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.DiscreteToUnitContinuousHypergridAdapter.html">mlos.Spaces.HypergridAdapters.DiscreteToUnitContinuousHypergridAdapter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.HierarchicalToFlatHypergridAdapter.html">mlos.Spaces.HypergridAdapters.HierarchicalToFlatHypergridAdapter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Spaces.HypergridAdapters.HypergridAdapter.html">mlos.Spaces.HypergridAdapters.HypergridAdapter</a></li>
@@ -370,7 +371,7 @@
 <span id="mlos-mlos-sdk-mlosexperiment"></span><h1>mlos.Mlos.SDK.MlosExperiment<a class="headerlink" href="#module-mlos.Mlos.SDK.MlosExperiment" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.SDK.MlosExperiment.</code><code class="sig-name descname">MlosExperiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">smart_component_types</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">telemetry_aggregators</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">runtime_decision_makers</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.SDK.MlosExperiment.</code><code class="sig-name descname">MlosExperiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">smart_component_types</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">telemetry_aggregators</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">runtime_decision_makers</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A container for all resources associated with a given experiment.</p>
 <p>TelemetryAggregators’s resources include:
@@ -398,42 +399,42 @@ and releases the SmartComponents.</p>
 </dl>
 <dl class="py class">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status">
-<em class="property">class </em><code class="sig-name descname">Status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">Status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.BEING_FINALIZED">
-<code class="sig-name descname">BEING_FINALIZED</code><em class="property"> = 4</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.BEING_FINALIZED" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">BEING_FINALIZED</code><em class="property"> = 4</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.BEING_FINALIZED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.BEING_INITIALIZED">
-<code class="sig-name descname">BEING_INITIALIZED</code><em class="property"> = 2</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.BEING_INITIALIZED" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">BEING_INITIALIZED</code><em class="property"> = 2</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.BEING_INITIALIZED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.CANCELLED">
-<code class="sig-name descname">CANCELLED</code><em class="property"> = 7</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.CANCELLED" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">CANCELLED</code><em class="property"> = 7</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.CANCELLED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.COMPLETE">
-<code class="sig-name descname">COMPLETE</code><em class="property"> = 5</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.COMPLETE" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">COMPLETE</code><em class="property"> = 5</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.COMPLETE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.FAILED">
-<code class="sig-name descname">FAILED</code><em class="property"> = 6</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.FAILED" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">FAILED</code><em class="property"> = 6</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.FAILED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.IN_PROGRESS">
-<code class="sig-name descname">IN_PROGRESS</code><em class="property"> = 3</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.IN_PROGRESS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">IN_PROGRESS</code><em class="property"> = 3</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.IN_PROGRESS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.REQUESTED">
-<code class="sig-name descname">REQUESTED</code><em class="property"> = 1</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/fd8ef08/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.REQUESTED" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">REQUESTED</code><em class="property"> = 1</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosExperiment.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosExperiment.MlosExperiment.Status.REQUESTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

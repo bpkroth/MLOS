@@ -13,3 +13,4 @@ mlos.Spaces.HypergridAdapters.unit\_tests
 
    mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter
    mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter
+   mlos.Spaces.HypergridAdapters.unit_tests.TestContinuousToPolynomialBasisHypergridAdapter

@@ -13,6 +13,7 @@ mlos.Spaces.HypergridAdapters
 
    mlos.Spaces.HypergridAdapters.CategoricalToDiscreteHypergridAdapter
    mlos.Spaces.HypergridAdapters.CategoricalToOneHotEncodedHypergridAdapter
+   mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter
    mlos.Spaces.HypergridAdapters.DiscreteToUnitContinuousHypergridAdapter
    mlos.Spaces.HypergridAdapters.HierarchicalToFlatHypergridAdapter
    mlos.Spaces.HypergridAdapters.HypergridAdapter
