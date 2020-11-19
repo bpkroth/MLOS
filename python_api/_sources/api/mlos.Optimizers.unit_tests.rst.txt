@@ -12,3 +12,4 @@ mlos.Optimizers.unit\_tests
    :maxdepth: 1
 
    mlos.Optimizers.unit_tests.TestBayesianOptimizer
+   mlos.Optimizers.unit_tests.TestParetoFrontier

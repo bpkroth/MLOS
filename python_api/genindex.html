@@ -204,6 +204,7 @@
 <li class="toctree-l3"><a class="reference internal" href="api/mlos.Optimizers.OptimizationProblem.html">mlos.Optimizers.OptimizationProblem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/mlos.Optimizers.ParetoFrontier.html">mlos.Optimizers.ParetoFrontier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
@@ -233,6 +234,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="api/mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
 </ul>
@@ -728,6 +730,8 @@
       <li><a href="api/mlos.Spaces.Dimensions.NaiveCompositeDimension.html#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.compute_bounds_on_length">compute_bounds_on_length() (mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension method)</a>
 </li>
       <li><a href="api/mlos.Optimizers.RegressionModels.RegressionModel.html#mlos.Optimizers.RegressionModels.RegressionModel.RegressionModel.compute_goodness_of_fit">compute_goodness_of_fit() (mlos.Optimizers.RegressionModels.RegressionModel.RegressionModel method)</a>
+</li>
+      <li><a href="api/mlos.Optimizers.ParetoFrontier.html#mlos.Optimizers.ParetoFrontier.ParetoFrontier.compute_pareto">compute_pareto() (mlos.Optimizers.ParetoFrontier.ParetoFrontier static method)</a>
 </li>
       <li><a href="api/mlos.Grpc.BayesianOptimizerProxy.html#mlos.Grpc.BayesianOptimizerProxy.BayesianOptimizerProxy.compute_surrogate_model_goodness_of_fit">compute_surrogate_model_goodness_of_fit() (mlos.Grpc.BayesianOptimizerProxy.BayesianOptimizerProxy method)</a>
 
@@ -3224,6 +3228,13 @@
 </li>
       </ul></li>
       <li>
+    mlos.Optimizers.ParetoFrontier
+
+      <ul>
+        <li><a href="api/mlos.Optimizers.ParetoFrontier.html#module-mlos.Optimizers.ParetoFrontier">module</a>
+</li>
+      </ul></li>
+      <li>
     mlos.Optimizers.RegressionModels
 
       <ul>
@@ -3372,6 +3383,13 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    mlos.Optimizers.unit_tests.TestParetoFrontier
+
+      <ul>
+        <li><a href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html#module-mlos.Optimizers.unit_tests.TestParetoFrontier">module</a>
+</li>
+      </ul></li>
       <li>
     mlos.Spaces
 
@@ -4022,6 +4040,8 @@
 </li>
         <li><a href="api/mlos.Optimizers.OptimumDefinition.html#module-mlos.Optimizers.OptimumDefinition">mlos.Optimizers.OptimumDefinition</a>
 </li>
+        <li><a href="api/mlos.Optimizers.ParetoFrontier.html#module-mlos.Optimizers.ParetoFrontier">mlos.Optimizers.ParetoFrontier</a>
+</li>
         <li><a href="api/mlos.Optimizers.RegressionModels.html#module-mlos.Optimizers.RegressionModels">mlos.Optimizers.RegressionModels</a>
 </li>
         <li><a href="api/mlos.Optimizers.RegressionModels.DecisionTreeConfigStore.html#module-mlos.Optimizers.RegressionModels.DecisionTreeConfigStore">mlos.Optimizers.RegressionModels.DecisionTreeConfigStore</a>
@@ -4063,6 +4083,8 @@
         <li><a href="api/mlos.Optimizers.unit_tests.html#module-mlos.Optimizers.unit_tests">mlos.Optimizers.unit_tests</a>
 </li>
         <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#module-mlos.Optimizers.unit_tests.TestBayesianOptimizer">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a>
+</li>
+        <li><a href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html#module-mlos.Optimizers.unit_tests.TestParetoFrontier">mlos.Optimizers.unit_tests.TestParetoFrontier</a>
 </li>
         <li><a href="api/mlos.Spaces.html#module-mlos.Spaces">mlos.Spaces</a>
 </li>
@@ -4415,6 +4437,8 @@
 </li>
       <li><a href="api/mlos.Grpc.OptimizerService_pb2.html#mlos.Grpc.OptimizerService_pb2.OptimizationProblem.ParameterSpace">ParameterSpace (mlos.Grpc.OptimizerService_pb2.OptimizationProblem attribute)</a>
 </li>
+      <li><a href="api/mlos.Optimizers.ParetoFrontier.html#mlos.Optimizers.ParetoFrontier.ParetoFrontier">ParetoFrontier (class in mlos.Optimizers.ParetoFrontier)</a>
+</li>
       <li><a href="api/mlos.OptimizerMonitoring.GoodnessOfFitTensorboardWriter.html#mlos.OptimizerMonitoring.GoodnessOfFitTensorboardWriter.parse_command_line_arguments">parse_command_line_arguments() (in module mlos.OptimizerMonitoring.GoodnessOfFitTensorboardWriter)</a>
 
       <ul>
@@ -4477,14 +4501,14 @@
         <li><a href="api/mlos.Spaces.Dimensions.SortedBinaryTree.html#mlos.Spaces.Dimensions.SortedBinaryTree.SortedBinaryTree.POST_ORDER">(mlos.Spaces.Dimensions.SortedBinaryTree.SortedBinaryTree attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos.Spaces.Dimensions.SortedBinaryTree.html#mlos.Spaces.Dimensions.SortedBinaryTree.Node.PRE_ORDER">PRE_ORDER (mlos.Spaces.Dimensions.SortedBinaryTree.Node attribute)</a>
 
       <ul>
         <li><a href="api/mlos.Spaces.Dimensions.SortedBinaryTree.html#mlos.Spaces.Dimensions.SortedBinaryTree.SortedBinaryTree.PRE_ORDER">(mlos.Spaces.Dimensions.SortedBinaryTree.SortedBinaryTree attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos.Grpc.BayesianOptimizerProxy.html#mlos.Grpc.BayesianOptimizerProxy.BayesianOptimizerProxy.predict">predict() (mlos.Grpc.BayesianOptimizerProxy.BayesianOptimizerProxy method)</a>
 </li>
       <li><a href="api/mlos.Grpc.OptimizerMicroservice.html#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.Predict">Predict() (mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice method)</a>
@@ -5010,7 +5034,7 @@
 </li>
         <li><a href="api/mlos.Spaces.unit_tests.TestSimpleHypergrid.html#mlos.Spaces.unit_tests.TestSimpleHypergrid.TestSimpleSpaces.setup_method">(mlos.Spaces.unit_tests.TestSimpleHypergrid.TestSimpleSpaces method)</a>
 </li>
-        <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.setup_method">(mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest method)</a>
+        <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.setup_method">(mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree method)</a>
 </li>
       </ul></li>
       <li><a href="api/mlos.Mlos.html#mlos.Mlos.MlosGlobalContext.shared_config">shared_config() (mlos.Mlos.MlosGlobalContext property)</a>
@@ -5059,10 +5083,10 @@
 </li>
       <li><a href="api/mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig.html#mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig.SklearnLassoRegressionModelConfig">SklearnLassoRegressionModelConfig (class in mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig)</a>
 </li>
-      <li><a href="api/mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig.html#mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig.SklearnLassoRegressionModelConfig.Selection">SklearnLassoRegressionModelConfig.Selection (class in mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig.html#mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig.SklearnLassoRegressionModelConfig.Selection">SklearnLassoRegressionModelConfig.Selection (class in mlos.Optimizers.RegressionModels.SklearnLassoRegressionModelConfig)</a>
+</li>
       <li><a href="api/mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig.html#mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig.SklearnRandomForestRegressionModelConfig">SklearnRandomForestRegressionModelConfig (class in mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig)</a>
 </li>
       <li><a href="api/mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig.html#mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig.SklearnRandomForestRegressionModelConfig.Criterion">SklearnRandomForestRegressionModelConfig.Criterion (class in mlos.Optimizers.RegressionModels.SklearnRandomForestRegressionModelConfig)</a>
@@ -5109,8 +5133,6 @@
       </ul></li>
       <li><a href="api/mlos.Spaces.Dimensions.SortedBinaryTree.html#mlos.Spaces.Dimensions.SortedBinaryTree.SortedBinaryTree">SortedBinaryTree (class in mlos.Spaces.Dimensions.SortedBinaryTree)</a>
 </li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest">SortedBinaryTreeTest (class in mlos.Spaces.unit_tests.TestSortedBinaryTree)</a>
-</li>
       <li><a href="api/mlos.Optimizers.RegressionModels.SklearnRidgeRegressionModelConfig.html#mlos.Optimizers.RegressionModels.SklearnRidgeRegressionModelConfig.SklearnRidgeRegressionModelConfig.Solver.SPARSE_CG">SPARSE_CG (mlos.Optimizers.RegressionModels.SklearnRidgeRegressionModelConfig.SklearnRidgeRegressionModelConfig.Solver attribute)</a>
 </li>
       <li><a href="api/mlos.Spaces.html#mlos.Spaces.Dimension.split_dimension_name">split_dimension_name() (mlos.Spaces.Dimension class method)</a>
@@ -5144,8 +5166,6 @@
       <li><a href="api/mlos.Spaces.Dimensions.SortedBinaryTree.html#mlos.Spaces.Dimensions.SortedBinaryTree.Stack">Stack (class in mlos.Spaces.Dimensions.SortedBinaryTree)</a>
 </li>
       <li><a href="api/mlos.Spaces.Dimensions.SortedBinaryTree.html#mlos.Spaces.Dimensions.SortedBinaryTree.StackedNode">StackedNode (class in mlos.Spaces.Dimensions.SortedBinaryTree)</a>
-</li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.StackTest">StackTest (class in mlos.Spaces.unit_tests.TestSortedBinaryTree)</a>
 </li>
       <li><a href="api/mlos.Grpc.OptimizerMicroserviceServer.html#mlos.Grpc.OptimizerMicroserviceServer.OptimizerMicroserviceServer.start">start() (mlos.Grpc.OptimizerMicroserviceServer.OptimizerMicroserviceServer method)</a>
 
@@ -5315,6 +5335,8 @@
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestDimensions.html#mlos.Spaces.unit_tests.TestDimensions.TestDiscreteDimension.test_arbitrary_composition_of_discrete_dimensions">test_arbitrary_composition_of_discrete_dimensions() (mlos.Spaces.unit_tests.TestDimensions.TestDiscreteDimension method)</a>
 </li>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html#mlos.Optimizers.unit_tests.TestParetoFrontier.TestParetoFrontier.test_basic_functionality_on_2d_objective_space">test_basic_functionality_on_2d_objective_space() (mlos.Optimizers.unit_tests.TestParetoFrontier.TestParetoFrontier method)</a>
+</li>
       <li><a href="api/mlos.Optimizers.long_haul_tests.LongHaulTestBayesianOptimizer.html#mlos.Optimizers.long_haul_tests.LongHaulTestBayesianOptimizer.TestBayesianOptimizer.test_bayesian_optimizer_1d_nonconvex">test_bayesian_optimizer_1d_nonconvex() (mlos.Optimizers.long_haul_tests.LongHaulTestBayesianOptimizer.TestBayesianOptimizer method)</a>
 </li>
       <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer.test_bayesian_optimizer_default_copies_parameters">test_bayesian_optimizer_default_copies_parameters() (mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer method)</a>
@@ -5331,7 +5353,7 @@
         <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer.test_bayesian_optimizer_on_simple_2d_quadratic_function_pre_heated">(mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer method)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_binary_tree_enumeration">test_binary_tree_enumeration() (mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest method)</a>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_binary_tree_enumeration">test_binary_tree_enumeration() (mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestCategoricalDimension.html#mlos.Spaces.unit_tests.TestCategoricalDimension.TestCategoricalDimension.test_categorical_dimension_api">test_categorical_dimension_api() (mlos.Spaces.unit_tests.TestCategoricalDimension.TestCategoricalDimension method)</a>
 </li>
@@ -5401,7 +5423,9 @@
         <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer.test_hierarchical_quadratic_cold_start_random_configs">(mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer method)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_insert_and_contains">test_insert_and_contains() (mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest method)</a>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html#mlos.Optimizers.unit_tests.TestParetoFrontier.TestParetoFrontier.test_hyperspheres">test_hyperspheres() (mlos.Optimizers.unit_tests.TestParetoFrontier.TestParetoFrontier method)</a>
+</li>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_insert_and_contains">test_insert_and_contains() (mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestIntervalTree.html#mlos.Spaces.unit_tests.TestIntervalTree.TestIntervalTreeWithContinuousDimension.test_inserting_overlapping_chunks">test_inserting_overlapping_chunks() (mlos.Spaces.unit_tests.TestIntervalTree.TestIntervalTreeWithContinuousDimension method)</a>
 </li>
@@ -5453,7 +5477,7 @@
       </ul></li>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestContinuousToPolynomialBasisHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestContinuousToPolynomialBasisHypergridAdapter.TestContinuousToPolynomialBasisHypergridAdapter.test_point_projection_parameterized">test_point_projection_parameterized() (mlos.Spaces.HypergridAdapters.unit_tests.TestContinuousToPolynomialBasisHypergridAdapter.TestContinuousToPolynomialBasisHypergridAdapter method)</a>
 </li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_pop">test_pop() (mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest method)</a>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_pop">test_pop() (mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestIntervalTree.html#mlos.Spaces.unit_tests.TestIntervalTree.TestIntervalTreeWithContinuousDimension.test_pop_overlapping_chunks">test_pop_overlapping_chunks() (mlos.Spaces.unit_tests.TestIntervalTree.TestIntervalTreeWithContinuousDimension method)</a>
 </li>
@@ -5509,10 +5533,10 @@
 </li>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter.test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_drop_first_hypergrid">test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_drop_first_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter.test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_hypergrid">test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter.test_projecting_point_from_hierarchical_to_flat_hypergrid">test_projecting_point_from_hierarchical_to_flat_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter method)</a>
 </li>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter.test_projecting_point_from_simple_to_simple_hypergrid">test_projecting_point_from_simple_to_simple_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter method)</a>
@@ -5539,6 +5563,8 @@
 </li>
       <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer.test_registering_multiple_objectives">test_registering_multiple_objectives() (mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer method)</a>
 </li>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html#mlos.Optimizers.unit_tests.TestParetoFrontier.TestParetoFrontier.test_repeated_values">test_repeated_values() (mlos.Optimizers.unit_tests.TestParetoFrontier.TestParetoFrontier method)</a>
+</li>
       <li><a href="api/mlos.Spaces.unit_tests.TestHierarchicalHypergrid.html#mlos.Spaces.unit_tests.TestHierarchicalHypergrid.TestHierarchicalSpaces.test_reseeding_random_state">test_reseeding_random_state() (mlos.Spaces.unit_tests.TestHierarchicalHypergrid.TestHierarchicalSpaces method)</a>
 
       <ul>
@@ -5547,7 +5573,7 @@
         <li><a href="api/mlos.Spaces.unit_tests.TestSimpleHypergrid.html#mlos.Spaces.unit_tests.TestSimpleHypergrid.TestSimpleSpaces.test_reseeding_random_state">(mlos.Spaces.unit_tests.TestSimpleHypergrid.TestSimpleSpaces method)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_sanity">test_sanity() (mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest method)</a>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_sanity">test_sanity() (mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestHierarchicalHypergridJSONEncoderDecoder.html#mlos.Spaces.unit_tests.TestHierarchicalHypergridJSONEncoderDecoder.TestHierarchicalSpaces.test_serializing_configs">test_serializing_configs() (mlos.Spaces.unit_tests.TestHierarchicalHypergridJSONEncoderDecoder.TestHierarchicalSpaces method)</a>
 </li>
@@ -5565,9 +5591,9 @@
 </li>
       <li><a href="api/mlos.Examples.SmartCache.unit_tests.TestSmartCache.html#mlos.Examples.SmartCache.unit_tests.TestSmartCache.TestSmartCache.test_smart_cache">test_smart_cache() (mlos.Examples.SmartCache.unit_tests.TestSmartCache.TestSmartCache method)</a>
 </li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.StackTest.test_stack">test_stack() (mlos.Spaces.unit_tests.TestSortedBinaryTree.StackTest method)</a>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestStack.test_stack">test_stack() (mlos.Spaces.unit_tests.TestSortedBinaryTree.TestStack method)</a>
 </li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_stack_overflow">test_stack_overflow() (mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest method)</a>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_stack_overflow">test_stack_overflow() (mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestDimensions.html#mlos.Spaces.unit_tests.TestDimensions.TestContinuousDimension.test_string_representation">test_string_representation() (mlos.Spaces.unit_tests.TestDimensions.TestContinuousDimension method)</a>
 
@@ -5583,7 +5609,7 @@
 </li>
       <li><a href="api/mlos.Mlos.unit_tests.TestE2EScenarios.html#mlos.Mlos.unit_tests.TestE2EScenarios.TestE2EScenarios.test_timer">test_timer() (mlos.Mlos.unit_tests.TestE2EScenarios.TestE2EScenarios method)</a>
 </li>
-      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_traversal">test_traversal() (mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest method)</a>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_traversal">test_traversal() (mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestDimensions.html#mlos.Spaces.unit_tests.TestDimensions.TestCompositeDimension.test_union_of_continuous_dimensions">test_union_of_continuous_dimensions() (mlos.Spaces.unit_tests.TestDimensions.TestCompositeDimension method)</a>
 </li>
@@ -5643,6 +5669,8 @@
 </li>
       <li><a href="api/mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator.html#mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator.TestOptimizerEvaluator">TestOptimizerEvaluator (class in mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator)</a>
 </li>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html#mlos.Optimizers.unit_tests.TestParetoFrontier.TestParetoFrontier">TestParetoFrontier (class in mlos.Optimizers.unit_tests.TestParetoFrontier)</a>
+</li>
       <li><a href="api/mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective.html#mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective.TestPolynomialObjective">TestPolynomialObjective (class in mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective)</a>
 </li>
       <li><a href="api/mlos.Optimizers.RegressionModels.unit_tests.TestPrediction.html#mlos.Optimizers.RegressionModels.unit_tests.TestPrediction.TestPrediction">TestPrediction (class in mlos.Optimizers.RegressionModels.unit_tests.TestPrediction)</a>
@@ -5654,6 +5682,10 @@
       <li><a href="api/mlos.Spaces.unit_tests.TestSimpleHypergrid.html#mlos.Spaces.unit_tests.TestSimpleHypergrid.TestSimpleSpaces">TestSimpleSpaces (class in mlos.Spaces.unit_tests.TestSimpleHypergrid)</a>
 </li>
       <li><a href="api/mlos.Examples.SmartCache.unit_tests.TestSmartCache.html#mlos.Examples.SmartCache.unit_tests.TestSmartCache.TestSmartCache">TestSmartCache (class in mlos.Examples.SmartCache.unit_tests.TestSmartCache)</a>
+</li>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree">TestSortedBinaryTree (class in mlos.Spaces.unit_tests.TestSortedBinaryTree)</a>
+</li>
+      <li><a href="api/mlos.Spaces.unit_tests.TestSortedBinaryTree.html#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestStack">TestStack (class in mlos.Spaces.unit_tests.TestSortedBinaryTree)</a>
 </li>
       <li><a href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.html#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers">TestUtilityFunctionOptimizers (class in mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers)</a>
 </li>

@@ -206,6 +206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizationProblem.html">mlos.Optimizers.OptimizationProblem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ParetoFrontier.html">mlos.Optimizers.ParetoFrontier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
@@ -235,6 +236,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
 </ul>
@@ -371,7 +373,7 @@
 <span id="mlos-mlos-sdk-mlosagent"></span><h1>mlos.Mlos.SDK.MlosAgent<a class="headerlink" href="#module-mlos.Mlos.SDK.MlosAgent" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.SDK.MlosAgent.</code><code class="sig-name descname">MlosAgent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">communication_channel</span></em>, <em class="sig-param"><span class="n">shared_config</span></em>, <em class="sig-param"><span class="n">bayesian_optimizer_grpc_channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.SDK.MlosAgent.</code><code class="sig-name descname">MlosAgent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">communication_channel</span></em>, <em class="sig-param"><span class="n">shared_config</span></em>, <em class="sig-param"><span class="n">bayesian_optimizer_grpc_channel</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Akin to the actual Mlos.Agent.</p>
 <p>This is a prototype of how an experiment will work with Mlos E2E.
@@ -384,63 +386,63 @@ attached to the communication channel (in-process), and has a sql-db endpoint
 to communicate with the Mlos.Service.</p>
 <dl class="py attribute">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.DoneProcessingMessage">
-<code class="sig-name descname">DoneProcessingMessage</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.DoneProcessingMessage" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">DoneProcessingMessage</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.DoneProcessingMessage" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">DoneProcessing</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.add_allowed_component_type">
-<code class="sig-name descname">add_allowed_component_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.add_allowed_component_type" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_allowed_component_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.add_allowed_component_type" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.add_runtime_decision_maker">
-<code class="sig-name descname">add_runtime_decision_maker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">runtime_decision_maker</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.add_runtime_decision_maker" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_runtime_decision_maker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">runtime_decision_maker</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.add_runtime_decision_maker" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.disable_telemetry_message_types">
-<code class="sig-name descname">disable_telemetry_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.disable_telemetry_message_types" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">disable_telemetry_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.disable_telemetry_message_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.enable_telemetry_message_types">
-<code class="sig-name descname">enable_telemetry_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enable_telemetry_message_types" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">enable_telemetry_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enable_telemetry_message_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_active_smart_components">
-<code class="sig-name descname">enumerate_active_smart_components</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_selector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_active_smart_components" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">enumerate_active_smart_components</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_selector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_active_smart_components" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_allowed_component_types">
-<code class="sig-name descname">enumerate_allowed_component_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_allowed_component_types" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">enumerate_allowed_component_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_allowed_component_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_enabled_telemetry_message_types">
-<code class="sig-name descname">enumerate_enabled_telemetry_message_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_enabled_telemetry_message_types" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">enumerate_enabled_telemetry_message_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.enumerate_enabled_telemetry_message_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.get_configuration">
-<code class="sig-name descname">get_configuration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.get_configuration" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_configuration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.get_configuration" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.register_callback">
-<code class="sig-name descname">register_callback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message_type</span></em>, <em class="sig-param"><span class="n">callback_method</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.register_callback" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">register_callback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message_type</span></em>, <em class="sig-param"><span class="n">callback_method</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.register_callback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.remove_runtime_decision_maker">
-<code class="sig-name descname">remove_runtime_decision_maker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">runtime_decision_maker</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.remove_runtime_decision_maker" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">remove_runtime_decision_maker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">runtime_decision_maker</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.remove_runtime_decision_maker" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>This would be the new thread’s entry point.
 Agents responsibility would be to check if there are any requested experiments in the mlos_service
 and if so:</p>
@@ -461,12 +463,12 @@ and if so:</p>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.set_configuration">
-<code class="sig-name descname">set_configuration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">new_config_values</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.set_configuration" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_configuration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">new_config_values</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.set_configuration" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.start_experiment">
-<code class="sig-name descname">start_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.start_experiment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.start_experiment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Launches an Mlos TelemetryAggregators by.</p>
 <p>Steps:
 * Enable requested telemetry
@@ -484,17 +486,17 @@ and if so:</p>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.stop_all">
-<code class="sig-name descname">stop_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.stop_all" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stop_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.stop_all" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.stop_experiment">
-<code class="sig-name descname">stop_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.stop_experiment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stop_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.stop_experiment" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.SDK.MlosAgent.MlosAgent.unregister_callback">
-<code class="sig-name descname">unregister_callback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message_type</span></em>, <em class="sig-param"><span class="n">callback_method</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.unregister_callback" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">unregister_callback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message_type</span></em>, <em class="sig-param"><span class="n">callback_method</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/SDK/MlosAgent.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.SDK.MlosAgent.MlosAgent.unregister_callback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

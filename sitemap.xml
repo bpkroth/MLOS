@@ -77,6 +77,10 @@
   </url>
   
   <url>
+    <loc>https://microsoft.github.io/MLOS/external/ExternalIntegrationExample/</loc>
+  </url>
+  
+  <url>
     <loc>https://microsoft.github.io/MLOS/notebooks/</loc>
     <priority>0</priority>
   </url>
@@ -184,6 +188,10 @@
   
   <url>
     <loc>https://microsoft.github.io/MLOS/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://microsoft.github.io/MLOS/external/</loc>
   </url>
   
   <url>

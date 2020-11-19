@@ -205,6 +205,7 @@
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizationProblem.html">mlos.Optimizers.OptimizationProblem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ParetoFrontier.html">mlos.Optimizers.ParetoFrontier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
@@ -234,6 +235,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
 </ul>
@@ -369,56 +371,56 @@
   <div class="section" id="module-mlos.Spaces.unit_tests.TestSortedBinaryTree">
 <span id="mlos-spaces-unit-tests-testsortedbinarytree"></span><h1>mlos.Spaces.unit_tests.TestSortedBinaryTree<a class="headerlink" href="#module-mlos.Spaces.unit_tests.TestSortedBinaryTree" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.unit_tests.TestSortedBinaryTree.</code><code class="sig-name descname">SortedBinaryTreeTest</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.unit_tests.TestSortedBinaryTree.</code><code class="sig-name descname">TestSortedBinaryTree</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.setup_method">
-<code class="sig-name descname">setup_method</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.setup_method" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.setup_method">
+<code class="sig-name descname">setup_method</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.setup_method" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_binary_tree_enumeration">
-<code class="sig-name descname">test_binary_tree_enumeration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_binary_tree_enumeration" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_binary_tree_enumeration">
+<code class="sig-name descname">test_binary_tree_enumeration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_binary_tree_enumeration" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_insert_and_contains">
-<code class="sig-name descname">test_insert_and_contains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_insert_and_contains" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_insert_and_contains">
+<code class="sig-name descname">test_insert_and_contains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_insert_and_contains" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_pop">
-<code class="sig-name descname">test_pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_pop" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_pop">
+<code class="sig-name descname">test_pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_pop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_sanity">
-<code class="sig-name descname">test_sanity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_sanity" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_sanity">
+<code class="sig-name descname">test_sanity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_sanity" title="Permalink to this definition">¶</a></dt>
 <dd><p>This test will exercise all functions of the tree by: inserting, looking up, removing keys.</p>
 <p>We will retain auxillary (and less efficient) data structures to ensure correctness.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_stack_overflow">
-<code class="sig-name descname">test_stack_overflow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_stack_overflow" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_stack_overflow">
+<code class="sig-name descname">test_stack_overflow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_stack_overflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inserts 10000 consecutive nodes which should cause stack overflow in the recursive implementation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_traversal">
-<code class="sig-name descname">test_traversal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.SortedBinaryTreeTest.test_traversal" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_traversal">
+<code class="sig-name descname">test_traversal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestSortedBinaryTree.test_traversal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.StackTest">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.unit_tests.TestSortedBinaryTree.</code><code class="sig-name descname">StackTest</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.StackTest" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestStack">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.unit_tests.TestSortedBinaryTree.</code><code class="sig-name descname">TestStack</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestStack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.StackTest.test_stack">
-<code class="sig-name descname">test_stack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.StackTest.test_stack" title="Permalink to this definition">¶</a></dt>
+<dt id="mlos.Spaces.unit_tests.TestSortedBinaryTree.TestStack.test_stack">
+<code class="sig-name descname">test_stack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/unit_tests/TestSortedBinaryTree.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.unit_tests.TestSortedBinaryTree.TestStack.test_stack" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

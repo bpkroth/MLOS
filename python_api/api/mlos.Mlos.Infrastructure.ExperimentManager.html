@@ -206,6 +206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizationProblem.html">mlos.Optimizers.OptimizationProblem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ParetoFrontier.html">mlos.Optimizers.ParetoFrontier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
@@ -235,6 +236,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
 </ul>
@@ -371,12 +373,12 @@
 <span id="mlos-mlos-infrastructure-experimentmanager"></span><h1>mlos.Mlos.Infrastructure.ExperimentManager<a class="headerlink" href="#module-mlos.Mlos.Infrastructure.ExperimentManager" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.Infrastructure.ExperimentManager.</code><code class="sig-name descname">ExperimentManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_agent</span></em>, <em class="sig-param"><span class="n">communication_channel</span></em>, <em class="sig-param"><span class="n">logger</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/Infrastructure/ExperimentManager.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.Infrastructure.ExperimentManager.</code><code class="sig-name descname">ExperimentManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_agent</span></em>, <em class="sig-param"><span class="n">communication_channel</span></em>, <em class="sig-param"><span class="n">logger</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/ExperimentManager.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Keeps track of all experiments currently underway by the Mlos Agent.</p>
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager.start_experiment">
-<code class="sig-name descname">start_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/Infrastructure/ExperimentManager.py#L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager.start_experiment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/ExperimentManager.py#L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager.start_experiment" title="Permalink to this definition">¶</a></dt>
 <dd><ol class="arabic simple">
 <li><p>Validate that the components that this experiment targets are not already targeted.</p></li>
 </ol>
@@ -392,7 +394,7 @@
 
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager.stop_experiment">
-<code class="sig-name descname">stop_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Mlos/Infrastructure/ExperimentManager.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager.stop_experiment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stop_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlos_experiment</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/ExperimentManager.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.ExperimentManager.ExperimentManager.stop_experiment" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

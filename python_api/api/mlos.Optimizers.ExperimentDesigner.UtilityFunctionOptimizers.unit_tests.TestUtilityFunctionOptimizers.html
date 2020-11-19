@@ -206,6 +206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizationProblem.html">mlos.Optimizers.OptimizationProblem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ParetoFrontier.html">mlos.Optimizers.ParetoFrontier</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
@@ -235,6 +236,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
 </ul>
@@ -375,12 +377,12 @@
 <span id="mlos-optimizers-experimentdesigner-utilityfunctionoptimizers-unit-tests-testutilityfunctionoptimizers"></span><h1>mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers<a class="headerlink" href="#module-mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.</code><code class="sig-name descname">TestUtilityFunctionOptimizers</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/ExperimentDesigner/UtilityFunctionOptimizers/unit_tests/TestUtilityFunctionOptimizers.py#L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.</code><code class="sig-name descname">TestUtilityFunctionOptimizers</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/ExperimentDesigner/UtilityFunctionOptimizers/unit_tests/TestUtilityFunctionOptimizers.py#L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Tests if the random search optimizer does anything useful at all.</p>
 <dl class="py method">
 <dt id="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.setup_class">
-<em class="property">classmethod </em><code class="sig-name descname">setup_class</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/ExperimentDesigner/UtilityFunctionOptimizers/unit_tests/TestUtilityFunctionOptimizers.py#L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.setup_class" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">setup_class</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/ExperimentDesigner/UtilityFunctionOptimizers/unit_tests/TestUtilityFunctionOptimizers.py#L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.setup_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set’s up all the objects needed to test the RandomSearchOptimizer</p>
 <p>To test the RandomSearchOptimizer we need to first construct:
 * an optimization problem
@@ -396,22 +398,22 @@ test.</p>
 
 <dl class="py method">
 <dt id="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.teardown_class">
-<em class="property">classmethod </em><code class="sig-name descname">teardown_class</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/ExperimentDesigner/UtilityFunctionOptimizers/unit_tests/TestUtilityFunctionOptimizers.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.teardown_class" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">teardown_class</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/ExperimentDesigner/UtilityFunctionOptimizers/unit_tests/TestUtilityFunctionOptimizers.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.teardown_class" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_glow_worm_on_three_level_quadratic">
-<code class="sig-name descname">test_glow_worm_on_three_level_quadratic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Tracer.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_glow_worm_on_three_level_quadratic" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">test_glow_worm_on_three_level_quadratic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Tracer.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_glow_worm_on_three_level_quadratic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_glow_worm_swarm_optimizer">
-<code class="sig-name descname">test_glow_worm_swarm_optimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Tracer.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_glow_worm_swarm_optimizer" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">test_glow_worm_swarm_optimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Tracer.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_glow_worm_swarm_optimizer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_random_search_optimizer">
-<code class="sig-name descname">test_random_search_optimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Tracer.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_random_search_optimizer" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">test_random_search_optimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Tracer.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.unit_tests.TestUtilityFunctionOptimizers.TestUtilityFunctionOptimizers.test_random_search_optimizer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

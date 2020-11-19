@@ -18,6 +18,7 @@ mlos.Optimizers
    mlos.Optimizers.OptimizationProblem
    mlos.Optimizers.OptimizerBase
    mlos.Optimizers.OptimumDefinition
+   mlos.Optimizers.ParetoFrontier
 
 .. toctree::
    :maxdepth: 1

@@ -206,6 +206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizationProblem.html">mlos.Optimizers.OptimizationProblem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ParetoFrontier.html">mlos.Optimizers.ParetoFrontier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
@@ -235,6 +236,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
 </ul>
@@ -369,7 +371,7 @@
 <span id="mlos-optimizers-bayesianoptimizer"></span><h1>mlos.Optimizers.BayesianOptimizer<a class="headerlink" href="#module-mlos.Optimizers.BayesianOptimizer" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Optimizers.BayesianOptimizer.</code><code class="sig-name descname">BayesianOptimizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Optimizers.BayesianOptimizer.</code><code class="sig-name descname">BayesianOptimizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mlos.Optimizers.OptimizerBase.html#mlos.Optimizers.OptimizerBase.OptimizerBase" title="mlos.Optimizers.OptimizerBase.OptimizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Optimizers.OptimizerBase.OptimizerBase</span></code></a></p>
 <p>Generic Bayesian Optimizer based on regresson model</p>
 <p>Uses extra trees as surrogate model and confidence bound acquisition function by default.</p>
@@ -386,12 +388,12 @@
 </dl>
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.compute_surrogate_model_goodness_of_fit">
-<code class="sig-name descname">compute_surrogate_model_goodness_of_fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.compute_surrogate_model_goodness_of_fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">compute_surrogate_model_goodness_of_fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.compute_surrogate_model_goodness_of_fit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.focus">
-<code class="sig-name descname">focus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subspace</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.focus" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">focus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subspace</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.focus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Force the optimizer to focus on a specific subspace.</p>
 <p>This could be a great way to pass priors to the optimizer, as well as play with the component for the developers.</p>
 <dl class="field-list simple">
@@ -406,12 +408,12 @@
 
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.get_all_observations">
-<code class="sig-name descname">get_all_observations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.get_all_observations" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_all_observations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.get_all_observations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.get_optimizer_convergence_state">
-<code class="sig-name descname">get_optimizer_convergence_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.get_optimizer_convergence_state" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_optimizer_convergence_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.get_optimizer_convergence_state" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -421,7 +423,7 @@
 
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feature_values_pandas_frame</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Tracer.py#L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feature_values_pandas_frame</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Tracer.py#L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict target value based on the parameters supplied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -435,7 +437,7 @@
 
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.register">
-<code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feature_values_pandas_frame</span></em>, <em class="sig-param"><span class="n">target_values_pandas_frame</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Tracer.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.register" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feature_values_pandas_frame</span></em>, <em class="sig-param"><span class="n">target_values_pandas_frame</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Tracer.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registers a new result with the optimizer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -452,7 +454,7 @@
 
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.reset_focus">
-<code class="sig-name descname">reset_focus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.reset_focus" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">reset_focus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Optimizers/BayesianOptimizer.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.reset_focus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes focus back to the full search space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -463,7 +465,7 @@
 
 <dl class="py method">
 <dt id="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.suggest">
-<code class="sig-name descname">suggest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">random</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/ef5142d/source/Mlos.Python/mlos/Tracer.py#L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.suggest" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">suggest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">random</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Tracer.py#L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer.suggest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Suggest the next set of parameters to try.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
