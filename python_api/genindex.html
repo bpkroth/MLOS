@@ -234,6 +234,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="api/mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/mlos.Optimizers.unit_tests.TestOptimizationProblem.html">mlos.Optimizers.unit_tests.TestOptimizationProblem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
@@ -579,6 +580,8 @@
 </li>
       <li><a href="api/mlos.Optimizers.OptimumDefinition.html#mlos.Optimizers.OptimumDefinition.OptimumDefinition.BEST_OBSERVATION">BEST_OBSERVATION (mlos.Optimizers.OptimumDefinition.OptimumDefinition attribute)</a>
 </li>
+      <li><a href="api/mlos.Optimizers.OptimumDefinition.html#mlos.Optimizers.OptimumDefinition.OptimumDefinition.BEST_SPECULATIVE_WITHIN_CONTEXT">BEST_SPECULATIVE_WITHIN_CONTEXT (mlos.Optimizers.OptimumDefinition.OptimumDefinition attribute)</a>
+</li>
       <li><a href="api/mlos.Logger.html#mlos.Logger.BufferingHandler">BufferingHandler (class in mlos.Logger)</a>
 </li>
   </ul></td>
@@ -810,6 +813,8 @@
       <li><a href="api/mlos.MlosOptimizationServices.ModelsDatabase.DatabaseConnector.html#mlos.MlosOptimizationServices.ModelsDatabase.DatabaseConnector.connection_required">connection_required() (in module mlos.MlosOptimizationServices.ModelsDatabase.DatabaseConnector)</a>
 </li>
       <li><a href="api/mlos.MlosOptimizationServices.ModelsDatabase.ConnectionString.html#mlos.MlosOptimizationServices.ModelsDatabase.ConnectionString.ConnectionString">ConnectionString (class in mlos.MlosOptimizationServices.ModelsDatabase.ConnectionString)</a>
+</li>
+      <li><a href="api/mlos.Optimizers.OptimizationProblem.html#mlos.Optimizers.OptimizationProblem.OptimizationProblem.construct_feature_dataframe">construct_feature_dataframe() (mlos.Optimizers.OptimizationProblem.OptimizationProblem method)</a>
 </li>
       <li><a href="api/mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel.html#mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel.RegressionEnhancedRandomForestRegressionModelConfig.contains">contains() (mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel.RegressionEnhancedRandomForestRegressionModelConfig class method)</a>
 
@@ -1743,10 +1748,10 @@
 </li>
       <li><a href="api/mlos.MlosOptimizationServices.Distributable.html#mlos.MlosOptimizationServices.Distributable.Distributable.get_execution_context">get_execution_context() (mlos.MlosOptimizationServices.Distributable.Distributable method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos.Grpc.OptimizerMonitor.html#mlos.Grpc.OptimizerMonitor.OptimizerMonitor.get_existing_optimizers">get_existing_optimizers() (mlos.Grpc.OptimizerMonitor.OptimizerMonitor method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos.Optimizers.RegressionModels.HomogeneousRandomForestFitState.html#mlos.Optimizers.RegressionModels.HomogeneousRandomForestFitState.HomogeneousRandomForestFitState.get_goodness_of_fit_dataframe">get_goodness_of_fit_dataframe() (mlos.Optimizers.RegressionModels.HomogeneousRandomForestFitState.HomogeneousRandomForestFitState method)</a>
 
       <ul>
@@ -1777,6 +1782,12 @@
 </li>
       <li><a href="api/mlos.Grpc.OptimizerMicroservice.html#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.get_next_optimizer_id">get_next_optimizer_id() (mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice static method)</a>
 </li>
+      <li><a href="api/mlos.Spaces.HypergridAdapters.html#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.get_num_polynomial_features">get_num_polynomial_features() (mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter method)</a>
+
+      <ul>
+        <li><a href="api/mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.html#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_num_polynomial_features">(mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter method)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos.Spaces.HypergridAdapters.html#mlos.Spaces.HypergridAdapters.CategoricalToOneHotEncodedHypergridAdapter.get_one_hot_encoded_column_names">get_one_hot_encoded_column_names() (mlos.Spaces.HypergridAdapters.CategoricalToOneHotEncodedHypergridAdapter method)</a>
 
       <ul>
@@ -2323,6 +2334,8 @@
         <li><a href="api/mlos.Spaces.html#mlos.Spaces.DiscreteDimension.make_empty">(mlos.Spaces.DiscreteDimension method)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html#mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.ExperimentDesigner.make_optimizer_for_utility">make_optimizer_for_utility() (mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.ExperimentDesigner method)</a>
+</li>
       <li><a href="api/mlos.Mlos.Infrastructure.html#mlos.Mlos.Infrastructure.RuntimeDecisionsManager.make_runtime_decision">make_runtime_decision() (mlos.Mlos.Infrastructure.RuntimeDecisionsManager method)</a>
 
       <ul>
@@ -3172,6 +3185,13 @@
 </li>
       </ul></li>
       <li>
+    mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction
+
+      <ul>
+        <li><a href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.html#module-mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction">module</a>
+</li>
+      </ul></li>
+      <li>
     mlos.Optimizers.ExperimentDesigner.UtilityFunctions.unit_tests
 
       <ul>
@@ -3379,6 +3399,13 @@
 
       <ul>
         <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#module-mlos.Optimizers.unit_tests.TestBayesianOptimizer">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlos.Optimizers.unit_tests.TestOptimizationProblem
+
+      <ul>
+        <li><a href="api/mlos.Optimizers.unit_tests.TestOptimizationProblem.html#module-mlos.Optimizers.unit_tests.TestOptimizationProblem">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -4024,6 +4051,8 @@
 </li>
         <li><a href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction.html#module-mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction">mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction</a>
 </li>
+        <li><a href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.html#module-mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction">mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction</a>
+</li>
         <li><a href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctions.unit_tests.html#module-mlos.Optimizers.ExperimentDesigner.UtilityFunctions.unit_tests">mlos.Optimizers.ExperimentDesigner.UtilityFunctions.unit_tests</a>
 </li>
         <li><a href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctions.unit_tests.TestConfidenceBoundUtilityFunction.html#module-mlos.Optimizers.ExperimentDesigner.UtilityFunctions.unit_tests.TestConfidenceBoundUtilityFunction">mlos.Optimizers.ExperimentDesigner.UtilityFunctions.unit_tests.TestConfidenceBoundUtilityFunction</a>
@@ -4083,6 +4112,8 @@
         <li><a href="api/mlos.Optimizers.unit_tests.html#module-mlos.Optimizers.unit_tests">mlos.Optimizers.unit_tests</a>
 </li>
         <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#module-mlos.Optimizers.unit_tests.TestBayesianOptimizer">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a>
+</li>
+        <li><a href="api/mlos.Optimizers.unit_tests.TestOptimizationProblem.html#module-mlos.Optimizers.unit_tests.TestOptimizationProblem">mlos.Optimizers.unit_tests.TestOptimizationProblem</a>
 </li>
         <li><a href="api/mlos.Optimizers.unit_tests.TestParetoFrontier.html#module-mlos.Optimizers.unit_tests.TestParetoFrontier">mlos.Optimizers.unit_tests.TestParetoFrontier</a>
 </li>
@@ -4213,12 +4244,18 @@
 </li>
       <li><a href="api/mlos.Optimizers.OptimizationProblem.html#mlos.Optimizers.OptimizationProblem.Objective.name">name() (mlos.Optimizers.OptimizationProblem.Objective property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos.Spaces.Configs.html#mlos.Spaces.Configs.NamedConfig">NamedConfig (class in mlos.Spaces.Configs)</a>
 
       <ul>
         <li><a href="api/mlos.Spaces.Configs.NamedConfig.html#mlos.Spaces.Configs.NamedConfig.NamedConfig">(class in mlos.Spaces.Configs.NamedConfig)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos.Spaces.HypergridAdapters.html#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.nan_imputed_finite_value">nan_imputed_finite_value() (mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter property)</a>
+
+      <ul>
+        <li><a href="api/mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.html#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.nan_imputed_finite_value">(mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter property)</a>
 </li>
       </ul></li>
       <li><a href="api/mlos.OptimizerEvaluationTools.SyntheticFunctions.NestedPolynomialObjective.html#mlos.OptimizerEvaluationTools.SyntheticFunctions.NestedPolynomialObjective.NestedPolynomialObjective">NestedPolynomialObjective (class in mlos.OptimizerEvaluationTools.SyntheticFunctions.NestedPolynomialObjective)</a>
@@ -4463,6 +4500,12 @@
       </ul></li>
       <li><a href="api/mlos.Exceptions.html#mlos.Exceptions.PointOutOfDomainException">PointOutOfDomainException</a>
 </li>
+      <li><a href="api/mlos.Spaces.HypergridAdapters.html#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.polynomial_features_kwargs">polynomial_features_kwargs() (mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter property)</a>
+
+      <ul>
+        <li><a href="api/mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.html#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.polynomial_features_kwargs">(mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter property)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjective.html#mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjective.PolynomialObjective">PolynomialObjective (class in mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjective)</a>
 </li>
       <li><a href="api/mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjectiveWrapper.html#mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjectiveWrapper.PolynomialObjectiveWrapper">PolynomialObjectiveWrapper (class in mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjectiveWrapper)</a>
@@ -4540,6 +4583,8 @@
       <li><a href="api/mlos.Optimizers.OptimumDefinition.html#mlos.Optimizers.OptimumDefinition.OptimumDefinition.PREDICTED_VALUE_FOR_OBSERVED_CONFIG">PREDICTED_VALUE_FOR_OBSERVED_CONFIG (mlos.Optimizers.OptimumDefinition.OptimumDefinition attribute)</a>
 </li>
       <li><a href="api/mlos.Optimizers.RegressionModels.Prediction.html#mlos.Optimizers.RegressionModels.Prediction.Prediction.LegalColumnNames.PREDICTED_VALUE_VARIANCE">PREDICTED_VALUE_VARIANCE (mlos.Optimizers.RegressionModels.Prediction.Prediction.LegalColumnNames attribute)</a>
+</li>
+      <li><a href="api/mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.html#mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.PredictedValueUtilityFunction">PredictedValueUtilityFunction (class in mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction)</a>
 </li>
       <li><a href="api/mlos.Optimizers.RegressionModels.Prediction.html#mlos.Optimizers.RegressionModels.Prediction.Prediction">Prediction (class in mlos.Optimizers.RegressionModels.Prediction)</a>
 </li>
@@ -5363,6 +5408,10 @@
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestDimensions.html#mlos.Spaces.unit_tests.TestDimensions.TestCompositeDimension.test_composition_of_arbitrary_dimensions">test_composition_of_arbitrary_dimensions() (mlos.Spaces.unit_tests.TestDimensions.TestCompositeDimension method)</a>
 </li>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestOptimizationProblem.html#mlos.Optimizers.unit_tests.TestOptimizationProblem.TestOptimizationProblem.test_construct_feature_dataframe_context">test_construct_feature_dataframe_context() (mlos.Optimizers.unit_tests.TestOptimizationProblem.TestOptimizationProblem method)</a>
+</li>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestOptimizationProblem.html#mlos.Optimizers.unit_tests.TestOptimizationProblem.TestOptimizationProblem.test_construct_feature_dataframe_no_context">test_construct_feature_dataframe_no_context() (mlos.Optimizers.unit_tests.TestOptimizationProblem.TestOptimizationProblem method)</a>
+</li>
       <li><a href="api/mlos.Spaces.unit_tests.TestDimensions.html#mlos.Spaces.unit_tests.TestDimensions.TestDimensions.test_containment">test_containment() (mlos.Spaces.unit_tests.TestDimensions.TestDimensions method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestDimensions.html#mlos.Spaces.unit_tests.TestDimensions.TestContinuousDimension.test_continuous_dimension_containment">test_continuous_dimension_containment() (mlos.Spaces.unit_tests.TestDimensions.TestContinuousDimension method)</a>
@@ -5465,6 +5514,8 @@
 </li>
       <li><a href="api/mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective.html#mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective.TestPolynomialObjective.test_noisy_general_polynomial_evaluation">test_noisy_general_polynomial_evaluation() (mlos.OptimizerEvaluationTools.unit_tests.TestPolynomialObjective.TestPolynomialObjective method)</a>
 </li>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer.test_optimization_with_context">test_optimization_with_context() (mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer method)</a>
+</li>
       <li><a href="api/mlos.Optimizers.unit_tests.TestBayesianOptimizer.html#mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer.test_optimum_before_register_error">test_optimum_before_register_error() (mlos.Optimizers.unit_tests.TestBayesianOptimizer.TestBayesianOptimizer method)</a>
 </li>
       <li><a href="api/mlos.Spaces.unit_tests.TestHierarchicalHypergrid2.html#mlos.Spaces.unit_tests.TestHierarchicalHypergrid2.TestHierarchicalHypergrid2.test_pickling">test_pickling() (mlos.Spaces.unit_tests.TestHierarchicalHypergrid2.TestHierarchicalHypergrid2 method)</a>
@@ -5533,10 +5584,10 @@
 </li>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter.test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_drop_first_hypergrid">test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_drop_first_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter method)</a>
 </li>
-      <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter.test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_hypergrid">test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter.test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_hypergrid">test_projecting_point_from_hierarchical_categorical_to_one_hot_encoding_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToOneHotEncodedHypergridAdapter.TestCategoricalToOneHotEncodedHypergridAdapter method)</a>
+</li>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter.test_projecting_point_from_hierarchical_to_flat_hypergrid">test_projecting_point_from_hierarchical_to_flat_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter method)</a>
 </li>
       <li><a href="api/mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.html#mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter.test_projecting_point_from_simple_to_simple_hypergrid">test_projecting_point_from_simple_to_simple_hypergrid() (mlos.Spaces.HypergridAdapters.unit_tests.TestCategoricalToDiscreteHypergridAdapter.TestCategoricalToDiscreteHypergridAdapter method)</a>
@@ -5666,6 +5717,8 @@
       <li><a href="api/mlos.Mlos.SDK.unit_tests.TestMlosObject.html#mlos.Mlos.SDK.unit_tests.TestMlosObject.TestMlosObject">TestMlosObject (class in mlos.Mlos.SDK.unit_tests.TestMlosObject)</a>
 </li>
       <li><a href="api/mlos.OptimizerEvaluationTools.unit_tests.TestObjectiveFunctionFactory.html#mlos.OptimizerEvaluationTools.unit_tests.TestObjectiveFunctionFactory.TestObjectiveFunctionFactory">TestObjectiveFunctionFactory (class in mlos.OptimizerEvaluationTools.unit_tests.TestObjectiveFunctionFactory)</a>
+</li>
+      <li><a href="api/mlos.Optimizers.unit_tests.TestOptimizationProblem.html#mlos.Optimizers.unit_tests.TestOptimizationProblem.TestOptimizationProblem">TestOptimizationProblem (class in mlos.Optimizers.unit_tests.TestOptimizationProblem)</a>
 </li>
       <li><a href="api/mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator.html#mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator.TestOptimizerEvaluator">TestOptimizerEvaluator (class in mlos.OptimizerEvaluationTools.unit_tests.TestOptimizerEvaluator)</a>
 </li>

@@ -236,6 +236,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestOptimizationProblem.html">mlos.Optimizers.unit_tests.TestOptimizationProblem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
@@ -373,62 +374,62 @@
 <span id="mlos-spaces-dimensions-continuousdimension"></span><h1>mlos.Spaces.Dimensions.ContinuousDimension<a class="headerlink" href="#module-mlos.Spaces.Dimensions.ContinuousDimension" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.Dimensions.ContinuousDimension.</code><code class="sig-name descname">ContinuousDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">min</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">include_min</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">include_max</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.Dimensions.ContinuousDimension.</code><code class="sig-name descname">ContinuousDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">min</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">include_min</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">include_max</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.Dimension.Dimension</span></code></a></p>
 <p>Models a dimension that can assume continuous values.</p>
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.contains_continuous_dimension">
-<code class="sig-name descname">contains_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.contains_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">contains_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.contains_continuous_dimension" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.contains_dimension">
-<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">contains_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L742"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.contains_dimension" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.copy">
-<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.copy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.copy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.difference">
-<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.difference" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.difference" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.equals">
-<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.equals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.equals" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersection">
-<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersection_continuous_dimension">
-<code class="sig-name descname">intersection_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersection_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">intersection_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersection_continuous_dimension" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersects">
-<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersects" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">intersects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersects_continuous_dimension">
-<code class="sig-name descname">intersects_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersects_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">intersects_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.intersects_continuous_dimension" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.is_contiguous_with">
-<code class="sig-name descname">is_contiguous_with</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.is_contiguous_with" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_contiguous_with</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.is_contiguous_with" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.linspace">
-<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.linspace" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">1000</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.linspace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Similar to numpy’s linspace. Returns an iterable of num elements linearly distributed along the dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -442,33 +443,33 @@
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.make_empty">
-<code class="sig-name descname">make_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.make_empty" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">make_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.make_empty" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.random">
-<code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.random" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.random" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.split_on">
-<code class="sig-name descname">split_on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.split_on" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">split_on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.split_on" title="Permalink to this definition">¶</a></dt>
 <dd><p>Splits self on the other continuous dimension.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.to_string">
-<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.to_string" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">include_name</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.to_string" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.union">
-<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.union" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/DimensionCalculator.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.union" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.union_overlapping_continuous_dimension">
-<code class="sig-name descname">union_overlapping_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.union_overlapping_continuous_dimension" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">union_overlapping_continuous_dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/Dimensions/ContinuousDimension.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.ContinuousDimension.ContinuousDimension.union_overlapping_continuous_dimension" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

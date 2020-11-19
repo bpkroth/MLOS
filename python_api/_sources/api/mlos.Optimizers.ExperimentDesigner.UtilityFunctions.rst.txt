@@ -12,6 +12,7 @@ mlos.Optimizers.ExperimentDesigner.UtilityFunctions
    :maxdepth: 1
 
    mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction
+   mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction
    mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction
 
 .. toctree::

@@ -236,6 +236,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestOptimizationProblem.html">mlos.Optimizers.unit_tests.TestOptimizationProblem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
@@ -373,12 +374,12 @@
 <span id="mlos-mlos-infrastructure-sharedconfig"></span><h1>mlos.Mlos.Infrastructure.SharedConfig<a class="headerlink" href="#module-mlos.Mlos.Infrastructure.SharedConfig" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.Infrastructure.SharedConfig.</code><code class="sig-name descname">SharedConfig</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L7"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Mlos.Infrastructure.SharedConfig.</code><code class="sig-name descname">SharedConfig</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L7"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A view of config visible to both the Mlos Agent and the Target System</p>
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.add_allowed_component">
-<code class="sig-name descname">add_allowed_component</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">default_configuration</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.add_allowed_component" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_allowed_component</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">default_configuration</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.add_allowed_component" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -388,17 +389,17 @@
 
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.disable_message_types">
-<code class="sig-name descname">disable_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.disable_message_types" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">disable_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.disable_message_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.enable_message_types">
-<code class="sig-name descname">enable_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.enable_message_types" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">enable_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_types</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.enable_message_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.get_current_config">
-<code class="sig-name descname">get_current_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.get_current_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_current_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.get_current_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the most up to date configuration for a given component group.</p>
 <p>The component group is identified by the component types and a combination of
 its runtime attributes.</p>
@@ -414,17 +415,17 @@ its runtime attributes.</p>
 
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.get_enabled_message_types">
-<code class="sig-name descname">get_enabled_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.get_enabled_message_types" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_enabled_message_types</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.get_enabled_message_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.is_message_type_enabled">
-<code class="sig-name descname">is_message_type_enabled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.is_message_type_enabled" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_message_type_enabled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">message_type</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.is_message_type_enabled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.set_config">
-<code class="sig-name descname">set_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">new_configuration</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.set_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component_type</span></em>, <em class="sig-param"><span class="n">new_configuration</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Mlos/Infrastructure/SharedConfig.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Mlos.Infrastructure.SharedConfig.SharedConfig.set_config" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

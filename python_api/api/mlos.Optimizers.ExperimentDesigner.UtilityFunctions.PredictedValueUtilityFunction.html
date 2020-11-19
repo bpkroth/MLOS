@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlos.Grpc.OptimizerMicroservice &mdash; mlos  documentation</title>
+  <title>mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction &mdash; mlos  documentation</title>
   
 
   
@@ -38,8 +38,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="mlos.Grpc.OptimizerMicroserviceServer" href="mlos.Grpc.OptimizerMicroserviceServer.html" />
-    <link rel="prev" title="mlos.Grpc.BayesianOptimizerProxy" href="mlos.Grpc.BayesianOptimizerProxy.html" /> 
+    <link rel="next" title="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction.html" />
+    <link rel="prev" title="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -109,9 +109,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="mlos.Grpc.html">mlos.Grpc</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mlos.Grpc.html">mlos.Grpc</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.BayesianOptimizerProxy.html">mlos.Grpc.BayesianOptimizerProxy</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">mlos.Grpc.OptimizerMicroservice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerMicroservice.html">mlos.Grpc.OptimizerMicroservice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerMicroserviceServer.html">mlos.Grpc.OptimizerMicroserviceServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerMonitor.html">mlos.Grpc.OptimizerMonitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Grpc.OptimizerService_pb2.html">mlos.Grpc.OptimizerService_pb2</a></li>
@@ -198,7 +198,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mlos.Optimizers.html">mlos.Optimizers</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="mlos.Optimizers.html">mlos.Optimizers</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.BayesianOptimizer.html">mlos.Optimizers.BayesianOptimizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.BayesianOptimizerConfigStore.html">mlos.Optimizers.BayesianOptimizerConfigStore</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.BayesianOptimizerConvergenceState.html">mlos.Optimizers.BayesianOptimizerConvergenceState</a></li>
@@ -207,10 +207,10 @@
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimizerBase.html">mlos.Optimizers.OptimizerBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.OptimumDefinition.html">mlos.Optimizers.OptimumDefinition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ParetoFrontier.html">mlos.Optimizers.ParetoFrontier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner.ExperimentDesigner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctionOptimizers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctions</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctions</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.RegressionModels.html">mlos.Optimizers.RegressionModels</a><ul>
@@ -347,15 +347,19 @@
         
           <li><a href="mlos.html">mlos</a> &raquo;</li>
         
-          <li><a href="mlos.Grpc.html">mlos.Grpc</a> &raquo;</li>
+          <li><a href="mlos.Optimizers.html">mlos.Optimizers</a> &raquo;</li>
         
-      <li>mlos.Grpc.OptimizerMicroservice</li>
+          <li><a href="mlos.Optimizers.ExperimentDesigner.html">mlos.Optimizers.ExperimentDesigner</a> &raquo;</li>
+        
+          <li><a href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.html">mlos.Optimizers.ExperimentDesigner.UtilityFunctions</a> &raquo;</li>
+        
+      <li>mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/mlos.Grpc.OptimizerMicroservice.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -368,115 +372,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-mlos.Grpc.OptimizerMicroservice">
-<span id="mlos-grpc-optimizermicroservice"></span><h1>mlos.Grpc.OptimizerMicroservice<a class="headerlink" href="#module-mlos.Grpc.OptimizerMicroservice" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction">
+<span id="mlos-optimizers-experimentdesigner-utilityfunctions-predictedvalueutilityfunction"></span><h1>mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction<a class="headerlink" href="#module-mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Grpc.OptimizerMicroservice.</code><code class="sig-name descname">OptimizerMicroservice</code><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="mlos.Grpc.OptimizerService_pb2_grpc.html#mlos.Grpc.OptimizerService_pb2_grpc.OptimizerServiceServicer" title="mlos.Grpc.OptimizerService_pb2_grpc.OptimizerServiceServicer"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Grpc.OptimizerService_pb2_grpc.OptimizerServiceServicer</span></code></a></p>
-<p>Defines the Optimizer Microservice.</p>
-<p>The state of the microservice will be persisted in a DB. Until then we use local variables.</p>
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.ComputeGoodnessOfFitMetrics">
-<code class="sig-name descname">ComputeGoodnessOfFitMetrics</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.ComputeGoodnessOfFitMetrics" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the computed goodness of fit metrics.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.CreateOptimizer">
-<code class="sig-name descname">CreateOptimizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Grpc.OptimizerService_pb2.html#mlos.Grpc.OptimizerService_pb2.CreateOptimizerRequest" title="mlos.Grpc.OptimizerService_pb2.CreateOptimizerRequest">mlos.Grpc.OptimizerService_pb2.CreateOptimizerRequest</a></span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.CreateOptimizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates an optimizer with the specified configuration.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.Echo">
-<code class="sig-name descname">Echo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Grpc.OptimizerService_pb2.html#mlos.Grpc.OptimizerService_pb2.Empty" title="mlos.Grpc.OptimizerService_pb2.Empty">mlos.Grpc.OptimizerService_pb2.Empty</a></span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.Echo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Like ping.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.GetAllObservations">
-<code class="sig-name descname">GetAllObservations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.GetAllObservations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns all observations registered for a given optimizer.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.GetOptimizerConvergenceState">
-<code class="sig-name descname">GetOptimizerConvergenceState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.GetOptimizerConvergenceState" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current optimizer convergence state.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.GetOptimizerInfo">
-<code class="sig-name descname">GetOptimizerInfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Grpc.OptimizerService_pb2.html#mlos.Grpc.OptimizerService_pb2.OptimizerHandle" title="mlos.Grpc.OptimizerService_pb2.OptimizerHandle">mlos.Grpc.OptimizerService_pb2.OptimizerHandle</a></span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.GetOptimizerInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns information about optimizers configuration and optimization problem.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.IsTrained">
-<code class="sig-name descname">IsTrained</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.IsTrained" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if optimizer has been trained.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.ListExistingOptimizers">
-<code class="sig-name descname">ListExistingOptimizers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Grpc.OptimizerService_pb2.html#mlos.Grpc.OptimizerService_pb2.Empty" title="mlos.Grpc.OptimizerService_pb2.Empty">mlos.Grpc.OptimizerService_pb2.Empty</a></span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.ListExistingOptimizers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of existing optimizer instances.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.Predict">
-<code class="sig-name descname">Predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.Predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Produces a prediction for specified features.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.RegisterObservation">
-<code class="sig-name descname">RegisterObservation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.RegisterObservation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds an observation to the optimizer’s data set.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.RegisterObservations">
-<code class="sig-name descname">RegisterObservations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.RegisterObservations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds observations to the optimizer’s data set.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.Suggest">
-<code class="sig-name descname">Suggest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.Suggest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Request a suggestion.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.exclusive_optimizer">
-<code class="sig-name descname">exclusive_optimizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">optimizer_id</span></em><span class="sig-paren">)</span> &#x2192; Iterator<span class="p">[</span><a class="reference internal" href="mlos.Optimizers.BayesianOptimizer.html#mlos.Optimizers.BayesianOptimizer.BayesianOptimizer" title="mlos.Optimizers.BayesianOptimizer.BayesianOptimizer">mlos.Optimizers.BayesianOptimizer.BayesianOptimizer</a><span class="p">]</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/../../../../../usr/lib/python3.7/contextlib.py#L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.exclusive_optimizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Context manager to acquire the optimizer lock and yield the corresponding optimizer.</p>
-<dl class="simple">
-<dt>This makes sure that:</dt><dd><ol class="arabic simple">
-<li><p>The lock is acquired before any operation on the optimizer commences.</p></li>
-<li><p>The lock is released even if exceptions are flying.</p></li>
-</ol>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>optimizer_id</strong> – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p>KeyError if the optimizer_id was not found.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.get_next_optimizer_id">
-<em class="property">static </em><code class="sig-name descname">get_next_optimizer_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Grpc/OptimizerMicroservice.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Grpc.OptimizerMicroservice.OptimizerMicroservice.get_next_optimizer_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dt id="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.PredictedValueUtilityFunction">
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.</code><code class="sig-name descname">PredictedValueUtilityFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surrogate_model</span></em>, <em class="sig-param"><span class="n">minimize</span></em>, <em class="sig-param"><span class="n">logger</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Optimizers/ExperimentDesigner/UtilityFunctions/PredictedValueUtilityFunction.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Optimizers.ExperimentDesigner.UtilityFunctions.PredictedValueUtilityFunction.PredictedValueUtilityFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction.html#mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction.UtilityFunction" title="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction.UtilityFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction.UtilityFunction</span></code></a></p>
 </dd></dl>
 
 </div>
@@ -489,10 +390,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mlos.Grpc.OptimizerMicroserviceServer.html" class="btn btn-neutral float-right" title="mlos.Grpc.OptimizerMicroserviceServer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction.html" class="btn btn-neutral float-right" title="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.UtilityFunction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mlos.Grpc.BayesianOptimizerProxy.html" class="btn btn-neutral float-left" title="mlos.Grpc.BayesianOptimizerProxy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction.html" class="btn btn-neutral float-left" title="mlos.Optimizers.ExperimentDesigner.UtilityFunctions.ConfidenceBoundUtilityFunction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

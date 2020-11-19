@@ -236,6 +236,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos.Optimizers.unit_tests.html">mlos.Optimizers.unit_tests</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestBayesianOptimizer.html">mlos.Optimizers.unit_tests.TestBayesianOptimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestOptimizationProblem.html">mlos.Optimizers.unit_tests.TestOptimizationProblem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.unit_tests.TestParetoFrontier.html">mlos.Optimizers.unit_tests.TestParetoFrontier</a></li>
 </ul>
 </li>
@@ -373,7 +374,7 @@
 <span id="mlos-spaces-hypergridadapters-continuoustopolynomialbasishypergridadapter"></span><h1>mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter<a class="headerlink" href="#module-mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.</code><code class="sig-name descname">ContinuousToPolynomialBasisHypergridAdapter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adaptee</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Hypergrid.html#mlos.Spaces.Hypergrid.Hypergrid" title="mlos.Spaces.Hypergrid.Hypergrid">mlos.Spaces.Hypergrid.Hypergrid</a></span></em>, <em class="sig-param"><span class="n">degree</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">interaction_only</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/HypergridAdapters/ContinuousToPolynomialBasisHypergridAdapter.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.</code><code class="sig-name descname">ContinuousToPolynomialBasisHypergridAdapter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adaptee</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mlos.Spaces.Hypergrid.html#mlos.Spaces.Hypergrid.Hypergrid" title="mlos.Spaces.Hypergrid.Hypergrid">mlos.Spaces.Hypergrid.Hypergrid</a></span></em>, <em class="sig-param"><span class="n">degree</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">include_bias</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">interaction_only</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/HypergridAdapters/ContinuousToPolynomialBasisHypergridAdapter.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mlos.Spaces.HypergridAdapters.HypergridAdapter.html#mlos.Spaces.HypergridAdapters.HypergridAdapter.HypergridAdapter" title="mlos.Spaces.HypergridAdapters.HypergridAdapter.HypergridAdapter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.HypergridAdapters.HypergridAdapter.HypergridAdapter</span></code></a></p>
 <p>Adds polynomial basis function features for each continuous dimension in the adaptee hypergrid using
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html</a>.
@@ -389,6 +390,10 @@ Default = 2.</p>
 (so not x[1] ** 2, x[0] * x[2] ** 3, etc.).
 Default = False</p>
 </dd>
+<dt><strong>include_bias: boolean</strong></dt><dd><p>If True, then include a bias column, the feature in which all polynomial powers are zero
+(i.e. a column of ones - acts as an intercept term in a linear model).
+Default = True</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -400,12 +405,27 @@ Default = False</p>
 
 <dl class="py method">
 <dt id="mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_column_names_for_polynomial_features">
-<code class="sig-name descname">get_column_names_for_polynomial_features</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/HypergridAdapters/ContinuousToPolynomialBasisHypergridAdapter.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_column_names_for_polynomial_features" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_column_names_for_polynomial_features</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">degree</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/HypergridAdapters/ContinuousToPolynomialBasisHypergridAdapter.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_column_names_for_polynomial_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_num_polynomial_features">
+<code class="sig-name descname">get_num_polynomial_features</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/HypergridAdapters/ContinuousToPolynomialBasisHypergridAdapter.py#L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_num_polynomial_features" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_polynomial_feature_powers_table">
-<code class="sig-name descname">get_polynomial_feature_powers_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/b2e16cb/source/Mlos.Python/mlos/Spaces/HypergridAdapters/ContinuousToPolynomialBasisHypergridAdapter.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_polynomial_feature_powers_table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_polynomial_feature_powers_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/c458598/source/Mlos.Python/mlos/Spaces/HypergridAdapters/ContinuousToPolynomialBasisHypergridAdapter.py#L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.get_polynomial_feature_powers_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.nan_imputed_finite_value">
+<em class="property">property </em><code class="sig-name descname">nan_imputed_finite_value</code><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.nan_imputed_finite_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.polynomial_features_kwargs">
+<em class="property">property </em><code class="sig-name descname">polynomial_features_kwargs</code><a class="headerlink" href="#mlos.Spaces.HypergridAdapters.ContinuousToPolynomialBasisHypergridAdapter.ContinuousToPolynomialBasisHypergridAdapter.polynomial_features_kwargs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
