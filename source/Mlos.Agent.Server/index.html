@@ -17,7 +17,7 @@ It provides
 <link rel="manifest" href="/MLOS/manifest.json">
 <link rel="icon" href="/MLOS/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/MLOS/book.min.6cd8553a6854f4812343f0f0c8baca31271e686434f381fbe3c7226f66639176.css" integrity="sha256-bNhVOmhU9IEjQ/DwyLrKMSceaGQ084H748cib2ZjkXY=">
-<script defer src="/MLOS/en.search.min.71e0951f6a08298ced6525837d94ebc26e0fe5f80d39112fd6398a68068f6da9.js" integrity="sha256-ceCVH2oIKYztZSWDfZTrwm4P5fgNOREv1jmKaAaPbak="></script>
+<script defer src="/MLOS/en.search.min.c4e1f07a1b19b4f74612c3ab6b2d99830d56f0b4d2e7ebc5bf8f06afbacd2dd2.js" integrity="sha256-xOHwehsZtPdGEsOray2Zgw1W8LTS5&#43;vFv48Gr7rNLdI="></script>
 <link rel="alternate" type="application/rss+xml" href="https://microsoft.github.io/MLOS/source/Mlos.Agent.Server/index.xml" title="MLOS" />
 <!--
 Made with Book Theme
@@ -205,8 +205,8 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ol>
 <p>Since it is meant as a reusable agent for different components, it contains no specific message processing logic itself.</p>
-<p>Rather, it starts an <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Mlos.Agent/"><code>Mlos.Agent</code></a> message processing loop which loads each component&rsquo;s <code>SettingsRegistry</code> assembly dlls upon registration request (via the <code>RegisterComponentConfig</code> and <code>RegisterAssemblyRequestMessage</code> from <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Mlos.Core/"><code>Mlos.Core</code></a> and <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Mlos.NetCore/"><code>Mlos.NetCore</code></a>) and runs their <code>AssemblyInitializer</code> constructor to setup the component specific message handler callbacks.</p>
-<p>See the <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Examples/SmartCache/"><code>SmartCache</code></a> code, especially it&rsquo;s SettingsRegistry&rsquo;s <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Examples/SmartCache/SmartCache.SettingsRegistry/AssemblyInitializer.cs"><code>AssemblyInitializer.cs</code></a> for a more detailed example.</p>
+<p>Rather, it starts an <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Mlos.Agent/"><code>Mlos.Agent</code></a> message processing loop which loads each component&rsquo;s <code>SettingsRegistry</code> assembly dlls upon registration request (via the <code>RegisterComponentConfig</code> and <code>RegisterAssemblyRequestMessage</code> from <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Mlos.Core/"><code>Mlos.Core</code></a> and <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Mlos.NetCore/"><code>Mlos.NetCore</code></a>) and uses the specified <code>ExperimentSession</code> class to setup the message callbacks that handle compnent and experiment specific things like aggregating and summarizing telemetry messages, interfacing with the optimizer using different parameter and/or context search spaces, and relaying component reconfiguration requests, etc.</p>
+<p>See the <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Examples/SmartCache/"><code>SmartCache</code></a> code, especially its <a href="https://github.com/microsoft/MLOS/tree/main/source/Mlos.Agent.Server/../Examples/SmartCache/SmartCache.ExperimentSession/SmartCacheExperimentSession.cs"><code>ExperimentSession</code> class</a> for a more detailed example.</p>
 <h2 id="building">Building</h2>
 <p>See Also</p>
 <ul>
@@ -225,19 +225,8 @@ Please see the <code>--help</code> usage output for additional details.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dotnet target/bin/Release/Mlos.Agent.Server.dll --help
 </code></pre></div><h2 id="caveats">Caveats</h2>
 <ul>
-<li>
-<p>The system currently only supports one shared memory region and doesn&rsquo;t always cleanup the shared memory after itself if something goes wrong.</p>
-<p>As such, you may see hung processes when restarting after a failed experiment.</p>
-<p>To help with this, we currently provide a helper script to remove previous incarnations of the shared memory regions:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">build/CMakeHelpers/RemoveMlosSharedMemories.sh
-</code></pre></div><p>You may also need to make sure that the processes using them are killed off.
-For instance:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pkill $YourSmartComponentProcess <span style="color:#75715e"># e.g. SmartCache</span>
-pkill -f dotnet.*Mlos.Agent.Server.dll
-</code></pre></div><blockquote>
-<p>Note: each of these commands should be executed inside the <code>Mlos.Agent.Server</code> execution environment (e.g. inside the docker container).</p>
-</blockquote>
-</li>
+<li>The system currently only supports a single tunable process at a time.
+Multiple agent/target-process pairs support (e.g. via configurable unix socket domain path for anonymous shared memory exchange) are planned for future development.</li>
 </ul>
 </article>
  

@@ -14,7 +14,7 @@
 <link rel="manifest" href="/MLOS/manifest.json">
 <link rel="icon" href="/MLOS/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/MLOS/book.min.6cd8553a6854f4812343f0f0c8baca31271e686434f381fbe3c7226f66639176.css" integrity="sha256-bNhVOmhU9IEjQ/DwyLrKMSceaGQ084H748cib2ZjkXY=">
-<script defer src="/MLOS/en.search.min.71e0951f6a08298ced6525837d94ebc26e0fe5f80d39112fd6398a68068f6da9.js" integrity="sha256-ceCVH2oIKYztZSWDfZTrwm4P5fgNOREv1jmKaAaPbak="></script>
+<script defer src="/MLOS/en.search.min.c4e1f07a1b19b4f74612c3ab6b2d99830d56f0b4d2e7ebc5bf8f06afbacd2dd2.js" integrity="sha256-xOHwehsZtPdGEsOray2Zgw1W8LTS5&#43;vFv48Gr7rNLdI="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -208,18 +208,19 @@ You can find the source in <a href="https://github.com/Microsoft/MLOS/tree/main/
 </li>
 <li>
 <p>SmartCache.SettingsRegistry:</p>
-<p>This is the C# code that declares the configuration options for the SmartCache component, and defines the communication
-between the the MLOS Agent and the SmartCache component. You can find the source in
-<a href="https://github.com/Microsoft/MLOS/tree/main/source/Examples/SmartCache/SmartCache.SettingsRegistry/AssemblyInitializer.cs"><code>source/Examples/SmartCache/SmartCache.SettingsRegistry/AssemblyInitializer.cs</code></a> and the binary at
-<code>target/bin/Release/AnyCPU/SmartCache.SettingsRegistry.dll</code></p>
+<p>This is the C# code that declares the configuration options for the SmartCache component, and defines the communication between the the MLOS Agent and the SmartCache component. You can find the source in <a href="https://github.com/Microsoft/MLOS/tree/main/source/Examples/SmartCache/SmartCache.SettingsRegistry/AssemblyInitializer.cs"><code>source/Examples/SmartCache/SmartCache.SettingsRegistry/AssemblyInitializer.cs</code></a> and the binary at <code>target/bin/Release/AnyCPU/SmartCache.SettingsRegistry.dll</code></p>
+</li>
+<li>
+<p>SmartCache.ExperimentSession:</p>
+<p>This is the C# code that helps coordinate between the SmartCache component and the Mlos.Agent using the messages defined in the <code>SmartCache.SettingsRegistry</code>.  Its main purpose is to process telemetry messages (e.g. aggregate), relay requests to the optimizer over Grpc (setting up a search space for a new optimizer if necessary or referencing an existing one), and feed the suggestions back to the SmartCache component for reconfiguration.</p>
 </li>
 </ul>
 <h2 id="starting-the-mlos-agent-and-executing-the-workloads">Starting the MLOS Agent and executing the workloads:</h2>
-<p>Within the docker container, we can now tell the agent where the configuration options are stored, by setting the <code>MLOS_SETTINGS_REGISTRY_PATH</code>.
-Then, we can run the MLOS Agent, which will in turn run the SmartCache executable.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">tools/bin/dotnet target/bin/Release/AnyCPU/Mlos.Agent.Server/Mlos.Agent.Server.dll <span style="color:#ae81ff">\
+<p>Within the docker container, we can now tell the agent where the configuration options are stored, by setting the <code>--settings-registry-path</code> for the MLOS Agent which will also run the SmartCache executable.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dotnet target/bin/Release/AnyCPU/Mlos.Agent.Server/Mlos.Agent.Server.dll <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --settings-registry-path target/bin/Release/AnyCPU <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --executable target/bin/Release/x86_64/SmartCache
+</span><span style="color:#ae81ff"></span>    --executable target/bin/Release/x86_64/SmartCache <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --experiment ./target/bin/Release/AnyCPU/SmartCache.ExperimentSession/SmartCache.ExperimentSession.dll
 </code></pre></div><p>For a more detailed explanation of what&rsquo;s going on, please see the <a href="https://microsoft.github.io/MLOS/source/Examples/SmartCache#explanation">SmartCache README</a>.</p>
 <p>The main loop of <code>SmartCache</code> contains the following:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> observations <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; observations <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">100</span>; observations<span style="color:#f92672">++</span>)
@@ -267,8 +268,10 @@ As the optimizer is running in a separate process, we need to create a new shell
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">start_optimizer_microservice launch --port <span style="color:#ae81ff">50051</span>
 </code></pre></div><h2 id="connecting-the-agent-to-the-optimizer">Connecting the Agent to the Optimizer</h2>
 <p>Now we can start the agent again, this time also pointing it to the optimizer:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">tools/bin/dotnet target/bin/Release/AnyCPU/Mlos.Agent.Server/Mlos.Agent.Server.dll <span style="color:#ae81ff">\
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dotnet target/bin/Release/AnyCPU/Mlos.Agent.Server/Mlos.Agent.Server.dll <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --settings-registry-path ./target/bin/Release/AnyCPU/ <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --executable target/bin/Release/x86_64/SmartCache <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --experiment ./target/bin/Release/AnyCPU/SmartCache.ExperimentSession/SmartCache.ExperimentSession.dll <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --optimizer-uri http://localhost:50051
 </code></pre></div><p>This will run the workload again, this time using the optimizer to suggest better configurations. You should see output both in the terminal the agent is running in and in the terminal the OptimizerMicroservice is running in.</p>
 <h2 id="inspecting-results">Inspecting results</h2>

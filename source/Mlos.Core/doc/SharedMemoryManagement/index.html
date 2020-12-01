@@ -4,11 +4,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Shared Memory Management MemoryRegion TODO
-SharedMemoryView TODO">
+<meta name="description" content="Shared Memory Management Bootstrap sequence Overview Target process, process which hold tunable components.
+MLOS Agent - the agent process, responsible for collecting the telemetry and communicating with the optimizer.
+OS implementation differences. MLOS is handling shared memory differently on Windows and Linux.
+Linux is creating anonymous shared memory, and it is passing a file descriptor between the processes using Unix domain socket.
+The target process is responsible for creating shared memory regions and channel synchronization primitives.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Shared Memory Management MemoryRegion TODO
-SharedMemoryView TODO" />
+<meta property="og:description" content="Shared Memory Management Bootstrap sequence Overview Target process, process which hold tunable components.
+MLOS Agent - the agent process, responsible for collecting the telemetry and communicating with the optimizer.
+OS implementation differences. MLOS is handling shared memory differently on Windows and Linux.
+Linux is creating anonymous shared memory, and it is passing a file descriptor between the processes using Unix domain socket.
+The target process is responsible for creating shared memory regions and channel synchronization primitives." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://microsoft.github.io/MLOS/source/Mlos.Core/doc/SharedMemoryManagement/" />
 
@@ -16,7 +22,7 @@ SharedMemoryView TODO" />
 <link rel="manifest" href="/MLOS/manifest.json">
 <link rel="icon" href="/MLOS/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/MLOS/book.min.6cd8553a6854f4812343f0f0c8baca31271e686434f381fbe3c7226f66639176.css" integrity="sha256-bNhVOmhU9IEjQ/DwyLrKMSceaGQ084H748cib2ZjkXY=">
-<script defer src="/MLOS/en.search.min.71e0951f6a08298ced6525837d94ebc26e0fe5f80d39112fd6398a68068f6da9.js" integrity="sha256-ceCVH2oIKYztZSWDfZTrwm4P5fgNOREv1jmKaAaPbak="></script>
+<script defer src="/MLOS/en.search.min.c4e1f07a1b19b4f74612c3ab6b2d99830d56f0b4d2e7ebc5bf8f06afbacd2dd2.js" integrity="sha256-xOHwehsZtPdGEsOray2Zgw1W8LTS5&#43;vFv48Gr7rNLdI="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -149,8 +155,13 @@ https://github.com/alex-shpak/hugo-book
     
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#memoryregion">MemoryRegion</a></li>
-    <li><a href="#sharedmemoryview">SharedMemoryView</a></li>
+    <li><a href="#os-implementation-differences">OS implementation differences.</a></li>
+    <li><a href="#implementation-details">Implementation details</a>
+      <ul>
+        <li><a href="#sharedmemorymapview">SharedMemoryMapView</a></li>
+        <li><a href="#sharedmemoryregionview">SharedMemoryRegionView</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -163,11 +174,21 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="shared-memory-management">Shared Memory Management</h1>
-<h2 id="memoryregion">MemoryRegion</h2>
-<p>TODO</p>
-<h2 id="sharedmemoryview">SharedMemoryView</h2>
-<p>TODO</p>
-<p><img src="/MLOS/source/Mlos.Core/doc/images/SharedMemoryManagement.svg" alt="Shared memory regions" /></p>
+<h1 id="bootstrap-sequence">Bootstrap sequence</h1>
+<h1 id="overview">Overview</h1>
+<p>Target process, process which hold tunable components.</p>
+<p>MLOS Agent - the agent process, responsible for collecting the telemetry and communicating with the optimizer.</p>
+<h2 id="os-implementation-differences">OS implementation differences.</h2>
+<p>MLOS is handling shared memory differently on Windows and Linux.</p>
+<p>Linux is creating anonymous shared memory, and it is passing a file descriptor between the processes using <a href="https://man7.org/linux/man-pages/man7/unix.7.html">Unix domain socket</a>.</p>
+<p>The target process is responsible for creating shared memory regions and channel synchronization primitives.
+Once the shared memory is created, the target process will connect to the Unix socket and sends the shared memory file
+descriptors. Once the agent obtains all the required shared memory descriptors, the agent will start processing shared channel messages.</p>
+<p>On startup, the target process creates a thread which is responsible for handling agent request.
+If the agent restarts, it will notify the target process that it needs a list of file descriptors once the target process reconnects to the socket.</p>
+<h2 id="implementation-details">Implementation details</h2>
+<h3 id="sharedmemorymapview">SharedMemoryMapView</h3>
+<h3 id="sharedmemoryregionview">SharedMemoryRegionView</h3>
 </article>
  
       
@@ -202,8 +223,13 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#memoryregion">MemoryRegion</a></li>
-    <li><a href="#sharedmemoryview">SharedMemoryView</a></li>
+    <li><a href="#os-implementation-differences">OS implementation differences.</a></li>
+    <li><a href="#implementation-details">Implementation details</a>
+      <ul>
+        <li><a href="#sharedmemorymapview">SharedMemoryMapView</a></li>
+        <li><a href="#sharedmemoryregionview">SharedMemoryRegionView</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

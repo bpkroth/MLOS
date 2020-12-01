@@ -199,8 +199,11 @@ Contents  MLOS Shared Channel  Contents Shared Channel  Principles Circular buff
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://microsoft.github.io/MLOS/source/Mlos.Core/doc/SharedMemoryManagement/</guid>
-      <description>Shared Memory Management MemoryRegion TODO
-SharedMemoryView TODO</description>
+      <description>Shared Memory Management Bootstrap sequence Overview Target process, process which hold tunable components.
+MLOS Agent - the agent process, responsible for collecting the telemetry and communicating with the optimizer.
+OS implementation differences. MLOS is handling shared memory differently on Windows and Linux.
+Linux is creating anonymous shared memory, and it is passing a file descriptor between the processes using Unix domain socket.
+The target process is responsible for creating shared memory regions and channel synchronization primitives.</description>
     </item>
     
     <item>
