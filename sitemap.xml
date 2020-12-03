@@ -77,7 +77,28 @@
   </url>
   
   <url>
+    <loc>https://microsoft.github.io/MLOS/external/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://microsoft.github.io/MLOS/external/cmake/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://microsoft.github.io/MLOS/external/ExternalIntegrationExample/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://microsoft.github.io/MLOS/external/ExternalIntegrationExample/ExternalIntegrationExample.SettingsRegistry/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://microsoft.github.io/MLOS/external/leveldb/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -188,10 +209,6 @@
   
   <url>
     <loc>https://microsoft.github.io/MLOS/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://microsoft.github.io/MLOS/external/</loc>
   </url>
   
   <url>
