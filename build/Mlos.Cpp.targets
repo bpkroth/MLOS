@@ -12,4 +12,15 @@
   </PropertyGroup>
   <Import Project="Uncrustify.targets" Condition="'$(UncrustifyEnabled)' != 'false' And '$(QBUILD)' != '1'" />
   <Import Project="$(BaseDir)\build\Mlos.Common.targets" />
+  <!--
+  <Import Project="$(MSBuildThisFileDirectory)\GenerateCompilationDatabase.targets" />
+  -->
+
+  <PropertyGroup>
+    <ClangMode>true</ClangMode>
+  </PropertyGroup>
+  <Import Project="$(ExtendedTargetsPath)\Microsoft.Cpp.Clang.targets" />
+  <Target Name="PrintClCommandLines" DependsOnTargets="GetClCommandLines">
+    <Message Text="@(ClCommandLines)" Importance="high" />
+  </Target>
 </Project>
