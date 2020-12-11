@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  A very simple C++ project that doesn't rely on anything but MSBuild.
+  Used to create an executable that simply prints out the arguments it received.
+  This is used as a replacement for clang.exe in the Microsoft.Cpp.Clang.targets
+  so that we can capture what commands *would* have been used if we compiled
+  with clang.
+-->
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1F366495-F879-4E2D-A2C3-19C8CB76DABB}</ProjectGuid>
+    <ConfigurationType>Application</ConfigurationType>
+    <Keyword>Win32Proj</Keyword>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Platform Condition="'$(Platform)' == ''">x64</Platform>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Retail|x64">
+      <Configuration>Retail</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>    
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>
+        _WIN32;
+        _WINDOWS;
+        _AMD64_;
+        %(PreprocessorDefinitions);
+      </PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ClCompile Include="ClCmdArgsEcho.cpp" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+
+  <Target Name="Binplace" DependsOnTargets="Build" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)\$(TargetFileName)" DestinationFolder="$(MSBuildThisFileDirectory)" />
+  </Target>
+</Project>
