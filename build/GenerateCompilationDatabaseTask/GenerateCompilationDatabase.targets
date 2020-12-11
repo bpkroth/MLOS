@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <GenerateClangCompilationCommands Condition="'$(GenerateClangCompilationCommands)' == ''">false</GenerateClangCompliationCommands>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GenerateClangCompilationCommands)' == 'true'">
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.props" />
+    <!-- Override -->
+    <ClangToolExe>ClCmdEcho.ps1</ClangToolExe>
+    <ClangToolPath>$(MSBuildThisFileDirectory)</ClangToolPath>
+    <TrackFileAccess>false</TrackFileAccess>
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.targets" />
+  </PropertyGroup>
+</Project>
