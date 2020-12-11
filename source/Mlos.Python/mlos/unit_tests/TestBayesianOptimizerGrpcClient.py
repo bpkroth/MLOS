@@ -60,7 +60,11 @@ class TestBayesianOptimizerGrpcClient:
         """
         self.server.stop(grace=None).wait(timeout=1)
         self.server.wait_for_termination(timeout=1)
-        self.optimizer_service_channel.close()
+
+        # When this is commented out, and the next test runs, the previous client connection will not have been properly cleaned up
+        # yet, so the attempt to connect will fail due to the resource still being in-use.
+        #
+        #self.optimizer_service_channel.close()
 
 
     def test_echo(self):
@@ -68,6 +72,12 @@ class TestBayesianOptimizerGrpcClient:
         response = optimizer_service_stub.Echo(Empty())
         assert isinstance(response, Empty)
 
+    # To speed things up, we can demonstrate by simply adding another copy of the test_echo test.
+    #
+    def test_echo2(self):
+        optimizer_service_stub = OptimizerServiceStub(channel=self.optimizer_service_channel)
+        response = optimizer_service_stub.Echo(Empty())
+        assert isinstance(response, Empty)
 
     def test_optimizer_with_default_config(self):
         pre_existing_optimizers = {optimizer.id: optimizer for optimizer in self.optimizer_monitor.get_existing_optimizers()}
