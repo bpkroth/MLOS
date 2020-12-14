@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>ClCmdArgsCapture.Tool</id>
+    <version>0.1.0-alpha</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <description>Compile command arguments capture tool</description>
+    <summary>Compile command arguments capture tool</summary>
+    <license type="expression">MIT</license>
+    <!-- TODO: Replace with actual repo URL. -->
+    <projectUrl>https://github.com/Microsoft/MLOS</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <repository type="git" url="https://github.com/Microsoft/MLOS.git"/>
+    <copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</copyright>
+    <tags>CodeBook;native</tags>
+  </metadata>
+  <files>
+    <file src="x64\Release\ClCmdArgsCapture.Tool.exe" target="tools\" />
+    <file src="build\ClCmdArgsCapture.Tool.props" target="build\" />
+    <file src="build\ClCmdArgsCapture.Tool.targets" target="build\" />
+  </files>
+</package>

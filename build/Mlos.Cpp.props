@@ -120,47 +120,11 @@
      </CL>
    </Target>
 
-  <!--
-    Here's some test changes to an existing C++ build to provide a way to have
-    msbuild output the clang commands that it would use to build the projects.
-
-    The intended purpose is to generate a clang compilation database
-    (compile_commands.json) that CodeBook can use them to actually execute a
-    parse on the files.
-
-    Rather than maintain the msbuild ClCompile property -> cl.exe arguments ->
-    clang.exe argument mappings, we let the msbuild maintainers do that for us
-    in their ClangCompile task.
-
-    Then we optionally hook into that process when the
-    GenerateClangCompliationCommands property is set to true (e.g. on the
-    msbuild cli) and replace the actual clang.exe command with a simple
-    executable that outputs the arguments it was passed.
-
-    See Also: Mlos.Cpp.targets
-  -->
-
-  <!-- Include the MSBuild provided Clang properties file. -->
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.props" Condition="'$(GenerateClangCompilationCommands)' == 'true'" />
-  <!-- Here's some settings to allow us to output clang compile commands for use with CodeBook. -->
-  <PropertyGroup Condition="'$(GenerateClangCompilationCommands)' == 'true'">
-    <!-- Override the clang.exe command to simply output the results. -->
-    <ClangToolExe>$(MSBuildThisFileDirectory)ClCmdArgsEcho\ClCmdArgsEcho.exe</ClangToolExe>
-    <ClangToolPath>$(MSBuildThisFileDirectory)\ClCmdArgsEcho</ClangToolPath>
-    <!-- Force a rerun each time -->
-    <TrackFileAccess>false</TrackFileAccess>
-    <!-- Change a few options to what the ClangCompile task understands. -->
-    <!--
-    <ExceptionHandling>Enabled</ExceptionHandling>
-    <WarningLevel>EnableAllWarnings</WarningLevel>
-    -->
+  <PropertyGroup Condition="'$(GenerateClangCompilationCommandsDb)' == 'true'">
+    <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory)/ClCmdArgsCapture.Tool/</RestoreAdditionalProjectSources>
   </PropertyGroup>
-  <!-- Make sure to build our helper tool first. -->
-  <!--
-    TODO: Better approach would be to package this as a nuget and allow fetching it.
-    That would probably provide more native build props/targets integration for the overrides above as well.
-  -->
-  <ItemGroup Condition="'$(GenerateClangCompilationCommands)' == 'true'">
-    <ProjectReference Include="$(MSBuildThisFileDirectory)\ClCmdArgsEcho\ClCmdArgsEcho.vcxproj" ReferenceOutputAssembly="false" Targets="Binplace" />
+  <ItemGroup Condition="'$(GenerateClangCompilationCommandsDb)' == 'true'">
+    <!-- TODO: Don't reference output exe/dll. -->
+    <PackageReference Include="ClCmdArgsCapture.Tool" Version="0.1.0-alpha" />
   </ItemGroup>
 </Project>

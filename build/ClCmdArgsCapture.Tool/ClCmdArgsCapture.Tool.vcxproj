@@ -23,8 +23,8 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Retail|x64">
-      <Configuration>Retail</Configuration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>    
   </ItemGroup>
@@ -46,7 +46,7 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
-    <ClCompile Include="ClCmdArgsEcho.cpp" />
+    <ClCompile Include="$(TargetName).cpp" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -54,7 +54,9 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 
-  <Target Name="Binplace" DependsOnTargets="Build" AfterTargets="Build">
-    <Copy SourceFiles="$(OutputPath)\$(TargetFileName)" DestinationFolder="$(MSBuildThisFileDirectory)" />
+  <Target Name="Pack" DependsOnTargets="Build" AfterTargets="Build">
+    <Warning Text="Refusing to package nuget for non-Release build." Condition="'$(Configuration)' != 'Release'" />
+    <Delete Files="./$(TargetName).*.nupkg" Condition="'$(Configuration)' == 'Release'" />
+    <Exec Command="nuget.exe pack &quot;$(TargetName).nuspec&quot;" Condition="'$(Configuration)' == 'Release'" />
   </Target>
 </Project>

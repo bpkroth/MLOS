@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- A set of properties that the PackageReference-ing project should set. -->
+  <PropertyGroup Label="ClCmdArgsCaptureProjectProps">
+    <!-- 3 possible options: 'clang', 'cl', '' (no-op) -->
+    <ClCmdArgsCaptureToolMode Condition="'$(ClCmdArgsCaptureToolMode)' == ''"></ClCmdArgsCaptureToolMode>
+    <!-- Allow overriding the default Import clang props/targets behavior in case the target build already does that. -->
+    <ClCmdArgsCaptureToolSkipImport Condition="'$(ClCmdArgsCaptureToolSkipImport)' == ''">false</ClCmdArgsCaptureToolSkipImport>
+  </PropertyGroup>
+
+  <!--
+    Here's some changes to an existing C++ build to provide a way to have
+    msbuild output the clang commands that it would use to build the projects.
+
+    The intended purpose is to generate a clang compilation database
+    (compile_commands.json) that CodeBook can use them to actually execute a
+    parse on the files.
+
+    Rather than maintain the msbuild ClCompile property -> cl.exe arguments ->
+    clang.exe argument mappings, we let the msbuild maintainers do that for us
+    in their ClangCompile task.
+
+    Then we optionally hook into that process when the
+    GenerateClangCompliationCommands property is set to true (e.g. on the
+    msbuild cli) and replace the actual clang.exe command with a simple
+    executable that outputs the arguments it was passed.
+
+    See Also: ClCmdArgsCapture.Tool.targets
+  -->
+  <PropertyGroup>
+    <ClCmdArgsCaptureToolPath>$(MSBuildThisFileDirectory)..\tools</ClCmdArgsCaptureToolPath>
+    <ClCmdArgsCaptureToolExe>$(ClCmdArgsCaptureToolPath)\ClCmdArgsCapture.Tool.exe</ClCmdArgsCaptureToolExe>
+  </PropertyGroup>
+
+  <!-- Include the MSBuild provided Clang properties file. -->
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.props"
+    Condition="'$(ClCmdArgsCaptureToolMode)' == 'clang' And '$(ClCmdArgsCaptureToolSkipImport)' != 'true'" />
+  <!-- Here's some settings to allow us to output clang compile commands for use with CodeBook. -->
+  <PropertyGroup Condition="'$(ClCmdArgsCaptureToolMode)' == 'clang'">
+    <!-- Override the clang.exe command to simply capture/output the commands. -->
+    <ClangToolExe>$(ClCmdArgsCaptureToolExe)</ClangToolExe>
+    <ClangToolPath>$(ClCmdArgsCaptureToolPath)</ClangToolPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ClCmdArgsCaptureMode)' == 'cl'">
+    <!-- Override the cl.exe command to simply capture/output the commands. -->
+    <ClToolExe>$(ClCmdArgsCaptureToolExe)</ClToolExe>
+    <ClToolPath>$(ClCmdArgsCaptureToolPath)</ClToolPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Force a rerun each time -->
+    <TrackFileAccess>false</TrackFileAccess>
+  </PropertyGroup>
+</Project>

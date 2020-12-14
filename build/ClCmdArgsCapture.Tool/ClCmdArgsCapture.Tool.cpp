@@ -3,19 +3,16 @@
 // Licensed under the MIT License. See License.txt in the project root
 // for license information.
 //
-// @File: ClCmdArgsEcho.cpp
-//
-// Purpose:
-//      <description>
+// @File: ClCmdArgsCapture.Tool.cpp
 //
 // Notes:
-//      <special-instructions>
+//   See below for more details about this program.
 //
 //********************************************************************
 
 #include <iostream>
 
-// ClCmdArgsEcho is a simple program to aid hooking into the ClangCompile task
+// ClCmdArgsCapture.Tool is a simple program to aid hooking into the ClangCompile task
 // and targets that currently ship with MSBuild so that we can capture the
 // commands that *would* be used to build the targets with clang.exe without
 // actually needing to build them (in case that isn't actually supported by the

@@ -12,13 +12,4 @@
   </PropertyGroup>
   <Import Project="Uncrustify.targets" Condition="'$(UncrustifyEnabled)' != 'false' And '$(QBUILD)' != '1'" />
   <Import Project="$(BaseDir)\build\Mlos.Common.targets" />
-
-  <!--
-    This change combines with the changes in Mlos.Cpp.props to make it possible
-    to capture the commands that *would* be used *if* we were to use clang.exe
-    instead of cl.exe to build these projects with msbuild.
-
-    See Also: Mlos.Cpp.props
-  -->
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.targets" Condition="'$(GenerateClangCompilationCommands)' == 'true'" />
 </Project>

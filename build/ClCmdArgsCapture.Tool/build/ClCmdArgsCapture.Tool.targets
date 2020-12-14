@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="CheckClCmdArgsCaptureToolMode" AfterTargets="ResolveReferences" BeforeTargets="Build">
+    <Error Message="Invalid ClCmdArgsCaptureToolMode: '$(ClCmdArgsCaptureToolMode)'"
+      Condition="'$(ClCmdArgsCaptureToolMode)' != 'clang' And '$(ClCmdArgsCaptureToolMode)' != 'cl' And '$(ClCmdArgsCaptureToolMode)' != ''" />
+    <Warning Message="ClCmdArgsCaptureToolMode is empty." Condition="'$(ClCmdArgsCaptureToolMode)' == ''" />
+    <!--
+    <Warning Message="Missing ClCmdArgsCaptureOutputFile environment variable." Condition="'$(ClCmdArgsCaptureOutputFile)'" />
+    -->
+  </Target>
+
+  <!--
+    This change combines with the changes in Mlos.Cpp.props to make it possible
+    to capture the commands that *would* be used *if* we were to use clang.exe
+    instead of cl.exe to build these projects with msbuild.
+
+    See Also: ClCmdArgsCapture.Tool.props
+  -->
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.targets"
+    Condition="'$(ClCmdArgsCaptureToolMode)' == 'clang' And '$(ClCmdArgsCaptureToolSkipImport)' != 'true'" />
+
+  <!-- Assuming that for cl mode, the appropriate targets are already included. -->
+</Project>
