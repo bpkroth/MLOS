@@ -25,11 +25,11 @@
     msbuild cli) and replace the actual clang.exe command with a simple
     executable that outputs the arguments it was passed.
 
-    See Also: ClCmdArgsCapture.Tool.targets
+    See Also: ClCmdArgsCaptureTool.targets
   -->
   <PropertyGroup>
-    <ClCmdArgsCaptureToolPath>$(MSBuildThisFileDirectory)\..\..\tools\native\x64</ClCmdArgsCaptureToolPath>
-    <ClCmdArgsCaptureToolExe>$(ClCmdArgsCaptureToolPath)\ClCmdArgsCapture.Tool.exe</ClCmdArgsCaptureToolExe>
+    <ClCmdArgsCaptureToolPath>$(MSBuildThisFileDirectory)\..\..\tools</ClCmdArgsCaptureToolPath>
+    <ClCmdArgsCaptureToolExe>$(ClCmdArgsCaptureToolPath)\ClCmdArgsCaptureTool.exe</ClCmdArgsCaptureToolExe>
   </PropertyGroup>
 
   <!-- Here's some settings to allow us to output clang compile commands for use with CodeBook. -->

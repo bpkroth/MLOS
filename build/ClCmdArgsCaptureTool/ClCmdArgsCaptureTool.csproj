@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{93112024-F822-4624-8A55-B22F2121A0FE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CodeBook</RootNamespace>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+  </PropertyGroup>
+
+  <!-- Set some other standard .NET.Sdk properties for all projects. -->
+  <PropertyGroup Label="CommonComponentProjectNetCoreSettings">
+    <!-- Declare the target framework for all SettingsRegistry projects. -->
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <!-- Disable .NET.Sdk behavior of including all *.cs files within the project's directory by default. -->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <!-- Configure warning levels and errors. -->
+  <PropertyGroup>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors>true</WarningsAsErrors>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)/$(MSBuildProjectName).StyleCop.ruleset</CodeAnalysisRuleSet>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Configure stylecop analyzers. -->
+  <ItemGroup Label="EnableStyleCopForExample">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <!-- Provide your own stylecop.json config (for this example we reuse the core MLOS one) -->
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)/stylecop.json" Visible="false">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(MSBuildProjectName).cs" />
+  </ItemGroup>
+</Project>

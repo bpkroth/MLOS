@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="ClCmdArgsCaptureTool.Stylecop.ruleset" Description="Default rules and overrides for C# in ClCmdArgsCaptureTool" ToolsVersion="Current">
+  <!-- Import some defaults -->
+  <Include Path="$(PkgFxCopAnalyzers)\rulesets\AllRulesDefault.ruleset" Action="Default" />
+  <!--
+    Apply some local overrides
+    See Also: stylecop.json for other control options.
+  -->
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <!-- Missing XML comment for publicly visible type or member. -->
+    <!--Rule Id="CS1591" Action="Hidden" /-->
+  </Rules>
+</RuleSet>
