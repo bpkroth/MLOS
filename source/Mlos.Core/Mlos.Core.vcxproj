@@ -10,7 +10,8 @@
   </PropertyGroup>
   <Import Project="$(BaseDir)\build\Mlos.Cpp.props" />
   <ItemGroup>
-    <ProjectReference Include="$(SourceDir)\Mlos.NetCore\Mlos.NetCore.csproj" SkipGetTargetFrameworkProperties="true" />
+    <ProjectReference Include="$(SourceDir)\Mlos.NetCore\Mlos.NetCore.csproj"
+      SkipGetTargetFrameworkProperties="true" ReferenceOutputAssembly="false" />
   </ItemGroup>
   <ItemDefinitionGroup Label="Compilation Settings">
     <ClCompile>
