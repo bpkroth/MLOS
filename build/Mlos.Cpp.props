@@ -119,14 +119,4 @@
          PreprocessToFile="true">
      </CL>
    </Target>
-
-  <PropertyGroup Condition="'$(GenerateClangCompilationCommandsDb)' == 'true'">
-    <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory)/ClCmdArgsCapture.Tool/</RestoreAdditionalProjectSources>
-    <ResolveNugetPackages>false</ResolveNugetPackages>
-  </PropertyGroup>
-  <ItemGroup Condition="'$(GenerateClangCompilationCommandsDb)' == 'true'">
-    <!-- Don't reference output exe/dll. -->
-    <PackageReference Include="ClCmdArgsCapture.Tool" Version="0.1.0-alpha"
-      Private="true" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" />
-  </ItemGroup>
 </Project>

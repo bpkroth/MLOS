@@ -32,24 +32,32 @@
     <ClCmdArgsCaptureToolExe>$(ClCmdArgsCaptureToolPath)\ClCmdArgsCapture.Tool.exe</ClCmdArgsCaptureToolExe>
   </PropertyGroup>
 
-  <!-- Include the MSBuild provided Clang properties file. -->
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.props"
-    Condition="'$(ClCmdArgsCaptureToolMode)' == 'clang' And '$(ClCmdArgsCaptureToolSkipImport)' != 'true'" />
   <!-- Here's some settings to allow us to output clang compile commands for use with CodeBook. -->
   <PropertyGroup Condition="'$(ClCmdArgsCaptureToolMode)' == 'clang'">
     <!-- Override the clang.exe command to simply capture/output the commands. -->
     <ClangToolExe>$(ClCmdArgsCaptureToolExe)</ClangToolExe>
     <ClangToolPath>$(ClCmdArgsCaptureToolPath)</ClangToolPath>
+
+    <!-- Include the MSBuild provided Clang properties/targets files late in the build process. -->
+    <!-- Note: This can also be handled manually in Directory.Build.{props,targets} files -->
+    <ForceImportBeforeCppTargets Condition="'$(ClCmdArgsCaptureToolSkipImport)' != 'true'">$(VCTargetsPath)\Microsoft.Cpp.Clang.props</ForceImportBeforeCppTargets>
+    <ForceImportAfterCppTargets Condition="'$(ClCmdArgsCaptureToolSkipImport)' != 'true'">$(VCTargetsPath)\Microsoft.Cpp.Clang.targets</ForceImportAfterCppTargets>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(ClCmdArgsCaptureMode)' == 'cl'">
+  <PropertyGroup Condition="'$(ClCmdArgsCaptureToolMode)' == 'cl'">
     <!-- Override the cl.exe command to simply capture/output the commands. -->
     <ClToolExe>$(ClCmdArgsCaptureToolExe)</ClToolExe>
     <ClToolPath>$(ClCmdArgsCaptureToolPath)</ClToolPath>
+
+    <!-- Assuming that for cl mode, the appropriate targets are already included. -->
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(ClCmdArgsCaptureToolMode)' != ''">
     <!-- Force a rerun each time -->
     <TrackFileAccess>false</TrackFileAccess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
+    <!-- Prevent C++ projects from trying to bind to the assemblies in this package or resolve its TargetFrameworks -->
+    <ResolveNugetPackages>false</ResolveNugetPackages>
   </PropertyGroup>
 </Project>

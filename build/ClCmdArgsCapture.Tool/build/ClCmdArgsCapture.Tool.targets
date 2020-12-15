@@ -8,16 +8,4 @@
     <Warning Text="Missing ClCmdArgsCaptureOutputFile environment variable." Condition="'$(ClCmdArgsCaptureOutputFile)'" />
     -->
   </Target>
-
-  <!--
-    This change combines with the changes in Mlos.Cpp.props to make it possible
-    to capture the commands that *would* be used *if* we were to use clang.exe
-    instead of cl.exe to build these projects with msbuild.
-
-    See Also: ClCmdArgsCapture.Tool.props
-  -->
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Clang.targets"
-    Condition="'$(ClCmdArgsCaptureToolMode)' == 'clang' And '$(ClCmdArgsCaptureToolSkipImport)' != 'true'" />
-
-  <!-- Assuming that for cl mode, the appropriate targets are already included. -->
 </Project>
