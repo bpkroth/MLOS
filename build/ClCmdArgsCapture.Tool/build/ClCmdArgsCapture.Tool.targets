@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Target Name="CheckClCmdArgsCaptureToolMode" AfterTargets="ResolveReferences" BeforeTargets="Build">
-    <Error Message="Invalid ClCmdArgsCaptureToolMode: '$(ClCmdArgsCaptureToolMode)'"
+    <Error Text="Invalid ClCmdArgsCaptureToolMode: '$(ClCmdArgsCaptureToolMode)'"
       Condition="'$(ClCmdArgsCaptureToolMode)' != 'clang' And '$(ClCmdArgsCaptureToolMode)' != 'cl' And '$(ClCmdArgsCaptureToolMode)' != ''" />
-    <Warning Message="ClCmdArgsCaptureToolMode is empty." Condition="'$(ClCmdArgsCaptureToolMode)' == ''" />
+    <Warning Text="ClCmdArgsCaptureToolMode is empty." Condition="'$(ClCmdArgsCaptureToolMode)' == ''" />
     <!--
-    <Warning Message="Missing ClCmdArgsCaptureOutputFile environment variable." Condition="'$(ClCmdArgsCaptureOutputFile)'" />
+    <Warning Text="Missing ClCmdArgsCaptureOutputFile environment variable." Condition="'$(ClCmdArgsCaptureOutputFile)'" />
     -->
   </Target>
 

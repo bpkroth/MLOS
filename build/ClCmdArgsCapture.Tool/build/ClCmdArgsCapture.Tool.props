@@ -28,7 +28,7 @@
     See Also: ClCmdArgsCapture.Tool.targets
   -->
   <PropertyGroup>
-    <ClCmdArgsCaptureToolPath>$(MSBuildThisFileDirectory)..\tools</ClCmdArgsCaptureToolPath>
+    <ClCmdArgsCaptureToolPath>$(MSBuildThisFileDirectory)\..\..\tools\native\x64</ClCmdArgsCaptureToolPath>
     <ClCmdArgsCaptureToolExe>$(ClCmdArgsCaptureToolPath)\ClCmdArgsCapture.Tool.exe</ClCmdArgsCaptureToolExe>
   </PropertyGroup>
 
