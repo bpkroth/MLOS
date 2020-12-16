@@ -5,7 +5,7 @@
       Condition="'$(ClCmdArgsCaptureToolMode)' != 'clang' And '$(ClCmdArgsCaptureToolMode)' != 'cl' And '$(ClCmdArgsCaptureToolMode)' != ''" />
     <Warning Text="ClCmdArgsCaptureToolMode is empty." Condition="'$(ClCmdArgsCaptureToolMode)' == ''" />
     <!--
-    <Warning Text="Missing ClCmdArgsCaptureOutputFile environment variable." Condition="'$(ClCmdArgsCaptureOutputFile)'" />
+    <Warning Text="Missing ClCmdArgsCaptureOutputDbFile environment variable." Condition="'$(ClCmdArgsCaptureOutputDbFile)'" />
     -->
   </Target>
 </Project>

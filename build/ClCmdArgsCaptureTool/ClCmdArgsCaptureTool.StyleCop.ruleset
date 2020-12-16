@@ -9,5 +9,11 @@
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <!-- Missing XML comment for publicly visible type or member. -->
     <!--Rule Id="CS1591" Action="Hidden" /-->
+    <!-- Comments should not be followed by a blank line. -->
+    <Rule Id="SA1512" Action="Hidden" />
+    <!-- Comments should contain text. -->
+    <Rule Id="SA1120" Action="Hidden" />
+    <!-- Retrieve exception message strings from a resource table instead of string literal. -->
+    <Rule Id="CA1303" Action="Hidden" />
   </Rules>
 </RuleSet>
