@@ -66,8 +66,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright (c) Microsoft Corporation.  All rights reserved.</Copyright>
     <PackageId>$(MSBuildProjectName)</PackageId>
-    <PackageDescription>Compile command arguments capture tool</PackageDescription>
-    <PackageTags>CodeBook;native;nativepackage</PackageTags>
+    <PackageDescription>Compile command arguments capture tool for use with CodeBook</PackageDescription>
+    <PackageTags>native;nativepackage</PackageTags>
 
     <!-- By default, also create the nuget package whenever we build. -->
     <GeneratePackageOnBuild Condition="'$(GeneratePackageOnBuild)' == ''">true</GeneratePackageOnBuild>
@@ -110,6 +110,14 @@
     <None Include="$(OutDir)\**\*.json" Exclude="$(OutDir)\$(TargetName).runtimeconfig.json">
       <Pack>true</Pack>
       <PackagePath>tools/</PackagePath>
+    </None>
+    <None Include="build/$(MSBuildProjectName).props">
+      <Pack>true</Pack>
+      <PackagePath>build/</PackagePath>
+    </None>
+    <None Include="build/$(MSBuildProjectName).targets">
+      <Pack>true</Pack>
+      <PackagePath>build/</PackagePath>
     </None>
   </ItemGroup>
 </Project>

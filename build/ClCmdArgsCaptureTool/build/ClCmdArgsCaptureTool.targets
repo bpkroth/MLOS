@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="CheckClCmdArgsCaptureToolMode" AfterTargets="ResolveReferences" BeforeTargets="Build">
+  <Target Name="CheckClCmdArgsCaptureToolMode" AfterTargets="ResolveReferences" BeforeTargets="Compile">
     <Error Text="Invalid ClCmdArgsCaptureToolMode: '$(ClCmdArgsCaptureToolMode)'"
       Condition="'$(ClCmdArgsCaptureToolMode)' != 'clang' And '$(ClCmdArgsCaptureToolMode)' != 'cl' And '$(ClCmdArgsCaptureToolMode)' != ''" />
     <Warning Text="ClCmdArgsCaptureToolMode is empty." Condition="'$(ClCmdArgsCaptureToolMode)' == ''" />
-    <!--
-    <Warning Text="Missing ClCmdArgsCaptureOutputDbFile environment variable." Condition="'$(ClCmdArgsCaptureOutputDbFile)'" />
-    -->
+    <Error Text="Missing ClCmdArgsCaptureToolOutputDbFile environment variable." Condition="'$(ClCmdArgsCaptureToolMode)' != '' And '$(ClCmdArgsCaptureToolOutputDbFile)' == ''" />
   </Target>
+  <!-- TODO? Disable the Link target when in ClCmdArgsCaptureToolMode=clang ? -->
 </Project>

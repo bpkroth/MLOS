@@ -5,19 +5,19 @@
     1. Create this Directory.Build.props file at the root of the projects tree.
     2. Build the full set of projects once as usualy.
        (we do this to make sure the object files already exist for consuming projects)
-    3. Perform a fake build using the ClCmdArgsCapture.Tool as follows:
+    3. Perform a fake build using the ClCmdArgsCaptureTool as follows:
          msbuild /p:GenerateClangCompilationCommandsDb=true /p:ClCmdArgsCaptureToolMode=clang
        This (a) enables the rules in this file, and (b) tells the tool which mode to use.
        TODO: We also need to inform the tool where to write its output using an environment variable.
   -->
   <PropertyGroup Condition="'$(GenerateClangCompilationCommandsDb)' == 'true' And '$(MSBuildProjectExtension)' == '.vcxproj'">
     <!-- Until we publish the nuget, this property should refer to the location of the locally built/packaged tool nuget. -->
-    <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory)/build/ClCmdArgsCapture.Tool/</RestoreAdditionalProjectSources>
+    <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory)/build/ClCmdArgsCaptureTool/pkg/</RestoreAdditionalProjectSources>
   </PropertyGroup>
   <!-- Include our tool's nuget (and thereby its build rules. -->
   <ItemGroup Condition="'$(GenerateClangCompilationCommandsDb)' == 'true' And '$(MSBuildProjectExtension)' == '.vcxproj'">
     <!-- Don't reference output exe/dll. -->
-    <PackageReference Include="ClCmdArgsCapture.Tool" Version="0.1.0-alpha"
+    <PackageReference Include="ClCmdArgsCaptureTool" Version="0.1.0-alpha"
       Private="true" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" />
   </ItemGroup>
   <!--
