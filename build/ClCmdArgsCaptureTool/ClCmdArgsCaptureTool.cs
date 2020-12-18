@@ -9,8 +9,13 @@
 namespace CodeBook
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Data;
+    using System.Diagnostics;
     using System.IO;
+    using System.Linq;
+    using System.Reflection;
     using Microsoft.Data.Sqlite;
 
     /// <summary>
@@ -65,10 +70,9 @@ namespace CodeBook
             //
             if (dbMode == SqliteOpenMode.ReadWriteCreate)
             {
-                using (var transaction = dbConnection.BeginTransaction(IsolationLevel.Serializable))
-                {
-                    SqliteCommand sqlCmd = dbConnection.CreateCommand();
-                    sqlCmd.CommandText = @"
+                using var transaction = dbConnection.BeginTransaction(IsolationLevel.Serializable);
+                SqliteCommand sqlCmd = dbConnection.CreateCommand();
+                sqlCmd.CommandText = @"
                         CREATE TABLE IF NOT EXISTS CompileCommands
                         (
                             working_dir VARCHAR(255) NOT NULL,
@@ -78,22 +82,61 @@ namespace CodeBook
                             PRIMARY KEY (working_dir, file)
                         )
                     ";
-                    sqlCmd.ExecuteNonQuery();
+                sqlCmd.ExecuteNonQuery();
+                transaction.Commit();
+            }
 
-                    transaction.Commit();
+            //
+            // Process the arguments.
+            //
+
+            List<string> cmdArgs = new List<string>();
+            foreach (string arg in args)
+            {
+                if (arg.StartsWith('@'))
+                {
+                    // Handle the rsp file args.
+                    //
+                    using StreamReader responseFile = File.OpenText(arg.TrimStart('@'));
+                    string responseText = responseFile.ReadToEnd();
+                    char[] whitespace = { ' ', '\t', '\n', '\r', '\v' };
+                    cmdArgs.AddRange(responseText.Split(whitespace, StringSplitOptions.RemoveEmptyEntries));
+                }
+                else
+                {
+                    cmdArgs.Add(arg);
                 }
             }
 
-            // Parse the arguments.
-
-            // TODO: Handle the rsp file args.
-            string cmdArgs = string.Join(" ", args);
-
-            // TODO: Parse the target file from the args.
-            string cppFile = "TODO: Parse the target source file from the args (and convert it into an absolute path use cwd).";
-
-            // TODO: Parse the output file from the args.
+            // Parsed output file from the args.
+            //
             string outputFile = null;
+            string[] outputFileTypes = new[] { ".obj" };
+            for (int i = 0; i < cmdArgs.Count; i++)
+            {
+                if (cmdArgs[i] == "-o" && (i + 1) < cmdArgs.Count)
+                {
+                    outputFile = cmdArgs[i + 1];
+                    if (outputFileTypes.Contains(Path.GetExtension(outputFile)))
+                    {
+                        throw new ArgumentException($"Unexpected output file type: '{outputFile}'");
+                    }
+                }
+            }
+
+            // Parsed target file from the args.
+            // (assume it's the last one for now)
+            //
+            string sourceFile = cmdArgs.Last();
+            string[] sourceFileExtensions = new[] { ".cpp", ".cxx", ".c" };
+            if (!File.Exists(sourceFile))
+            {
+                throw new FileNotFoundException($"Source file '{sourceFile}' doesn't exist.");
+            }
+            else if (!sourceFileExtensions.Contains(Path.GetExtension(sourceFile)))
+            {
+                throw new ArgumentException($"Unexpected input file type: '{outputFile}'");
+            }
 
             // Insert the command details to the database.
             //
@@ -101,26 +144,26 @@ namespace CodeBook
             {
                 SqliteCommand sqlCmd = dbConnection.CreateCommand();
 
-                if (outputFile == null)
-                {
-                    sqlCmd.CommandText = @"
-                        REPLACE INTO CompileCommands (working_dir, file, command)
-                        VALUES($working_dir, $file, $command)
-                    ";
-                }
-                else
+                if (outputFile != null)
                 {
                     sqlCmd.CommandText = @"
                         REPLACE INTO CompileCommands (working_dir, file, command, output)
                         VALUES($working_dir, $file, $command, $output)
                     ";
                 }
+                else
+                {
+                    sqlCmd.CommandText = @"
+                        REPLACE INTO CompileCommands (working_dir, file, command)
+                        VALUES($working_dir, $file, $command)
+                    ";
+                }
 
                 sqlCmd.Parameters.AddWithValue("$working_dir", System.Environment.CurrentDirectory);
-                sqlCmd.Parameters.AddWithValue("$file", cppFile);
-                sqlCmd.Parameters.AddWithValue("$command", cmdArgs);
+                sqlCmd.Parameters.AddWithValue("$file", sourceFile);
+                sqlCmd.Parameters.AddWithValue("$command", string.Join(' ', cmdArgs));
 
-                if (outputFile == null)
+                if (outputFile != null)
                 {
                     sqlCmd.Parameters.AddWithValue("$output", outputFile);
                 }
@@ -128,12 +171,12 @@ namespace CodeBook
                 sqlCmd.ExecuteNonQuery();
                 transaction.Commit();
             }
+
             dbConnection.Close();
-            dbConnection.Dispose();
 
             // Also output the command line used to invoke this process.
             //
-            System.Console.WriteLine(System.Environment.CommandLine);
+            System.Console.Error.WriteLine(System.Environment.CommandLine);
 
             // Always report success.
             //
