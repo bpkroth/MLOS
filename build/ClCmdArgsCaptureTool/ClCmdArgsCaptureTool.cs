@@ -41,6 +41,8 @@ namespace CodeBook
                 args = Array.Empty<string>();
             }
 
+            // Determine the output database file from an environment variable.
+            //
             string sqliteDbFilePath = System.Environment.GetEnvironmentVariable(SqliteDbFileEnvVarName);
             if (string.IsNullOrEmpty(sqliteDbFilePath))
             {
@@ -84,16 +86,17 @@ namespace CodeBook
 
             // Parse the arguments.
 
-            string cppFile = "TODO: Parse the target source file from the args (and convert it into an absolute path use cwd).";
-
             // TODO: Handle the rsp file args.
             string cmdArgs = string.Join(" ", args);
+
+            // TODO: Parse the target file from the args.
+            string cppFile = "TODO: Parse the target source file from the args (and convert it into an absolute path use cwd).";
 
             // TODO: Parse the output file from the args.
             string outputFile = null;
 
             // Insert the command details to the database.
-
+            //
             using (var transaction = dbConnection.BeginTransaction())
             {
                 SqliteCommand sqlCmd = dbConnection.CreateCommand();
@@ -101,13 +104,15 @@ namespace CodeBook
                 if (outputFile == null)
                 {
                     sqlCmd.CommandText = @"
-                        REPLACE INTO CompileCommands (working_dir, file, command) VALUES($working_dir, $file, $command)
+                        REPLACE INTO CompileCommands (working_dir, file, command)
+                        VALUES($working_dir, $file, $command)
                     ";
                 }
                 else
                 {
                     sqlCmd.CommandText = @"
-                        REPLACE INTO CompileCommands (working_dir, file, command, output) VALUES($working_dir, $file, $command, $output)
+                        REPLACE INTO CompileCommands (working_dir, file, command, output)
+                        VALUES($working_dir, $file, $command, $output)
                     ";
                 }
 
@@ -123,7 +128,6 @@ namespace CodeBook
                 sqlCmd.ExecuteNonQuery();
                 transaction.Commit();
             }
-
             dbConnection.Close();
             dbConnection.Dispose();
 
