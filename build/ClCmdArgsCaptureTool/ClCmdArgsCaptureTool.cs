@@ -108,7 +108,7 @@ namespace CodeBook
                 }
             }
 
-            // Parsed output file from the args.
+            // Parse output file from the args.
             //
             string outputFile = null;
             string[] outputFileTypes = new[] { ".obj" };
@@ -124,7 +124,7 @@ namespace CodeBook
                 }
             }
 
-            // Parsed target file from the args.
+            // Parse the target file from the args.
             // (assume it's the last one for now)
             //
             string sourceFile = cmdArgs.Last();
