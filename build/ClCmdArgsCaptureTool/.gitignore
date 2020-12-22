@@ -1,7 +1,0 @@
-# vim swap files
-.*.swp
-
-# dotnet build output
-bin/
-obj/
-pkg/
