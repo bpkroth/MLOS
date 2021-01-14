@@ -392,7 +392,7 @@
 <span id="mlos-optimizermonitoring-tomograph-heatmap"></span><h1>mlos.OptimizerMonitoring.Tomograph.Heatmap<a class="headerlink" href="#module-mlos.OptimizerMonitoring.Tomograph.Heatmap" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.OptimizerMonitoring.Tomograph.Heatmap.</code><code class="sig-name descname">Heatmap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x_dimension</span></em>, <em class="sig-param"><span class="n">y_dimension</span></em>, <em class="sig-param"><span class="n">x_resolution</span></em>, <em class="sig-param"><span class="n">y_resolution</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/9da6108/source/Mlos.Python/mlos/OptimizerMonitoring/Tomograph/Heatmap.py#L10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.OptimizerMonitoring.Tomograph.Heatmap.</code><code class="sig-name descname">Heatmap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x_dimension</span></em>, <em class="sig-param"><span class="n">y_dimension</span></em>, <em class="sig-param"><span class="n">x_resolution</span></em>, <em class="sig-param"><span class="n">y_resolution</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/OptimizerMonitoring/Tomograph/Heatmap.py#L10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A single heatmap for an artist to draw.</p>
 <dl class="py attribute">
@@ -407,12 +407,12 @@
 
 <dl class="py method">
 <dt id="mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap.set_values_to_zero">
-<code class="sig-name descname">set_values_to_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/9da6108/source/Mlos.Python/mlos/OptimizerMonitoring/Tomograph/Heatmap.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap.set_values_to_zero" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_values_to_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/OptimizerMonitoring/Tomograph/Heatmap.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap.set_values_to_zero" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap.update_values">
-<code class="sig-name descname">update_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_values</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/9da6108/source/Mlos.Python/mlos/OptimizerMonitoring/Tomograph/Heatmap.py#L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap.update_values" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_values</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/OptimizerMonitoring/Tomograph/Heatmap.py#L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.OptimizerMonitoring.Tomograph.Heatmap.Heatmap.update_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates self.values to reflect the new values.</p>
 <p>The complication here is that new_values could potentially be a smaller matrix than self.values. In such
 a case we must “scale” the matrix to fill in the desired resolution.</p>
