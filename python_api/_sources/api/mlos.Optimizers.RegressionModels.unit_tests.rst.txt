@@ -13,5 +13,6 @@ mlos.Optimizers.RegressionModels.unit\_tests
 
    mlos.Optimizers.RegressionModels.unit_tests.TestDecisionTreeRegressionModel
    mlos.Optimizers.RegressionModels.unit_tests.TestHomogeneousRandomForestRegressionModel
+   mlos.Optimizers.RegressionModels.unit_tests.TestMultiObjectiveHomogeneousRandomForest
    mlos.Optimizers.RegressionModels.unit_tests.TestPrediction
    mlos.Optimizers.RegressionModels.unit_tests.TestRegressionEnhancedRandomForestModel

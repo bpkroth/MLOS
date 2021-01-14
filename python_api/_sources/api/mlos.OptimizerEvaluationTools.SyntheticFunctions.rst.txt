@@ -12,6 +12,8 @@ mlos.OptimizerEvaluationTools.SyntheticFunctions
    :maxdepth: 1
 
    mlos.OptimizerEvaluationTools.SyntheticFunctions.Flower
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.Hypersphere
+   mlos.OptimizerEvaluationTools.SyntheticFunctions.HypersphereConfigStore
    mlos.OptimizerEvaluationTools.SyntheticFunctions.NestedPolynomialObjective
    mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjective
    mlos.OptimizerEvaluationTools.SyntheticFunctions.PolynomialObjectiveWrapper

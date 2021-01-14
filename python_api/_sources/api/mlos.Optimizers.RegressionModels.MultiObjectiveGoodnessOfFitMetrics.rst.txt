@@ -1,0 +1,7 @@
+mlos.Optimizers.RegressionModels.MultiObjectiveGoodnessOfFitMetrics
+===================================================================
+
+.. automodule:: mlos.Optimizers.RegressionModels.MultiObjectiveGoodnessOfFitMetrics
+   :members:
+   :undoc-members:
+   :show-inheritance:

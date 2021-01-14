@@ -1,0 +1,19 @@
+mlos.Utils
+==========
+
+
+.. automodule:: mlos.Utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Utils.KeyOrderedDict
+
+.. toctree::
+   :maxdepth: 1
+
+   mlos.Utils.unit_tests

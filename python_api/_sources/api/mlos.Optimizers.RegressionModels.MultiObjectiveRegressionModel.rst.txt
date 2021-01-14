@@ -1,0 +1,7 @@
+mlos.Optimizers.RegressionModels.MultiObjectiveRegressionModel
+==============================================================
+
+.. automodule:: mlos.Optimizers.RegressionModels.MultiObjectiveRegressionModel
+   :members:
+   :undoc-members:
+   :show-inheritance:

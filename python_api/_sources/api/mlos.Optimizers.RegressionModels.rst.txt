@@ -17,6 +17,10 @@ mlos.Optimizers.RegressionModels
    mlos.Optimizers.RegressionModels.HomogeneousRandomForestConfigStore
    mlos.Optimizers.RegressionModels.HomogeneousRandomForestFitState
    mlos.Optimizers.RegressionModels.HomogeneousRandomForestRegressionModel
+   mlos.Optimizers.RegressionModels.MultiObjectiveGoodnessOfFitMetrics
+   mlos.Optimizers.RegressionModels.MultiObjectiveHomogeneousRandomForest
+   mlos.Optimizers.RegressionModels.MultiObjectivePrediction
+   mlos.Optimizers.RegressionModels.MultiObjectiveRegressionModel
    mlos.Optimizers.RegressionModels.Prediction
    mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel
    mlos.Optimizers.RegressionModels.RegressionModel

@@ -28,3 +28,4 @@ mlos
    mlos.OptimizerMonitoring
    mlos.Optimizers
    mlos.Spaces
+   mlos.Utils
