@@ -228,6 +228,7 @@
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.MultiObjectiveHomogeneousRandomForest.html">mlos.Optimizers.RegressionModels.MultiObjectiveHomogeneousRandomForest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.MultiObjectivePrediction.html">mlos.Optimizers.RegressionModels.MultiObjectivePrediction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.MultiObjectiveRegressionModel.html">mlos.Optimizers.RegressionModels.MultiObjectiveRegressionModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.MultiObjectiveRegressionModelFitState.html">mlos.Optimizers.RegressionModels.MultiObjectiveRegressionModelFitState</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.Prediction.html">mlos.Optimizers.RegressionModels.Prediction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel.html">mlos.Optimizers.RegressionModels.RegressionEnhancedRandomForestModel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos.Optimizers.RegressionModels.RegressionModel.html">mlos.Optimizers.RegressionModels.RegressionModel</a></li>
@@ -392,7 +393,7 @@
 <span id="mlos-spaces-dimensions-naivecompositedimension"></span><h1>mlos.Spaces.Dimensions.NaiveCompositeDimension<a class="headerlink" href="#module-mlos.Spaces.Dimensions.NaiveCompositeDimension" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension">
-<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.Dimensions.NaiveCompositeDimension.</code><code class="sig-name descname">NaiveCompositeDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">chunks_type</span></em>, <em class="sig-param"><span class="n">chunks</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">mlos.Spaces.Dimensions.NaiveCompositeDimension.</code><code class="sig-name descname">NaiveCompositeDimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">chunks_type</span></em>, <em class="sig-param"><span class="n">chunks</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mlos.Spaces.Dimensions.Dimension.html#mlos.Spaces.Dimensions.Dimension.Dimension" title="mlos.Spaces.Dimensions.Dimension.Dimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlos.Spaces.Dimensions.Dimension.Dimension</span></code></a></p>
 <p>Models a dimension that results from a sequence of union, intersect, and subtract operations.</p>
 <p>For now we just maintain a list of compositions and by doing so we are able to determine if a number
@@ -403,29 +404,29 @@ will allow us to generate numbers from this dimension according to an arbitrary 
 will guarantee that no two chunks in the tree overlap (we will simply union such chunks).</p>
 <dl class="py class">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType">
-<em class="property">class </em><code class="sig-name descname">CompositionType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">CompositionType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntFlag" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntFlag</span></code></a></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.DIFFERENCE">
-<code class="sig-name descname">DIFFERENCE</code><em class="property"> = 4</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.DIFFERENCE" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">DIFFERENCE</code><em class="property"> = 4</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.DIFFERENCE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.INTERSECTION">
-<code class="sig-name descname">INTERSECTION</code><em class="property"> = 2</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.INTERSECTION" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">INTERSECTION</code><em class="property"> = 2</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.INTERSECTION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.UNION">
-<code class="sig-name descname">UNION</code><em class="property"> = 1</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.UNION" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">UNION</code><em class="property"> = 1</em><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.CompositionType.UNION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.compute_bounds_on_length">
-<code class="sig-name descname">compute_bounds_on_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.compute_bounds_on_length" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">compute_bounds_on_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.compute_bounds_on_length" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the upper and lower bounds on the length of this dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -436,22 +437,22 @@ will guarantee that no two chunks in the tree overlap (we will simply union such
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.copy">
-<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.copy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.copy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.difference">
-<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.difference" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.difference" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.intersection">
-<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.intersection" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.intersection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.linspace">
-<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.linspace" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">linspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.linspace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Similar to numpy’s linspace. Returns an iterable of num elements linearly distributed along the dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -465,7 +466,7 @@ will guarantee that no two chunks in the tree overlap (we will simply union such
 
 <dl class="py method">
 <dt id="mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.union">
-<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/94a8710/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.union" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Microsoft/MLOS/blob/108cc03/source/Mlos.Python/mlos/Spaces/Dimensions/NaiveCompositeDimension.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlos.Spaces.Dimensions.NaiveCompositeDimension.NaiveCompositeDimension.union" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
