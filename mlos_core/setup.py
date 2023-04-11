@@ -25,14 +25,14 @@ except LookupError as e:
     warning(f"setuptools_scm failed to find git version, using version from _version.py: {e}")
 
 
-extra_requires: Dict[str, Union[str, List[str]]] = {
+extra_requires = {
     'emukit': 'emukit',
     'skopt': 'scikit-optimize<=0.9.0',  # FIXME: temporarily work around some version mismatch issues (PR 850)
 }
 
 # construct special 'full' extra that adds requirements for all built-in
 # backend integrations and additional extra features.
-extra_requires['full'] = list(set(chain([x for x in extra_requires.values() if isinstance(x, str)])))
+extra_requires['full'] = list(set(chain(extra_requires.values())))
 
 # pylint: disable=duplicate-code
 setup(
