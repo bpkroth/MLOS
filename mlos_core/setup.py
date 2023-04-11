@@ -8,7 +8,6 @@ Setup instructions for the mlos_core package.
 
 from itertools import chain
 from logging import warning
-from typing import Dict, List, Union
 
 from setuptools import setup, find_packages
 
