@@ -108,7 +108,7 @@ class LlamaTuneAdapter(BaseSpaceAdapter):   # pylint: disable=too-many-instance-
                                      "previously by the optimzer can be registered.")
 
                 # ...yet, we try to support that by implementing an approximate reverse mapping using pseudo-inverse matrix.
-                if not self._pinv_matrix:
+                if getattr(self, '_pinv_matrix', None) is None:
                     self._try_generate_approx_inverse_mapping()
 
                 # Perform approximate reverse mapping
