@@ -122,7 +122,6 @@ def _coerce_value(value: TunableValuesTypes, to_type: Type[TunableTypeVar]) -> T
     # We need this coercion for the values produced by some optimizers
     # (e.g., scikit-optimize) and for data restored from certain storage
     # systems (where values can be strings).
-    to_tunable_type = TunableType.from_type(to_type)
     if isinstance(value, TunableValue):
         value = value.value
     assert isinstance(value, (int, str, float))
@@ -133,7 +132,7 @@ def _coerce_value(value: TunableValuesTypes, to_type: Type[TunableTypeVar]) -> T
                    to_type, type(value), value)
         raise
 
-    if to_tunable_type == TunableType.INT and isinstance(value, float) and value != coerced_value:
+    if to_type == int and isinstance(value, float) and value != coerced_value:
         _LOG.error("Loss of precision: %s <- %s %s",
                    to_type, type(value), value)
         raise ValueError(f"Loss of precision {coerced_value}!={value}")
@@ -145,14 +144,15 @@ class TunableValue(Generic[TunableTypeVar]):
     Useful to support certain types of operator overloading and encapsulate type checking.
     """
 
-    def __init__(self, tunable_type: Type[TunableTypeVar], value: TunableValuesTypes):
-        assert tunable_type in (int, float, str)
-        self._type: Type[TunableTypeVar] = tunable_type
-        self._tunable_type = TunableType.from_type(tunable_type)
-        self._value: TunableTypeVar = _coerce_value(value, self._type)
+    def __init__(self, value: Union[TunableTypeVar, "TunableValue[TunableTypeVar]"]):
+        if isinstance(value, TunableValue):
+            value = value.value
+        self._type: Type[TunableTypeVar] = type(value)
+        self._tunable_type = TunableType.from_type(self._type)
+        self._value: TunableTypeVar = value
 
     def __repr__(self) -> str:
-        return f"TunableValue[{self._type}]({self._value})"
+        return f"TunableValue[{self._type.__name__}]({self._value})"
 
     def __str__(self) -> str:
         return str(self._value)
@@ -174,6 +174,7 @@ class TunableValue(Generic[TunableTypeVar]):
 
     @value.setter
     def value(self, new_value: TunableValuesTypes) -> TunableTypeVar:
+        """Sets the value of the tunable."""
         self._value = _coerce_value(new_value, self._type)
         return self._value
 
@@ -184,9 +185,9 @@ class TunableValue(Generic[TunableTypeVar]):
         if not isinstance(other, (int, float, str)):
             return None
         try:
-            new = copy.deepcopy(self)
-            new._value = _coerce_value(other, self._type)   # pylint: disable=protected-access
-            return new
+            new_inst = copy.deepcopy(self)
+            new_inst._value = _coerce_value(other, self._type)   # pylint: disable=protected-access
+            return new_inst
         except ValueError:
             return None
 
@@ -206,18 +207,13 @@ class TunableValue(Generic[TunableTypeVar]):
 class TunableNumberValue(TunableValue[TunableNumberTypeVar]):
     """Tunable value for numerical types."""
 
-    def __init__(self, number_type: Type[TunableNumberTypeVar], value: TunableValuesTypes):
-        super().__init__(number_type, value)
-        self._numerical_type: Type[TunableNumberTypeVar] = number_type
-        assert self._numerical_type in (int, float)
-
-    def _other_to_type(self, other: object) -> TunableNumberValuesTypes:
+    def _other_to_type(self, other: object) -> TunableNumberTypeVar:
         """Attempts to convert the other object to the same type as this TunableNumberValue."""
         if isinstance(other, str):
-            other = _coerce_value(other, self._numerical_type)
+            other = _coerce_value(other, self._type)
         elif isinstance(other, TunableNumberValue):
             other = other.value
-        if isinstance(other, (int, float)):
+        if isinstance(other, self._type):
             return other
         raise ValueError(f"Cannot convert other to TunableNumberValue: {other}")
 
@@ -227,53 +223,44 @@ class TunableNumberValue(TunableValue[TunableNumberTypeVar]):
     def __float__(self) -> float:
         return float(self._value)
 
-    def __add__(self, other: object) -> TunableNumberTypeVar:
-        return self._value + self._numerical_type(self._other_to_type(other))
+    def __add__(self, other: object) -> "TunableNumberValue[TunableNumberTypeVar]":
+        return TunableNumberValue[TunableNumberTypeVar](self._value + self._other_to_type(other))
 
     def __iadd__(self, other: object) -> "TunableNumberValue[TunableNumberTypeVar]":
         self._value += self._other_to_type(other)
         return self
 
-    def __sub__(self, other: object) -> TunableNumberTypeVar:
-        return self._value - self._other_to_type(other)
+    def __sub__(self, other: object) -> "TunableNumberValue[TunableNumberTypeVar]":
+        return TunableNumberValue[TunableNumberTypeVar](self._value - self._other_to_type(other))
 
     def __isub__(self, other: object) -> "TunableNumberValue[TunableNumberTypeVar]":
         self._value -= self._other_to_type(other)
         return self
 
-    def __mul__(self, other: object) -> TunableNumberTypeVar:
-        return self._value * self._other_to_type(other)
+    def __mul__(self, other: object) -> "TunableNumberValue[TunableNumberTypeVar]":
+        return TunableNumberValue[TunableNumberTypeVar](self._value * self._other_to_type(other))
 
     def __imul__(self, other: object) -> "TunableNumberValue[TunableNumberTypeVar]":
         self._value *= self._other_to_type(other)
         return self
 
-    def __truediv__(self, other: object) -> float:
-        return float(self._value / float(self._other_to_type(other)))
+    def __truediv__(self, other: object) -> "TunableNumberValue[float]":
+        return TunableNumberValue[float](self._value / float(self._other_to_type(other)))
 
-    def __floordiv__(self, other: object) -> int:
-        return int(self._value / self._other_to_type(other))
+    def __floordiv__(self, other: object) -> "TunableNumberValue[int]":
+        return TunableNumberValue[int](int(self._value / self._other_to_type(other)))
 
 
 class TunableIntValue(TunableNumberValue[int], SupportsInt):
     """TunableValue for integer types."""
 
-    def __init__(self, value: Union[int, TunableValue[int]]):
-        super().__init__(int, value)
-
 
 class TunableFloatValue(TunableNumberValue[float], SupportsFloat):
     """TunableValue for float types."""
 
-    def __init__(self, value: Union[float, TunableValue[float]]):
-        super().__init__(float, value)
-
 
 class TunableCategoricalValue(TunableValue[str]):
     """TunableValue for categorical types."""
-
-    def __init__(self, value: Union[str, TunableValue[str]]):
-        super().__init__(str, value)
 
 
 class TunableDict(TypedDict, total=False):
@@ -298,7 +285,7 @@ class Tunable(Generic[TunableTypeVar]):
     A tunable parameter definition and its current value.
     """
 
-    def __init__(self, name: str, config: TunableDict, tunable_type: Type[TunableTypeVar]):
+    def __init__(self, name: str, config: TunableDict, default_value: TunableValue[TunableTypeVar]):
         """
         Create an instance of a new tunable parameter.
 
@@ -312,11 +299,11 @@ class Tunable(Generic[TunableTypeVar]):
         self._name = name
         self._description = config.get("description")
 
-        self._type = TunableType.from_string(config["type"])  # required
-        assert self._type.to_type == tunable_type
+        self._default: TunableValue[TunableTypeVar] = default_value
+        self._tunable_type = TunableType.from_string(config["type"])  # required
+        assert self._tunable_type.to_type == self.type
 
-        self._default: TunableValue[TunableTypeVar]
-        self._current_value: TunableValue[TunableTypeVar]
+        self._current_value: TunableValue[TunableTypeVar] = self._default
 
     def copy(self) -> "Tunable[TunableTypeVar]":
         """
@@ -338,7 +325,7 @@ class Tunable(Generic[TunableTypeVar]):
         string : str
             A human-readable version of the Tunable.
         """
-        return f"{self._name}[{self._type}]={self._current_value}"
+        return f"{self._name}[{self.type.__name__}]={self._current_value}"
 
     def __eq__(self, other: object) -> bool:
         """
@@ -359,7 +346,7 @@ class Tunable(Generic[TunableTypeVar]):
             return False
         return bool(
             self._name == other._name and
-            self._type == other._type and
+            self.type == other.type and
             self._current_value == other._current_value
         )
 
@@ -378,7 +365,18 @@ class Tunable(Generic[TunableTypeVar]):
         return self._description
 
     @property
-    def type(self) -> TunableType:
+    def type(self) -> Type[TunableTypeVar]:
+        """
+        Get the data type of the tunable.
+
+        Returns
+        -------
+        type : Type[TunableTypeVar]
+        """
+        return self._default.type
+
+    @property
+    def tunable_type(self) -> TunableType:
         """
         Get the data type of the tunable.
 
@@ -386,7 +384,7 @@ class Tunable(Generic[TunableTypeVar]):
         -------
         type : TunableType
         """
-        return self._type
+        return self._tunable_type
 
     @property
     def default(self) -> TunableValue[TunableTypeVar]:
@@ -396,19 +394,19 @@ class Tunable(Generic[TunableTypeVar]):
         return self._default
 
     @property
+    @abstractmethod
     def current_value(self) -> TunableValue[TunableTypeVar]:
-        """
-        Get the current value of the tunable.
-        """
+        """Get the current value of the tunable."""
         return self._current_value
 
-    @current_value.setter
-    def current_value(self, new_value: TunableValuesTypes) -> TunableValue[TunableTypeVar]:
-        """
-        Set the current value of the tunable.
-        """
-        self._current_value.value = new_value
-        return self._current_value
+    # @current_value.setter
+    # def current_value(self, new_value: TunableValuesTypes) -> TunableValue[TunableTypeVar]:
+    #     """Set the current value of the tunable."""
+    #     return self._current_value_setter(new_value)
+
+    @abstractmethod
+    def _current_value_setter(self, new_value: TunableValuesTypes) -> TunableValue[TunableTypeVar]:
+        """Set the current value of the tunable."""
 
     @abstractmethod
     def is_valid(self, value: TunableValueTypes) -> bool:
@@ -427,40 +425,47 @@ class Tunable(Generic[TunableTypeVar]):
         """
 
 
-class RangeTuple(NamedTuple, Generic[TunableNumberTypeVar]):
-    """Tuple representing a range of values."""
+# Unfortunately NamedTuple doesn't support multiple inheritance, so we can't use Generic[TunableNumberTypeVar] here.
+class NumericRangeTuple(NamedTuple):
+    """Tuple representing a range of numeric values."""
 
-    min: TunableNumberTypeVar
-    max: TunableNumberTypeVar
+    min: Union[int, float]
+    max: Union[int, float]
 
 
-class TunableNumber(Tunable, Generic[TunableNumberTypeVar]):
+class TunableNumber(Tunable[TunableNumberTypeVar]):
     """Tunable number."""
 
-    def __init__(self, name: str, config: TunableDict, number_type: Type[TunableNumberTypeVar]):
-        assert number_type in (int, float)
-        if number_type == int:
-            super().__init__(name, config, number_type)
-        elif number_type == float:
-            super().__init__(name, config, float)
-        else:
-            raise ValueError(f"Invalid number type: {number_type}")
-
+    def __init__(self, name: str, config: TunableDict, default_value: TunableNumberValue):
+        super().__init__(name, config, default_value)
         self._special = config.get("special")
+        assert self.type in (int, float)
 
         config_range = config.get("range")
         assert config_range is not None
         assert len(config_range) == 2, \
             f"Invalid range: {config_range}.  All ranges must be 2-tuples."
-        assert set(type(v) for v in config_range) == {number_type}, \
+        assert set(type(v) for v in config_range) == {self.type}, \
             f"Invalid range: {config_range}.  All types must match."
         if config_range[0] >= config_range[1]:
             raise ValueError(f"Invalid range: {config_range}.  Min must be less than max.")
-        self._range: RangeTuple[TunableNumberTypeVar] = RangeTuple[TunableNumberTypeVar](
-            min=number_type(config_range[0]), max=number_type(config_range[1]))
+        self._range = NumericRangeTuple(min=self.type(config_range[0]), max=self.type(config_range[1]))
 
     @property
-    def range(self) -> RangeTuple[TunableNumberTypeVar]:
+    def current_value(self) -> TunableValue[TunableNumberTypeVar]:
+        return self._current_value
+
+    @current_value.setter
+    def current_value(self, new_value: TunableValuesTypes) -> TunableNumberTypeVar:
+        """Set the current value of the tunable."""
+        return self._current_value_setter(new_value).value
+
+    def _current_value_setter(self, new_value: TunableValuesTypes) -> TunableValue[TunableNumberTypeVar]:
+        self._current_value.value = _coerce_value(new_value, self.type)
+        return self._current_value
+
+    @property
+    def range(self) -> NumericRangeTuple:
         """
         Get the range of the tunable if it is numerical, None otherwise.
 
@@ -472,7 +477,7 @@ class TunableNumber(Tunable, Generic[TunableNumberTypeVar]):
         """
         return self._range
 
-    def is_valid(self, value: TunableValueTypes) -> bool:
+    def is_valid(self, value: TunableValuesTypes) -> bool:
         """
         Check if the value can be assigned to the tunable.
 
@@ -491,12 +496,7 @@ class TunableNumber(Tunable, Generic[TunableNumberTypeVar]):
 
         numerical_value: Union[int, float]
         if isinstance(value, str):
-            if self._type == TunableType.INT:
-                numerical_value = _coerce_value(value, int)
-            elif self._type == TunableType.FLOAT:
-                numerical_value = _coerce_value(value, float)
-            else:
-                raise ValueError(f"Invalid type: {self._type}")
+            numerical_value = _coerce_value(value, self.type)
         else:
             numerical_value = value
         assert isinstance(numerical_value, (int, float))
@@ -507,30 +507,24 @@ class TunableInt(TunableNumber[int]):
     """Discrete Integer Tunable."""
 
     def __init__(self, name: str, config: TunableDict):
-        super().__init__(name, config, int)
-        assert self._type == TunableType.INT
-        self._default = TunableIntValue(_coerce_value(config["default"], int))
-        self._current_value = self._default
+        default_value = TunableIntValue(_coerce_value(config["default"], int))
+        super().__init__(name, config, default_value)
 
 
 class TunableFloat(TunableNumber[float]):
     """Continuous Float Tunable."""
 
     def __init__(self, name: str, config: TunableDict):
-        super().__init__(name, config, float)
-        assert self._type == TunableType.FLOAT
-        self._default = TunableFloatValue(_coerce_value(config["default"], float))
-        self._current_value = self._default
+        default_value = TunableFloatValue(_coerce_value(config["default"], float))
+        super().__init__(name, config, default_value)
 
 
 class TunableCategorical(Tunable[str]):
     """Categorical Tunable."""
 
     def __init__(self, name: str, config: TunableDict):
-        super().__init__(name, config, str)
-        assert self._type == TunableType.CATEGORICAL
-        self._default = TunableCategoricalValue(str(config["default"]))
-        self._current_value = self._default
+        default_value = TunableCategoricalValue(str(config["default"]))
+        super().__init__(name, config, default_value)
 
         values = config["values"]
         if not (values and isinstance(values, collections.abc.Iterable)):
@@ -543,6 +537,19 @@ class TunableCategorical(Tunable[str]):
             raise ValueError("Special values must be None for the categorical type")
 
     @property
+    def current_value(self) -> TunableValue[str]:
+        return self._current_value
+
+    @current_value.setter
+    def current_value(self, new_value: TunableValuesTypes) -> TunableValue[str]:
+        """Set the current value of the tunable."""
+        return self._current_value_setter(new_value)
+
+    def _current_value_setter(self, new_value: TunableValuesTypes) -> TunableValue[str]:
+        self._current_value.value = str(new_value)
+        return self._current_value
+
+    @property
     def categorical_values(self) -> List[str]:
         """
         Get the list of all possible values of a categorical tunable.
@@ -553,7 +560,7 @@ class TunableCategorical(Tunable[str]):
         values : List[str]
             List of all possible values of a categorical tunable.
         """
-        assert self._type.is_categorical
+        assert self._tunable_type.is_categorical
         assert self._values is not None
         return self._values
 
@@ -610,9 +617,13 @@ if __name__ == "__main__":
     assert tunableInt.range == (0, 10)
     assert isinstance(tunableInt.current_value, TunableIntValue)
     assert tunableInt.default == 1
+    new = tunableInt.current_value + 2
+    assert new == 3
+    tunableInt.current_value = new
+    assert tunableInt.current_value == 3
     tunableInt.current_value += 2
     assert isinstance(tunableInt.current_value.value, int)
-    assert tunableInt.current_value == 3
+    assert tunableInt.current_value == 5
     print(tunableInt)
 
     tunableFloat = TunableFactory.from_config(name="float",
@@ -621,8 +632,10 @@ if __name__ == "__main__":
     assert tunableFloat.range == (0.0, 10.0)
     assert isinstance(tunableFloat.current_value, TunableFloatValue)
     assert tunableFloat.default == 1
-    tunableFloat.current_value += 1.1
+    tunableFloat.current_value = tunableFloat.current_value + 1.1
     assert tunableFloat.current_value == 2.1
+    tunableFloat.current_value += 1.1
+    assert tunableFloat.current_value == 3.2
     print(tunableFloat)
 
     tunableCategorical = TunableFactory.from_config(name="categorical",
@@ -631,5 +644,5 @@ if __name__ == "__main__":
     assert tunableCategorical.categorical_values == ["red", "blue", "green"]
     assert isinstance(tunableCategorical.current_value, TunableCategoricalValue)
     assert tunableCategorical.default == "red"
-    #tunableCategorical.current_value += "foo"
+    # tunableCategorical.current_value += "foo"
     print(tunableCategorical)
