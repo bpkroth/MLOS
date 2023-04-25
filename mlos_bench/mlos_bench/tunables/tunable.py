@@ -610,6 +610,7 @@ class TunableFactory:
             raise NotImplementedError(f"Unhandled parameter type: {tunable_type}")
 
 
+# TODO: Move these to unit tests.
 if __name__ == "__main__":
     tunableInt = TunableFactory.from_config(name="int",
         config={"type": "int", "default": 1, "range": [0, 10]})
