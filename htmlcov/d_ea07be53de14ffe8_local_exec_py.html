@@ -64,8 +64,8 @@
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a id="nextFileLink" class="nav" href="d_d34fc4c3ae3e3619___init___py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.2.2">coverage.py v7.2.2</a>,
-            created at 2023-05-02 01:35 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.2.5">coverage.py v7.2.5</a>,
+            created at 2023-05-02 13:49 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"/>
@@ -218,7 +218,7 @@
     <p class="pln"><span class="n"><a id="t136" href="#t136">136</a></span><span class="t"><span class="str">            A 3-tuple of return code, stdout, and stderr of the script process.</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t137" href="#t137">137</a></span><span class="t"><span class="str">        """</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t138" href="#t138">138</a></span><span class="t">        <span class="nam">cmd</span> <span class="op">=</span> <span class="nam">shlex</span><span class="op">.</span><span class="nam">split</span><span class="op">(</span><span class="nam">script_line</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t139" href="#t139">139</a></span><span class="t">        <span class="nam">script_path</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_config_loader_service</span><span class="op">.</span><span class="nam">resolve_path</span><span class="op">(</span><span class="nam">cmd</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t139" href="#t139">139</a></span><span class="t">        <span class="nam">script_path</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">config_loader_service</span><span class="op">.</span><span class="nam">resolve_path</span><span class="op">(</span><span class="nam">cmd</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t140" href="#t140">140</a></span><span class="t">        <span class="key">if</span> <span class="nam">os</span><span class="op">.</span><span class="nam">path</span><span class="op">.</span><span class="nam">exists</span><span class="op">(</span><span class="nam">script_path</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t141" href="#t141">141</a></span><span class="t">            <span class="nam">script_path</span> <span class="op">=</span> <span class="nam">os</span><span class="op">.</span><span class="nam">path</span><span class="op">.</span><span class="nam">abspath</span><span class="op">(</span><span class="nam">script_path</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t142" href="#t142">142</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
@@ -243,7 +243,7 @@
     <p class="run"><span class="n"><a id="t161" href="#t161">161</a></span><span class="t">            <span class="key">if</span> <span class="nam">sys</span><span class="op">.</span><span class="nam">platform</span> <span class="op">!=</span> <span class="str">'win32'</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t162" href="#t162">162</a></span><span class="t">                <span class="nam">cmd</span> <span class="op">=</span> <span class="op">[</span><span class="str">" "</span><span class="op">.</span><span class="nam">join</span><span class="op">(</span><span class="nam">cmd</span><span class="op">)</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t163" href="#t163">163</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t164" href="#t164">164</a></span><span class="t">            <span class="nam">proc</span> <span class="op">=</span> <span class="nam">subprocess</span><span class="op">.</span><span class="nam">run</span><span class="op">(</span><span class="nam">cmd</span><span class="op">,</span> <span class="nam">env</span><span class="op">=</span><span class="nam">env</span><span class="op">,</span> <span class="nam">cwd</span><span class="op">=</span><span class="nam">cwd</span><span class="op">,</span> <span class="nam">shell</span><span class="op">=</span><span class="key">True</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t164" href="#t164">164</a></span><span class="t">            <span class="nam">proc</span> <span class="op">=</span> <span class="nam">subprocess</span><span class="op">.</span><span class="nam">run</span><span class="op">(</span><span class="nam">cmd</span><span class="op">,</span> <span class="nam">env</span><span class="op">=</span><span class="nam">env</span> <span class="key">or</span> <span class="key">None</span><span class="op">,</span> <span class="nam">cwd</span><span class="op">=</span><span class="nam">cwd</span><span class="op">,</span> <span class="nam">shell</span><span class="op">=</span><span class="key">True</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t165" href="#t165">165</a></span><span class="t">                                  <span class="nam">text</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">check</span><span class="op">=</span><span class="key">False</span><span class="op">,</span> <span class="nam">capture_output</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t166" href="#t166">166</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t167" href="#t167">167</a></span><span class="t">            <span class="nam">_LOG</span><span class="op">.</span><span class="nam">debug</span><span class="op">(</span><span class="str">"Run: return code = %d"</span><span class="op">,</span> <span class="nam">proc</span><span class="op">.</span><span class="nam">returncode</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
@@ -261,8 +261,8 @@
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a id="nextFileLink" class="nav" href="d_d34fc4c3ae3e3619___init___py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.2.2">coverage.py v7.2.2</a>,
-            created at 2023-05-02 01:35 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.2.5">coverage.py v7.2.5</a>,
+            created at 2023-05-02 13:49 +0000
         </p>
     </div>
 </footer>
