@@ -40,10 +40,10 @@ class MlosCoreOptimizer(Optimizer):
         space = tunable_groups_to_configspace(tunables)
         _LOG.debug("ConfigSpace: %s", space)
 
-        opt_type = getattr(OptimizerType, self._config.pop(
+        self._opt_type: OptimizerType = getattr(OptimizerType, self._config.pop(
             'optimizer_type', DEFAULT_OPTIMIZER_TYPE.name))
 
-        if opt_type == OptimizerType.SMAC:
+        if self._opt_type == OptimizerType.SMAC:
             # If output_directory is specified, turn it into an absolute path.
             if 'output_directory' not in self._config:
                 self._config['output_directory'] = 'smac_output'
@@ -74,11 +74,22 @@ class MlosCoreOptimizer(Optimizer):
 
         self._opt: BaseOptimizer = OptimizerFactory.create(
             parameter_space=space,
-            optimizer_type=opt_type,
+            optimizer_type=self._opt_type,
             optimizer_kwargs=self._config,
             space_adapter_type=space_adapter_type,
             space_adapter_kwargs=space_adapter_config,
         )
+
+    @property
+    def optimizer_type(self) -> OptimizerType:
+        """
+        Returns the type of the optimizer.
+
+        Returns
+        -------
+        OptimizerType
+        """
+        return self._opt_type
 
     def bulk_register(self, configs: Sequence[dict], scores: Sequence[Optional[float]],
                       status: Optional[Sequence[Status]] = None) -> bool:
