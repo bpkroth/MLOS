@@ -47,6 +47,7 @@ extra_requires['full-tests'] = extra_requires['full'] + [
     'pytest-xdist',
     'pytest-cov',
     'pytest-local-badge',
+    'pytest-lazy-fixture',
 ]
 
 # pylint: disable=duplicate-code
