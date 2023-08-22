@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mlos_bench package &mdash; MlosCore 0.1.dev1+ga891756 documentation</title>
+  <title>mlos_bench package &mdash; MlosCore 0.1.dev1+g0db8004 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
@@ -12,7 +12,7 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/documentation_options.js?v=9b9864d4"></script>
+        <script src="../../_static/documentation_options.js?v=ee472bcf"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -35,7 +35,7 @@
             MlosCore
           </a>
               <div class="version">
-                0.1.dev1+ga891756
+                0.1.dev1+g0db8004
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -128,6 +128,7 @@ OS/application parameter autotuning.</p>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.CompositeEnv.pprint"><code class="docutils literal notranslate"><span class="pre">CompositeEnv.pprint()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.CompositeEnv.run"><code class="docutils literal notranslate"><span class="pre">CompositeEnv.run()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.CompositeEnv.setup"><code class="docutils literal notranslate"><span class="pre">CompositeEnv.setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.CompositeEnv.status"><code class="docutils literal notranslate"><span class="pre">CompositeEnv.status()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.CompositeEnv.teardown"><code class="docutils literal notranslate"><span class="pre">CompositeEnv.teardown()</span></code></a></li>
 </ul>
 </li>
@@ -145,12 +146,14 @@ OS/application parameter autotuning.</p>
 <li class="toctree-l2"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalEnv"><code class="docutils literal notranslate"><span class="pre">LocalEnv</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalEnv.run"><code class="docutils literal notranslate"><span class="pre">LocalEnv.run()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalEnv.setup"><code class="docutils literal notranslate"><span class="pre">LocalEnv.setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalEnv.status"><code class="docutils literal notranslate"><span class="pre">LocalEnv.status()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalEnv.teardown"><code class="docutils literal notranslate"><span class="pre">LocalEnv.teardown()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalFileShareEnv"><code class="docutils literal notranslate"><span class="pre">LocalFileShareEnv</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalFileShareEnv.run"><code class="docutils literal notranslate"><span class="pre">LocalFileShareEnv.run()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalFileShareEnv.setup"><code class="docutils literal notranslate"><span class="pre">LocalFileShareEnv.setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.LocalFileShareEnv.status"><code class="docutils literal notranslate"><span class="pre">LocalFileShareEnv.status()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mlos_bench.environments.html#mlos_bench.environments.MockEnv"><code class="docutils literal notranslate"><span class="pre">MockEnv</span></code></a><ul>
@@ -260,6 +263,7 @@ OS/application parameter autotuning.</p>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.convert_configspace.html">mlos_bench.optimizers.convert_configspace module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.tunable_groups_to_configspace"><code class="docutils literal notranslate"><span class="pre">tunable_groups_to_configspace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.tunable_values_to_configuration"><code class="docutils literal notranslate"><span class="pre">tunable_values_to_configuration()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.mlos_core_optimizer.html">mlos_bench.optimizers.mlos_core_optimizer module</a><ul>
@@ -338,6 +342,7 @@ OS/application parameter autotuning.</p>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment"><code class="docutils literal notranslate"><span class="pre">Storage.Experiment</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.load"><code class="docutils literal notranslate"><span class="pre">Storage.Experiment.load()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.load_config"><code class="docutils literal notranslate"><span class="pre">Storage.Experiment.load_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.load_telemetry"><code class="docutils literal notranslate"><span class="pre">Storage.Experiment.load_telemetry()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.merge"><code class="docutils literal notranslate"><span class="pre">Storage.Experiment.merge()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.new_trial"><code class="docutils literal notranslate"><span class="pre">Storage.Experiment.new_trial()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.pending_trials"><code class="docutils literal notranslate"><span class="pre">Storage.Experiment.pending_trials()</span></code></a></li>
@@ -381,6 +386,7 @@ OS/application parameter autotuning.</p>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tests.environments.html">mlos_bench.tests.environments package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlos_bench.tests.environments.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.tests.environments.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -415,7 +421,8 @@ OS/application parameter autotuning.</p>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tests.launcher_test.html">mlos_bench.tests.launcher_test module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.local_exec_service"><code class="docutils literal notranslate"><span class="pre">local_exec_service()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.root_path"><code class="docutils literal notranslate"><span class="pre">root_path()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.test_launch_main_app"><code class="docutils literal notranslate"><span class="pre">test_launch_main_app()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.test_launch_main_app_bench"><code class="docutils literal notranslate"><span class="pre">test_launch_main_app_bench()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.test_launch_main_app_opt"><code class="docutils literal notranslate"><span class="pre">test_launch_main_app_opt()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tests.util_git_test.html">mlos_bench.tests.util_git_test module</a><ul>
