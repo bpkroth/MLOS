@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; MlosCore 0.1.dev1+g0db8004 documentation</title>
+  <title>Index &mdash; MlosCore 0.1.dev1+gd51634c documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
@@ -11,7 +11,7 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/documentation_options.js?v=ee472bcf"></script>
+        <script src="_static/documentation_options.js?v=3e1b0ccf"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -32,7 +32,7 @@
             MlosCore
           </a>
               <div class="version">
-                0.1.dev1+g0db8004
+                0.1.dev1+gd51634c
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -89,6 +89,7 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -116,6 +117,8 @@
         <li><a href="generated/mlos_bench.environments.local.LocalFileShareEnv.html#mlos_bench.environments.local.LocalFileShareEnv.__init__">(mlos_bench.environments.local.LocalFileShareEnv method)</a>
 </li>
         <li><a href="generated/mlos_bench.environments.MockEnv.html#mlos_bench.environments.MockEnv.__init__">(mlos_bench.environments.MockEnv method)</a>
+</li>
+        <li><a href="generated/mlos_bench.environments.remote.HostEnv.html#mlos_bench.environments.remote.HostEnv.__init__">(mlos_bench.environments.remote.HostEnv method)</a>
 </li>
         <li><a href="generated/mlos_bench.environments.remote.OSEnv.html#mlos_bench.environments.remote.OSEnv.__init__">(mlos_bench.environments.remote.OSEnv method)</a>
 </li>
@@ -306,6 +309,8 @@
         <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.Tunable.category">(mlos_bench.tunables.tunable.Tunable property)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.html#mlos_bench.tests.check_class_name">check_class_name() (in module mlos_bench.tests)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tests.environments.local.html#mlos_bench.tests.environments.local.check_local_env_fail_telemetry">check_local_env_fail_telemetry() (in module mlos_bench.tests.environments.local)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.environments.local.html#mlos_bench.tests.environments.local.check_local_env_success">check_local_env_success() (in module mlos_bench.tests.environments.local)</a>
@@ -370,6 +375,8 @@
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.config_id">(mlos_bench.storage.Storage.Trial property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Trial.config_id">[1]</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.launcher.html#mlos_bench.launcher.Launcher.config_loader">config_loader (mlos_bench.launcher.Launcher property)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.services.base_service.html#mlos_bench.services.base_service.Service.config_loader_service">config_loader_service (mlos_bench.services.base_service.Service property)</a>
 
       <ul>
@@ -377,6 +384,10 @@
 </li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.tests.config.conftest.html#mlos_bench.tests.config.conftest.config_loader_service">config_loader_service() (in module mlos_bench.tests.config.conftest)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.services.config_persistence.html#mlos_bench.services.config_persistence.ConfigPersistenceService.config_paths">config_paths (mlos_bench.services.config_persistence.ConfigPersistenceService property)</a>, <a href="generated/mlos_bench.services.config_persistence.ConfigPersistenceService.html#mlos_bench.services.config_persistence.ConfigPersistenceService.config_paths">[1]</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_parse_args_test.html#mlos_bench.tests.launcher_parse_args_test.config_paths">config_paths() (in module mlos_bench.tests.launcher_parse_args_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.config_persistence_test.html#mlos_bench.tests.services.config_persistence_test.config_persistence_service">config_persistence_service() (in module mlos_bench.tests.services.config_persistence_test)</a>
 
@@ -440,6 +451,16 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.storage.sql.schema.html#mlos_bench.storage.sql.schema.DbSchema">DbSchema (class in mlos_bench.storage.sql.schema)</a>
 </li>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.deallocate_host">deallocate_host() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.deallocate_host">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.deallocate_host">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_provisioner_type.html#mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning.deallocate_host">(mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning method)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsHostProvisioning.deallocate_host">(mlos_bench.services.types.SupportsHostProvisioning method)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable.default">default (mlos_bench.tunables.Tunable property)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable.default">[1]</a>
 
       <ul>
@@ -468,6 +489,16 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.deprovision_host">deprovision_host() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.deprovision_host">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.deprovision_host">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_provisioner_type.html#mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning.deprovision_host">(mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning method)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsHostProvisioning.deprovision_host">(mlos_bench.services.types.SupportsHostProvisioning method)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.TunableDict.description">description (mlos_bench.tunables.tunable.TunableDict attribute)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.services.base_fileshare.html#mlos_bench.services.base_fileshare.FileShareService.download">download() (mlos_bench.services.base_fileshare.FileShareService method)</a>
@@ -581,6 +612,8 @@
 </li>
         <li><a href="api/mlos_bench/mlos_bench.services.types.authenticator_type.html#mlos_bench.services.types.authenticator_type.SupportsAuth.get_access_token">(mlos_bench.services.types.authenticator_type.SupportsAuth method)</a>
 </li>
+        <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.mock.mock_auth_service.html#mlos_bench.tests.services.remote.mock.mock_auth_service.MockAuthService.get_access_token">(mlos_bench.tests.services.remote.mock.mock_auth_service.MockAuthService method)</a>
+</li>
       </ul></li>
       <li><a href="api/mlos_core/mlos_core.tests.html#mlos_core.tests.get_all_concrete_subclasses">get_all_concrete_subclasses() (in module mlos_core.tests)</a>
 </li>
@@ -665,6 +698,18 @@
   </ul></td>
 </tr></table>
 
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.HostEnv">HostEnv (class in mlos_bench.environments.remote)</a>, <a href="generated/mlos_bench.environments.remote.HostEnv.html#mlos_bench.environments.remote.HostEnv">[1]</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.environments.remote.host_env.html#mlos_bench.environments.remote.host_env.HostEnv">(class in mlos_bench.environments.remote.host_env)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -712,6 +757,22 @@
         <li><a href="api/mlos_bench/mlos_bench.environments.status.html#mlos_bench.environments.status.Status.is_completed">(mlos_bench.environments.status.Status method)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable.is_default">is_default() (mlos_bench.tunables.Tunable method)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable.is_default">[1]</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.Tunable.is_default">(mlos_bench.tunables.tunable.Tunable method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.tunables.covariant_group.html#mlos_bench.tunables.covariant_group.CovariantTunableGroup.is_defaults">is_defaults() (mlos_bench.tunables.covariant_group.CovariantTunableGroup method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.tunable_groups.html#mlos_bench.tunables.tunable_groups.TunableGroups.is_defaults">(mlos_bench.tunables.tunable_groups.TunableGroups method)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.TunableGroups.is_defaults">(mlos_bench.tunables.TunableGroups method)</a>, <a href="generated/mlos_bench.tunables.TunableGroups.html#mlos_bench.tunables.TunableGroups.is_defaults">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.azure_fileshare_test.html#mlos_bench.tests.services.remote.azure.azure_fileshare_test.MyDirEntry.is_dir">is_dir() (mlos_bench.tests.services.remote.azure.azure_fileshare_test.MyDirEntry method)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.Status.is_failed">is_failed() (mlos_bench.environments.Status method)</a>, <a href="generated/mlos_bench.environments.Status.html#mlos_bench.environments.Status.is_failed">[1]</a>
@@ -720,8 +781,6 @@
         <li><a href="api/mlos_bench/mlos_bench.environments.status.html#mlos_bench.environments.status.Status.is_failed">(mlos_bench.environments.status.Status method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.Status.is_good">is_good() (mlos_bench.environments.Status method)</a>, <a href="generated/mlos_bench.environments.Status.html#mlos_bench.environments.Status.is_good">[1]</a>
 
       <ul>
@@ -858,7 +917,7 @@
         <li><a href="api/mlos_bench/mlos_bench.tests.services.html#mlos_bench.tests.services.MockLocalExecService.local_exec">(mlos_bench.tests.services.MockLocalExecService method)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.local_exec_service">local_exec_service() (in module mlos_bench.tests.launcher_test)</a>
+      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_run_test.html#mlos_bench.tests.launcher_run_test.local_exec_service">local_exec_service() (in module mlos_bench.tests.launcher_run_test)</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.tests.services.local.local_exec_python_test.html#mlos_bench.tests.services.local.local_exec_python_test.local_exec_service">(in module mlos_bench.tests.services.local.local_exec_python_test)</a>
@@ -1008,6 +1067,13 @@
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#module-mlos_bench.environments.remote">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlos_bench.environments.remote.host_env
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.environments.remote.host_env.html#module-mlos_bench.environments.remote.host_env">module</a>
 </li>
       </ul></li>
       <li>
@@ -1221,10 +1287,31 @@
 </li>
       </ul></li>
       <li>
+    mlos_bench.services.types.host_ops_type
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_ops_type.html#module-mlos_bench.services.types.host_ops_type">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlos_bench.services.types.host_provisioner_type
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_provisioner_type.html#module-mlos_bench.services.types.host_provisioner_type">module</a>
+</li>
+      </ul></li>
+      <li>
     mlos_bench.services.types.local_exec_type
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.services.types.local_exec_type.html#module-mlos_bench.services.types.local_exec_type">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlos_bench.services.types.os_ops_type
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.os_ops_type.html#module-mlos_bench.services.types.os_ops_type">module</a>
 </li>
       </ul></li>
       <li>
@@ -1389,10 +1476,17 @@
 </li>
       </ul></li>
       <li>
-    mlos_bench.tests.launcher_test
+    mlos_bench.tests.launcher_parse_args_test
 
       <ul>
-        <li><a href="api/mlos_bench/mlos_bench.tests.launcher_test.html#module-mlos_bench.tests.launcher_test">module</a>
+        <li><a href="api/mlos_bench/mlos_bench.tests.launcher_parse_args_test.html#module-mlos_bench.tests.launcher_parse_args_test">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlos_bench.tests.launcher_run_test
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tests.launcher_run_test.html#module-mlos_bench.tests.launcher_run_test">module</a>
 </li>
       </ul></li>
       <li>
@@ -1536,6 +1630,13 @@
 </li>
       </ul></li>
       <li>
+    mlos_bench.tests.services.remote.mock.mock_auth_service
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.mock.mock_auth_service.html#module-mlos_bench.tests.services.remote.mock.mock_auth_service">module</a>
+</li>
+      </ul></li>
+      <li>
     mlos_bench.tests.services.remote.mock.mock_fileshare_service
 
       <ul>
@@ -1647,6 +1748,8 @@
         <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_str_test.html#module-mlos_bench.tests.tunables.tunables_str_test">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mlos_bench.tests.util_git_test
 
@@ -1654,8 +1757,6 @@
         <li><a href="api/mlos_bench/mlos_bench.tests.util_git_test.html#module-mlos_bench.tests.util_git_test">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mlos_bench.tunables
 
@@ -1879,6 +1980,8 @@
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.tests.optimizers.opt_bulk_register_test.html#mlos_bench.tests.optimizers.opt_bulk_register_test.mock_status">mock_status() (in module mlos_bench.tests.optimizers.opt_bulk_register_test)</a>
 </li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.mock.mock_auth_service.html#mlos_bench.tests.services.remote.mock.mock_auth_service.MockAuthService">MockAuthService (class in mlos_bench.tests.services.remote.mock.mock_auth_service)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.MockEnv">MockEnv (class in mlos_bench.environments)</a>, <a href="generated/mlos_bench.environments.MockEnv.html#mlos_bench.environments.MockEnv">[1]</a>
 
       <ul>
@@ -1953,6 +2056,8 @@
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#module-mlos_bench.environments.remote">mlos_bench.environments.remote</a>
 </li>
+        <li><a href="api/mlos_bench/mlos_bench.environments.remote.host_env.html#module-mlos_bench.environments.remote.host_env">mlos_bench.environments.remote.host_env</a>
+</li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.os_env.html#module-mlos_bench.environments.remote.os_env">mlos_bench.environments.remote.os_env</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.remote_env.html#module-mlos_bench.environments.remote.remote_env">mlos_bench.environments.remote.remote_env</a>
@@ -2013,7 +2118,13 @@
 </li>
         <li><a href="api/mlos_bench/mlos_bench.services.types.fileshare_type.html#module-mlos_bench.services.types.fileshare_type">mlos_bench.services.types.fileshare_type</a>
 </li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_ops_type.html#module-mlos_bench.services.types.host_ops_type">mlos_bench.services.types.host_ops_type</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_provisioner_type.html#module-mlos_bench.services.types.host_provisioner_type">mlos_bench.services.types.host_provisioner_type</a>
+</li>
         <li><a href="api/mlos_bench/mlos_bench.services.types.local_exec_type.html#module-mlos_bench.services.types.local_exec_type">mlos_bench.services.types.local_exec_type</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.os_ops_type.html#module-mlos_bench.services.types.os_ops_type">mlos_bench.services.types.os_ops_type</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.services.types.remote_exec_type.html#module-mlos_bench.services.types.remote_exec_type">mlos_bench.services.types.remote_exec_type</a>
 </li>
@@ -2061,7 +2172,9 @@
 </li>
         <li><a href="api/mlos_bench/mlos_bench.tests.environments.mock_env_test.html#module-mlos_bench.tests.environments.mock_env_test">mlos_bench.tests.environments.mock_env_test</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.tests.launcher_test.html#module-mlos_bench.tests.launcher_test">mlos_bench.tests.launcher_test</a>
+        <li><a href="api/mlos_bench/mlos_bench.tests.launcher_parse_args_test.html#module-mlos_bench.tests.launcher_parse_args_test">mlos_bench.tests.launcher_parse_args_test</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.tests.launcher_run_test.html#module-mlos_bench.tests.launcher_run_test">mlos_bench.tests.launcher_run_test</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.tests.optimizers.html#module-mlos_bench.tests.optimizers">mlos_bench.tests.optimizers</a>
 </li>
@@ -2102,6 +2215,8 @@
         <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.conftest.html#module-mlos_bench.tests.services.remote.azure.conftest">mlos_bench.tests.services.remote.azure.conftest</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.mock.html#module-mlos_bench.tests.services.remote.mock">mlos_bench.tests.services.remote.mock</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.mock.mock_auth_service.html#module-mlos_bench.tests.services.remote.mock.mock_auth_service">mlos_bench.tests.services.remote.mock.mock_auth_service</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.mock.mock_fileshare_service.html#module-mlos_bench.tests.services.remote.mock.mock_fileshare_service">mlos_bench.tests.services.remote.mock.mock_fileshare_service</a>
 </li>
@@ -2318,8 +2433,6 @@
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.pending_trials">(mlos_bench.storage.Storage.Experiment method)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.pending_trials">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.environments.base_environment.html#mlos_bench.environments.base_environment.Environment.pprint">pprint() (mlos_bench.environments.base_environment.Environment method)</a>
 
       <ul>
@@ -2330,6 +2443,8 @@
         <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.Environment.pprint">(mlos_bench.environments.Environment method)</a>, <a href="generated/mlos_bench.environments.Environment.html#mlos_bench.environments.Environment.pprint">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.util.html#mlos_bench.util.prepare_class_load">prepare_class_load() (in module mlos_bench.util)</a>
 
       <ul>
@@ -2340,6 +2455,16 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.azure_fileshare_test.html#mlos_bench.tests.services.remote.azure.azure_fileshare_test.process_paths">process_paths() (in module mlos_bench.tests.services.remote.azure.azure_fileshare_test)</a>
 </li>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.provision_host">provision_host() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.provision_host">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.provision_host">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_provisioner_type.html#mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning.provision_host">(mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning method)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsHostProvisioning.provision_host">(mlos_bench.services.types.SupportsHostProvisioning method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -2366,6 +2491,14 @@
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.environments.status.html#mlos_bench.environments.status.Status.READY">(mlos_bench.environments.status.Status attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.reboot">reboot() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.reboot">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.reboot">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.os_ops_type.html#mlos_bench.services.types.os_ops_type.SupportsOSOps.reboot">(mlos_bench.services.types.os_ops_type.SupportsOSOps method)</a>
 </li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.optimizers.base_optimizer.html#mlos_bench.optimizers.base_optimizer.Optimizer.register">register() (mlos_bench.optimizers.base_optimizer.Optimizer method)</a>
@@ -2448,9 +2581,23 @@
         <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsConfigLoading.resolve_path">(mlos_bench.services.types.SupportsConfigLoading method)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.tunables.covariant_group.html#mlos_bench.tunables.covariant_group.CovariantTunableGroup.restore_defaults">restore_defaults() (mlos_bench.tunables.covariant_group.CovariantTunableGroup method)</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.restart_host">restart_host() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.restart_host">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.restart_host">[1]</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.root_path">root_path() (in module mlos_bench.tests.launcher_test)</a>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_ops_type.html#mlos_bench.services.types.host_ops_type.SupportsHostOps.restart_host">(mlos_bench.services.types.host_ops_type.SupportsHostOps method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.tunables.covariant_group.html#mlos_bench.tunables.covariant_group.CovariantTunableGroup.restore_defaults">restore_defaults() (mlos_bench.tunables.covariant_group.CovariantTunableGroup method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.tunable_groups.html#mlos_bench.tunables.tunable_groups.TunableGroups.restore_defaults">(mlos_bench.tunables.tunable_groups.TunableGroups method)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.TunableGroups.restore_defaults">(mlos_bench.tunables.TunableGroups method)</a>, <a href="generated/mlos_bench.tunables.TunableGroups.html#mlos_bench.tunables.TunableGroups.restore_defaults">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_run_test.html#mlos_bench.tests.launcher_run_test.root_path">root_path() (in module mlos_bench.tests.launcher_run_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.environments.base_environment.html#mlos_bench.environments.base_environment.Environment.run">run() (mlos_bench.environments.base_environment.Environment method)</a>
 
@@ -2512,6 +2659,12 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.environments.script_env.html#mlos_bench.environments.script_env.ScriptEnv">ScriptEnv (class in mlos_bench.environments.script_env)</a>
 </li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.base_optimizer.html#mlos_bench.optimizers.base_optimizer.Optimizer.seed">seed (mlos_bench.optimizers.base_optimizer.Optimizer property)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.seed">(mlos_bench.optimizers.Optimizer property)</a>, <a href="generated/mlos_bench.optimizers.Optimizer.html#mlos_bench.optimizers.Optimizer.seed">[1]</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.services.html#mlos_bench.services.Service">Service (class in mlos_bench.services)</a>, <a href="generated/mlos_bench.services.Service.html#mlos_bench.services.Service">[1]</a>
 
       <ul>
@@ -2545,6 +2698,10 @@
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.LocalFileShareEnv.setup">(mlos_bench.environments.LocalFileShareEnv method)</a>
 </li>
+        <li><a href="api/mlos_bench/mlos_bench.environments.remote.host_env.html#mlos_bench.environments.remote.host_env.HostEnv.setup">(mlos_bench.environments.remote.host_env.HostEnv method)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.HostEnv.setup">(mlos_bench.environments.remote.HostEnv method)</a>, <a href="generated/mlos_bench.environments.remote.HostEnv.html#mlos_bench.environments.remote.HostEnv.setup">[1]</a>
+</li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.os_env.html#mlos_bench.environments.remote.os_env.OSEnv.setup">(mlos_bench.environments.remote.os_env.OSEnv method)</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.OSEnv.setup">(mlos_bench.environments.remote.OSEnv method)</a>, <a href="generated/mlos_bench.environments.remote.OSEnv.html#mlos_bench.environments.remote.OSEnv.setup">[1]</a>
@@ -2553,11 +2710,15 @@
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.RemoteEnv.setup">(mlos_bench.environments.remote.RemoteEnv method)</a>, <a href="generated/mlos_bench.environments.remote.RemoteEnv.html#mlos_bench.environments.remote.RemoteEnv.setup">[1]</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.environments.remote.vm_env.html#mlos_bench.environments.remote.vm_env.VMEnv.setup">(mlos_bench.environments.remote.vm_env.VMEnv method)</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.VMEnv.setup">(mlos_bench.environments.remote.VMEnv method)</a>, <a href="generated/mlos_bench.environments.remote.VMEnv.html#mlos_bench.environments.remote.VMEnv.setup">[1]</a>
-</li>
         <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.RemoteEnv.setup">(mlos_bench.environments.RemoteEnv method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.shutdown">shutdown() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.shutdown">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.shutdown">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.os_ops_type.html#mlos_bench.services.types.os_ops_type.SupportsOSOps.shutdown">(mlos_bench.services.types.os_ops_type.SupportsOSOps method)</a>
 </li>
       </ul></li>
       <li><a href="generated/mlos_core.optimizers.OptimizerType.html#mlos_core.optimizers.OptimizerType.SMAC">SMAC (mlos_core.optimizers.OptimizerType attribute)</a>
@@ -2594,6 +2755,20 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.storage.sql.storage.html#mlos_bench.storage.sql.storage.SqlStorage">SqlStorage (class in mlos_bench.storage.sql.storage)</a>, <a href="generated/mlos_bench.storage.sql.storage.SqlStorage.html#mlos_bench.storage.sql.storage.SqlStorage">[1]</a>
 </li>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.start_host">start_host() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.start_host">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.start_host">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_ops_type.html#mlos_bench.services.types.host_ops_type.SupportsHostOps.start_host">(mlos_bench.services.types.host_ops_type.SupportsHostOps method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.base_optimizer.html#mlos_bench.optimizers.base_optimizer.Optimizer.start_with_defaults">start_with_defaults (mlos_bench.optimizers.base_optimizer.Optimizer property)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.start_with_defaults">(mlos_bench.optimizers.Optimizer property)</a>, <a href="generated/mlos_bench.optimizers.Optimizer.html#mlos_bench.optimizers.Optimizer.start_with_defaults">[1]</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.Status">Status (class in mlos_bench.environments)</a>, <a href="generated/mlos_bench.environments.Status.html#mlos_bench.environments.Status">[1]</a>
 
       <ul>
@@ -2624,6 +2799,14 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.stop_host">stop_host() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.stop_host">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.stop_host">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_ops_type.html#mlos_bench.services.types.host_ops_type.SupportsHostOps.stop_host">(mlos_bench.services.types.host_ops_type.SupportsHostOps method)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage">Storage (class in mlos_bench.storage)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage">[1]</a>
 
       <ul>
@@ -2706,24 +2889,30 @@
         <li><a href="api/mlos_bench/mlos_bench.services.types.fileshare_type.html#mlos_bench.services.types.fileshare_type.SupportsFileShareOps">(class in mlos_bench.services.types.fileshare_type)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.host_ops_type.html#mlos_bench.services.types.host_ops_type.SupportsHostOps">SupportsHostOps (class in mlos_bench.services.types.host_ops_type)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsHostProvisioning">SupportsHostProvisioning (class in mlos_bench.services.types)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_provisioner_type.html#mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning">(class in mlos_bench.services.types.host_provisioner_type)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsLocalExec">SupportsLocalExec (class in mlos_bench.services.types)</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.services.types.local_exec_type.html#mlos_bench.services.types.local_exec_type.SupportsLocalExec">(class in mlos_bench.services.types.local_exec_type)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.os_ops_type.html#mlos_bench.services.types.os_ops_type.SupportsOSOps">SupportsOSOps (class in mlos_bench.services.types.os_ops_type)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsRemoteExec">SupportsRemoteExec (class in mlos_bench.services.types)</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.services.types.remote_exec_type.html#mlos_bench.services.types.remote_exec_type.SupportsRemoteExec">(class in mlos_bench.services.types.remote_exec_type)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps">SupportsVMOps (class in mlos_bench.services.types)</a>
-
-      <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps">(class in mlos_bench.services.types.vm_provisioner_type)</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps">SupportsVMOps (class in mlos_bench.services.types.vm_provisioner_type)</a>
 </li>
-      </ul></li>
       <li><a href="api/mlos_core/mlos_core.optimizers.bayesian_optimizers.html#mlos_core.optimizers.bayesian_optimizers.BaseBayesianOptimizer.surrogate_predict">surrogate_predict() (mlos_core.optimizers.bayesian_optimizers.BaseBayesianOptimizer method)</a>, <a href="generated/mlos_core.optimizers.bayesian_optimizers.BaseBayesianOptimizer.html#mlos_core.optimizers.bayesian_optimizers.BaseBayesianOptimizer.surrogate_predict">[1]</a>
 
       <ul>
@@ -2775,6 +2964,10 @@
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.LocalEnv.teardown">(mlos_bench.environments.LocalEnv method)</a>
 </li>
+        <li><a href="api/mlos_bench/mlos_bench.environments.remote.host_env.html#mlos_bench.environments.remote.host_env.HostEnv.teardown">(mlos_bench.environments.remote.host_env.HostEnv method)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.HostEnv.teardown">(mlos_bench.environments.remote.HostEnv method)</a>, <a href="generated/mlos_bench.environments.remote.HostEnv.html#mlos_bench.environments.remote.HostEnv.teardown">[1]</a>
+</li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.os_env.html#mlos_bench.environments.remote.os_env.OSEnv.teardown">(mlos_bench.environments.remote.os_env.OSEnv method)</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.OSEnv.teardown">(mlos_bench.environments.remote.OSEnv method)</a>, <a href="generated/mlos_bench.environments.remote.OSEnv.html#mlos_bench.environments.remote.OSEnv.teardown">[1]</a>
@@ -2782,10 +2975,6 @@
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.remote_env.html#mlos_bench.environments.remote.remote_env.RemoteEnv.teardown">(mlos_bench.environments.remote.remote_env.RemoteEnv method)</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.RemoteEnv.teardown">(mlos_bench.environments.remote.RemoteEnv method)</a>, <a href="generated/mlos_bench.environments.remote.RemoteEnv.html#mlos_bench.environments.remote.RemoteEnv.teardown">[1]</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.environments.remote.vm_env.html#mlos_bench.environments.remote.vm_env.VMEnv.teardown">(mlos_bench.environments.remote.vm_env.VMEnv method)</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.VMEnv.teardown">(mlos_bench.environments.remote.VMEnv method)</a>, <a href="generated/mlos_bench.environments.remote.VMEnv.html#mlos_bench.environments.remote.VMEnv.teardown">[1]</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.RemoteEnv.teardown">(mlos_bench.environments.RemoteEnv method)</a>
 </li>
@@ -2799,6 +2988,8 @@
 </li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.services.local.temp_dir_context.html#mlos_bench.services.local.temp_dir_context.TempDirContextService">TempDirContextService (class in mlos_bench.services.local.temp_dir_context)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.azure_services_test.html#mlos_bench.tests.services.remote.azure.azure_services_test.test_azure_vm_service_custom_data">test_azure_vm_service_custom_data() (in module mlos_bench.tests.services.remote.azure.azure_services_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_slice_references_test.html#mlos_bench.tests.tunables.tunable_slice_references_test.test_bad_extended_merge_tunable_group">test_bad_extended_merge_tunable_group() (in module mlos_bench.tests.tunables.tunable_slice_references_test)</a>
 </li>
@@ -2892,9 +3083,13 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.optimizers.mlos_core_opt_smac_test.html#mlos_bench.tests.optimizers.mlos_core_opt_smac_test.test_init_mlos_core_smac_temp_output_directory">test_init_mlos_core_smac_temp_output_directory() (in module mlos_bench.tests.optimizers.mlos_core_opt_smac_test)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.test_launch_main_app_bench">test_launch_main_app_bench() (in module mlos_bench.tests.launcher_test)</a>
+      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_run_test.html#mlos_bench.tests.launcher_run_test.test_launch_main_app_bench">test_launch_main_app_bench() (in module mlos_bench.tests.launcher_run_test)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_test.html#mlos_bench.tests.launcher_test.test_launch_main_app_opt">test_launch_main_app_opt() (in module mlos_bench.tests.launcher_test)</a>
+      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_run_test.html#mlos_bench.tests.launcher_run_test.test_launch_main_app_opt">test_launch_main_app_opt() (in module mlos_bench.tests.launcher_run_test)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_parse_args_test.html#mlos_bench.tests.launcher_parse_args_test.test_launcher_args_parse_1">test_launcher_args_parse_1() (in module mlos_bench.tests.launcher_parse_args_test)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.launcher_parse_args_test.html#mlos_bench.tests.launcher_parse_args_test.test_launcher_args_parse_2">test_launcher_args_parse_2() (in module mlos_bench.tests.launcher_parse_args_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.optimizers.llamatune_opt_test.html#mlos_bench.tests.optimizers.llamatune_opt_test.test_llamatune_optimizer">test_llamatune_optimizer() (in module mlos_bench.tests.optimizers.llamatune_opt_test)</a>
 </li>
@@ -2964,10 +3159,10 @@
 </li>
       <li><a href="api/mlos_core/mlos_core.tests.optimizers.optimizer_test.html#mlos_core.tests.optimizers.optimizer_test.test_optimizer_type_defs">test_optimizer_type_defs() (in module mlos_core.tests.optimizers.optimizer_test)</a>
 </li>
-      <li><a href="api/mlos_core/mlos_core.tests.optimizers.optimizer_test.html#mlos_core.tests.optimizers.optimizer_test.test_optimizer_with_llamatune">test_optimizer_with_llamatune() (in module mlos_core.tests.optimizers.optimizer_test)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos_core/mlos_core.tests.optimizers.optimizer_test.html#mlos_core.tests.optimizers.optimizer_test.test_optimizer_with_llamatune">test_optimizer_with_llamatune() (in module mlos_core.tests.optimizers.optimizer_test)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_slice_references_test.html#mlos_bench.tests.tunables.tunable_slice_references_test.test_overlapping_group_merge_tunable_groups">test_overlapping_group_merge_tunable_groups() (in module mlos_bench.tests.tunables.tunable_slice_references_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.azure_services_test.html#mlos_bench.tests.services.remote.azure.azure_services_test.test_remote_exec_headers_output">test_remote_exec_headers_output() (in module mlos_bench.tests.services.remote.azure.azure_services_test)</a>
@@ -3171,6 +3366,10 @@
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.Environment.tunable_params">(mlos_bench.environments.Environment property)</a>, <a href="generated/mlos_bench.environments.Environment.html#mlos_bench.environments.Environment.tunable_params">[1]</a>
 </li>
+        <li><a href="api/mlos_bench/mlos_bench.optimizers.base_optimizer.html#mlos_bench.optimizers.base_optimizer.Optimizer.tunable_params">(mlos_bench.optimizers.base_optimizer.Optimizer property)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.tunable_params">(mlos_bench.optimizers.Optimizer property)</a>, <a href="generated/mlos_bench.optimizers.Optimizer.html#mlos_bench.optimizers.Optimizer.tunable_params">[1]</a>
+</li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.config.schemas.config_schemas.html#mlos_bench.config.schemas.config_schemas.ConfigSchema.TUNABLE_VALUES">TUNABLE_VALUES (mlos_bench.config.schemas.config_schemas.ConfigSchema attribute)</a>
 
@@ -3274,58 +3473,18 @@
         <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.Tunable.value">(mlos_bench.tunables.tunable.Tunable property)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.vm_deprovision">vm_deprovision() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
-
-      <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.vm_deprovision">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.vm_deprovision">[1]</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_deprovision">vm_deprovision() (mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps.vm_deprovision">(mlos_bench.services.types.SupportsVMOps method)</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_deprovision">(mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.vm_provision">vm_provision() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
-
-      <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.vm_provision">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.vm_provision">[1]</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps.vm_provision">(mlos_bench.services.types.SupportsVMOps method)</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_provision">(mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.vm_restart">vm_restart() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
-
-      <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.vm_restart">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.vm_restart">[1]</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps.vm_restart">(mlos_bench.services.types.SupportsVMOps method)</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_restart">(mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.vm_start">vm_start() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
-
-      <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.vm_start">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.vm_start">[1]</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_provision">vm_provision() (mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps.vm_start">(mlos_bench.services.types.SupportsVMOps method)</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_restart">vm_restart() (mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_start">(mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_start">vm_start() (mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
 </li>
-      </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.vm_stop">vm_stop() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
-
-      <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.vm_stop">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.vm_stop">[1]</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_stop">vm_stop() (mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps.vm_stop">(mlos_bench.services.types.SupportsVMOps method)</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.vm_stop">(mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
-</li>
-      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.environments.remote.html#mlos_bench.environments.remote.VMEnv">VMEnv (class in mlos_bench.environments.remote)</a>, <a href="generated/mlos_bench.environments.remote.VMEnv.html#mlos_bench.environments.remote.VMEnv">[1]</a>
 
       <ul>
@@ -3338,28 +3497,38 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.wait_vm_deployment">wait_vm_deployment() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.wait_host_deployment">wait_host_deployment() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
 
       <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.wait_vm_deployment">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.wait_vm_deployment">[1]</a>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.wait_host_deployment">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.wait_host_deployment">[1]</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps.wait_vm_deployment">(mlos_bench.services.types.SupportsVMOps method)</a>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_provisioner_type.html#mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning.wait_host_deployment">(mlos_bench.services.types.host_provisioner_type.SupportsHostProvisioning method)</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.wait_vm_deployment">(mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsHostProvisioning.wait_host_deployment">(mlos_bench.services.types.SupportsHostProvisioning method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.wait_host_operation">wait_host_operation() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.wait_host_operation">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.wait_host_operation">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.host_ops_type.html#mlos_bench.services.types.host_ops_type.SupportsHostOps.wait_host_operation">(mlos_bench.services.types.host_ops_type.SupportsHostOps method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.wait_vm_operation">wait_vm_operation() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
+      <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.azure_services.html#mlos_bench.services.remote.azure.azure_services.AzureVMService.wait_os_operation">wait_os_operation() (mlos_bench.services.remote.azure.azure_services.AzureVMService method)</a>
 
       <ul>
-        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.wait_vm_operation">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.wait_vm_operation">[1]</a>
+        <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureVMService.wait_os_operation">(mlos_bench.services.remote.azure.AzureVMService method)</a>, <a href="generated/mlos_bench.services.remote.azure.AzureVMService.html#mlos_bench.services.remote.azure.AzureVMService.wait_os_operation">[1]</a>
 </li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.html#mlos_bench.services.types.SupportsVMOps.wait_vm_operation">(mlos_bench.services.types.SupportsVMOps method)</a>
-</li>
-        <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.wait_vm_operation">(mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
+        <li><a href="api/mlos_bench/mlos_bench.services.types.os_ops_type.html#mlos_bench.services.types.os_ops_type.SupportsOSOps.wait_os_operation">(mlos_bench.services.types.os_ops_type.SupportsOSOps method)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.wait_vm_deployment">wait_vm_deployment() (mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.services.types.vm_provisioner_type.html#mlos_bench.services.types.vm_provisioner_type.SupportsVMOps.wait_vm_operation">wait_vm_operation() (mlos_bench.services.types.vm_provisioner_type.SupportsVMOps method)</a>
+</li>
   </ul></td>
 </tr></table>
 
