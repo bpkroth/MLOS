@@ -136,7 +136,7 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
     def load_config(self,
                     json_file_name: str,
                     schema_type: Optional[ConfigSchema],
-                    ) -> Dict[str, Any]:
+                    including_file_path: Optional[str] = None) -> Dict[str, Any]:
         """
         Load JSON config file. Search for a file relative to `_config_path`
         if the input path is not absolute.
@@ -148,13 +148,25 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             Path to the input config file.
         schema_type : Optional[ConfigSchema]
             The schema type to validate the config against.
+        including_file_path : Optional[str]
+            Source path of the including file (optional).
+            Useful for resolving relative paths.
 
         Returns
         -------
         config : Union[dict, List[dict]]
             Free-format dictionary that contains the configuration.
         """
-        json_file_name = self.resolve_path(json_file_name)
+        extra_paths = []
+        if including_file_path is not None:
+            assert os.path.isabs(including_file_path)
+            if os.path.isfile(including_file_path):
+                extra_paths.append(os.path.dirname(including_file_path))
+            elif os.path.isdir(including_file_path):
+                extra_paths.append(including_file_path)
+            else:
+                raise ValueError(f"Invalid including_file_path: {including_file_path}")
+        json_file_name = self.resolve_path(json_file_name, extra_paths)
         _LOG.info("Load config: %s", json_file_name)
         with open(json_file_name, mode='r', encoding='utf-8') as fh_json:
             config = json5.load(fh_json)
@@ -233,7 +245,8 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
                       tunables: TunableGroups,
                       service: Service,
                       config: Dict[str, Any],
-                      global_config: Optional[Dict[str, Any]] = None) -> BaseTypeVar:
+                      global_config: Optional[Dict[str, Any]] = None,
+                      source_config_file: Optional[str] = None) -> BaseTypeVar:
         """
         Generic instantiation of mlos_bench objects like Storage and Optimizer
         that depend on Service and TunableGroups.
@@ -254,6 +267,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             Configuration of the class to instantiate, as loaded from JSON.
         global_config : dict
             Global configuration parameters (optional).
+        source_config_file: Optional[str]
+            Source path of the file for this config.
+            Used to help resolve relative paths.
 
         Returns
         -------
@@ -262,7 +278,7 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         """
         tunables_path = config.get("include_tunables")
         if tunables_path is not None:
-            tunables = self._load_tunables(tunables_path, tunables)
+            tunables = self._load_tunables(tunables_path, tunables, including_file_path=source_config_file)
         (class_name, class_config) = self.prepare_class_load(config, global_config)
         inst = instantiate_from_config(base_cls, class_name,
                                        tunables=tunables,
@@ -277,7 +293,8 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
                           tunables: TunableGroups,
                           global_config: Optional[Dict[str, Any]] = None,
                           parent_args: Optional[Dict[str, TunableValue]] = None,
-                          service: Optional[Service] = None) -> Environment:
+                          service: Optional[Service] = None,
+                          source_config_file: Optional[str] = None) -> Environment:
         """
         Factory method for a new environment with a given config.
 
@@ -299,6 +316,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         service: Service
             An optional service object (e.g., providing methods to
             deploy or reboot a VM, etc.).
+        source_config_file: Optional[str]
+            Source path of the file for this config.
+            Used to help resolve relative paths.
 
         Returns
         -------
@@ -310,11 +330,11 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
 
         env_services_path = config.get("include_services")
         if env_services_path is not None:
-            service = self.load_services(env_services_path, global_config, service)
+            service = self.load_services(env_services_path, global_config, service, including_file_path=source_config_file)
 
         env_tunables_path = config.get("include_tunables")
         if env_tunables_path is not None:
-            tunables = self._load_tunables(env_tunables_path, tunables)
+            tunables = self._load_tunables(env_tunables_path, tunables, including_file_path=source_config_file)
 
         _LOG.debug("Creating env: %s :: %s", env_name, env_class)
         env = Environment.new(env_name=env_name, class_name=env_class,
@@ -433,7 +453,8 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
                          tunables: TunableGroups,
                          global_config: Optional[Dict[str, Any]] = None,
                          parent_args: Optional[Dict[str, TunableValue]] = None,
-                         service: Optional[Service] = None) -> Environment:
+                         service: Optional[Service] = None,
+                         including_file_path: Optional[str] = None) -> Environment:
         """
         Load and build new environment from the config file.
 
@@ -450,22 +471,25 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             expand dynamic config parameters from.
         service : Service
             An optional reference of the parent service to mix in.
+        including_file_path : Optional[str]
+            Source path of the including file (optional).
 
         Returns
         -------
         env : Environment
             A new benchmarking environment.
         """
-        config = self.load_config(json_file_name, ConfigSchema.ENVIRONMENT)
+        config = self.load_config(json_file_name, ConfigSchema.ENVIRONMENT, including_file_path)
         assert isinstance(config, dict)
-        return self.build_environment(config, tunables, global_config, parent_args, service)
+        return self.build_environment(config, tunables, global_config, parent_args, service, json_file_name)
 
     def load_environment_list(self,     # pylint: disable=too-many-arguments
                               json_file_name: str,
                               tunables: TunableGroups,
                               global_config: Optional[Dict[str, Any]] = None,
                               parent_args: Optional[Dict[str, TunableValue]] = None,
-                              service: Optional[Service] = None) -> List[Environment]:
+                              service: Optional[Service] = None,
+                              including_file_path: Optional[str] = None) -> List[Environment]:
         """
         Load and build a list of environments from the config file.
 
@@ -483,20 +507,23 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         parent_args : Dict[str, TunableValue]
             An optional reference of the parent CompositeEnv's const_args used to
             expand dynamic config parameters from.
+        including_file_path : Optional[str]
+            Source path of the including file (optional).
 
         Returns
         -------
         env : List[Environment]
             A list of new benchmarking environments.
         """
-        config = self.load_config(json_file_name, ConfigSchema.ENVIRONMENT)
+        config = self.load_config(json_file_name, ConfigSchema.ENVIRONMENT, including_file_path)
         return [
-            self.build_environment(config, tunables, global_config, parent_args, service)
+            self.build_environment(config, tunables, global_config, parent_args, service, json_file_name)
         ]
 
     def load_services(self, json_file_names: Iterable[str],
                       global_config: Optional[Dict[str, Any]] = None,
-                      parent: Optional[Service] = None) -> Service:
+                      parent: Optional[Service] = None,
+                      including_file_path: Optional[str] = None) -> Service:
         """
         Read the configuration files and bundle all service methods
         from those configs into a single Service object.
@@ -509,6 +536,8 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             Global parameters to add to the service config.
         parent : Service
             An optional reference of the parent service to mix in.
+        including_file_path : Optional[str]
+            Source path of the including file (optional).
 
         Returns
         -------
@@ -519,12 +548,13 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
                   json_file_names, parent.__class__.__name__)
         service = Service({}, global_config, parent)
         for fname in json_file_names:
-            config = self.load_config(fname, ConfigSchema.SERVICE)
+            config = self.load_config(fname, ConfigSchema.SERVICE, including_file_path)
             service.register(self.build_service(config, global_config, service).export())
         return service
 
     def _load_tunables(self, json_file_names: Iterable[str],
-                       parent: TunableGroups) -> TunableGroups:
+                       parent: TunableGroups,
+                       including_file_path: Optional[str] = None) -> TunableGroups:
         """
         Load a collection of tunable parameters from JSON files into the parent
         TunableGroup.
@@ -539,6 +569,8 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             A list of JSON files to load.
         parent : TunableGroups
             A (possibly empty) collection of tunables to add to the new collection.
+        including_file_path : Optional[str]
+            Source path of the including file (optional).
 
         Returns
         -------
@@ -548,7 +580,7 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         _LOG.info("Load tunables: '%s'", json_file_names)
         tunables = parent.copy()
         for fname in json_file_names:
-            config = self.load_config(fname, ConfigSchema.TUNABLE_PARAMS)
+            config = self.load_config(fname, ConfigSchema.TUNABLE_PARAMS, including_file_path)
             assert isinstance(config, dict)
             tunables.merge(TunableGroups(config))
         return tunables

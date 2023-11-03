@@ -54,10 +54,12 @@ class Launcher:
         (args, args_rest) = self._parse_args(parser, argv)
 
         # Bootstrap config loader: command line takes priority.
+        self._config_file_path: Optional[str] = args.config
         config_path = args.config_path or []
         self._config_loader = ConfigPersistenceService({"config_path": config_path})
-        if args.config:
-            config = self._config_loader.load_config(args.config, ConfigSchema.CLI)
+        if self._config_file_path:
+            self._config_file_path = self._config_loader.resolve_path(self._config_file_path)
+            config = self._config_loader.load_config(self._config_file_path, ConfigSchema.CLI)
             assert isinstance(config, Dict)
             # Merge the args paths for the config loader with the paths from JSON file.
             config_path += config.get("config_path", [])
@@ -82,7 +84,7 @@ class Launcher:
 
         self._parent_service = LocalExecService(parent=self._config_loader)
 
-        self.global_config = self._load_config(
+        self.global_config = self._load_globals_config(
             config.get("globals", []) + (args.globals or []),
             (args.config_path or []) + config.get("config_path", []),
             args_rest,
@@ -102,7 +104,8 @@ class Launcher:
         self.root_env_config = self._config_loader.resolve_path(env_path)
 
         self.environment: Environment = self._config_loader.load_environment(
-            self.root_env_config, TunableGroups(), self.global_config, service=self._parent_service)
+            self.root_env_config, TunableGroups(), self.global_config, service=self._parent_service,
+            including_file_path=self._config_file_path if config.get("environment") else None)
         _LOG.info("Init environment: %s", self.environment)
 
         # NOTE: Init tunable values *after* the Environment, but *before* the Optimizer
@@ -233,17 +236,18 @@ class Launcher:
         _LOG.debug("Parsed config: %s", config)
         return config
 
-    def _load_config(self,
-                     args_globals: Iterable[str],
-                     config_path: Iterable[str],
-                     args_rest: Iterable[str],
-                     global_config: Dict[str, Any]) -> Dict[str, Any]:
+    def _load_globals_config(self,
+                             args_globals: Iterable[str],
+                             config_path: Iterable[str],
+                             args_rest: Iterable[str],
+                             global_config: Dict[str, Any]) -> Dict[str, Any]:
         """
         Get key/value pairs of the global configuration parameters
         from the specified config files (if any) and command line arguments.
         """
         for config_file in (args_globals or []):
-            conf = self._config_loader.load_config(config_file, ConfigSchema.GLOBALS)
+            conf = self._config_loader.load_config(config_file, ConfigSchema.GLOBALS,
+                                                   including_file_path=self._config_file_path)
             assert isinstance(conf, dict)
             global_config.update(conf)
         global_config.update(Launcher._try_parse_extra_args(args_rest))
@@ -292,7 +296,8 @@ class Launcher:
 
         if args_tunables is not None:
             for data_file in args_tunables:
-                values = self._config_loader.load_config(data_file, ConfigSchema.TUNABLE_VALUES)
+                values = self._config_loader.load_config(data_file, ConfigSchema.TUNABLE_VALUES,
+                                                         including_file_path=self._config_file_path)
                 assert isinstance(values, Dict)
                 tunables.assign(values)
                 _LOG.debug("Init tunables: load %s = %s", data_file, tunables)
@@ -340,6 +345,7 @@ class Launcher:
         Use "# type: ignore[type-abstract]" to suppress the warning.
         See Also: https://github.com/python/mypy/issues/4717
         """
+        json_file_name = self._config_loader.resolve_path(json_file_name)
         class_config = self._config_loader.load_config(json_file_name, schema_type)
         assert isinstance(class_config, Dict)
         ret = self._config_loader.build_generic(
@@ -347,7 +353,8 @@ class Launcher:
             tunables=self.tunables,
             service=self._parent_service,
             config=class_config,
-            global_config=self.global_config
+            global_config=self.global_config,
+            source_config_file=json_file_name,
         )
         assert isinstance(ret, cls)
         return ret
