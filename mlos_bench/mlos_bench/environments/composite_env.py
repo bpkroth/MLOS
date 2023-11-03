@@ -31,6 +31,7 @@ class CompositeEnv(Environment):
                  *,
                  name: str,
                  config: dict,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[dict] = None,
                  tunables: Optional[TunableGroups] = None,
                  service: Optional[Service] = None):
@@ -44,6 +45,9 @@ class CompositeEnv(Environment):
         config : dict
             Free-format dictionary that contains the environment
             configuration. Must have a "children" section.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Useful to resolve relative paths.
         global_config : dict
             Free-format dictionary of global parameters (e.g., security credentials)
             to be mixed in into the "const_args" section of the local config.
@@ -55,6 +59,7 @@ class CompositeEnv(Environment):
         """
         super().__init__(name=name, config=config, global_config=global_config,
                          tunables=tunables, service=service)
+        self._config_file_path = config_file_path
 
         # By default, the Environment includes only the tunables explicitly specified
         # in the "tunable_params" section of the config. `CompositeEnv`, however, must

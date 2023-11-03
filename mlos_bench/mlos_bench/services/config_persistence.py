@@ -288,13 +288,13 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         _LOG.info("Created: %s %s", base_cls.__name__, inst)
         return inst
 
-    def build_environment(self,     # pylint: disable=too-many-arguments
+    def build_environment(self, *,
                           config: Dict[str, Any],
+                          config_file_path: Optional[str] = None,
                           tunables: TunableGroups,
                           global_config: Optional[Dict[str, Any]] = None,
                           parent_args: Optional[Dict[str, TunableValue]] = None,
-                          service: Optional[Service] = None,
-                          source_config_file: Optional[str] = None) -> Environment:
+                          service: Optional[Service] = None) -> Environment:
         """
         Factory method for a new environment with a given config.
 
@@ -305,6 +305,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
                 "name": Human-readable string describing the environment;
                 "class": FQN of a Python class to instantiate;
                 "config": Free-format dictionary to pass to the constructor.
+        config_file_path: Optional[str]
+            Source path of the file for this config.
+            Used to help resolve relative paths.
         tunables : TunableGroups
             A (possibly empty) collection of groups of tunable parameters for
             all environments.
@@ -316,9 +319,6 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         service: Service
             An optional service object (e.g., providing methods to
             deploy or reboot a VM, etc.).
-        source_config_file: Optional[str]
-            Source path of the file for this config.
-            Used to help resolve relative paths.
 
         Returns
         -------
@@ -330,15 +330,16 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
 
         env_services_path = config.get("include_services")
         if env_services_path is not None:
-            service = self.load_services(env_services_path, global_config, service, including_file_path=source_config_file)
+            service = self.load_services(env_services_path, global_config, service, including_file_path=config_file_path)
 
         env_tunables_path = config.get("include_tunables")
         if env_tunables_path is not None:
-            tunables = self._load_tunables(env_tunables_path, tunables, including_file_path=source_config_file)
+            tunables = self._load_tunables(env_tunables_path, tunables, including_file_path=config_file_path)
 
         _LOG.debug("Creating env: %s :: %s", env_name, env_class)
         env = Environment.new(env_name=env_name, class_name=env_class,
-                              config=env_config, global_config=global_config,
+                              config=env_config, config_file_path=config_file_path,
+                              global_config=global_config,
                               tunables=tunables, service=service)
 
         _LOG.info("Created env: %s :: %s", env_name, env)

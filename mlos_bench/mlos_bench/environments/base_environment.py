@@ -40,6 +40,7 @@ class Environment(metaclass=abc.ABCMeta):
             env_name: str,
             class_name: str,
             config: dict,
+            config_file_path: Optional[str] = None,
             global_config: Optional[dict] = None,
             tunables: Optional[TunableGroups] = None,
             service: Optional[Service] = None,
@@ -59,6 +60,8 @@ class Environment(metaclass=abc.ABCMeta):
             Free-format dictionary that contains the benchmark environment
             configuration. It will be passed as a constructor parameter of
             the class specified by `name`.
+        config_file_path : str
+            Path to the config file used to create the config.
         global_config : dict
             Free-format dictionary of global parameters (e.g., security credentials)
             to be mixed in into the "const_args" section of the local config.
@@ -79,15 +82,17 @@ class Environment(metaclass=abc.ABCMeta):
             class_name,
             name=env_name,
             config=config,
+            config_file_path=config_file_path,
             global_config=global_config,
             tunables=tunables,
-            service=service
+            service=service,
         )
 
     def __init__(self,
                  *,
                  name: str,
                  config: dict,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[dict] = None,
                  tunables: Optional[TunableGroups] = None,
                  service: Optional[Service] = None):
@@ -102,6 +107,8 @@ class Environment(metaclass=abc.ABCMeta):
             Free-format dictionary that contains the benchmark environment
             configuration. Each config must have at least the "tunable_params"
             and the "const_args" sections.
+        config_file_path : str
+            Path to the source file that contains the config.
         global_config : dict
             Free-format dictionary of global parameters (e.g., security credentials)
             to be mixed in into the "const_args" section of the local config.
@@ -114,6 +121,7 @@ class Environment(metaclass=abc.ABCMeta):
         self._validate_json_config(config, name)
         self.name = name
         self.config = config
+        self._config_file_path = config_file_path
         self._service = service
         self._service_context: Optional[Service] = None
         self._is_ready = False

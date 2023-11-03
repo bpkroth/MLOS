@@ -59,6 +59,7 @@ class Launcher:
         self._config_loader = ConfigPersistenceService({"config_path": config_path})
         if self._config_file_path:
             self._config_file_path = self._config_loader.resolve_path(self._config_file_path)
+            self._config_file_dir = os.path.dirname(self._config_file_path)
             config = self._config_loader.load_config(self._config_file_path, ConfigSchema.CLI)
             assert isinstance(config, Dict)
             # Merge the args paths for the config loader with the paths from JSON file.
@@ -345,7 +346,7 @@ class Launcher:
         Use "# type: ignore[type-abstract]" to suppress the warning.
         See Also: https://github.com/python/mypy/issues/4717
         """
-        json_file_name = self._config_loader.resolve_path(json_file_name)
+        json_file_name = self._config_loader.resolve_path(json_file_name, extra_paths=[self._config_file_dir])
         class_config = self._config_loader.load_config(json_file_name, schema_type)
         assert isinstance(class_config, Dict)
         ret = self._config_loader.build_generic(
