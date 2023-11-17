@@ -207,7 +207,7 @@ class AzureVMService(Service, SupportsHostProvisioning, SupportsHostOps, Support
         """
         assert self._parent is not None and isinstance(self._parent, SupportsAuth), \
             "Authorization service not provided. Include service-auth.jsonc?"
-        return {"Authorization": "Bearer " + self._parent.get_access_token()}
+        return self._parent.get_auth_headers()
 
     @staticmethod
     def _extract_arm_parameters(json_data: dict) -> dict:
@@ -460,7 +460,7 @@ class AzureVMService(Service, SupportsHostProvisioning, SupportsHostOps, Support
             elif state in {"Accepted", "Creating", "Deleting", "Running", "Updating"}:
                 return (Status.PENDING, {})
             else:
-                _LOG.error("Response: %s :: %s", response, json.dumps(output, index=2))
+                _LOG.error("Response: %s :: %s", response, json.dumps(output, indent=2))
                 return (Status.FAILED, {})
         elif response.status_code == 404:
             return (Status.PENDING, {})
