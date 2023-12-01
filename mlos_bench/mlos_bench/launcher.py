@@ -12,13 +12,12 @@ command line.
 
 import argparse
 import logging
-import os
 import sys
 
-from string import Template
 from typing import Any, Dict, Iterable, List, Optional, Tuple, Type
 
 from mlos_bench.config.schemas import ConfigSchema
+from mlos_bench.dict_templater import DictTemplater
 from mlos_bench.util import BaseTypeVar, try_parse_val
 
 from mlos_bench.tunables.tunable import TunableValue
@@ -31,8 +30,11 @@ from mlos_bench.optimizers.one_shot_optimizer import OneShotOptimizer
 
 from mlos_bench.storage.base_storage import Storage
 
+from mlos_bench.services.base_service import Service
 from mlos_bench.services.local.local_exec import LocalExecService
 from mlos_bench.services.config_persistence import ConfigPersistenceService
+
+from mlos_bench.services.types.config_loader_type import SupportsConfigLoading
 
 
 _LOG_LEVEL = logging.INFO
@@ -50,7 +52,15 @@ class Launcher:
 
     def __init__(self, description: str, long_text: str = "", argv: Optional[List[str]] = None):
         _LOG.info("Launch: %s", description)
-        parser = argparse.ArgumentParser(description=f"{description} : {long_text}")
+        epilog = """
+            Additional --key=value pairs can be specified to augment or override values listed in --globals.
+            Other required_args values can also be pulled from shell environment variables.
+
+            For additional details, please see the website or the README.md files in the source tree:
+            <https://github.com/microsoft/MLOS/tree/main/mlos_bench/>
+            """
+        parser = argparse.ArgumentParser(description=f"{description} : {long_text}",
+                                         epilog=epilog)
         (args, args_rest) = self._parse_args(parser, argv)
 
         # Bootstrap config loader: command line takes priority.
@@ -83,7 +93,7 @@ class Launcher:
             log_handler.setFormatter(logging.Formatter(_LOG_FORMAT))
             logging.root.addHandler(log_handler)
 
-        self._parent_service = LocalExecService(parent=self._config_loader)
+        self._parent_service: Service = LocalExecService(parent=self._config_loader)
 
         self.global_config = self._load_globals_config(
             config.get("globals", []) + (args.globals or []),
@@ -91,11 +101,20 @@ class Launcher:
             args_rest,
             {key: val for (key, val) in config.items() if key not in vars(args)},
         )
-        self.global_config = self._expand_vars(self.global_config)
+        # experiment_id is generally taken from --globals files, but we also allow overriding it on the CLI.
+        # It's useful to keep it there explicitly mostly for the --help output.
+        if args.experiment_id:
+            self.global_config['experiment_id'] = args.experiment_id
+        self.global_config = DictTemplater(self.global_config).expand_vars(use_os_env=True)
         assert isinstance(self.global_config, dict)
         # Ensure that the trial_id is present since it gets used by some other
         # configs but is typically controlled by the run optimize loop.
         self.global_config.setdefault('trial_id', 1)
+
+        # --service cli args should override the config file values.
+        service_files: List[str] = config.get("services", []) + (args.service or [])
+        assert isinstance(self._parent_service, SupportsConfigLoading)
+        self._parent_service = self._parent_service.load_services(service_files, self.global_config, self._parent_service)
 
         env_path = args.environment or config.get("environment")
         if not env_path:
@@ -132,6 +151,13 @@ class Launcher:
         """
         return self._config_loader
 
+    @property
+    def service(self) -> Service:
+        """
+        Get the parent service.
+        """
+        return self._parent_service
+
     @staticmethod
     def _parse_args(parser: argparse.ArgumentParser, argv: Optional[List[str]]) -> Tuple[argparse.Namespace, List[str]]:
         """
@@ -160,8 +186,13 @@ class Launcher:
             help='One or more locations of JSON config files.')
 
         parser.add_argument(
+            '--service', '--services',
+            nargs='+', action='extend', required=False,
+            help='Path to JSON file with the configuration of the service(s) for environment(s) to use.')
+
+        parser.add_argument(
             '--environment', required=False,
-            help='Path to JSON file with the configuration of the benchmarking environment.')
+            help='Path to JSON file with the configuration of the benchmarking environment(s).')
 
         parser.add_argument(
             '--optimizer', required=False,
@@ -197,6 +228,20 @@ class Launcher:
             '--no_teardown', '--no-teardown', required=False, default=None,
             dest='teardown', action='store_false',
             help='Disable teardown of the environment after the benchmark.')
+
+        parser.add_argument(
+            '--experiment_id', '--experiment-id', required=False, default=None,
+            help="""
+                Experiment ID to use for the benchmark.
+                If omitted, the value from the --cli config or --globals is used.
+
+                This is used to store and reload trial results from the storage.
+                NOTE: It is **important** to change this value when incompatible
+                changes are made to config files, scripts, versions, etc.
+                This is left as a manual operation as detection of what is
+                "incompatible" is not easily automatable across systems.
+                """
+        )
 
         # By default we use the command line arguments, but allow the caller to
         # provide some explicitly for testing purposes.
@@ -255,30 +300,6 @@ class Launcher:
         if config_path:
             global_config["config_path"] = config_path
         return global_config
-
-    def _expand_vars(self, value: Any) -> Any:
-        """
-        Expand dollar variables in the globals.
-
-        NOTE: `self.global_config` must be set.
-        """
-        if isinstance(value, str):
-            # use values either from the environment or from the global config
-            # Note: python 3.8 doesn't support the | operator, so we create a
-            # new set of params explicitly.
-            # Since this operates by updating the global_config along the way,
-            # we need to continually update the set of params to use for substitution.
-            params = self.global_config.copy()
-            params.update(dict(os.environ))
-            return Template(value).safe_substitute(params)
-        if isinstance(value, dict):
-            # Note: we use a loop instead of dict comprehension in order to
-            # allow secondary expansion of subsequent values immediately.
-            for (key, val) in value.items():
-                value[key] = self._expand_vars(val)
-        if isinstance(value, list):
-            return [self._expand_vars(val) for val in value]
-        return value
 
     def _init_tunable_values(self, random_init: bool, seed: Optional[int],
                              args_tunables: Optional[str]) -> TunableGroups:
