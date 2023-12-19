@@ -184,7 +184,7 @@ class LocalEnv(ScriptEnv):
 
         data = self._normalize_columns(pandas.read_csv(
             self._config_loader_service.resolve_path(
-                self._read_results_file, extra_paths=[self._temp_dir]),
+                self._read_results_file, extra_paths_prepend=[self._temp_dir]),
             index_col=False,
         ))
 
@@ -224,7 +224,7 @@ class LocalEnv(ScriptEnv):
         assert self._temp_dir is not None
         try:
             fname = self._config_loader_service.resolve_path(
-                self._read_telemetry_file, extra_paths=[self._temp_dir])
+                self._read_telemetry_file, extra_paths_prepend=[self._temp_dir])
 
             # FIXME: We should not be assuming that the only output file type is a CSV.
             data = self._normalize_columns(

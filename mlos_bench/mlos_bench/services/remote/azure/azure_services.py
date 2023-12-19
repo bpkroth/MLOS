@@ -49,7 +49,9 @@ class AzureService(Service, metaclass=abc.ABCMeta):
     )
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
@@ -61,6 +63,9 @@ class AzureService(Service, metaclass=abc.ABCMeta):
         config : dict
             Free-format dictionary that contains the benchmark environment
             configuration.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -68,7 +73,11 @@ class AzureService(Service, metaclass=abc.ABCMeta):
         methods : Union[Dict[str, Callable], List[Callable], None]
             New methods to register with the service.
         """
-        super().__init__(config, global_config, parent, methods)
+        super().__init__(
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=methods,
+        )
 
         check_required_params(self.config, [
             "subscription",

@@ -29,18 +29,20 @@ class MockServiceBase(Service, SupportsSomeMethod):
 
     def __init__(
             self,
+            *,
             config: Optional[dict] = None,
+            config_file_path: Optional[str] = None,
             global_config: Optional[dict] = None,
             parent: Optional[Service] = None,
             methods: Optional[Union[Dict[str, Callable], List[Callable]]] = None) -> None:
         super().__init__(
-            config,
-            global_config,
-            parent,
-            self.merge_methods(methods, [
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [
                 self.some_method,
                 self.some_other_method,
-            ]))
+            ]),
+        )
 
     def some_method(self) -> str:
         """some_method"""

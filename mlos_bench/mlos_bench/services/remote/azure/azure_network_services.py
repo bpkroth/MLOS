@@ -39,7 +39,9 @@ class AzureNetworkService(AzureService, SupportsNetworkProvisioning):
     )
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
@@ -51,6 +53,9 @@ class AzureNetworkService(AzureService, SupportsNetworkProvisioning):
         config : dict
             Free-format dictionary that contains the benchmark environment
             configuration.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -59,13 +64,14 @@ class AzureNetworkService(AzureService, SupportsNetworkProvisioning):
             New methods to register with the service.
         """
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [
                 # SupportsNetworkProvisioning
                 self.provision_network,
                 self.deprovision_network,
                 self.wait_network_deployment,
-            ])
+            ]),
         )
 
     def _set_default_params(self, params: dict) -> dict:    # pylint: disable=no-self-use

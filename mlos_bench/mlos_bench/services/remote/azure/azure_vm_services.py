@@ -108,7 +108,9 @@ class AzureVMService(AzureService, SupportsHostProvisioning, SupportsHostOps, Su
     )
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
@@ -120,6 +122,9 @@ class AzureVMService(AzureService, SupportsHostProvisioning, SupportsHostOps, Su
         config : dict
             Free-format dictionary that contains the benchmark environment
             configuration.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -128,8 +133,9 @@ class AzureVMService(AzureService, SupportsHostProvisioning, SupportsHostOps, Su
             New methods to register with the service.
         """
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [
                 # SupportsHostProvisioning
                 self.provision_host,
                 self.deprovision_host,
@@ -147,7 +153,7 @@ class AzureVMService(AzureService, SupportsHostProvisioning, SupportsHostOps, Su
                 # SupportsRemoteExec
                 self.remote_exec,
                 self.get_remote_exec_results,
-            ])
+            ]),
         )
 
         # As a convenience, allow reading customData out of a file, rather than

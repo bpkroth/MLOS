@@ -29,7 +29,9 @@ class TempDirContextService(Service, metaclass=abc.ABCMeta):
     """
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
@@ -42,6 +44,9 @@ class TempDirContextService(Service, metaclass=abc.ABCMeta):
         config : dict
             Free-format dictionary that contains parameters for the service.
             (E.g., root path for config files, etc.)
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -50,15 +55,16 @@ class TempDirContextService(Service, metaclass=abc.ABCMeta):
             New methods to register with the service.
         """
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [self.temp_dir_context])
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [self.temp_dir_context]),
         )
         self._temp_dir = self.config.get("temp_dir")
         if self._temp_dir:
             # expand globals
             self._temp_dir = Template(self._temp_dir).safe_substitute(global_config or {})
             # and resolve the path to absolute path
-            self._temp_dir = self._config_loader_service.resolve_path(self._temp_dir)
+            self._temp_dir = self.config_loader_service.resolve_path(self._temp_dir)
         _LOG.info("%s: temp dir: %s", self, self._temp_dir)
 
     def temp_dir_context(self, path: Optional[str] = None) -> Union[TemporaryDirectory, nullcontext]:

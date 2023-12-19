@@ -26,13 +26,17 @@ class MockLocalExecService(TempDirContextService, SupportsLocalExec):
     Mock methods for LocalExecService testing.
     """
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None,
+    def __init__(self,
+                 *,
+                 config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [self.local_exec])
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [self.local_exec]),
         )
 
     def local_exec(self, script_lines: Iterable[str],

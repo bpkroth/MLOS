@@ -210,11 +210,17 @@ class SshService(Service, metaclass=ABCMeta):
     _REQUEST_TIMEOUT: Optional[float] = None  # seconds
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
-        super().__init__(config, global_config, parent, methods)
+        super().__init__(
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=methods,
+        )
 
         # Make sure that the value we allow overriding on a per-connection
         # basis are present in the config so merge_parameters can do its thing.

@@ -29,7 +29,9 @@ class AzureAuthService(Service, SupportsAuth):
     _REQ_INTERVAL = 300   # = 5 min
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
@@ -41,6 +43,9 @@ class AzureAuthService(Service, SupportsAuth):
         config : dict
             Free-format dictionary that contains the benchmark environment
             configuration.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -49,11 +54,12 @@ class AzureAuthService(Service, SupportsAuth):
             New methods to register with the service.
         """
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [
                 self.get_access_token,
                 self.get_auth_headers,
-            ])
+            ]),
         )
 
         # This parameter can come from command line as strings, so conversion is needed.

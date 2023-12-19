@@ -28,8 +28,8 @@ class SupportsConfigLoading(Protocol):
     def resolve_path(self,
                      file_path: str,
                      *,
-                     source_file_path: Optional[str] = None,
-                     extra_paths: Optional[Iterable[str]] = None) -> str:
+                     extra_paths_prepend: Optional[Union[str, Iterable[str]]] = None,
+                     extra_paths_append: Optional[Union[str, Iterable[str]]] = None) -> str:
         """
         Prepend the suitable `_config_path` to `path` if the latter is not absolute.
         If `_config_path` is `None` or `path` is absolute, return `path` as is.
@@ -38,11 +38,10 @@ class SupportsConfigLoading(Protocol):
         ----------
         file_path : str
             Path to the input config file.
-        source_file_path : str
-            Path to the source config file causing this file_path resolution.
-            Used to resolve relative paths.
-        extra_paths : Iterable[str]
+        extra_paths_prepend : Union[str, Iterable[str]]
             Additional directories to prepend to the list of search paths.
+        extra_paths_append : Union[str, Iterable[str]]
+            Additional directories to append to the list of search paths.
 
         Returns
         -------
@@ -53,7 +52,7 @@ class SupportsConfigLoading(Protocol):
     def load_config(self,
                     json_file_name: str,
                     schema_type: Optional[ConfigSchema],
-                    source_file_path: Optional[str] = None) -> Union[dict, List[dict]]:
+                    including_file_path: Optional[str] = None) -> Union[dict, List[dict]]:
         """
         Load JSON config file. Search for a file relative to `_config_path`
         if the input path is not absolute.
@@ -65,9 +64,9 @@ class SupportsConfigLoading(Protocol):
             Path to the input config file.
         schema_type : Optional[ConfigSchema]
             The schema type to validate the config against.
-        source_file_path : str
-            Path to the source config file causing this load_config.
-            Used to resolve relative paths.
+        including_file_path : Optional[str]
+            Source path of the including file (optional).
+            Useful for resolving relative paths.
 
         Returns
         -------
@@ -76,13 +75,12 @@ class SupportsConfigLoading(Protocol):
         """
 
     def build_environment(self,
-                          *,
                           config: dict,
-                          config_file_path: Optional[str] = None,
                           tunables: "TunableGroups",
                           global_config: Optional[dict] = None,
                           parent_args: Optional[Dict[str, TunableValue]] = None,
-                          service: Optional["Service"] = None) -> "Environment":
+                          service: Optional["Service"] = None,
+                          config_file_path: Optional[str] = None) -> "Environment":
         """
         Factory method for a new environment with a given config.
 
@@ -93,9 +91,6 @@ class SupportsConfigLoading(Protocol):
                 "name": Human-readable string describing the environment;
                 "class": FQN of a Python class to instantiate;
                 "config": Free-format dictionary to pass to the constructor.
-        config_file_path : str
-            Path to the config file used to create the config.
-            Useful for debugging and to resolve relative paths.
         tunables : TunableGroups
             A (possibly empty) collection of groups of tunable parameters for
             all environments.
@@ -107,6 +102,9 @@ class SupportsConfigLoading(Protocol):
         service: Optional[Service]
             An optional service object (e.g., providing methods to
             deploy or reboot a VM, etc.).
+        config_file_path : str
+            Path to the config file used to create the config.
+            Useful for debugging and to resolve relative paths in the config.
 
         Returns
         -------
@@ -116,13 +114,12 @@ class SupportsConfigLoading(Protocol):
 
     def load_environment_list(
             self,
-            *,
             json_file_name: str,
-            source_file_path: Optional[str] = None,
             tunables: "TunableGroups",
             global_config: Optional[dict] = None,
             parent_args: Optional[Dict[str, TunableValue]] = None,
-            service: Optional["Service"] = None) -> List["Environment"]:
+            service: Optional["Service"] = None,
+            including_file_path: Optional[str] = None) -> List["Environment"]:
         """
         Load and build a list of environments from the config file.
 
@@ -131,9 +128,6 @@ class SupportsConfigLoading(Protocol):
         json_file_name : str
             The environment JSON configuration file.
             Can contain either one environment or a list of environments.
-        source_file_path : str
-            Path to the source config file causing this load_environment_list.
-            Used to resolve relative paths.
         tunables : TunableGroups
             A (possibly empty) collection of tunables to add to the environment.
         global_config : Optional[dict]
@@ -143,6 +137,9 @@ class SupportsConfigLoading(Protocol):
             expand dynamic config parameters from.
         service : Optional[Service]
             An optional reference of the parent service to mix in.
+        including_file_path : str
+            Optional path to the source config file causing this load_environment_list.
+            Used to resolve relative paths.
 
         Returns
         -------
@@ -150,9 +147,11 @@ class SupportsConfigLoading(Protocol):
             A list of new benchmarking environments.
         """
 
-    def load_services(self, json_file_names: Iterable[str],
+    def load_services(self,
+                      json_file_names: Iterable[str],
                       global_config: Optional[Dict[str, Any]] = None,
-                      parent: Optional["Service"] = None) -> "Service":
+                      parent: Optional["Service"] = None,
+                      including_file_path: Optional[str] = None) -> "Service":
         """
         Read the configuration files and bundle all service methods
         from those configs into a single Service object.
@@ -165,6 +164,9 @@ class SupportsConfigLoading(Protocol):
             Global parameters to add to the service config.
         parent : Service
             An optional reference of the parent service to mix in.
+        including_file_path : Optional[str]
+            Optional path to the source config file causing this load_services.
+            Used to resolve relative paths.
 
         Returns
         -------

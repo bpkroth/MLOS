@@ -54,7 +54,7 @@ def local_exec_service() -> LocalExecService:
     config = {
         "abort_on_error": True,
     }
-    return LocalExecService(config, parent=ConfigPersistenceService())
+    return LocalExecService(config=config, parent=ConfigPersistenceService())
 
 
 def test_resolve_script(local_exec_service: LocalExecService) -> None:
@@ -220,7 +220,7 @@ def test_temp_dir_path_expansion() -> None:
             # The temp_dir for the LocalExecService should get expanded via workdir global config.
             "temp_dir": "$workdir/temp",
         }
-        local_exec_service = LocalExecService(config, global_config, parent=ConfigPersistenceService())
+        local_exec_service = LocalExecService(config=config, global_config=global_config, parent=ConfigPersistenceService())
         # pylint: disable=protected-access
         assert isinstance(local_exec_service._temp_dir, str)
         assert path_join(local_exec_service._temp_dir, abs_path=True) == path_join(temp_dir, "temp", abs_path=True)

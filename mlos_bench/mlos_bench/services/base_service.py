@@ -21,14 +21,17 @@ _LOG = logging.getLogger(__name__)
 
 
 class Service:
+    # pylint: disable=too-many-instance-attributes
     """
     An abstract base of all Environment Services and used to build up mix-ins.
     """
 
     @classmethod
     def new(cls,
+            *,
             class_name: str,
             config: Optional[Dict[str, Any]] = None,
+            config_file_path: Optional[str] = None,
             global_config: Optional[Dict[str, Any]] = None,
             parent: Optional["Service"] = None) -> "Service":
         """
@@ -44,6 +47,9 @@ class Service:
             Free-format dictionary that contains the service configuration.
             It will be passed as a constructor parameter of the class
             specified by `class_name`.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -55,10 +61,17 @@ class Service:
             An instance of the `Service` class initialized with `config`.
         """
         assert issubclass(cls, Service)
-        return instantiate_from_config(cls, class_name, config, global_config, parent)
+        return instantiate_from_config(cls,
+                                       class_name,
+                                       config=config,
+                                       config_file_path=config_file_path,
+                                       global_config=global_config,
+                                       parent=parent)
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional["Service"] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
@@ -71,6 +84,9 @@ class Service:
             Free-format dictionary that contains the service configuration.
             It will be passed as a constructor parameter of the class
             specified by `class_name`.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -80,6 +96,7 @@ class Service:
         """
         self.config = config or {}
         self._validate_json_config(self.config)
+        self._config_file_path = config_file_path
         self._parent = parent
         self._service_methods: Dict[str, Callable] = {}
         self._services: Set[Service] = set()

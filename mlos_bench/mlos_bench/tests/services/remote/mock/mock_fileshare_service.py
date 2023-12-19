@@ -21,13 +21,17 @@ class MockFileShareService(FileShareService, SupportsFileShareOps):
     A collection Service functions for mocking file share ops.
     """
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None,
+    def __init__(self,
+                 *,
+                 config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [self.upload, self.download])
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [self.upload, self.download]),
         )
         self._upload: List[Tuple[str, str]] = []
         self._download: List[Tuple[str, str]] = []

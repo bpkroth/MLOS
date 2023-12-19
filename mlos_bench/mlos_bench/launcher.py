@@ -367,7 +367,7 @@ class Launcher:
         Use "# type: ignore[type-abstract]" to suppress the warning.
         See Also: https://github.com/python/mypy/issues/4717
         """
-        json_file_name = self._config_loader.resolve_path(json_file_name, extra_paths=[self._config_file_dir])
+        json_file_name = self._config_loader.resolve_path(json_file_name, extra_paths_prepend=[self._config_file_dir])
         class_config = self._config_loader.load_config(json_file_name, schema_type)
         assert isinstance(class_config, Dict)
         ret = self._config_loader.build_generic(

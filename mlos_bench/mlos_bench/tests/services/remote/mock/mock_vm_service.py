@@ -20,10 +20,14 @@ class MockVMService(Service, SupportsHostProvisioning, SupportsHostOps, Supports
     Mock VM service for testing.
     """
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None,
+    def __init__(self,
+                 *,
+                 config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
+        # pylint: disable=useless-super-delegation
         """
         Create a new instance of mock VM services proxy.
 
@@ -38,8 +42,9 @@ class MockVMService(Service, SupportsHostProvisioning, SupportsHostOps, Supports
             Parent service that can provide mixin functions.
         """
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, {
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, {
                 name: mock_operation for name in (
                     # SupportsHostProvisioning:
                     "wait_host_deployment",
@@ -56,5 +61,5 @@ class MockVMService(Service, SupportsHostProvisioning, SupportsHostOps, Supports
                     "reboot",
                     "wait_os_operation",
                 )
-            })
+            }),
         )

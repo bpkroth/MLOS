@@ -31,7 +31,9 @@ class SshHostService(SshService, SupportsOSOps, SupportsRemoteExec):
     # pylint: disable=too-many-instance-attributes
 
     def __init__(self,
+                 *,
                  config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
@@ -43,6 +45,9 @@ class SshHostService(SshService, SupportsOSOps, SupportsRemoteExec):
         config : dict
             Free-format dictionary that contains the benchmark environment
             configuration.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths in the config.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -53,14 +58,16 @@ class SshHostService(SshService, SupportsOSOps, SupportsRemoteExec):
         # Same methods are also provided by the AzureVMService class
         # pylint: disable=duplicate-code
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [
                 self.shutdown,
                 self.reboot,
                 self.wait_os_operation,
                 self.remote_exec,
                 self.get_remote_exec_results,
-            ]))
+            ]),
+        )
         self._shell = self.config.get("ssh_shell", "/bin/bash")
 
     async def _run_cmd(self, params: dict, script: Iterable[str], env_params: dict) -> SSHCompletedProcess:

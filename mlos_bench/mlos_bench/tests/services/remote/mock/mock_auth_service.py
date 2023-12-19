@@ -20,16 +20,21 @@ class MockAuthService(Service, SupportsAuth):
     A collection Service functions for mocking authentication ops.
     """
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None,
+    def __init__(self,
+                 *,
+                 config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
+        # pylint: disable=useless-super-delegation
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [
                 self.get_access_token,
                 self.get_auth_headers,
-            ])
+            ]),
         )
 
     def get_access_token(self) -> str:

@@ -122,7 +122,7 @@ class LocalFileShareEnv(LocalEnv):
             params["PWD"] = self._temp_dir
             for (path_from, path_to) in self._expand(self._upload, params):
                 self._file_share_service.upload(self._params, self._config_loader_service.resolve_path(
-                    path_from, extra_paths=[self._temp_dir]), path_to)
+                    path_from, extra_paths_prepend=[self._temp_dir]), path_to)
         return self._is_ready
 
     def _download_files(self, ignore_missing: bool = False) -> None:
@@ -142,7 +142,7 @@ class LocalFileShareEnv(LocalEnv):
             try:
                 self._file_share_service.download(self._params,
                                                   path_from, self._config_loader_service.resolve_path(
-                                                      path_to, extra_paths=[self._temp_dir]))
+                                                      path_to, extra_paths_prepend=[self._temp_dir]))
             except FileNotFoundError as ex:
                 _LOG.warning("Cannot download: %s", path_from)
                 if not ignore_missing:

@@ -75,7 +75,7 @@ def test_azure_vm_service_recursive_template_params(azure_auth_service: AzureAut
         "vmName": "test-vm",
         "location": "eastus",
     }
-    azure_vm_service = AzureVMService(config, global_config, parent=azure_auth_service)
+    azure_vm_service = AzureVMService(config=config, global_config=global_config, parent=azure_auth_service)
     assert azure_vm_service.deploy_params["location"] == global_config["location"]
     assert azure_vm_service.deploy_params["vmMeta"] == f'{global_config["vmName"]}-{global_config["location"]}'
     assert azure_vm_service.deploy_params["vmNsg"] == f'{azure_vm_service.deploy_params["vmMeta"]}-nsg'
@@ -101,8 +101,8 @@ def test_azure_vm_service_custom_data(azure_auth_service: AzureAuthService) -> N
     with pytest.raises(ValueError):
         config_with_custom_data = deepcopy(config)
         config_with_custom_data['deploymentTemplateParameters']['customData'] = "DUMMY_CUSTOM_DATA"  # type: ignore[index]
-        AzureVMService(config_with_custom_data, global_config, parent=azure_auth_service)
-    azure_vm_service = AzureVMService(config, global_config, parent=azure_auth_service)
+        AzureVMService(config=config_with_custom_data, global_config=global_config, parent=azure_auth_service)
+    azure_vm_service = AzureVMService(config=config, global_config=global_config, parent=azure_auth_service)
     assert azure_vm_service.deploy_params['customData']
 
 

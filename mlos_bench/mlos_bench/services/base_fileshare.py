@@ -22,10 +22,13 @@ class FileShareService(Service, SupportsFileShareOps, metaclass=ABCMeta):
     An abstract base of all file shares.
     """
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None,
+    def __init__(self, *,
+                 config: Optional[Dict[str, Any]] = None,
+                 config_file_path: Optional[str] = None,
                  global_config: Optional[Dict[str, Any]] = None,
                  parent: Optional[Service] = None,
                  methods: Union[Dict[str, Callable], List[Callable], None] = None):
+        # pylint: disable=useless-super-delegation
         """
         Create a new file share with a given config.
 
@@ -35,6 +38,9 @@ class FileShareService(Service, SupportsFileShareOps, metaclass=ABCMeta):
             Free-format dictionary that contains the file share configuration.
             It will be passed as a constructor parameter of the class
             specified by `class_name`.
+        config_file_path : str
+            Path to the config file used to create the config.
+            Used to help resolve relative paths.
         global_config : dict
             Free-format dictionary of global parameters.
         parent : Service
@@ -43,8 +49,9 @@ class FileShareService(Service, SupportsFileShareOps, metaclass=ABCMeta):
             New methods to register with the service.
         """
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [self.upload, self.download])
+            config=config, config_file_path=config_file_path,
+            global_config=global_config, parent=parent,
+            methods=self.merge_methods(methods, [self.upload, self.download])
         )
 
     @abstractmethod

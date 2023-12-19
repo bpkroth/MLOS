@@ -8,6 +8,9 @@ that encapsulate benchmark environments, tunable parameters, and
 service functions.
 """
 
+from string import Template
+from os.path import isabs, isfile, dirname
+
 import os
 import sys
 
@@ -64,8 +67,10 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             New methods to register with the service.
         """
         super().__init__(
-            config, global_config, parent,
-            self.merge_methods(methods, [
+            config=config,
+            global_config=global_config,
+            parent=parent,
+            methods=self.merge_methods(methods, [
                 self.resolve_path,
                 self.load_config,
                 self.prepare_class_load,
@@ -102,8 +107,24 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         """
         return list(self._config_path)  # make a copy to avoid modifications
 
-    def resolve_path(self, file_path: str,
-                     extra_paths: Optional[Iterable[str]] = None) -> str:
+    @staticmethod
+    def _convert_dir_list_args(paths: Optional[Union[str, Iterable[str]]], to_dirname: bool = True) -> List[str]:
+        """
+        Simple helper to convert a non-list arguments to a list of directories.
+        """
+        if paths is None:
+            paths = []
+        elif isinstance(paths, str):
+            paths = [paths]
+        if to_dirname:
+            paths = [dirname(path) if isfile(path) else path for path in paths]
+        return list(paths)
+
+    def resolve_path(self,
+                     file_path: str,
+                     *,
+                     extra_paths_prepend: Optional[Union[str, Iterable[str]]] = None,
+                     extra_paths_append: Optional[Union[str, Iterable[str]]] = None) -> str:
         """
         Prepend the suitable `_config_path` to `path` if the latter is not absolute.
         If `_config_path` is `None` or `path` is absolute, return `path` as is.
@@ -112,17 +133,24 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         ----------
         file_path : str
             Path to the input config file.
-        extra_paths : Iterable[str]
+        extra_paths_prepend : Union[str, Iterable[str]]
             Additional directories to prepend to the list of search paths.
+        extra_paths_append : Union[str, Iterable[str]]
+            Additional directories to append to the list of search paths.
 
         Returns
         -------
         path : str
             An actual path to the config or script.
         """
-        path_list = list(extra_paths or []) + self._config_path
-        _LOG.debug("Resolve path: %s in: %s", file_path, path_list)
-        if os.path.isabs(file_path):
+        path_list = self._convert_dir_list_args(extra_paths_prepend) \
+            + self._config_path \
+            + self._convert_dir_list_args(extra_paths_append)
+        cwd = os.getcwd()
+        _LOG.debug("Resolve path: %s in: %s from: %s", file_path, path_list, cwd)
+        # Always replace any remaining $PWD in the filepath with the current working directory.
+        file_path = Template(file_path).safe_substitute({"PWD": cwd})
+        if isabs(file_path):
             _LOG.debug("Path is absolute: %s", file_path)
             return file_path
         for path in path_list:
@@ -136,7 +164,7 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
     def load_config(self,
                     json_file_name: str,
                     schema_type: Optional[ConfigSchema],
-                    including_file_path: Optional[str] = None) -> Dict[str, Any]:
+                    including_file_path: Optional[str] = None) -> Union[dict, List[dict]]:
         """
         Load JSON config file. Search for a file relative to `_config_path`
         if the input path is not absolute.
@@ -157,16 +185,31 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         config : Union[dict, List[dict]]
             Free-format dictionary that contains the configuration.
         """
-        extra_paths = []
+        # Use the including_file_path to help resolve relative paths to the referenced file.
+        including_file_dir = None
         if including_file_path is not None:
-            assert os.path.isabs(including_file_path)
-            if os.path.isfile(including_file_path):
-                extra_paths.append(os.path.dirname(including_file_path))
+            assert isabs(including_file_path)
+            if isfile(including_file_path):
+                including_file_dir = dirname(including_file_path)
             elif os.path.isdir(including_file_path):
-                extra_paths.append(including_file_path)
+                including_file_dir = including_file_path
             else:
                 raise ValueError(f"Invalid including_file_path: {including_file_path}")
-        json_file_name = self.resolve_path(json_file_name, extra_paths)
+        # If the path starts with "./", we consider the including_file_dir to be
+        # prefixed, to give it higher precedence.
+        # Else, we let the including_file_dir be appended, to give it lower
+        # precedence so the user config can override it more easily.
+        extra_paths_prepend = []
+        extra_paths_append = []
+        if json_file_name.startswith("./"):
+            assert including_file_dir is not None, "including_file_dir expected to be set if json_file_name starts with './'"
+            extra_paths_prepend.append(including_file_dir)
+        elif including_file_dir is not None:
+            extra_paths_append.append(including_file_dir)
+        # Now try to resolve the file.
+        json_file_name = self.resolve_path(json_file_name,
+                                           extra_paths_prepend=extra_paths_prepend,
+                                           extra_paths_append=extra_paths_append)
         _LOG.info("Load config: %s", json_file_name)
         with open(json_file_name, mode='r', encoding='utf-8') as fh_json:
             config = json5.load(fh_json)
@@ -288,13 +331,13 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         _LOG.info("Created: %s %s", base_cls.__name__, inst)
         return inst
 
-    def build_environment(self, *,
+    def build_environment(self,
                           config: Dict[str, Any],
-                          config_file_path: Optional[str] = None,
                           tunables: TunableGroups,
                           global_config: Optional[Dict[str, Any]] = None,
                           parent_args: Optional[Dict[str, TunableValue]] = None,
-                          service: Optional[Service] = None) -> Environment:
+                          service: Optional[Service] = None,
+                          config_file_path: Optional[str] = None) -> Environment:
         """
         Factory method for a new environment with a given config.
 
@@ -305,9 +348,6 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
                 "name": Human-readable string describing the environment;
                 "class": FQN of a Python class to instantiate;
                 "config": Free-format dictionary to pass to the constructor.
-        config_file_path: Optional[str]
-            Source path of the file for this config.
-            Used to help resolve relative paths.
         tunables : TunableGroups
             A (possibly empty) collection of groups of tunable parameters for
             all environments.
@@ -319,6 +359,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         service: Service
             An optional service object (e.g., providing methods to
             deploy or reboot a VM, etc.).
+        config_file_path: Optional[str]
+            Source path of the file for this config.
+            Used to help resolve relative paths.
 
         Returns
         -------
@@ -345,7 +388,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         _LOG.info("Created env: %s :: %s", env_name, env)
         return env
 
-    def _build_standalone_service(self, config: Dict[str, Any],
+    def _build_standalone_service(self,
+                                  config: Dict[str, Any],
+                                  source_config_file: Optional[str] = None,
                                   global_config: Optional[Dict[str, Any]] = None,
                                   parent: Optional[Service] = None) -> Service:
         """
@@ -357,6 +402,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             A dictionary with two mandatory fields:
                 "class": FQN of a Python class to instantiate;
                 "config": Free-format dictionary to pass to the constructor.
+        source_config_file: Optional[str]
+            Source path of the file for this config.
+            Used to help resolve relative paths.
         global_config : dict
             Global parameters to add to the service config.
         parent: Service
@@ -368,11 +416,15 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             An instance of the `Service` class initialized with `config`.
         """
         (svc_class, svc_config) = self.prepare_class_load(config, global_config)
-        service = Service.new(svc_class, svc_config, global_config, parent)
+        service = Service.new(class_name=svc_class,
+                              config=svc_config, config_file_path=source_config_file,
+                              global_config=global_config, parent=parent)
         _LOG.info("Created service: %s", service)
         return service
 
-    def _build_composite_service(self, config_list: Iterable[Dict[str, Any]],
+    def _build_composite_service(self,
+                                 config_list: Iterable[Dict[str, Any]],
+                                 source_config_file: Optional[str] = None,
                                  global_config: Optional[Dict[str, Any]] = None,
                                  parent: Optional[Service] = None) -> Service:
         """
@@ -384,6 +436,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             A list where each element is a dictionary with 2 mandatory fields:
                 "class": FQN of a Python class to instantiate;
                 "config": Free-format dictionary to pass to the constructor.
+        source_config_file: Optional[str]
+            Source path of the file for this config.
+            Used to help resolve relative paths.
         global_config : dict
             Global parameters to add to the service config.
         parent: Service
@@ -401,7 +456,7 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
 
         for config in config_list:
             service.register(self._build_standalone_service(
-                config, global_config, service).export())
+                config, source_config_file, global_config, service).export())
 
         if _LOG.isEnabledFor(logging.DEBUG):
             _LOG.debug("Created mix-in service: %s", service)
@@ -411,7 +466,8 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
     def build_service(self,
                       config: Dict[str, Any],
                       global_config: Optional[Dict[str, Any]] = None,
-                      parent: Optional[Service] = None) -> Service:
+                      parent: Optional[Service] = None,
+                      source_config_file: Optional[str] = None) -> Service:
         """
         Factory method for a new service with a given config.
 
@@ -425,6 +481,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             Global parameters to add to the service config.
         parent: Service
             An optional reference of the parent service to mix in.
+        source_config_file: Optional[str]
+            Source path of the file for this config.
+            Used to help resolve relative paths.
 
         Returns
         -------
@@ -444,10 +503,10 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         else:
             # Top level config is a single service
             if parent is None:
-                return self._build_standalone_service(config, global_config)
+                return self._build_standalone_service(config, source_config_file, global_config)
             config_list = [config]
 
-        return self._build_composite_service(config_list, global_config, parent)
+        return self._build_composite_service(config_list, source_config_file, global_config, parent)
 
     def load_environment(self,  # pylint: disable=too-many-arguments
                          json_file_name: str,
@@ -482,7 +541,8 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         """
         config = self.load_config(json_file_name, ConfigSchema.ENVIRONMENT, including_file_path)
         assert isinstance(config, dict)
-        return self.build_environment(config, tunables, global_config, parent_args, service, json_file_name)
+        return self.build_environment(config=config, config_file_path=json_file_name, tunables=tunables,
+                                      global_config=global_config, parent_args=parent_args, service=service)
 
     def load_environment_list(self,     # pylint: disable=too-many-arguments
                               json_file_name: str,
@@ -517,11 +577,13 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
             A list of new benchmarking environments.
         """
         config = self.load_config(json_file_name, ConfigSchema.ENVIRONMENT, including_file_path)
+        assert isinstance(config, dict)
         return [
             self.build_environment(config, tunables, global_config, parent_args, service, json_file_name)
         ]
 
-    def load_services(self, json_file_names: Iterable[str],
+    def load_services(self,
+                      json_file_names: Iterable[str],
                       global_config: Optional[Dict[str, Any]] = None,
                       parent: Optional[Service] = None,
                       including_file_path: Optional[str] = None) -> Service:
@@ -533,12 +595,12 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         ----------
         json_file_names : list of str
             A list of service JSON configuration files.
+        including_file_path : Optional[str]
+            Source path of the including file (optional).
         global_config : dict
             Global parameters to add to the service config.
         parent : Service
             An optional reference of the parent service to mix in.
-        including_file_path : Optional[str]
-            Source path of the including file (optional).
 
         Returns
         -------
@@ -547,10 +609,11 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         """
         _LOG.info("Load services: %s parent: %s",
                   json_file_names, parent.__class__.__name__)
-        service = Service({}, global_config, parent)
+        service = Service(config={}, global_config=global_config, parent=parent)
         for fname in json_file_names:
             config = self.load_config(fname, ConfigSchema.SERVICE, including_file_path)
-            service.register(self.build_service(config, global_config, service).export())
+            assert isinstance(config, dict)
+            service.register(self.build_service(config, global_config, service, fname).export())
         return service
 
     def _load_tunables(self, json_file_names: Iterable[str],
