@@ -226,6 +226,7 @@ class Service:
         ConfigSchema.SERVICE.validate(json_config)
 
     def __repr__(self) -> str:
+        # FIXME: Include the config file path?
         return f"{self.__class__.__name__}@{hex(id(self))}"
 
     def pprint(self) -> str:

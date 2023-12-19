@@ -258,6 +258,7 @@ class Environment(metaclass=abc.ABCMeta):
         return self.name
 
     def __repr__(self) -> str:
+        # FIXME: Include the config file path?
         return f"{self.__class__.__name__} :: '{self.name}'"
 
     def pprint(self, indent: int = 4, level: int = 0) -> str:
