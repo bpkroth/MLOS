@@ -39,9 +39,10 @@ def from_config(config_file: str,
     """
     config_path: List[str] = kwargs.get("config_path", [])
     config_loader = ConfigPersistenceService({"config_path": config_path})
-    global_config = {}
+    global_config: dict = {}
     for fname in (global_configs or []):
         config = config_loader.load_config(fname, ConfigSchema.GLOBALS)
+        assert isinstance(config, dict)
         global_config.update(config)
         config_path += config.get("config_path", [])
         config_loader = ConfigPersistenceService({"config_path": config_path})

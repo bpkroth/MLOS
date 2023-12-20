@@ -50,6 +50,7 @@ def load_environment_config_examples(config_loader_service: ConfigPersistenceSer
     """Loads an environment config example."""
     # Make sure that any "required_args" are provided.
     global_config = config_loader_service.load_config("experiments/experiment_test_config.jsonc", ConfigSchema.GLOBALS)
+    assert isinstance(global_config, dict)
     global_config.setdefault('trial_id', 1)     # normally populated by Launcher
 
     # Make sure we have the required services for the envs being used.
@@ -66,6 +67,7 @@ def load_environment_config_examples(config_loader_service: ConfigPersistenceSer
 
     for mock_service_config_path in mock_service_configs:
         mock_service_config = config_loader_service.load_config(mock_service_config_path, ConfigSchema.SERVICE)
+        assert isinstance(mock_service_config, dict)
         config_loader_service.register(config_loader_service.build_service(
             config=mock_service_config, parent=config_loader_service).export())
 

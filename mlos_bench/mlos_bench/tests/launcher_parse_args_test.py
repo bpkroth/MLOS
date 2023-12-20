@@ -98,6 +98,7 @@ def test_launcher_args_parse_1(config_paths: List[str]) -> None:
     assert launcher.teardown
     # Check that the environment that got loaded looks to be of the right type.
     env_config = launcher.config_loader.load_config(env_conf_path, ConfigSchema.ENVIRONMENT)
+    assert isinstance(env_config, dict)
     assert check_class_name(launcher.environment, env_config['class'])
     # Check that the optimizer looks right.
     assert isinstance(launcher.optimizer, MockOptimizer)
@@ -149,11 +150,13 @@ def test_launcher_args_parse_2(config_paths: List[str]) -> None:
     assert not launcher.teardown
 
     config = launcher.config_loader.load_config(config_file, ConfigSchema.CLI)
+    assert isinstance(config, dict)
     assert launcher.config_loader.config_paths == [path_join(path, abs_path=True) for path in config_paths + config['config_path']]
 
     # Check that the environment that got loaded looks to be of the right type.
     env_config_file = config['environment']
     env_config = launcher.config_loader.load_config(env_config_file, ConfigSchema.ENVIRONMENT)
+    assert isinstance(env_config, dict)
     assert check_class_name(launcher.environment, env_config['class'])
 
     # Check that the optimizer looks right.

@@ -147,16 +147,19 @@ def test_load_cli_config_examples_via_launcher(config_loader_service: ConfigPers
 
     assert isinstance(launcher.environment, Environment)
     env_config = launcher.config_loader.load_config(config["environment"], ConfigSchema.ENVIRONMENT)
+    assert isinstance(env_config, dict)
     assert check_class_name(launcher.environment, env_config["class"])
 
     assert isinstance(launcher.optimizer, Optimizer)
     if "optimizer" in config:
         opt_config = launcher.config_loader.load_config(config["optimizer"], ConfigSchema.OPTIMIZER)
+        assert isinstance(opt_config, dict)
         assert check_class_name(launcher.optimizer, opt_config["class"])
 
     assert isinstance(launcher.storage, Storage)
     if "storage" in config:
         storage_config = launcher.config_loader.load_config(config["storage"], ConfigSchema.STORAGE)
+        assert isinstance(storage_config, dict)
         assert check_class_name(launcher.storage, storage_config["class"])
 
     # TODO: Check that the launcher assigns the tunables values as expected.
