@@ -12,6 +12,7 @@ command line.
 
 import argparse
 import logging
+import os.path
 import sys
 
 from typing import Any, Dict, Iterable, List, Optional, Tuple, Type
@@ -114,7 +115,8 @@ class Launcher:
         # --service cli args should override the config file values.
         service_files: List[str] = config.get("services", []) + (args.service or [])
         assert isinstance(self._parent_service, SupportsConfigLoading)
-        self._parent_service = self._parent_service.load_services(service_files, self.global_config, self._parent_service)
+        self._parent_service = self._parent_service.load_services(service_files, self.global_config, self._parent_service,
+                                                                  including_file_path=self._config_file_path)
 
         env_path = args.environment or config.get("environment")
         if not env_path:
