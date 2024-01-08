@@ -382,3 +382,26 @@ class Launcher:
         )
         assert isinstance(ret, cls)
         return ret
+
+    # TODO: Remove generic _load in favor of type specific.
+    def _load(self, cls: Type[BaseTypeVar], json_file_name: str, schema_type: Optional[ConfigSchema]) -> BaseTypeVar:
+        """
+        Create a new instance of class `cls` from JSON configuration.
+
+        Note: For abstract types, mypy will complain at the call site.
+        Use "# type: ignore[type-abstract]" to suppress the warning.
+        See Also: https://github.com/python/mypy/issues/4717
+        """
+        json_file_name = self._config_loader.resolve_path(json_file_name, extra_paths_prepend=[self._config_file_dir])
+        class_config = self._config_loader.load_config(json_file_name, schema_type)
+        assert isinstance(class_config, Dict)
+        ret = self._config_loader.build_generic(
+            base_cls=cls,
+            tunables=self.tunables,
+            service=self._parent_service,
+            config=class_config,
+            global_config=self.global_config,
+            source_config_file=json_file_name,
+        )
+        assert isinstance(ret, cls)
+        return ret
