@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; MlosCore 0.1.dev1+g2ebd3a5 documentation</title>
+  <title>Index &mdash; MlosCore 0.1.dev1+g5daaa26 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
@@ -13,7 +13,7 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/documentation_options.js?v=e65ffbb3"></script>
+        <script src="_static/documentation_options.js?v=38d213b8"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -34,7 +34,7 @@
             MlosCore
           </a>
               <div class="version">
-                0.1.dev1+g2ebd3a5
+                0.1.dev1+g5daaa26
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -47,22 +47,26 @@
               <p class="caption" role="heading"><span class="caption-text">Source Tree Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="source_tree_docs/index.html">MLOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source_tree_docs/mlos_bench/index.html">mlos-bench</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source_tree_docs/mlos_core/index.html">mlos-core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source_tree_docs/mlos_bench/index.html">mlos-bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source_tree_docs/mlos_viz/index.html">mlos_viz</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Overview</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">mlos-core API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">MLOS Package APIs Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#mlos-core-api">mlos-core API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html#mlos-bench-api">mlos-bench API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#mlos-viz-api">mlos-viz API</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/mlos_core/modules.html">mlos_core</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/mlos_bench/modules.html">mlos_bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/mlos_viz/modules.html">mlos_viz</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://aka.ms/mlos-core/src">Github Source Tree</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/microsoft/MLOS">Github Source Tree</a></li>
 </ul>
 
         </div>
@@ -157,6 +161,10 @@
 </li>
         <li><a href="generated/mlos_bench.services.Service.html#mlos_bench.services.Service.__init__">(mlos_bench.services.Service method)</a>
 </li>
+        <li><a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.__init__">(mlos_bench.storage.base_experiment_data.ExperimentData method)</a>
+</li>
+        <li><a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.__init__">(mlos_bench.storage.base_trial_data.TrialData method)</a>
+</li>
         <li><a href="generated/mlos_bench.storage.sql.storage.SqlStorage.html#mlos_bench.storage.sql.storage.SqlStorage.__init__">(mlos_bench.storage.sql.storage.SqlStorage method)</a>
 </li>
         <li><a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.__init__">(mlos_bench.storage.Storage method)</a>
@@ -189,6 +197,8 @@
 </li>
         <li><a href="generated/mlos_core.spaces.adapters.SpaceAdapterType.html#mlos_core.spaces.adapters.SpaceAdapterType.__init__">(mlos_core.spaces.adapters.SpaceAdapterType method)</a>
 </li>
+        <li><a href="generated/mlos_viz.MlosVizMethod.html#mlos_viz.MlosVizMethod.__init__">(mlos_viz.MlosVizMethod method)</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -218,14 +228,16 @@
         <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.TunableGroups.assign">(mlos_bench.tunables.TunableGroups method)</a>, <a href="generated/mlos_bench.tunables.TunableGroups.html#mlos_bench.tunables.TunableGroups.assign">[1]</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_viz/mlos_viz.html#mlos_viz.MlosVizMethod.AUTO">AUTO (mlos_viz.MlosVizMethod attribute)</a>, <a href="generated/mlos_viz.MlosVizMethod.html#mlos_viz.MlosVizMethod.AUTO">[1]</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.conftest.html#mlos_bench.tests.services.remote.azure.conftest.azure_auth_service">azure_auth_service() (in module mlos_bench.tests.services.remote.azure.conftest)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.conftest.html#mlos_bench.tests.services.remote.azure.conftest.azure_fileshare">azure_fileshare() (in module mlos_bench.tests.services.remote.azure.conftest)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.conftest.html#mlos_bench.tests.services.remote.azure.conftest.azure_network_service">azure_network_service() (in module mlos_bench.tests.services.remote.azure.conftest)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.conftest.html#mlos_bench.tests.services.remote.azure.conftest.azure_network_service">azure_network_service() (in module mlos_bench.tests.services.remote.azure.conftest)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.conftest.html#mlos_bench.tests.services.remote.azure.conftest.azure_vm_service">azure_vm_service() (in module mlos_bench.tests.services.remote.azure.conftest)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.services.remote.azure.html#mlos_bench.services.remote.azure.AzureAuthService">AzureAuthService (class in mlos_bench.services.remote.azure)</a>
@@ -420,10 +432,12 @@
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.config">(mlos_bench.storage.Storage.Trial method)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Trial.config">[1]</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.CONFIG_COLUMN_PREFIX">CONFIG_COLUMN_PREFIX (mlos_bench.storage.base_experiment_data.ExperimentData attribute)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.CONFIG_COLUMN_PREFIX">[1]</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Trial.config_id">config_id (mlos_bench.storage.base_storage.Storage.Trial property)</a>
 
       <ul>
-        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.config_id">(mlos_bench.storage.base_trial_data.TrialData property)</a>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.config_id">(mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.config_id">[1]</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.config_id">(mlos_bench.storage.Storage.Trial property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Trial.config_id">[1]</a>
 </li>
@@ -450,7 +464,7 @@
         <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.conftest.html#mlos_bench.tests.services.remote.azure.conftest.config_persistence_service">(in module mlos_bench.tests.services.remote.azure.conftest)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_core/mlos_core.html#mlos_core.config_to_dataframe">config_to_dataframe() (in module mlos_core)</a>
+      <li><a href="api/mlos_core/mlos_core.util.html#mlos_core.util.config_to_dataframe">config_to_dataframe() (in module mlos_core.util)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.services.config_persistence.html#mlos_bench.services.config_persistence.ConfigPersistenceService">ConfigPersistenceService (class in mlos_bench.services.config_persistence)</a>, <a href="generated/mlos_bench.services.config_persistence.ConfigPersistenceService.html#mlos_bench.services.config_persistence.ConfigPersistenceService">[1]</a>
 </li>
@@ -460,6 +474,8 @@
         <li><a href="api/mlos_bench/mlos_bench.config.schemas.config_schemas.html#mlos_bench.config.schemas.config_schemas.ConfigSchema">(class in mlos_bench.config.schemas.config_schemas)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.configspace_data_to_tunable_values">configspace_data_to_tunable_values() (in module mlos_bench.optimizers.convert_configspace)</a>
+</li>
       <li><a href="api/mlos_core/mlos_core.spaces.converters.flaml.html#mlos_core.spaces.converters.flaml.configspace_to_flaml_space">configspace_to_flaml_space() (in module mlos_core.spaces.converters.flaml)</a>, <a href="generated/mlos_core.spaces.converters.flaml.configspace_to_flaml_space.html#mlos_core.spaces.converters.flaml.configspace_to_flaml_space">[1]</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_to_configspace_test.html#mlos_bench.tests.tunables.tunable_to_configspace_test.configuration_space">configuration_space() (in module mlos_bench.tests.tunables.tunable_to_configspace_test)</a>
@@ -522,6 +538,8 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos_viz/mlos_viz.html#mlos_viz.MlosVizMethod.DABL">DABL (mlos_viz.MlosVizMethod attribute)</a>, <a href="generated/mlos_viz.MlosVizMethod.html#mlos_viz.MlosVizMethod.DABL">[1]</a>
+</li>
       <li><a href="api/mlos_core/mlos_core.tests.optimizers.one_hot_test.html#mlos_core.tests.optimizers.one_hot_test.data_frame">data_frame() (in module mlos_core.tests.optimizers.one_hot_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.storage.sql.schema.html#mlos_bench.storage.sql.schema.DbSchema">DbSchema (class in mlos_bench.storage.sql.schema)</a>
@@ -586,14 +604,24 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.description">description (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.description">description (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.description">[1]</a>
 
       <ul>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Experiment.description">(mlos_bench.storage.base_storage.Storage.Experiment property)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.description">(mlos_bench.storage.Storage.Experiment property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.description">[1]</a>
+</li>
         <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.TunableDict.description">(mlos_bench.tunables.tunable.TunableDict attribute)</a>
 </li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.dict_templater.html#mlos_bench.dict_templater.DictTemplater">DictTemplater (class in mlos_bench.dict_templater)</a>
 </li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.base_optimizer.html#mlos_bench.optimizers.base_optimizer.Optimizer.direction">direction (mlos_bench.optimizers.base_optimizer.Optimizer property)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.direction">(mlos_bench.optimizers.Optimizer property)</a>, <a href="generated/mlos_bench.optimizers.Optimizer.html#mlos_bench.optimizers.Optimizer.direction">[1]</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.tests.conftest.html#mlos_bench.tests.conftest.docker_compose_file">docker_compose_file() (in module mlos_bench.tests.conftest)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.conftest.html#mlos_bench.tests.conftest.docker_compose_project_name">docker_compose_project_name() (in module mlos_bench.tests.conftest)</a>
@@ -674,14 +702,14 @@
         <li><a href="api/mlos_bench/mlos_bench.services.remote.ssh.ssh_service.html#mlos_bench.services.remote.ssh.ssh_service.SshClientCache.exit">(mlos_bench.services.remote.ssh.ssh_service.SshClientCache method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.exp_id">exp_id (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.exp_id">exp_id (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.exp_id">[1]</a>
 
       <ul>
-        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.exp_id">(mlos_bench.storage.base_trial_data.TrialData property)</a>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.exp_id">(mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.exp_id">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.dict_templater.html#mlos_bench.dict_templater.DictTemplater.expand_vars">expand_vars() (mlos_bench.dict_templater.DictTemplater method)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.storage.sql.experiment.html#mlos_bench.storage.sql.experiment.Experiment">Experiment (class in mlos_bench.storage.sql.experiment)</a>
@@ -694,7 +722,13 @@
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.experiment">(mlos_bench.storage.Storage method)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.experiment">[1]</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData">ExperimentData (class in mlos_bench.storage.base_experiment_data)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Experiment.experiment_id">experiment_id (mlos_bench.storage.base_storage.Storage.Experiment property)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.experiment_id">(mlos_bench.storage.Storage.Experiment property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.experiment_id">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData">ExperimentData (class in mlos_bench.storage.base_experiment_data)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData">[1]</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.experiments">experiments (mlos_bench.storage.base_storage.Storage property)</a>
 
@@ -924,6 +958,18 @@
         <li><a href="api/mlos_core/mlos_core.spaces.adapters.identity_adapter.html#mlos_core.spaces.adapters.identity_adapter.IdentityAdapter">(class in mlos_core.spaces.adapters.identity_adapter)</a>, <a href="generated/mlos_core.spaces.adapters.identity_adapter.IdentityAdapter.html#mlos_core.spaces.adapters.identity_adapter.IdentityAdapter">[1]</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_viz/mlos_viz.html#mlos_viz.ignore_plotter_warnings">ignore_plotter_warnings() (in module mlos_viz)</a>
+
+      <ul>
+        <li><a href="api/mlos_viz/mlos_viz.dabl.html#mlos_viz.dabl.ignore_plotter_warnings">(in module mlos_viz.dabl)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable.in_range">in_range() (mlos_bench.tunables.Tunable method)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable.in_range">[1]</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.Tunable.in_range">(mlos_bench.tunables.tunable.Tunable method)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.util.html#mlos_bench.util.instantiate_from_config">instantiate_from_config() (in module mlos_bench.util)</a>
 </li>
       <li><a href="api/mlos_core/mlos_core.spaces.adapters.adapter.html#mlos_core.spaces.adapters.adapter.BaseSpaceAdapter.inverse_transform">inverse_transform() (mlos_core.spaces.adapters.adapter.BaseSpaceAdapter method)</a>, <a href="generated/mlos_core.spaces.adapters.adapter.BaseSpaceAdapter.html#mlos_core.spaces.adapters.adapter.BaseSpaceAdapter.inverse_transform">[1]</a>
@@ -1018,6 +1064,12 @@
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.environments.status.html#mlos_bench.environments.status.Status.is_ready">(mlos_bench.environments.status.Status method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable.is_special">is_special (mlos_bench.tunables.Tunable property)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable.is_special">[1]</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.Tunable.is_special">(mlos_bench.tunables.tunable.Tunable property)</a>
 </li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.Status.is_succeeded">is_succeeded() (mlos_bench.environments.Status method)</a>, <a href="generated/mlos_bench.environments.Status.html#mlos_bench.environments.Status.is_succeeded">[1]</a>
@@ -1220,7 +1272,7 @@
         <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.TunableDict.meta">(mlos_bench.tunables.tunable.TunableDict attribute)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.metadata">metadata (mlos_bench.storage.base_trial_data.TrialData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.metadata">metadata (mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.metadata">[1]</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.storage.sql.trial_data.html#mlos_bench.storage.sql.trial_data.TrialSqlData.metadata">(mlos_bench.storage.sql.trial_data.TrialSqlData property)</a>
@@ -2192,8 +2244,6 @@
         <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_comparison_test.html#module-mlos_bench.tests.tunables.tunable_comparison_test">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mlos_bench.tests.tunables.tunable_definition_test
 
@@ -2208,6 +2258,8 @@
         <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_group_indexing_test.html#module-mlos_bench.tests.tunables.tunable_group_indexing_test">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mlos_bench.tests.tunables.tunable_group_subgroup_test
 
@@ -2460,12 +2512,35 @@
         <li><a href="api/mlos_core/mlos_core.tests.optimizers.random_optimizer_test.html#module-mlos_core.tests.optimizers.random_optimizer_test">module</a>
 </li>
       </ul></li>
+      <li>
+    mlos_core.util
+
+      <ul>
+        <li><a href="api/mlos_core/mlos_core.util.html#module-mlos_core.util">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlos_viz
+
+      <ul>
+        <li><a href="api/mlos_viz/mlos_viz.html#module-mlos_viz">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlos_viz.dabl
+
+      <ul>
+        <li><a href="api/mlos_viz/mlos_viz.dabl.html#module-mlos_viz.dabl">module</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.optimizers.html#mlos_bench.optimizers.MlosCoreOptimizer">MlosCoreOptimizer (class in mlos_bench.optimizers)</a>, <a href="generated/mlos_bench.optimizers.MlosCoreOptimizer.html#mlos_bench.optimizers.MlosCoreOptimizer">[1]</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.optimizers.mlos_core_optimizer.html#mlos_bench.optimizers.mlos_core_optimizer.MlosCoreOptimizer">(class in mlos_bench.optimizers.mlos_core_optimizer)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_viz/mlos_viz.html#mlos_viz.MlosVizMethod">MlosVizMethod (class in mlos_viz)</a>, <a href="generated/mlos_viz.MlosVizMethod.html#mlos_viz.MlosVizMethod">[1]</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tests.optimizers.opt_bulk_register_test.html#mlos_bench.tests.optimizers.opt_bulk_register_test.mock_configs">mock_configs() (in module mlos_bench.tests.optimizers.opt_bulk_register_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.optimizers.opt_bulk_register_test.html#mlos_bench.tests.optimizers.opt_bulk_register_test.mock_configs_str">mock_configs_str() (in module mlos_bench.tests.optimizers.opt_bulk_register_test)</a>
@@ -2906,6 +2981,12 @@
 </li>
         <li><a href="api/mlos_core/mlos_core.tests.optimizers.random_optimizer_test.html#module-mlos_core.tests.optimizers.random_optimizer_test">mlos_core.tests.optimizers.random_optimizer_test</a>
 </li>
+        <li><a href="api/mlos_core/mlos_core.util.html#module-mlos_core.util">mlos_core.util</a>
+</li>
+        <li><a href="api/mlos_viz/mlos_viz.html#module-mlos_viz">mlos_viz</a>
+</li>
+        <li><a href="api/mlos_viz/mlos_viz.dabl.html#module-mlos_viz.dabl">mlos_viz.dabl</a>
+</li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.azure.azure_fileshare_test.html#mlos_bench.tests.services.remote.azure.azure_fileshare_test.MyDirEntry">MyDirEntry (class in mlos_bench.tests.services.remote.azure.azure_fileshare_test)</a>
 </li>
@@ -2967,6 +3048,8 @@
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.new_trial">(mlos_bench.storage.Storage.Experiment method)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.new_trial">[1]</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_core/mlos_core.util.html#mlos_core.util.normalize_config">normalize_config() (in module mlos_core.util)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.optimizers.base_optimizer.html#mlos_bench.optimizers.base_optimizer.Optimizer.not_converged">not_converged() (mlos_bench.optimizers.base_optimizer.Optimizer method)</a>
 
       <ul>
@@ -2985,6 +3068,12 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.objectives">objectives (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.objectives">[1]</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.storage.sql.experiment_data.html#mlos_bench.storage.sql.experiment_data.ExperimentSqlData.objectives">(mlos_bench.storage.sql.experiment_data.ExperimentSqlData property)</a>
+</li>
+      </ul></li>
       <li><a href="api/mlos_core/mlos_core.tests.optimizers.one_hot_test.html#mlos_core.tests.optimizers.one_hot_test.one_hot">one_hot() (in module mlos_core.tests.optimizers.one_hot_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.optimizers.html#mlos_bench.optimizers.OneShotOptimizer">OneShotOptimizer (class in mlos_bench.optimizers)</a>
@@ -2993,6 +3082,28 @@
         <li><a href="api/mlos_bench/mlos_bench.optimizers.one_shot_optimizer.html#mlos_bench.optimizers.one_shot_optimizer.OneShotOptimizer">(class in mlos_bench.optimizers.one_shot_optimizer)</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Experiment.opt_direction">opt_direction (mlos_bench.storage.base_storage.Storage.Experiment property)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Trial.opt_direction">(mlos_bench.storage.base_storage.Storage.Trial property)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.opt_direction">(mlos_bench.storage.Storage.Experiment property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.opt_direction">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.opt_direction">(mlos_bench.storage.Storage.Trial property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Trial.opt_direction">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Experiment.opt_target">opt_target (mlos_bench.storage.base_storage.Storage.Experiment property)</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Trial.opt_target">(mlos_bench.storage.base_storage.Storage.Trial property)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.opt_target">(mlos_bench.storage.Storage.Experiment property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.opt_target">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.opt_target">(mlos_bench.storage.Storage.Trial property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Trial.opt_target">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer">Optimizer (class in mlos_bench.optimizers)</a>, <a href="generated/mlos_bench.optimizers.Optimizer.html#mlos_bench.optimizers.Optimizer">[1]</a>
 
       <ul>
@@ -3005,8 +3116,6 @@
         <li><a href="api/mlos_bench/mlos_bench.config.schemas.html#mlos_bench.config.schemas.ConfigSchema.OPTIMIZER">(mlos_bench.config.schemas.ConfigSchema attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_core/mlos_core.optimizers.html#mlos_core.optimizers.OptimizerFactory">OptimizerFactory (class in mlos_core.optimizers)</a>, <a href="generated/mlos_core.optimizers.OptimizerFactory.html#mlos_core.optimizers.OptimizerFactory">[1]</a>
 </li>
       <li><a href="generated/mlos_core.optimizers.OptimizerType.html#mlos_core.optimizers.OptimizerType">OptimizerType (class in mlos_core.optimizers)</a>
@@ -3045,6 +3154,12 @@
         <li><a href="api/mlos_bench/mlos_bench.storage.sql.experiment.html#mlos_bench.storage.sql.experiment.Experiment.pending_trials">(mlos_bench.storage.sql.experiment.Experiment method)</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.pending_trials">(mlos_bench.storage.Storage.Experiment method)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.pending_trials">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_viz/mlos_viz.html#mlos_viz.plot">plot() (in module mlos_viz)</a>, <a href="generated/mlos_viz.plot.html#mlos_viz.plot">[1]</a>
+
+      <ul>
+        <li><a href="api/mlos_viz/mlos_viz.dabl.html#mlos_viz.dabl.plot">(in module mlos_viz.dabl)</a>
 </li>
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.environments.base_environment.html#mlos_bench.environments.base_environment.Environment.pprint">pprint() (mlos_bench.environments.base_environment.Environment method)</a>
@@ -3107,6 +3222,8 @@
         <li><a href="api/mlos_core/mlos_core.optimizers.random_optimizer.html#mlos_core.optimizers.random_optimizer.RandomOptimizer">(class in mlos_core.optimizers.random_optimizer)</a>, <a href="generated/mlos_core.optimizers.random_optimizer.RandomOptimizer.html#mlos_core.optimizers.random_optimizer.RandomOptimizer">[1]</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.TunableValueKind.RANGE">RANGE (mlos_bench.optimizers.convert_configspace.TunableValueKind attribute)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable.range">range (mlos_bench.tunables.Tunable property)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable.range">[1]</a>
 
       <ul>
@@ -3237,17 +3354,19 @@
         <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.TunableGroups.restore_defaults">(mlos_bench.tunables.TunableGroups method)</a>, <a href="generated/mlos_bench.tunables.TunableGroups.html#mlos_bench.tunables.TunableGroups.restore_defaults">[1]</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.results">results (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.RESULT_COLUMN_PREFIX">RESULT_COLUMN_PREFIX (mlos_bench.storage.base_experiment_data.ExperimentData attribute)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.RESULT_COLUMN_PREFIX">[1]</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.results">results (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.results">[1]</a>
 
       <ul>
-        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.results">(mlos_bench.storage.base_trial_data.TrialData property)</a>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.results">(mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.results">[1]</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.storage.sql.experiment_data.html#mlos_bench.storage.sql.experiment_data.ExperimentSqlData.results">(mlos_bench.storage.sql.experiment_data.ExperimentSqlData property)</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.storage.sql.trial_data.html#mlos_bench.storage.sql.trial_data.TrialSqlData.results">(mlos_bench.storage.sql.trial_data.TrialSqlData property)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.root_env_config">root_env_config (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.root_env_config">root_env_config (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.root_env_config">[1]</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.launcher_run_test.html#mlos_bench.tests.launcher_run_test.root_path">root_path() (in module mlos_bench.tests.launcher_run_test)</a>
 </li>
@@ -3441,7 +3560,21 @@
         <li><a href="generated/mlos_core.spaces.adapters.SpaceAdapterType.html#mlos_core.spaces.adapters.SpaceAdapterType">(class in mlos_core.spaces.adapters)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.TunableDict.special">special (mlos_bench.tunables.tunable.TunableDict attribute)</a>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.TunableValueKind.SPECIAL">SPECIAL (mlos_bench.optimizers.convert_configspace.TunableValueKind attribute)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable.special">special (mlos_bench.tunables.Tunable property)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable.special">[1]</a>
+
+      <ul>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.Tunable.special">(mlos_bench.tunables.tunable.Tunable property)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.tunables.tunable.html#mlos_bench.tunables.tunable.TunableDict.special">(mlos_bench.tunables.tunable.TunableDict attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.special_param_name_is_temp">special_param_name_is_temp() (in module mlos_bench.optimizers.convert_configspace)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.special_param_name_strip">special_param_name_strip() (in module mlos_bench.optimizers.convert_configspace)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.special_param_names">special_param_names() (in module mlos_bench.optimizers.convert_configspace)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.services.local.local_exec.html#mlos_bench.services.local.local_exec.split_cmdline">split_cmdline() (in module mlos_bench.services.local.local_exec)</a>
 </li>
@@ -3465,14 +3598,14 @@
         <li><a href="api/mlos_bench/mlos_bench.services.remote.ssh.ssh_fileshare.html#mlos_bench.services.remote.ssh.ssh_fileshare.SshFileShareService">(class in mlos_bench.services.remote.ssh.ssh_fileshare)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.services.remote.ssh.html#mlos_bench.services.remote.ssh.SshHostService">SshHostService (class in mlos_bench.services.remote.ssh)</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.services.remote.ssh.ssh_host_service.html#mlos_bench.services.remote.ssh.ssh_host_service.SshHostService">(class in mlos_bench.services.remote.ssh.ssh_host_service)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.services.remote.ssh.ssh_service.html#mlos_bench.services.remote.ssh.ssh_service.SshService">SshService (class in mlos_bench.services.remote.ssh.ssh_service)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.remote.ssh.html#mlos_bench.tests.services.remote.ssh.SshTestServerInfo">SshTestServerInfo (class in mlos_bench.tests.services.remote.ssh)</a>
@@ -3497,7 +3630,7 @@
         <li><a href="api/mlos_bench/mlos_bench.environments.status.html#mlos_bench.environments.status.Status">(class in mlos_bench.environments.status)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.status">status (mlos_bench.storage.base_trial_data.TrialData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.status">status (mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.status">[1]</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.environments.base_environment.html#mlos_bench.environments.base_environment.Environment.status">status() (mlos_bench.environments.base_environment.Environment method)</a>
 
@@ -3723,7 +3856,7 @@
         <li><a href="api/mlos_bench/mlos_bench.environments.html#mlos_bench.environments.RemoteEnv.teardown">(mlos_bench.environments.RemoteEnv method)</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.telemetry">telemetry (mlos_bench.storage.base_trial_data.TrialData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.telemetry">telemetry (mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.telemetry">[1]</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.storage.sql.trial_data.html#mlos_bench.storage.sql.trial_data.TrialSqlData.telemetry">(mlos_bench.storage.sql.trial_data.TrialSqlData property)</a>
@@ -3951,8 +4084,6 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.config_persistence_test.html#mlos_bench.tests.services.config_persistence_test.test_resolve_path">test_resolve_path() (in module mlos_bench.tests.services.config_persistence_test)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.config_persistence_test.html#mlos_bench.tests.services.config_persistence_test.test_resolve_path_fail">test_resolve_path_fail() (in module mlos_bench.tests.services.config_persistence_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.local.local_exec_test.html#mlos_bench.tests.services.local.local_exec_test.test_resolve_script">test_resolve_script() (in module mlos_bench.tests.services.local.local_exec_test)</a>
@@ -3963,6 +4094,8 @@
 </li>
       <li><a href="api/mlos_core/mlos_core.tests.optimizers.one_hot_test.html#mlos_core.tests.optimizers.one_hot_test.test_round_trip_reverse">test_round_trip_reverse() (in module mlos_core.tests.optimizers.one_hot_test)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.local.local_exec_python_test.html#mlos_bench.tests.services.local.local_exec_python_test.test_run_python_script">test_run_python_script() (in module mlos_bench.tests.services.local.local_exec_python_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.services.local.local_exec_test.html#mlos_bench.tests.services.local.local_exec_test.test_run_script">test_run_script() (in module mlos_bench.tests.services.local.local_exec_test)</a>
@@ -4025,6 +4158,14 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunable_assign_null_to_int">test_tunable_assign_null_to_int() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
 </li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunable_assign_special">test_tunable_assign_special() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunable_assign_special_fail">test_tunable_assign_special_fail() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunable_assign_special_with_coercion">test_tunable_assign_special_with_coercion() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunable_assign_special_with_coercion_str">test_tunable_assign_special_with_coercion_str() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunable_assign_str_to_float">test_tunable_assign_str_to_float() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunable_assign_str_to_int">test_tunable_assign_str_to_int() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
@@ -4065,11 +4206,15 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_comparison_test.html#mlos_bench.tests.tunables.tunable_comparison_test.test_tunable_lt_same_name_different_type">test_tunable_lt_same_name_different_type() (in module mlos_bench.tests.tunables.tunable_comparison_test)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_to_configspace_test.html#mlos_bench.tests.tunables.tunable_to_configspace_test.test_tunable_to_hyperparameter_categorical">test_tunable_to_hyperparameter_categorical() (in module mlos_bench.tests.tunables.tunable_to_configspace_test)</a>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_definition_test.html#mlos_bench.tests.tunables.tunable_definition_test.test_tunable_name">test_tunable_name() (in module mlos_bench.tests.tunables.tunable_definition_test)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_to_configspace_test.html#mlos_bench.tests.tunables.tunable_to_configspace_test.test_tunable_to_hyperparameter_float">test_tunable_to_hyperparameter_float() (in module mlos_bench.tests.tunables.tunable_to_configspace_test)</a>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_to_configspace_test.html#mlos_bench.tests.tunables.tunable_to_configspace_test.test_tunable_to_configspace_categorical">test_tunable_to_configspace_categorical() (in module mlos_bench.tests.tunables.tunable_to_configspace_test)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_to_configspace_test.html#mlos_bench.tests.tunables.tunable_to_configspace_test.test_tunable_to_hyperparameter_int">test_tunable_to_hyperparameter_int() (in module mlos_bench.tests.tunables.tunable_to_configspace_test)</a>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_to_configspace_test.html#mlos_bench.tests.tunables.tunable_to_configspace_test.test_tunable_to_configspace_float">test_tunable_to_configspace_float() (in module mlos_bench.tests.tunables.tunable_to_configspace_test)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunable_to_configspace_test.html#mlos_bench.tests.tunables.tunable_to_configspace_test.test_tunable_to_configspace_int">test_tunable_to_configspace_int() (in module mlos_bench.tests.tunables.tunable_to_configspace_test)</a>
+</li>
+      <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunables_assign_categorical">test_tunables_assign_categorical() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.tunables_assign_test.html#mlos_bench.tests.tunables.tunables_assign_test.test_tunables_assign_coerce_str">test_tunables_assign_coerce_str() (in module mlos_bench.tests.tunables.tunables_assign_test)</a>
 </li>
@@ -4151,17 +4296,21 @@
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.storage.sql.trial.html#mlos_bench.storage.sql.trial.Trial">Trial (class in mlos_bench.storage.sql.trial)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Trial.trial_id">trial_id (mlos_bench.storage.base_storage.Storage.Trial property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Experiment.trial_id">trial_id (mlos_bench.storage.base_storage.Storage.Experiment property)</a>
 
       <ul>
-        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.trial_id">(mlos_bench.storage.base_trial_data.TrialData property)</a>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_storage.html#mlos_bench.storage.base_storage.Storage.Trial.trial_id">(mlos_bench.storage.base_storage.Storage.Trial property)</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.trial_id">(mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.trial_id">[1]</a>
+</li>
+        <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Experiment.trial_id">(mlos_bench.storage.Storage.Experiment property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Experiment.trial_id">[1]</a>
 </li>
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.trial_id">(mlos_bench.storage.Storage.Trial property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Trial.trial_id">[1]</a>
 </li>
       </ul></li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData">TrialData (class in mlos_bench.storage.base_trial_data)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData">TrialData (class in mlos_bench.storage.base_trial_data)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData">[1]</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.trials">trials (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_experiment_data.html#mlos_bench.storage.base_experiment_data.ExperimentData.trials">trials (mlos_bench.storage.base_experiment_data.ExperimentData property)</a>, <a href="generated/mlos_bench.storage.base_experiment_data.ExperimentData.html#mlos_bench.storage.base_experiment_data.ExperimentData.trials">[1]</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.storage.sql.experiment_data.html#mlos_bench.storage.sql.experiment_data.ExperimentSqlData.trials">(mlos_bench.storage.sql.experiment_data.ExperimentSqlData property)</a>
@@ -4173,9 +4322,9 @@
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tests.html#mlos_bench.tests.try_resolve_class_name">try_resolve_class_name() (in module mlos_bench.tests)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.ts_end">ts_end (mlos_bench.storage.base_trial_data.TrialData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.ts_end">ts_end (mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.ts_end">[1]</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.ts_start">ts_start (mlos_bench.storage.base_trial_data.TrialData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.ts_start">ts_start (mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.ts_start">[1]</a>
 </li>
       <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable">Tunable (class in mlos_bench.tunables)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable">[1]</a>
 
@@ -4185,7 +4334,7 @@
       </ul></li>
       <li><a href="api/mlos_bench/mlos_bench.tests.tunables.conftest.html#mlos_bench.tests.tunables.conftest.tunable_categorical">tunable_categorical() (in module mlos_bench.tests.tunables.conftest)</a>
 </li>
-      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.tunable_config">tunable_config (mlos_bench.storage.base_trial_data.TrialData property)</a>
+      <li><a href="api/mlos_bench/mlos_bench.storage.base_trial_data.html#mlos_bench.storage.base_trial_data.TrialData.tunable_config">tunable_config (mlos_bench.storage.base_trial_data.TrialData property)</a>, <a href="generated/mlos_bench.storage.base_trial_data.TrialData.html#mlos_bench.storage.base_trial_data.TrialData.tunable_config">[1]</a>
 
       <ul>
         <li><a href="api/mlos_bench/mlos_bench.storage.sql.trial_data.html#mlos_bench.storage.sql.trial_data.TrialSqlData.tunable_config">(mlos_bench.storage.sql.trial_data.TrialSqlData property)</a>
@@ -4239,6 +4388,8 @@
         <li><a href="api/mlos_bench/mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.tunables">(mlos_bench.storage.Storage.Trial property)</a>, <a href="generated/mlos_bench.storage.Storage.html#mlos_bench.storage.Storage.Trial.tunables">[1]</a>
 </li>
       </ul></li>
+      <li><a href="api/mlos_bench/mlos_bench.optimizers.convert_configspace.html#mlos_bench.optimizers.convert_configspace.TunableValueKind">TunableValueKind (class in mlos_bench.optimizers.convert_configspace)</a>
+</li>
       <li><a href="api/mlos_bench/mlos_bench.tunables.html#mlos_bench.tunables.Tunable.type">type (mlos_bench.tunables.Tunable property)</a>, <a href="generated/mlos_bench.tunables.Tunable.html#mlos_bench.tunables.Tunable.type">[1]</a>
 
       <ul>
@@ -4417,7 +4568,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, GSL.</p>
+    <p>&#169; Copyright 2024, GSL.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
