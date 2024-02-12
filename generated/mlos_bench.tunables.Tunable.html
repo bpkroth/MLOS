@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mlos_bench.tunables.Tunable &mdash; MlosCore 0.1.dev1+g100d567 documentation</title>
+  <title>mlos_bench.tunables.Tunable &mdash; MlosCore 0.1.dev1+g067f05c documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
@@ -14,7 +14,7 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/documentation_options.js?v=fa32dda5"></script>
+        <script src="../_static/documentation_options.js?v=194baba0"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -37,7 +37,7 @@
             MlosCore
           </a>
               <div class="version">
-                0.1.dev1+g100d567
+                0.1.dev1+g067f05c
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -127,9 +127,15 @@
 </dd>
 <dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.default" title="mlos_bench.tunables.Tunable.default"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default</span></code></a></dt><dd><p>Get the default value of the tunable.</p>
 </dd>
+<dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.distribution" title="mlos_bench.tunables.Tunable.distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distribution</span></code></a></dt><dd><p>Get the name of the distribution (uniform, normal, or beta) if specified.</p>
+</dd>
+<dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.distribution_params" title="mlos_bench.tunables.Tunable.distribution_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distribution_params</span></code></a></dt><dd><p>Get the parameters of the distribution, if specified.</p>
+</dd>
 <dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.dtype" title="mlos_bench.tunables.Tunable.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></dt><dd><p>Get the actual Python data type of the tunable.</p>
 </dd>
 <dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.is_categorical" title="mlos_bench.tunables.Tunable.is_categorical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_categorical</span></code></a></dt><dd><p>Check if the tunable is categorical.</p>
+</dd>
+<dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.is_log" title="mlos_bench.tunables.Tunable.is_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_log</span></code></a></dt><dd><p>Check if numeric tunable is log scale.</p>
 </dd>
 <dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.is_numerical" title="mlos_bench.tunables.Tunable.is_numerical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_numerical</span></code></a></dt><dd><p>Check if the tunable is an integer or float.</p>
 </dd>
@@ -140,6 +146,8 @@
 <dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.name" title="mlos_bench.tunables.Tunable.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></dt><dd><p>Get the name / string ID of the tunable.</p>
 </dd>
 <dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.numerical_value" title="mlos_bench.tunables.Tunable.numerical_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numerical_value</span></code></a></dt><dd><p>Get the current value of the tunable as a number.</p>
+</dd>
+<dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.quantization" title="mlos_bench.tunables.Tunable.quantization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantization</span></code></a></dt><dd><p>Get the number of quantization points, if specified.</p>
 </dd>
 <dt><a class="reference internal" href="#mlos_bench.tunables.Tunable.range" title="mlos_bench.tunables.Tunable.range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">range</span></code></a></dt><dd><p>Get the range of the tunable if it is numerical, None otherwise.</p>
 </dd>
@@ -234,6 +242,34 @@ Return None if the tunable is not categorical.</p>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="mlos_bench.tunables.Tunable.distribution">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distribution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'uniform'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'normal'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'beta'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#mlos_bench.tunables.Tunable.distribution" title="Link to this definition">¶</a></dt>
+<dd><p>Get the name of the distribution (uniform, normal, or beta) if specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>distribution</strong><span class="classifier">str</span></dt><dd><p>Name of the distribution (uniform, normal, or beta) or None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mlos_bench.tunables.Tunable.distribution_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distribution_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mlos_bench.tunables.Tunable.distribution_params" title="Link to this definition">¶</a></dt>
+<dd><p>Get the parameters of the distribution, if specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>distribution_params</strong><span class="classifier">Dict[str, float]</span></dt><dd><p>Parameters of the distribution or None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="mlos_bench.tunables.Tunable.dtype">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span></em><a class="headerlink" href="#mlos_bench.tunables.Tunable.dtype" title="Link to this definition">¶</a></dt>
 <dd><p>Get the actual Python data type of the tunable.</p>
@@ -274,6 +310,20 @@ Return False if the tunable or value is categorical or None.</p>
 <dt class="sig sig-object py" id="mlos_bench.tunables.Tunable.is_default">
 <span class="sig-name descname"><span class="pre">is_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#mlos_bench.tunables.Tunable.is_default" title="Link to this definition">¶</a></dt>
 <dd><p>Checks whether the currently assigned value of the tunable is at its default.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mlos_bench.tunables.Tunable.is_log">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_log</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#mlos_bench.tunables.Tunable.is_log" title="Link to this definition">¶</a></dt>
+<dd><p>Check if numeric tunable is log scale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>log</strong><span class="classifier">bool</span></dt><dd><p>True if numeric tunable is log scale, False if linear.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -341,6 +391,20 @@ store any additional information about the tunable (e.g., the unit information).
 <dt class="sig sig-object py" id="mlos_bench.tunables.Tunable.numerical_value">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">numerical_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#mlos_bench.tunables.Tunable.numerical_value" title="Link to this definition">¶</a></dt>
 <dd><p>Get the current value of the tunable as a number.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mlos_bench.tunables.Tunable.quantization">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">quantization</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#mlos_bench.tunables.Tunable.quantization" title="Link to this definition">¶</a></dt>
+<dd><p>Get the number of quantization points, if specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>quantization</strong><span class="classifier">int, float, None</span></dt><dd><p>Number of quantization points or None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
