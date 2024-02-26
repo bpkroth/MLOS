@@ -8,14 +8,14 @@ Contains the BaseOptimizer abstract class.
 
 import collections
 from abc import ABCMeta, abstractmethod
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Union
 
 import ConfigSpace
 import numpy as np
 import numpy.typing as npt
 import pandas as pd
 
-from mlos_core import config_to_dataframe
+from mlos_core.util import config_to_dataframe
 from mlos_core.spaces.adapters.adapter import BaseSpaceAdapter
 
 
@@ -132,12 +132,12 @@ class BaseOptimizer(metaclass=ABCMeta):
             configuration = self._suggest(context)
             assert len(configuration) == 1, \
                 "Suggest must return a single configuration."
-            assert len(configuration.columns) == len(self.optimizer_parameter_space.values()), \
-                "Suggest returned a configuration with the wrong number of parameters."
+            assert set(configuration.columns).issubset(set(self.optimizer_parameter_space)), \
+                "Optimizer suggested a configuration that does not match the expected parameter space."
         if self._space_adapter:
             configuration = self._space_adapter.transform(configuration)
-            assert len(configuration.columns) == len(self.parameter_space.values()), \
-                "Space adapter transformed configuration with the wrong number of parameters."
+            assert set(configuration.columns).issubset(set(self.parameter_space)), \
+                "Space adapter produced a configuration that does not match the expected parameter space."
         return configuration
 
     @abstractmethod
@@ -237,7 +237,7 @@ class BaseOptimizer(metaclass=ABCMeta):
                     j += 1
         return pd.DataFrame(df_dict)
 
-    def _to_1hot(self, config: pd.DataFrame) -> npt.NDArray:
+    def _to_1hot(self, config: Union[pd.DataFrame, pd.Series]) -> npt.NDArray:
         """
         Convert pandas DataFrame to one-hot-encoded numpy array.
         """
@@ -253,10 +253,14 @@ class BaseOptimizer(metaclass=ABCMeta):
             j = 0
             for param in self.optimizer_parameter_space.values():
                 if config.ndim > 1:
+                    assert isinstance(config, pd.DataFrame)
                     col = config.columns.get_loc(param.name)
+                    assert isinstance(col, int)
                     val = config.iloc[i, col]
                 else:
+                    assert isinstance(config, pd.Series)
                     col = config.index.get_loc(param.name)
+                    assert isinstance(col, int)
                     val = config.iloc[col]
                 if isinstance(param, ConfigSpace.CategoricalHyperparameter):
                     offset = param.choices.index(val)

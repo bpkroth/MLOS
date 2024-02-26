@@ -15,11 +15,11 @@ import logging
 import os.path
 import sys
 
-from typing import Any, Dict, Iterable, List, Optional, Tuple, Type
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from mlos_bench.config.schemas import ConfigSchema
 from mlos_bench.dict_templater import DictTemplater
-from mlos_bench.util import BaseTypeVar, try_parse_val
+from mlos_bench.util import try_parse_val
 
 from mlos_bench.tunables.tunable import TunableValue
 from mlos_bench.tunables.tunable_groups import TunableGroups
@@ -52,6 +52,7 @@ class Launcher:
     """
 
     def __init__(self, description: str, long_text: str = "", argv: Optional[List[str]] = None):
+        # pylint: disable=too-many-statements
         _LOG.info("Launch: %s", description)
         epilog = """
             Additional --key=value pairs can be specified to augment or override values listed in --globals.
@@ -78,6 +79,8 @@ class Launcher:
             self._config_loader = ConfigPersistenceService({"config_path": config_path})
         else:
             config = {}
+
+        self.trial_config_repeat_count: int = args.trial_config_repeat_count or config.get("trial_config_repeat_count", 1)
 
         log_level = args.log_level or config.get("log_level", _LOG_LEVEL)
         try:
@@ -137,6 +140,8 @@ class Launcher:
             config.get("tunable_values", []) + (args.tunable_values or [])
         )
         _LOG.info("Init tunables: %s", self.tunables)
+
+        # TODO: Handle relative path lookup tweaks.
 
         self.optimizer = self._load_optimizer(args.optimizer or config.get("optimizer"))
         _LOG.info("Init optimizer: %s", self.optimizer)
@@ -200,6 +205,10 @@ class Launcher:
             '--optimizer', required=False,
             help='Path to the optimizer configuration file. If omitted, run' +
                  ' a single trial with default (or specified in --tunable_values).')
+
+        parser.add_argument(
+            '--trial_config_repeat_count', '--trial-config-repeat-count', required=False, type=int, default=1,
+            help='Number of times to repeat each config. Default is 1 trial per config, though more may be advised.')
 
         parser.add_argument(
             '--storage', required=False,
@@ -334,13 +343,23 @@ class Launcher:
         in the --optimizer command line option. If config file not specified,
         create a one-shot optimizer to run a single benchmark trial.
         """
+        if 'max_iterations' in self.global_config:
+            self.global_config['max_iterations'] *= self.trial_config_repeat_count
         if args_optimizer is None:
             # global_config may contain additional properties, so we need to
             # strip those out before instantiating the basic oneshot optimizer.
             config = {key: val for key, val in self.global_config.items() if key in OneShotOptimizer.BASE_SUPPORTED_CONFIG_PROPS}
             return OneShotOptimizer(
                 self.tunables, config=config, service=self._parent_service)
-        optimizer = self._load(Optimizer, args_optimizer, ConfigSchema.OPTIMIZER)   # type: ignore[type-abstract]
+        # TODO: Handle relative path lookup tweaks.
+        class_config = self._config_loader.load_config(args_optimizer, ConfigSchema.OPTIMIZER)
+        if 'max_iterations' in class_config:
+            class_config['max_iterations'] *= self.trial_config_repeat_count
+        assert isinstance(class_config, Dict)
+        optimizer = self._config_loader.build_optimizer(tunables=self.tunables,
+                                                        service=self._parent_service,
+                                                        config=class_config,
+                                                        global_config=self.global_config)
         return optimizer
 
     def _load_storage(self, args_storage: Optional[str]) -> Storage:
@@ -352,56 +371,16 @@ class Launcher:
         if args_storage is None:
             # pylint: disable=import-outside-toplevel
             from mlos_bench.storage.sql.storage import SqlStorage
-            return SqlStorage(self.tunables, service=self._parent_service,
+            return SqlStorage(service=self._parent_service,
                               config={
                                   "drivername": "sqlite",
                                   "database": ":memory:",
                                   "lazy_schema_create": True,
                               })
-        storage = self._load(Storage, args_storage, ConfigSchema.STORAGE)   # type: ignore[type-abstract]
+        # TODO: Handle relative path lookup tweaks.
+        class_config = self._config_loader.load_config(args_storage, ConfigSchema.STORAGE)
+        assert isinstance(class_config, Dict)
+        storage = self._config_loader.build_storage(service=self._parent_service,
+                                                    config=class_config,
+                                                    global_config=self.global_config)
         return storage
-
-    def _load(self, cls: Type[BaseTypeVar], json_file_name: str, schema_type: Optional[ConfigSchema]) -> BaseTypeVar:
-        """
-        Create a new instance of class `cls` from JSON configuration.
-
-        Note: For abstract types, mypy will complain at the call site.
-        Use "# type: ignore[type-abstract]" to suppress the warning.
-        See Also: https://github.com/python/mypy/issues/4717
-        """
-        json_file_name = self._config_loader.resolve_path(json_file_name, extra_paths_prepend=[self._config_file_dir])
-        class_config = self._config_loader.load_config(json_file_name, schema_type)
-        assert isinstance(class_config, Dict)
-        ret = self._config_loader.build_generic(
-            base_cls=cls,
-            tunables=self.tunables,
-            service=self._parent_service,
-            config=class_config,
-            global_config=self.global_config,
-            source_config_file=json_file_name,
-        )
-        assert isinstance(ret, cls)
-        return ret
-
-    # TODO: Remove generic _load in favor of type specific.
-    def _load(self, cls: Type[BaseTypeVar], json_file_name: str, schema_type: Optional[ConfigSchema]) -> BaseTypeVar:
-        """
-        Create a new instance of class `cls` from JSON configuration.
-
-        Note: For abstract types, mypy will complain at the call site.
-        Use "# type: ignore[type-abstract]" to suppress the warning.
-        See Also: https://github.com/python/mypy/issues/4717
-        """
-        json_file_name = self._config_loader.resolve_path(json_file_name, extra_paths_prepend=[self._config_file_dir])
-        class_config = self._config_loader.load_config(json_file_name, schema_type)
-        assert isinstance(class_config, Dict)
-        ret = self._config_loader.build_generic(
-            base_cls=cls,
-            tunables=self.tunables,
-            service=self._parent_service,
-            config=class_config,
-            global_config=self.global_config,
-            source_config_file=json_file_name,
-        )
-        assert isinstance(ret, cls)
-        return ret

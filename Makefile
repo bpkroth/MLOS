@@ -335,7 +335,8 @@ build/dist-test.$(PYTHON_VERSION).build-stamp: $(PYTHON_FILES) build/dist-test-e
 	# Run a simple test that uses the mlos_bench wheel (full tests can be checked with `make test`).
 	conda run -n mlos-dist-test-$(PYTHON_VERSION) python3 -m pytest mlos_bench/mlos_bench/tests/environments/mock_env_test.py
 	# Run a simple test that uses the mlos_viz wheel (full tests can be checked with `make test`).
-	conda run -n mlos-dist-test-$(PYTHON_VERSION) python3 -m pytest mlos_viz/mlos_viz/tests/test_dabl_plot.py
+	# To do that, we need the fixtures from mlos_bench, so make those available too.
+	PYTHONPATH=mlos_bench conda run -n mlos-dist-test-$(PYTHON_VERSION) python3 -m pytest mlos_viz/mlos_viz/tests/test_dabl_plot.py
 	touch $@
 
 dist-test-clean: dist-test-env-clean
@@ -346,27 +347,28 @@ dist-test-clean: dist-test-env-clean
 publish: publish-pypi
 
 .PHONY:
-publish-pypi-deps: build/publish-pypi-deps.build-stamp
+publish-pypi-deps: build/publish-pypi-deps.${CONDA_ENV_NAME}.build-stamp
 
 build/publish-pypi-deps.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp
 	conda run -n ${CONDA_ENV_NAME} pip install -U twine
 	touch $@
 
-build/publish.%.py.build-stamp: build/publish-pypi-deps.${CONDA_ENV_NAME}.build-stamp
-build/publish.%.py.build-stamp: build/pytest.${CONDA_ENV_NAME}.build-stamp
-build/publish.%.py.build-stamp: build/dist-test.$(PYTHON_VERSION).build-stamp
-build/publish.%.py.build-stamp: build/check-doc.build-stamp
-build/publish.%.py.build-stamp: build/linklint-doc.build-stamp
-build/publish.%.py.build-stamp:
+PUBLISH_DEPS := build/publish-pypi-deps.${CONDA_ENV_NAME}.build-stamp
+PUBLISH_DEPS += build/pytest.${CONDA_ENV_NAME}.build-stamp
+PUBLISH_DEPS += build/dist-test.$(PYTHON_VERSION).build-stamp
+PUBLISH_DEPS += build/check-doc.build-stamp
+PUBLISH_DEPS += build/linklint-doc.build-stamp
+
+build/publish.${CONDA_ENV_NAME}.%.py.build-stamp: $(PUBLISH_DEPS)
 	rm -f mlos_*/dist/*.tar.gz
 	ls mlos_*/dist/*.tar | xargs -I% gzip -k %
-	repo_name=`echo "$@" | sed -e 's|build/publish\.||' -e 's|\.py\.build-stamp||'` \
+	repo_name=`echo "$@" | sed -r -e 's|build/publish\.[^.]+\.||' -e 's|\.py\.build-stamp||'` \
 		&& conda run -n ${CONDA_ENV_NAME} python3 -m twine upload --repository $$repo_name \
 			mlos_*/dist/mlos*-*.tar.gz mlos_*/dist/mlos*-*.whl
 	touch $@
 
-publish-pypi: build/publish.pypi.py.build-stamp
-publish-test-pypi: build/publish.testpypi.py.build-stamp
+publish-pypi: build/publish.${CONDA_ENV_NAME}.pypi.py.build-stamp
+publish-test-pypi: build/publish.${CONDA_ENV_NAME}.testpypi.py.build-stamp
 
 build/doc-prereqs.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp
 build/doc-prereqs.${CONDA_ENV_NAME}.build-stamp: doc/requirements.txt
@@ -385,11 +387,17 @@ COMMON_DOC_FILES := build/doc-prereqs.${CONDA_ENV_NAME}.build-stamp doc/source/*
 
 doc/source/api/mlos_core/modules.rst: $(MLOS_CORE_PYTHON_FILES) $(COMMON_DOC_FILES)
 	rm -rf doc/source/api/mlos_core
-	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M -o source/api/mlos_core/ ../mlos_core/ ../mlos_*/setup.py
+	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M \
+		-o source/api/mlos_core/ \
+		../mlos_core/ \
+		../mlos_core/setup.py ../mlos_core/mlos_core/tests/
 
 doc/source/api/mlos_bench/modules.rst: $(MLOS_BENCH_PYTHON_FILES) $(COMMON_DOC_FILES)
 	rm -rf doc/source/api/mlos_bench
-	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M -o source/api/mlos_bench/ ../mlos_bench/ ../mlos_*/setup.py
+	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M \
+		-o source/api/mlos_bench/ \
+		../mlos_bench/ \
+		../mlos_bench/setup.py ../mlos_bench/mlos_bench/tests/
 	# Save the help output of the mlos_bench scripts to include in the documentation.
 	# First make sure that the latest version of mlos_bench is installed (since it uses git based tagging).
 	conda run -n ${CONDA_ENV_NAME} pip install -e mlos_core -e mlos_bench -e mlos_viz
@@ -399,7 +407,10 @@ doc/source/api/mlos_bench/modules.rst: $(MLOS_BENCH_PYTHON_FILES) $(COMMON_DOC_F
 
 doc/source/api/mlos_viz/modules.rst: $(MLOS_VIZ_PYTHON_FILES) $(COMMON_DOC_FILES)
 	rm -rf doc/source/api/mlos_viz
-	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M -o source/api/mlos_viz/ ../mlos_viz/ ../mlos_*/setup.py
+	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M \
+		-o source/api/mlos_viz/ \
+		../mlos_viz/ \
+		../mlos_viz/setup.py ../mlos_viz/mlos_viz/tests/
 
 SPHINX_API_RST_FILES := doc/source/api/mlos_core/modules.rst
 SPHINX_API_RST_FILES += doc/source/api/mlos_bench/modules.rst
