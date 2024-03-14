@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mlos_bench.optimizers.mlos_core_optimizer module &mdash; MlosCore 0.1.dev1+g0127775 documentation</title>
+  <title>mlos_bench.optimizers.mlos_core_optimizer module &mdash; MlosCore 0.1.dev1+gd7c4334 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
@@ -14,7 +14,7 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/documentation_options.js?v=eab0d370"></script>
+        <script src="../../_static/documentation_options.js?v=4f58b03b"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="mlos_bench.optimizers.mock_optimizer module" href="mlos_bench.optimizers.mock_optimizer.html" />
-    <link rel="prev" title="mlos_bench.optimizers.convert_configspace module" href="mlos_bench.optimizers.convert_configspace.html" /> 
+    <link rel="prev" title="mlos_bench.optimizers.grid_search_optimizer module" href="mlos_bench.optimizers.grid_search_optimizer.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,7 +37,7 @@
             MlosCore
           </a>
               <div class="version">
-                0.1.dev1+g0127775
+                0.1.dev1+gd7c4334
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -70,6 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.config.html">mlos_bench.config package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.environments.html">mlos_bench.environments package</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="mlos_bench.optimizers.html">mlos_bench.optimizers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos_bench.schedulers.html">mlos_bench.schedulers package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.services.html">mlos_bench.services package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html">mlos_bench.storage package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.tunables.html">mlos_bench.tunables package</a></li>
@@ -125,6 +126,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_space</span></code></dt><dd><p>Get the tunable parameters of the optimizer as a ConfigurationSpace.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_iteration</span></code></dt><dd><p>The current number of iterations (trials) registered.</p>
+</dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">direction</span></code></dt><dd><p>The direction to optimize the target metric (e.g., min or max).</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_min</span></code></dt><dd><p>True if minimizing, False otherwise.</p>
@@ -141,7 +146,7 @@
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">target</span></code></dt><dd><p>The name of the target metric to optimize.</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">tunable_params</span></code></dt><dd><p>Get the configuration space of the optimizer.</p>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">tunable_params</span></code></dt><dd><p>Get the tunable parameters of the optimizer as TunableGroups.</p>
 </dd>
 </dl>
 </dd>
@@ -217,7 +222,8 @@ mlos_bench storage to track the source of each configuration.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="mlos_bench.optimizers.mlos_core_optimizer.MlosCoreOptimizer.register">
 <span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tunables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mlos_bench.tunables.tunable_groups.html#mlos_bench.tunables.tunable_groups.TunableGroups" title="mlos_bench.tunables.tunable_groups.TunableGroups"><span class="pre">TunableGroups</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mlos_bench.environments.status.html#mlos_bench.environments.status.Status" title="mlos_bench.environments.status.Status"><span class="pre">Status</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#mlos_bench.optimizers.mlos_core_optimizer.MlosCoreOptimizer.register" title="Link to this definition">¶</a></dt>
-<dd><p>Register the observation for the given configuration.</p>
+<dd><p>Register the observation for the given configuration.
+Base class’ implementations logs and increments the iteration count.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -264,7 +270,7 @@ but with the values set to the next suggestion.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="mlos_bench.optimizers.convert_configspace.html" class="btn btn-neutral float-left" title="mlos_bench.optimizers.convert_configspace module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mlos_bench.optimizers.grid_search_optimizer.html" class="btn btn-neutral float-left" title="mlos_bench.optimizers.grid_search_optimizer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="mlos_bench.optimizers.mock_optimizer.html" class="btn btn-neutral float-right" title="mlos_bench.optimizers.mock_optimizer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
