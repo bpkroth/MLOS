@@ -6,6 +6,8 @@ dependencies:
   # All other dependencies for the mlos modules come from pip.
   - pip
   - pylint
+  - black
+  - isort
   - pycodestyle
   - pydocstyle
   - flake8
