@@ -85,7 +85,9 @@
                 "streetsidesoftware.code-spell-checker",
                 "trond-snekvik.simple-rst",
                 "tyriar.sort-lines",
-                "waderyan.gitblame"
+                "waderyan.gitblame",
+                "ms-python.isort",
+                "tamasfe.even-better-toml"
             ]
         }
     }
