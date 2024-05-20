@@ -26,7 +26,7 @@ MAKEFLAGS += -j$(shell nproc)
 #MAKEFLAGS += -Oline
 
 .PHONY: all
-all: black check test dist dist-test doc licenseheaders
+all: format check test dist dist-test doc licenseheaders
 
 .PHONY: conda-env
 conda-env: build/conda-env.${CONDA_ENV_NAME}.build-stamp
@@ -45,27 +45,60 @@ clean-conda-env:
 	conda env remove -y ${CONDA_INFO_LEVEL} -n ${CONDA_ENV_NAME}
 	rm -f build/conda-env.${CONDA_ENV_NAME}.build-stamp
 
-black:
-	black .
+.PHONY: format
+format: licenseheaders black
 
-.PHONY: check
-check: black-check pydocstyle pylint mypy # cspell licenseheaders markdown-link-check
-
-.PHONY: black-check
-black-check: conda-env
-black-check: build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp
-black-check: build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp
-black-check: build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp
-
+# Both black and licenseheaders alter files, so only run one at a time, by
+# making licenseheaders an order-only prerequisite.
+.PHONY: black
+black: conda-env
+black: build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp
+black: build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+black: build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp
 
 build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES)
 build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES)
 build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
 
-build/black.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
+# TODO: Add pyproject.toml as dependency.
+build/black.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp | licenseheaders
+	# Reformat python files with black.
+	# FIXME:
+	conda run -n ${CONDA_ENV_NAME} black $(filter-out setup.cfg,$+)
+
+.PHONY: check
+check: black-check pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
+
+.PHONY: pycodestyle
+pycodestyle: conda-env
+pycodestyle: build/pycodestyle.mlos_core.${CONDA_ENV_NAME}.build-stamp
+pycodestyle: build/pycodestyle.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+pycodestyle: build/pycodestyle.mlos_viz.${CONDA_ENV_NAME}.build-stamp
+
+build/pycodestyle.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES)
+build/pycodestyle.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES)
+build/pycodestyle.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
+
+build/pycodestyle.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
+	# Check for decent pep8 code style with pycodestyle.
+	# Note: if this fails, try using autopep8 to fix it.
+	conda run -n ${CONDA_ENV_NAME} pycodestyle $(filter-out setup.cfg,$+)
+	touch $@
+
+.PHONY: black-check
+black-check: conda-env
+black-check: build/black-check.mlos_core.${CONDA_ENV_NAME}.build-stamp
+black-check: build/black-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+black-check: build/black-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp
+
+build/black-check.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES)
+build/black-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES)
+build/black-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
+
+build/black-check.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
 	# Check for decent pep8 code style with black.
 	# Note: if this fails, try using black to fix it.
-	conda run -n ${CONDA_ENV_NAME} black --check $(filter-out setup.cfg,$+)
+	conda run -n ${CONDA_ENV_NAME} black --check --diff --color $(filter-out setup.cfg,$+)
 	touch $@
 
 .PHONY: pydocstyle
@@ -534,6 +567,12 @@ clean-check:
 	rm -f build/black.build-stamp
 	rm -f build/black.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/black.mlos_*.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/black-check.build-stamp
+	rm -f build/black-check.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/black-check.mlos_*.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/pycodestyle.build-stamp
+	rm -f build/pycodestyle.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/pycodestyle.mlos_*.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/pydocstyle.build-stamp
 	rm -f build/pydocstyle.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/pydocstyle.mlos_*.${CONDA_ENV_NAME}.build-stamp
