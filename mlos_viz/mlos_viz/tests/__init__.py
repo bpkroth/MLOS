@@ -10,6 +10,7 @@ import sys
 
 import seaborn  # pylint: disable=unused-import     # (used by patch)   # noqa: unused
 
+
 BASE_MATPLOTLIB_SHOW_PATCH = "mlos_viz.base.plt.show"
 
 if sys.version_info >= (3, 11):

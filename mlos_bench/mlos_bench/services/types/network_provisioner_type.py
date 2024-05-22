@@ -6,7 +6,7 @@
 Protocol interface for Network provisioning operations.
 """
 
-from typing import TYPE_CHECKING, Protocol, Tuple, runtime_checkable
+from typing import Tuple, Protocol, runtime_checkable, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from mlos_bench.environments.status import Status
@@ -36,9 +36,7 @@ class SupportsNetworkProvisioning(Protocol):
             Status is one of {PENDING, SUCCEEDED, FAILED}
         """
 
-    def wait_network_deployment(
-        self, params: dict, *, is_setup: bool
-    ) -> Tuple["Status", dict]:
+    def wait_network_deployment(self, params: dict, *, is_setup: bool) -> Tuple["Status", dict]:
         """
         Waits for a pending operation on a Network to resolve to SUCCEEDED or FAILED.
         Return TIMED_OUT when timing out.
@@ -58,9 +56,7 @@ class SupportsNetworkProvisioning(Protocol):
             Result is info on the operation runtime if SUCCEEDED, otherwise {}.
         """
 
-    def deprovision_network(
-        self, params: dict, ignore_errors: bool = True
-    ) -> Tuple["Status", dict]:
+    def deprovision_network(self, params: dict, ignore_errors: bool = True) -> Tuple["Status", dict]:
         """
         Deprovisions the Network by deleting it.
 

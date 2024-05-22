@@ -6,7 +6,7 @@
 Protocol interface for Host/OS operations.
 """
 
-from typing import TYPE_CHECKING, Protocol, Tuple, runtime_checkable
+from typing import Tuple, Protocol, runtime_checkable, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from mlos_bench.environments.status import Status

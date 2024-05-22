@@ -24,12 +24,8 @@ class RandomOptimizer(BaseOptimizer):
         The parameter space to optimize.
     """
 
-    def _register(
-        self,
-        configurations: pd.DataFrame,
-        scores: pd.Series,
-        context: Optional[pd.DataFrame] = None,
-    ) -> None:
+    def _register(self, configurations: pd.DataFrame, scores: pd.DataFrame,
+                  context: Optional[pd.DataFrame] = None) -> None:
         """Registers the given configurations and scores.
 
         Doesn't do anything on the RandomOptimizer except storing configurations for logging.
@@ -39,17 +35,14 @@ class RandomOptimizer(BaseOptimizer):
         configurations : pd.DataFrame
             Dataframe of configurations / parameters. The columns are parameter names and the rows are the configurations.
 
-        scores : pd.Series
+        scores : pd.DataFrame
             Scores from running the configurations. The index is the same as the index of the configurations.
 
         context : None
             Not Yet Implemented.
         """
         if context is not None:
-            warn(
-                f"Not Implemented: Ignoring context {list(context.columns)}",
-                UserWarning,
-            )
+            warn(f"Not Implemented: Ignoring context {list(context.columns)}", UserWarning)
         # should we pop them from self.pending_observations?
 
     def _suggest(self, context: Optional[pd.DataFrame] = None) -> pd.DataFrame:
@@ -69,16 +62,10 @@ class RandomOptimizer(BaseOptimizer):
         """
         if context is not None:
             # not sure how that works here?
-            warn(
-                f"Not Implemented: Ignoring context {list(context.columns)}",
-                UserWarning,
-            )
-        return pd.DataFrame(
-            dict(self.optimizer_parameter_space.sample_configuration()), index=[0]
-        )
+            warn(f"Not Implemented: Ignoring context {list(context.columns)}", UserWarning)
+        return pd.DataFrame(dict(self.optimizer_parameter_space.sample_configuration()), index=[0])
 
-    def register_pending(
-        self, configurations: pd.DataFrame, context: Optional[pd.DataFrame] = None
-    ) -> None:
+    def register_pending(self, configurations: pd.DataFrame,
+                         context: Optional[pd.DataFrame] = None) -> None:
         raise NotImplementedError()
         # self._pending_observations.append((configurations, context))
