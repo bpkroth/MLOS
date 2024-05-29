@@ -46,10 +46,8 @@ clean-conda-env:
 	rm -f build/conda-env.${CONDA_ENV_NAME}.build-stamp
 
 .PHONY: format
-format: licenseheaders black
+format: licenseheaders isort black
 
-# Both black and licenseheaders alter files, so only run one at a time, by
-# making licenseheaders an order-only prerequisite.
 .PHONY: black
 black: conda-env
 black: build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp
@@ -60,14 +58,66 @@ build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES)
 build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES)
 build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
 
-# TODO: Add pyproject.toml as dependency.
-build/black.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp | licenseheaders
+# Both black, licenseheaders, and isort all alter files, so only run one at a time, by
+# making licenseheaders and isort an order-only prerequisite.
+build/black.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp | licenseheaders isort
 	# Reformat python files with black.
 	# FIXME:
 	conda run -n ${CONDA_ENV_NAME} black $(filter-out setup.cfg,$+)
 
+.PHONY: isort
+isort: conda-env
+isort: build/isort.mlos_core.${CONDA_ENV_NAME}.build-stamp
+isort: build/isort.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+isort: build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp
+
+build/isort.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES) pyproject.toml
+build/isort.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES) pyproject.toml
+build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) pyproject.toml
+
+# Both isort and licenseheaders alter files, so only run one at a time, by
+# making licenseheaders an order-only prerequisite.
+build/isort.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp | licenseheaders build/licenseheaders.${CONDA_ENV_NAME}.build-stamp
+	# Reformat python file imports with isort.
+	conda run -n ${CONDA_ENV_NAME} isort --verbose --only-modified --atomic -j0 $(filter-out setup.cfg pyproject.toml,$+)
+
+
 .PHONY: check
-check: black-check pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
+#check: black-check pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
+check: black-check pycodestyle pydocstyle pylint mypy | format
+
+.PHONY: black-check
+black-check: conda-env
+black-check: build/black-check.mlos_core.${CONDA_ENV_NAME}.build-stamp
+black-check: build/black-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+black-check: build/black-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp
+
+# Make sure black format rules run before black-check rules.
+build/black-check.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES) | build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp
+build/black-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES) | build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+build/black-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) | build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp
+
+build/black-check.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
+	# Check for import sort order.
+	# Note: if this fails use "make format" or "make black" to fix it.
+	conda run -n ${CONDA_ENV_NAME} black --verbose --check --diff $(filter-out setup.cfg,$+)
+	touch $@
+
+.PHONY: isort-check
+isort-check: conda-env
+isort-check: build/isort-check.mlos_core.${CONDA_ENV_NAME}.build-stamp
+isort-check: build/isort-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+isort-check: build/isort-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp
+
+# Make sure isort format rules run before isort-check rules.
+build/isort-check.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES) | build/isort.mlos_core.${CONDA_ENV_NAME}.build-stamp
+build/isort-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES) | build/isort.mlos_bench.${CONDA_ENV_NAME}.build-stamp
+build/isort-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) | build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp
+
+build/isort-check.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
+	# Note: if this fails use "make format" or "make isort" to fix it.
+	conda run -n ${CONDA_ENV_NAME} isort --only-modified --check --diff -j0 $(filter-out setup.cfg,$+)
+	touch $@
 
 .PHONY: pycodestyle
 pycodestyle: conda-env
@@ -81,7 +131,7 @@ build/pycodestyle.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILE
 
 build/pycodestyle.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
 	# Check for decent pep8 code style with pycodestyle.
-	# Note: if this fails, try using autopep8 to fix it.
+	# Note: if this fails, try using "make format" to fix it.
 	conda run -n ${CONDA_ENV_NAME} pycodestyle $(filter-out setup.cfg,$+)
 	touch $@
 
@@ -106,7 +156,6 @@ pydocstyle: conda-env
 pydocstyle: build/pydocstyle.mlos_core.${CONDA_ENV_NAME}.build-stamp
 pydocstyle: build/pydocstyle.mlos_bench.${CONDA_ENV_NAME}.build-stamp
 pydocstyle: build/pydocstyle.mlos_viz.${CONDA_ENV_NAME}.build-stamp
-
 
 build/pydocstyle.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES)
 build/pydocstyle.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES)
