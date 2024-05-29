@@ -54,9 +54,9 @@ black: build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp
 black: build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp
 black: build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp
 
-build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES)
-build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES)
-build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
+build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES) pyproject.toml
+build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES) pyproject.toml
+build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) pyproject.toml
 
 # Both black, licenseheaders, and isort all alter files, so only run one at a time, by
 # making licenseheaders and isort an order-only prerequisite.
@@ -133,22 +133,6 @@ build/pycodestyle.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_N
 	# Check for decent pep8 code style with pycodestyle.
 	# Note: if this fails, try using "make format" to fix it.
 	conda run -n ${CONDA_ENV_NAME} pycodestyle $(filter-out setup.cfg,$+)
-	touch $@
-
-.PHONY: black-check
-black-check: conda-env
-black-check: build/black-check.mlos_core.${CONDA_ENV_NAME}.build-stamp
-black-check: build/black-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp
-black-check: build/black-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp
-
-build/black-check.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES)
-build/black-check.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES)
-build/black-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
-
-build/black-check.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
-	# Check for decent pep8 code style with black.
-	# Note: if this fails, try using black to fix it.
-	conda run -n ${CONDA_ENV_NAME} black --check --diff --color $(filter-out setup.cfg,$+)
 	touch $@
 
 .PHONY: pydocstyle
