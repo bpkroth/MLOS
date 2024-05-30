@@ -29,6 +29,7 @@
         "trond-snekvik.simple-rst",
         "tyriar.sort-lines",
         "waderyan.gitblame",
+        "ms-python.black-formatter",
         "ms-python.isort",
         "tamasfe.even-better-toml"
     ]
