@@ -17,7 +17,12 @@ import re
 
 from setuptools import setup, find_packages
 
-from _version import _VERSION   # pylint: disable=import-private-name
+
+# FIXME:
+try:
+    from _version import _VERSION   # pylint: disable=import-private-name
+except ImportError:
+    _VERSION = '0.0.1-dev'
 
 try:
     from setuptools_scm import get_version
