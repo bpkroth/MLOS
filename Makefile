@@ -348,6 +348,7 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar: PACKAGE_NAME := mlos_viz
 %-latest-py3-none-any.whl:
 	rm -f $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
 	rm -f $(MODULE_NAME)/dist/tmp/$(MODULE_NAME)-latest-py3-none-any.whl
+	# TODO: Add "python -m build" rules to produce the wheels.
 	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} pip wheel --no-index --no-deps --wheel-dir dist dist/tmp/$(PACKAGE_NAME)-latest.tar
 	ls $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
 	# Check to make sure the tests were excluded from the wheel.

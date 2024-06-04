@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm>=8.1.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "mlos-core"
 authors = [
@@ -6,7 +10,6 @@ authors = [
 maintainers = [
     {name = "Microsoft", email = "mlos-maintainers@service.microsoft.com"},
 ]
-license = "MIT"
 description = "MLOS Core Python interface for parameter optimization."
 keywords = [
     "autotuning",
@@ -20,7 +23,12 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
 ]
+license = {"text" = "MIT"}
 requires-python = ">=3.8"
+dynamic = [
+    "readme",   # urls get dynamically mutated by the build process
+    "version",  # managed by setuptools_scm
+]
 dependencies = [
     "scikit-learn>=1.2",
     "joblib>=1.1.1",        # CVE-2022-21797: scikit-learn dependency, addressed in 1.2.0dev0, which isn't currently released
@@ -30,11 +38,6 @@ dependencies = [
     "pandas >= 1.0.3 ;python_version < '3.9'",
     "ConfigSpace>=0.7.1",
 ]
-dynamic = [
-    #"optional-dependencies",    # expanded dynamically
-    "readme",   # urls get dynamically mutated by the build process
-    "version",  # managed by setuptools_scm
-]
 
 [project.optional-dependencies]
 flaml = [
@@ -43,16 +46,17 @@ flaml = [
 smac = [
     "smac>=2.0.0",
 ]
-tests = [
+# Meta targets to install everything.
+# NOTE: Be sure to add new extras from above to these.
+full = ["mlos-core[flaml,smac]"]
+full-tests = [
+    "mlos-core[full]",
     "pytest",
     "pytest-forked",
     "pytest-xdist",
     "pytest-cov",
     "pytest-local-badge",
 ]
-# Meta targets to install everything.
-full = ["mlos-core[flaml,smac]"]
-full-test = ["mlos-core[full,tests]"]
 
 [project.urls]
 Documentation = "https://microsoft.github.io/MLOS/"
@@ -60,12 +64,13 @@ Repository = "https://github.com/microsoft/MLOS/"
 Issues = "https://github.com/microsoft/MLOS/issues"
 "Package Source" = "https://github.com/microsoft/MLOS/tree/main/mlos_core/"
 
-[build-system]
-requires = ["setuptools", "setuptools-scm>=8.1.0"]
-build-backend = "setuptools.build_meta"
-
+# Tell setuptools where to find the package.
 [tool.setuptools.packages.find]
 where = ["mlos_core"]
+
+# Tell setuptools_scm to use the root directory for git info.
+[tool.setuptools_scm]
+root = ".."
 
 [tool.setuptools.package-data]
 mlos_core = ["py.typed"]
@@ -73,8 +78,10 @@ mlos_core = ["py.typed"]
 [tool.setuptools.exclude-package-data]
 mlos_core = ["tests", "tests/*"]
 
-[tool.distutils.bdist_wheel]
-universal = true
+# TODO: Ensure that py.typed and other expected files are included.
 
-[tool.setuptools_scm]
-root = ".."
+# FIXME: Command option bdist_wheel.universal is not defined
+#[tool.distutils.bdist_wheel]
+#universal = true
+
+# FIXME: Make sure the version is correct when we build the wheel.
