@@ -357,7 +357,7 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 	mkdir -p $(MODULE_NAME)/dist/tmp
 	rm -f $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
 	rm -f $(MODULE_NAME)/dist/tmp/$(MODULE_NAME)-latest-py3-none-any.whl
-	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} pip python3 -m build --wheel
+	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 -m build --wheel
 	ls $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
 	# Do some sanity checks on the wheel output.
 	# Check to make sure the tests were excluded from the wheel.
