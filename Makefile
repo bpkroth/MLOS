@@ -31,7 +31,13 @@ all: format check test dist dist-test doc
 .PHONY: conda-env
 conda-env: build/conda-env.${CONDA_ENV_NAME}.build-stamp
 
-build/conda-env.${CONDA_ENV_NAME}.build-stamp: ${ENV_YML} mlos_core/setup.py mlos_bench/setup.py mlos_viz/setup.py
+MLOS_CORE_CONF_FILES := mlos_core/pyproject.toml mlos_core/setup.py mlos_core/MANIFEST.in
+MLOS_BENCH_CONF_FILES := mlos_bench/pyproject.toml mlos_bench/setup.py mlos_bench/MANIFEST.in
+MLOS_VIZ_CONF_FILES := mlos_viz/pyproject.toml mlos_viz/setup.py mlos_viz/MANIFEST.in
+
+MLOS_PKG_CONF_FILES := $(MLOS_CORE_CONF_FILES) $(MLOS_BENCH_CONF_FILES) $(MLOS_VIZ_CONF_FILES)
+
+build/conda-env.${CONDA_ENV_NAME}.build-stamp: ${ENV_YML} $(MLOS_PKG_CONF_FILES)
 	@echo "CONDA_SOLVER: ${CONDA_SOLVER}"
 	@echo "CONDA_EXPERIMENTAL_SOLVER: ${CONDA_EXPERIMENTAL_SOLVER}"
 	@echo "CONDA_INFO_LEVEL: ${CONDA_INFO_LEVEL}"
@@ -314,19 +320,19 @@ bdist_wheel: mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl
 
 mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: MODULE_NAME := mlos_core
 mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: PACKAGE_NAME := mlos_core
-mlos_core/dist/tmp/mlos_core-latest.tar.gz: mlos_core/pyproject.toml mlos_core/setup.py mlos_core/MANIFEST.in $(MLOS_CORE_PYTHON_FILES)
+mlos_core/dist/tmp/mlos_core-latest.tar.gz: $(MLOS_CORE_CONF_FILES) $(MLOS_CORE_PYTHON_FILES)
 mlos_core/dist/tmp/mlos_core-latest.tar.gz: MODULE_NAME := mlos_core
 mlos_core/dist/tmp/mlos_core-latest.tar.gz: PACKAGE_NAME := mlos_core
 
 mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: MODULE_NAME := mlos_bench
 mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: PACKAGE_NAME := mlos_bench
-mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: mlos_bench/pyproject.toml mlos_bench/setup.py mlos_bench/MANIFEST.in $(MLOS_BENCH_PYTHON_FILES)
+mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: $(MLOS_BENCH_CONF_FILES) $(MLOS_BENCH_PYTHON_FILES)
 mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: MODULE_NAME := mlos_bench
 mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: PACKAGE_NAME := mlos_bench
 
 mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: MODULE_NAME := mlos_viz
 mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: PACKAGE_NAME := mlos_viz
-mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: mlos_viz/pyproject.toml mlos_viz/setup.py mlos_viz/MANIFEST.in $(MLOS_VIZ_PYTHON_FILES)
+mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: $(MLOS_VIZ_CONF_FILES) $(MLOS_VIZ_PYTHON_FILES)
 mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: MODULE_NAME := mlos_viz
 mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 
