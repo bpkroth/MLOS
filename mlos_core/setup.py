@@ -8,6 +8,7 @@ Setup instructions for the mlos_core package.
 
 # pylint: disable=duplicate-code
 
+from logging import warning
 from itertools import chain
 from typing import Dict, List
 
@@ -15,6 +16,13 @@ import os
 import re
 
 from setuptools import setup
+
+
+try:
+    from _version import _VERSION  # pylint: disable=import-private-name
+except ImportError:
+    _VERSION = "0.0.1-dev"
+    warning(f"_version.py not found, using dummy _VERSION={_VERSION}")
 
 
 # A simple routine to read and adjust the README.md for this module into a format
@@ -65,6 +73,6 @@ extra_requires['full-tests'] = extra_requires['full'] + [
 # TODO: Add code to check that "full" and "full-tests" are covered in the config.
 
 setup(
-    #extras_require=extra_requires,
-    **_get_long_desc_from_readme('https://github.com/microsoft/MLOS/tree/main/mlos_core'),
+    version=_VERSION,
+    **_get_long_desc_from_readme("https://github.com/microsoft/MLOS/tree/main/mlos_core"),
 )
