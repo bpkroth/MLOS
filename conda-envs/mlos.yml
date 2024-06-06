@@ -12,8 +12,6 @@ dependencies:
   - pydocstyle
   - flake8
   - build
-  - setuptools
-  - setuptools-scm
   - jupyter
   - ipykernel
   - nb_conda_kernels
@@ -25,7 +23,6 @@ dependencies:
   - libpq
   - python
   - pip:
-    - autopep8>=1.7.0
     - bump2version
     - check-jsonschema
     - licenseheaders
