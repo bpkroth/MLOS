@@ -336,9 +336,11 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar: PACKAGE_NAME := mlos_viz
 %-latest.tar: build/conda-env.${CONDA_ENV_NAME}.build-stamp
 %-latest.tar:
 	mkdir -p $(MODULE_NAME)/dist/tmp
-	rm -f $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar
-	rm -f $(MODULE_NAME)/dist/tmp/$(PACKAGE_NAME)-latest.tar
-	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 setup.py sdist --formats tar
+	rm -f $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar{,.gz}
+	rm -f $(MODULE_NAME)/dist/tmp/$(PACKAGE_NAME)-latest.tar{,.gz}
+	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 -m build --sdist
+	ls $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz
+	gunzip $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz
 	ls $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar
 	! ( tar tf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar | grep -m1 tests/ )
 	[ "$(MODULE_NAME)" != "mlos_bench" ] || tar tf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar | grep -m1 mlos_bench/config/
