@@ -26,7 +26,7 @@ MAKEFLAGS += -j$(shell nproc)
 #MAKEFLAGS += -Oline
 
 .PHONY: all
-all: format .WAIT check test dist dist-test doc
+all: format check test dist dist-test doc
 
 .PHONY: conda-env
 conda-env: build/conda-env.${CONDA_ENV_NAME}.build-stamp
