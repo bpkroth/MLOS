@@ -654,7 +654,7 @@ clean-test:
 
 .PHONY: clean-dist
 clean-dist:
-	rm -rf build dist
+	rm -rf dist
 	rm -rf mlos_core/build mlos_core/dist
 	rm -rf mlos_bench/build mlos_bench/dist
 	rm -rf mlos_viz/build mlos_viz/dist
