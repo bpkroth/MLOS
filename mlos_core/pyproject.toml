@@ -29,6 +29,7 @@ dynamic = [
     "readme",   # urls get dynamically mutated by the build process
     "version",  # managed by setuptools_scm
 ]
+
 dependencies = [
     "scikit-learn>=1.2",
     "joblib>=1.1.1",        # CVE-2022-21797: scikit-learn dependency, addressed in 1.2.0dev0, which isn't currently released
