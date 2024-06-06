@@ -312,54 +312,59 @@ bdist_wheel: mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl
 bdist_wheel: mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl
 bdist_wheel: mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl
 
-mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: mlos_core/dist/tmp/mlos_core-latest.tar
 mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: MODULE_NAME := mlos_core
 mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: PACKAGE_NAME := mlos_core
-mlos_core/dist/tmp/mlos_core-latest.tar: mlos_core/pyproject.toml mlos_core/setup.py mlos_core/MANIFEST.in $(MLOS_CORE_PYTHON_FILES)
-mlos_core/dist/tmp/mlos_core-latest.tar: MODULE_NAME := mlos_core
-mlos_core/dist/tmp/mlos_core-latest.tar: PACKAGE_NAME := mlos_core
+mlos_core/dist/tmp/mlos_core-latest.tar.gz: mlos_core/pyproject.toml mlos_core/setup.py mlos_core/MANIFEST.in $(MLOS_CORE_PYTHON_FILES)
+mlos_core/dist/tmp/mlos_core-latest.tar.gz: MODULE_NAME := mlos_core
+mlos_core/dist/tmp/mlos_core-latest.tar.gz: PACKAGE_NAME := mlos_core
 
-mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: mlos_bench/dist/tmp/mlos_bench-latest.tar
 mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: MODULE_NAME := mlos_bench
 mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: PACKAGE_NAME := mlos_bench
-mlos_bench/dist/tmp/mlos_bench-latest.tar: mlos_bench/pyproject.toml mlos_bench/setup.py mlos_bench/MANIFEST.in $(MLOS_BENCH_PYTHON_FILES)
-mlos_bench/dist/tmp/mlos_bench-latest.tar: MODULE_NAME := mlos_bench
-mlos_bench/dist/tmp/mlos_bench-latest.tar: PACKAGE_NAME := mlos_bench
+mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: mlos_bench/pyproject.toml mlos_bench/setup.py mlos_bench/MANIFEST.in $(MLOS_BENCH_PYTHON_FILES)
+mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: MODULE_NAME := mlos_bench
+mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: PACKAGE_NAME := mlos_bench
 
-mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: mlos_viz/dist/tmp/mlos_viz-latest.tar
 mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: MODULE_NAME := mlos_viz
 mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: PACKAGE_NAME := mlos_viz
-mlos_viz/dist/tmp/mlos_viz-latest.tar: mlos_viz/pyproject.toml mlos_viz/setup.py mlos_viz/MANIFEST.in $(MLOS_VIZ_PYTHON_FILES)
-mlos_viz/dist/tmp/mlos_viz-latest.tar: MODULE_NAME := mlos_viz
-mlos_viz/dist/tmp/mlos_viz-latest.tar: PACKAGE_NAME := mlos_viz
+mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: mlos_viz/pyproject.toml mlos_viz/setup.py mlos_viz/MANIFEST.in $(MLOS_VIZ_PYTHON_FILES)
+mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: MODULE_NAME := mlos_viz
+mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 
-%-latest.tar: build/conda-env.${CONDA_ENV_NAME}.build-stamp
-%-latest.tar:
+%-latest.tar.gz: build/conda-env.${CONDA_ENV_NAME}.build-stamp
+%-latest.tar.gz:
 	mkdir -p $(MODULE_NAME)/dist/tmp
 	rm -f $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar{,.gz}
 	rm -f $(MODULE_NAME)/dist/tmp/$(PACKAGE_NAME)-latest.tar{,.gz}
 	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 -m build --sdist
+	# Do some sanity checks on the sdist tarball output.
 	ls $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz
-	gunzip $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz
-	ls $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar
-	! ( tar tf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar | grep -m1 tests/ )
-	[ "$(MODULE_NAME)" != "mlos_bench" ] || tar tf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar | grep -m1 mlos_bench/config/
-	cd $(MODULE_NAME)/dist/tmp && ln -s ../$(PACKAGE_NAME)-*.tar $(PACKAGE_NAME)-latest.tar
+	# Make sure tests were excluded.
+	! ( tar tzf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz | grep -m1 tests/ )
+	# Make sure the py.typed marker file exists.
+	tar tzf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz | grep -m1 /py.typed
+	# Check to make sure the mlos_bench module has the config directory.
+	[ "$(MODULE_NAME)" != "mlos_bench" ] || tar tzf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz | grep -m1 mlos_bench/config/
+	cd $(MODULE_NAME)/dist/tmp && ln -s ../$(PACKAGE_NAME)-*.tar.gz $(PACKAGE_NAME)-latest.tar.gz
 
 %-latest-py3-none-any.whl: build/conda-env.${CONDA_ENV_NAME}.build-stamp
 %-latest-py3-none-any.whl:
+	mkdir -p $(MODULE_NAME)/dist/tmp
 	rm -f $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
 	rm -f $(MODULE_NAME)/dist/tmp/$(MODULE_NAME)-latest-py3-none-any.whl
-	# TODO: Add "python -m build" rules to produce the wheels.
-	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} pip wheel --no-index --no-deps --wheel-dir dist dist/tmp/$(PACKAGE_NAME)-latest.tar
+	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} pip python3 -m build --wheel
 	ls $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
+	# Do some sanity checks on the wheel output.
 	# Check to make sure the tests were excluded from the wheel.
 	! ( unzip -t $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl | grep -m1 tests/ )
+	# Make sure the py.typed marker file exists.
+	unzip -t $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl | grep -m1 /py.typed
 	# Check to make sure the mlos_bench module has the config directory.
 	[ "$(MODULE_NAME)" != "mlos_bench" ] || unzip -t $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl | grep -m1 mlos_bench/config/
 	cd $(MODULE_NAME)/dist/tmp && ln -s ../$(MODULE_NAME)-*-py3-none-any.whl $(MODULE_NAME)-latest-py3-none-any.whl
 	# Check to make sure the README contents made it into the package metadata.
 	unzip -p $(MODULE_NAME)/dist/tmp/$(MODULE_NAME)-latest-py3-none-any.whl */METADATA | egrep -v '^[A-Z][a-zA-Z-]+:' | grep -q -i '^# mlos'
+	# Also check that the they include the URL
+	unzip -p $(MODULE_NAME)/dist/tmp/$(MODULE_NAME)-latest-py3-none-any.whl */METADATA | grep -q -e '(https://github.com/microsoft/MLOS/)'
 
 .PHONY: dist-test-env-clean
 dist-test-env-clean:
@@ -427,13 +432,18 @@ build/publish-pypi-deps.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_E
 
 PUBLISH_DEPS := build/publish-pypi-deps.${CONDA_ENV_NAME}.build-stamp
 PUBLISH_DEPS += build/pytest.${CONDA_ENV_NAME}.build-stamp
+PUBLISH_DEPS += mlos_core/dist/tmp/mlos_core-latest.tar.gz
+PUBLISH_DEPS += mlos_bench/dist/tmp/mlos_bench-latest.tar.gz
+PUBLISH_DEPS += mlos_viz/dist/tmp/mlos_viz-latest.tar.gz
 PUBLISH_DEPS += build/dist-test.$(PYTHON_VERSION).build-stamp
 PUBLISH_DEPS += build/check-doc.build-stamp
 PUBLISH_DEPS += build/linklint-doc.build-stamp
 
 build/publish.${CONDA_ENV_NAME}.%.py.build-stamp: $(PUBLISH_DEPS)
-	rm -f mlos_*/dist/*.tar.gz
-	ls mlos_*/dist/*.tar | xargs -I% gzip -k %
+	test $(ls -1 mlos_core/dist/*.tar.gz | wc -l) -eq 1
+	test $(ls -1 mlos_bench/dist/*.tar.gz | wc -l) -eq 1
+	test $(ls -1 mlos_viz/dist/*.tar.gz | wc -l) -eq 1
+	test $(ls -1 mlos_*/dist/*.tar.gz | wc -l) -eq 3
 	repo_name=`echo "$@" | sed -r -e 's|build/publish\.[^.]+\.||' -e 's|\.py\.build-stamp||'` \
 		&& conda run -n ${CONDA_ENV_NAME} python3 -m twine upload --repository $$repo_name \
 			mlos_*/dist/mlos*-*.tar.gz mlos_*/dist/mlos*-*.whl
