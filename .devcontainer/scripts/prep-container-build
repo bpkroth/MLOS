@@ -33,8 +33,7 @@ cp -v conda-envs/mlos.yml .devcontainer/tmp/mlos.yml
 for pkg in mlos_core mlos_bench mlos_viz; do
     mkdir -p .devcontainer/tmp/$pkg
     cp -v $pkg/setup.py .devcontainer/tmp/$pkg/setup.py
-    # FIXME:
-    #cp -v $pkg/_version.py .devcontainer/tmp/$pkg/_version.py
+    cp -v $pkg/_version.py .devcontainer/tmp/$pkg/_version.py
 done
 cp -v doc/requirements.txt .devcontainer/tmp/doc.requirements.txt
 
