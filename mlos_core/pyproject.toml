@@ -65,24 +65,30 @@ Repository = "https://github.com/microsoft/MLOS/"
 Issues = "https://github.com/microsoft/MLOS/issues"
 "Package Source" = "https://github.com/microsoft/MLOS/tree/main/mlos_core/"
 
-# Tell setuptools where to find the package.
-[tool.setuptools.packages.find]
-where = ["mlos_core"]
-
 # Tell setuptools_scm to use the root directory for git info.
+# Note: when setuptools_scm is involved we also need to use MANIFEST.in to include/exclude files.
 [tool.setuptools_scm]
 root = ".."
 
+#[tool.setuptools]
+#include-package-data = false
+
+# Tell setuptools where to find the package.
+[tool.setuptools.packages.find]
+where = ["mlos_core"]
+exclude = ["*.tests", "*.tests.*"]
+
+# TODO: Ensure that py.typed and other expected files are included.
 [tool.setuptools.package-data]
 mlos_core = ["py.typed"]
 
 [tool.setuptools.exclude-package-data]
 mlos_core = ["tests", "tests/*"]
 
-# TODO: Ensure that py.typed and other expected files are included.
-
-# FIXME: Command option bdist_wheel.universal is not defined
-#[tool.distutils.bdist_wheel]
-#universal = true
+[tool.distutils.bdist_wheel]
+# Command option bdist_wheel.universal is not defined
+#universal = 1
+# https://github.com/pypa/wheel/issues/582
+py-limited-api = "cp38"
 
 # FIXME: Make sure the version is correct when we build the wheel.
