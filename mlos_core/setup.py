@@ -53,6 +53,17 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
         }
 
 
+try:
+    from setuptools_scm import get_version
+    version = get_version(root='..', relative_to=__file__)
+    if version is not None:
+        _VERSION = version  # noqa: F811
+except ImportError:
+    warning("setuptools_scm not found, using version from _version.py")
+except LookupError as e:
+    warning(
+        f"setuptools_scm failed to find git version, using version from _version.py: {e}")
+
 extra_requires: Dict[str, List[str]] = {  # pylint: disable=consider-using-namedtuple-or-dataclass
     'flaml': ['flaml[blendsearch]'],
     'smac': ['smac>=2.0.0'],  # NOTE: Major refactoring on SMAC starting from v2.0.0
