@@ -7,7 +7,6 @@ dependencies:
   - pip
   - pylint
   - black
-  - isort
   - pycodestyle
   - pydocstyle
   - flake8
@@ -29,6 +28,7 @@ dependencies:
     - autopep8>=1.7.0
     - bump2version
     - check-jsonschema
+    - isort
     - licenseheaders
     - mypy
     - pandas-stubs
