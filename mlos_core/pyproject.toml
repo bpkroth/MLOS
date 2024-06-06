@@ -1,15 +1,13 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm>=8.1.0", "wheel"]
+requires = [
+    "setuptools",
+    "setuptools-scm>=8.1.0",
+    "wheel",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "mlos-core"
-authors = [
-    {name = "Microsoft", email = "mlos-maintainers@service.microsoft.com"},
-]
-maintainers = [
-    {name = "Microsoft", email = "mlos-maintainers@service.microsoft.com"},
-]
 description = "MLOS Core Python interface for parameter optimization."
 keywords = [
     "autotuning",
@@ -23,8 +21,14 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
 ]
-license = {"text" = "MIT"}
+license = { "text" = "MIT" }
 requires-python = ">=3.8"
+authors = [
+    { name = "Microsoft", email = "mlos-maintainers@service.microsoft.com" },
+]
+maintainers = [
+    { name = "Microsoft", email = "mlos-maintainers@service.microsoft.com" },
+]
 dynamic = [
     "readme",   # urls get dynamically mutated by the build process
     "version",  # managed by setuptools_scm
