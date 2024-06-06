@@ -26,7 +26,7 @@ MAKEFLAGS += -j$(shell nproc)
 #MAKEFLAGS += -Oline
 
 .PHONY: all
-all: format check test dist dist-test doc licenseheaders
+all: format check test dist dist-test doc
 
 .PHONY: conda-env
 conda-env: build/conda-env.${CONDA_ENV_NAME}.build-stamp
@@ -37,7 +37,7 @@ build/conda-env.${CONDA_ENV_NAME}.build-stamp: ${ENV_YML} mlos_core/setup.py mlo
 	@echo "CONDA_INFO_LEVEL: ${CONDA_INFO_LEVEL}"
 	conda env list -q | grep -q "^${CONDA_ENV_NAME} " || conda env create ${CONDA_INFO_LEVEL} -n ${CONDA_ENV_NAME} -f ${ENV_YML}
 	conda env update ${CONDA_INFO_LEVEL} -n ${CONDA_ENV_NAME} --prune -f ${ENV_YML}
-	$(MAKE) clean-check clean-test clean-doc
+	$(MAKE) clean-format clean-check clean-test clean-doc clean-dist
 	touch $@
 
 .PHONY: clean-conda-env
@@ -592,6 +592,15 @@ clean-doc:
 	rm -rf doc/build/ doc/global/ doc/source/api/ doc/source/generated
 	rm -rf doc/source/source_tree_docs/*
 
+.PHONY: clean-format
+clean-format:
+	rm -f build/black.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/black.mlos_*.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/isort.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/isort.mlos_*.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/licenseheaders.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/licenseheaders-prereqs.${CONDA_ENV_NAME}.build-stamp
+
 .PHONY: clean-check
 clean-check:
 	rm -f build/pylint.build-stamp
@@ -604,14 +613,14 @@ clean-check:
 	rm -f build/black-check.build-stamp
 	rm -f build/black-check.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/black-check.mlos_*.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/isort-check.${CONDA_ENV_NAME}.build-stamp
+	rm -f build/isort-check.mlos_*.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/pycodestyle.build-stamp
 	rm -f build/pycodestyle.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/pycodestyle.mlos_*.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/pydocstyle.build-stamp
 	rm -f build/pydocstyle.${CONDA_ENV_NAME}.build-stamp
 	rm -f build/pydocstyle.mlos_*.${CONDA_ENV_NAME}.build-stamp
-	rm -f build/licenseheaders.${CONDA_ENV_NAME}.build-stamp
-	rm -f build/licenseheaders-prereqs.${CONDA_ENV_NAME}.build-stamp
 
 .PHONY: clean-test
 clean-test:
@@ -633,7 +642,7 @@ dist-clean:
 	rm -rf mlos_viz/build mlos_viz/dist
 
 .PHONY: clean
-clean: clean-check clean-test dist-clean clean-doc clean-doc-env dist-test-clean
+clean: clean-format clean-check clean-test dist-clean clean-doc clean-doc-env dist-test-clean
 	rm -f .*.build-stamp
 	rm -f build/conda-env.build-stamp build/conda-env.*.build-stamp
 	rm -rf mlos_core.egg-info
