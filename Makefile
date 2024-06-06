@@ -82,7 +82,7 @@ build/isort.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.b
 	conda run -n ${CONDA_ENV_NAME} isort --verbose --only-modified --atomic -j0 $(filter-out setup.cfg pyproject.toml,$+)
 
 
-.PHONY: check
+.PHONY: check | format
 #check: black-check pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
 check: black-check pycodestyle pydocstyle pylint mypy | format
 
@@ -240,7 +240,7 @@ build/mypy.%.${CONDA_ENV_NAME}.build-stamp: scripts/dmypy-wrapper.sh build/conda
 
 
 .PHONY: test
-test: pytest
+test: pytest | format
 
 PYTEST_MODULES :=
 
@@ -304,7 +304,7 @@ build/pytest.${CONDA_ENV_NAME}.build-stamp:
 
 
 .PHONY: dist
-dist: bdist_wheel
+dist: bdist_wheel | format
 
 .PHONY: bdist_wheel
 bdist_wheel: conda-env
