@@ -68,8 +68,7 @@ build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) pyp
 # making licenseheaders and isort an order-only prerequisite.
 build/black.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp | licenseheaders isort
 	# Reformat python files with black.
-	# FIXME:
-	conda run -n ${CONDA_ENV_NAME} black $(filter-out setup.cfg,$+)
+	conda run -n ${CONDA_ENV_NAME} black $(filter %.py,$+)
 
 .PHONY: isort
 isort: conda-env
@@ -85,10 +84,10 @@ build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) pyp
 # making licenseheaders an order-only prerequisite.
 build/isort.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp | licenseheaders build/licenseheaders.${CONDA_ENV_NAME}.build-stamp
 	# Reformat python file imports with isort.
-	conda run -n ${CONDA_ENV_NAME} isort --verbose --only-modified --atomic -j0 $(filter-out setup.cfg pyproject.toml,$+)
+	conda run -n ${CONDA_ENV_NAME} isort --verbose --only-modified --atomic -j0 $(filter %.py,$+)
 
 
-.PHONY: check | format
+.PHONY: check
 #check: black-check pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
 check: black-check pycodestyle pydocstyle pylint mypy | format
 
@@ -106,7 +105,7 @@ build/black-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILE
 build/black-check.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
 	# Check for import sort order.
 	# Note: if this fails use "make format" or "make black" to fix it.
-	conda run -n ${CONDA_ENV_NAME} black --verbose --check --diff $(filter-out setup.cfg,$+)
+	conda run -n ${CONDA_ENV_NAME} black --verbose --check --diff $(filter %.py,$+)
 	touch $@
 
 .PHONY: isort-check
@@ -122,7 +121,7 @@ build/isort-check.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILE
 
 build/isort-check.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
 	# Note: if this fails use "make format" or "make isort" to fix it.
-	conda run -n ${CONDA_ENV_NAME} isort --only-modified --check --diff -j0 $(filter-out setup.cfg,$+)
+	conda run -n ${CONDA_ENV_NAME} isort --only-modified --check --diff -j0 $(filter %.py,$+)
 	touch $@
 
 .PHONY: pycodestyle
@@ -138,7 +137,7 @@ build/pycodestyle.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILE
 build/pycodestyle.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
 	# Check for decent pep8 code style with pycodestyle.
 	# Note: if this fails, try using "make format" to fix it.
-	conda run -n ${CONDA_ENV_NAME} pycodestyle $(filter-out setup.cfg,$+)
+	conda run -n ${CONDA_ENV_NAME} pycodestyle $(filter %.py,$+)
 	touch $@
 
 .PHONY: pydocstyle
@@ -153,7 +152,7 @@ build/pydocstyle.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES
 
 build/pydocstyle.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
 	# Check for decent pep8 doc style with pydocstyle.
-	conda run -n ${CONDA_ENV_NAME} pydocstyle $(filter-out setup.cfg,$+)
+	conda run -n ${CONDA_ENV_NAME} pydocstyle $(filter %.py,$+)
 	touch $@
 
 .PHONY: licenseheaders
@@ -207,7 +206,7 @@ build/pylint.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES
 build/pylint.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
 
 build/pylint.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp .pylintrc
-	conda run -n ${CONDA_ENV_NAME} pylint -j0 $(filter-out .pylintrc,$+)
+	conda run -n ${CONDA_ENV_NAME} pylint -j0 $(filter %.py,$+)
 	touch $@
 
 .PHONY: flake8
@@ -221,7 +220,7 @@ build/flake8.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES
 build/flake8.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
 
 build/flake8.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.build-stamp setup.cfg
-	conda run -n ${CONDA_ENV_NAME} flake8 -j0 $(filter-out setup.cfg,$+)
+	conda run -n ${CONDA_ENV_NAME} flake8 -j0 $(filter %.py,$+)
 	touch $@
 
 .PHONY: mypy
@@ -310,10 +309,16 @@ build/pytest.${CONDA_ENV_NAME}.build-stamp:
 
 
 .PHONY: dist
-dist: bdist_wheel | format
+dist: sdist bdist_wheel | format
+
+.PHONY: sdist
+sdist: conda-env | format
+sdist: mlos_core/dist/tmp/mlos_core-latest.tar.gz
+sdist: mlos_bench/dist/tmp/mlos_bench-latest.tar.gz
+sdist: mlos_viz/dist/tmp/mlos_viz-latest.tar.gz
 
 .PHONY: bdist_wheel
-bdist_wheel: conda-env
+bdist_wheel: conda-env | format
 bdist_wheel: mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl
 bdist_wheel: mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl
 bdist_wheel: mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl
