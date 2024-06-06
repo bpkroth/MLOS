@@ -1,3 +1,5 @@
+# TODO: How to make this apply to all packages without copying?
+
 [tool.black]
 line-length = 88
 target-version = ["py38", "py39", "py310", "py311", "py312"]
