@@ -15,14 +15,14 @@ from typing import Dict, List
 import os
 import re
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
-# FIXME:
 try:
     from _version import _VERSION   # pylint: disable=import-private-name
 except ImportError:
     _VERSION = '0.0.1-dev'
+    warning(f"_version.py not found, using dummy _VERSION={_VERSION}")
 
 # A simple routine to read and adjust the README.md for this module into a format
 # suitable for packaging.
@@ -89,60 +89,9 @@ extra_requires['full-tests'] = extra_requires['full'] + [
     'fasteners',
 ]
 
-# pylint: disable=duplicate-code
-MODULE_BASE_NAME = 'mlos_bench'
+# TODO: Add code to check that "full" and "full-tests" are covered in the config.
+
 setup(
-    name='mlos-bench',
     version=_VERSION,
-    packages=find_packages(exclude=[f"{MODULE_BASE_NAME}.tests", f"{MODULE_BASE_NAME}.tests.*"]),
-    package_data={
-        '': ['py.typed', '**/*.pyi'],
-        'mlos_bench': [
-            'config/**/*.md',
-            'config/**/*.jsonc',
-            'config/**/*.json',
-            'config/**/*.py',
-            'config/**/*.sh',
-            'config/**/*.cmd',
-            'config/**/*.ps1',
-        ],
-    },
-    entry_points={
-        'console_scripts': [
-            'mlos_bench = mlos_bench.run:_main',
-        ],
-    },
-    install_requires=[
-        'mlos-core==' + _VERSION,
-        'requests',
-        'json5',
-        'jsonschema>=4.18.0', 'referencing>=0.29.1',
-        'importlib_resources;python_version<"3.10"',
-    ] + extra_requires['storage-sql-sqlite'],   # NOTE: For now sqlite is a fallback storage backend, so we always install it.
-    extras_require=extra_requires,
-    author='Microsoft',
-    license='MIT',
     **_get_long_desc_from_readme('https://github.com/microsoft/MLOS/tree/main/mlos_bench'),
-    author_email='mlos-maintainers@service.microsoft.com',
-    description=('MLOS Bench Python interface for benchmark automation and optimization.'),
-    url='https://github.com/microsoft/MLOS',
-    project_urls={
-        'Documentation': 'https://microsoft.github.io/MLOS',
-        'Package Source': 'https://github.com/microsoft/MLOS/tree/main/mlos_bench/',
-    },
-    python_requires='>=3.8',
-    keywords=[
-        'autotuning',
-        'benchmarking',
-        'optimization',
-        'systems',
-    ],
-    classifiers=[
-        "Intended Audience :: Developers",
-        "Intended Audience :: Science/Research",
-        "Intended Audience :: System Administrators",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-    ],
 )
