@@ -502,6 +502,8 @@ build/dist-test.$(PYTHON_VERSION).build-stamp: $(PYTHON_FILES) build/dist-test-e
 	conda run -n mlos-dist-test-$(PYTHON_VERSION) python3 -m pytest mlos_core/mlos_core/tests/spaces/spaces_test.py
 	# Run a simple test that uses the mlos_bench wheel (full tests can be checked with `make test`).
 	conda run -n mlos-dist-test-$(PYTHON_VERSION) python3 -m pytest mlos_bench/mlos_bench/tests/environments/mock_env_test.py
+	# Run a basic cli tool check.
+	conda run -n mlos-dist-test-$(PYTHON_VERSION) mlos_bench --help 2>&1 | grep '^usage: mlos_bench '
 	# Run a simple test that uses the mlos_viz wheel (full tests can be checked with `make test`).
 	# To do that, we need the fixtures from mlos_bench, so make those available too.
 	PYTHONPATH=mlos_bench conda run -n mlos-dist-test-$(PYTHON_VERSION) python3 -m pytest mlos_viz/mlos_viz/tests/test_dabl_plot.py
