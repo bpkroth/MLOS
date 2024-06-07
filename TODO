@@ -4,7 +4,7 @@
 	- [x] pyproject.toml
 		- [ ] check that zip/tar files don't include build or _version artifacts
 		- [ ] setup.py drop version.py requirement?
-		- [ ] place version requirement in src dir?
+		- [ ] place version requirement in src dir? yes - cleaner whl
 		- [ ] cleanup comments
 		- [ ] adjust Makefile rules to sanity check install targets?
 	- [ ] double check devcontainer rebuild
