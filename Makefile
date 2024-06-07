@@ -563,8 +563,7 @@ clean-doc-env:
 
 COMMON_DOC_FILES := build/doc-prereqs.${CONDA_ENV_NAME}.build-stamp doc/source/*.rst doc/source/_templates/*.rst doc/source/conf.py
 
-doc/source/api/%/modules.rst: $(FORMAT_PREREQS) $(COMMON_DOC_FILES)
-
+doc/source/api/mlos_core/modules.rst: $(FORMAT_PREREQS) $(COMMON_DOC_FILES)
 doc/source/api/mlos_core/modules.rst: $(MLOS_CORE_PYTHON_FILES)
 	rm -rf doc/source/api/mlos_core
 	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M \
@@ -572,6 +571,7 @@ doc/source/api/mlos_core/modules.rst: $(MLOS_CORE_PYTHON_FILES)
 		../mlos_core/ \
 		../mlos_core/setup.py ../mlos_core/mlos_core/tests/
 
+doc/source/api/mlos_bench/modules.rst: $(FORMAT_PREREQS) $(COMMON_DOC_FILES)
 doc/source/api/mlos_bench/modules.rst: $(MLOS_BENCH_PYTHON_FILES)
 	rm -rf doc/source/api/mlos_bench
 	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M \
@@ -585,6 +585,7 @@ doc/source/api/mlos_bench/modules.rst: $(MLOS_BENCH_PYTHON_FILES)
 	echo ".. literalinclude:: mlos_bench.run.usage.txt" >> doc/source/api/mlos_bench/mlos_bench.run.rst
 	echo "   :language: none" >> doc/source/api/mlos_bench/mlos_bench.run.rst
 
+doc/source/api/mlos_viz/modules.rst: $(FORMAT_PREREQS) $(COMMON_DOC_FILES)
 doc/source/api/mlos_viz/modules.rst: $(MLOS_VIZ_PYTHON_FILES)
 	rm -rf doc/source/api/mlos_viz
 	cd doc/ && conda run -n ${CONDA_ENV_NAME} sphinx-apidoc -f -e -M \
