@@ -37,7 +37,9 @@ load-plugins=
 
 [FORMAT]
 # Maximum number of characters on a single line.
-max-line-length=88
+# TODO: Update for black
+#max-line-length=88
+max-line-length=132
 
 [MESSAGE CONTROL]
 disable=
