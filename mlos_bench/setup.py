@@ -19,10 +19,22 @@ from setuptools import setup
 
 
 try:
-    from _version import _VERSION   # pylint: disable=import-private-name
+    from _version import VERSION   # pylint: disable=import-private-name
 except ImportError:
-    _VERSION = '0.0.1-dev'
-    warning(f"_version.py not found, using dummy _VERSION={_VERSION}")
+    VERSION = '0.0.1-dev'
+    warning(f"_version.py not found, using dummy _VERSION={VERSION}")
+
+
+try:
+    from setuptools_scm import get_version
+    version = get_version(root='..', relative_to=__file__, fallback_version=VERSION)
+    if version is not None:
+        VERSION = version
+except ImportError:
+    warning("setuptools_scm not found, using version from _version.py")
+except LookupError as e:
+    warning(f"setuptools_scm failed to find git version, using version from _version.py: {e}")
+
 
 # A simple routine to read and adjust the README.md for this module into a format
 # suitable for packaging.
@@ -48,17 +60,6 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
             'long_description': ''.join(lines),
             'long_description_content_type': 'text/markdown',
         }
-
-
-try:
-    from setuptools_scm import get_version
-    version = get_version(root='..', relative_to=__file__)
-    if version is not None:
-        _VERSION = version  # noqa: F811
-except ImportError:
-    warning("setuptools_scm not found, using version from _version.py")
-except LookupError as e:
-    warning(f"setuptools_scm failed to find git version, using version from _version.py: {e}")
 
 
 extra_requires: Dict[str, List[str]] = {    # pylint: disable=consider-using-namedtuple-or-dataclass
@@ -92,6 +93,6 @@ extra_requires['full-tests'] = extra_requires['full'] + [
 # TODO: Add code to check that "full" and "full-tests" are covered in the config.
 
 setup(
-    version=_VERSION,
+    version=VERSION,
     **_get_long_desc_from_readme('https://github.com/microsoft/MLOS/tree/main/mlos_bench'),
 )
