@@ -1,5 +1,6 @@
 name: mlos
 channels:
+  - conda-forge
   - defaults
 dependencies:
   # Basic dev environment packages.
@@ -20,7 +21,8 @@ dependencies:
   - pyarrow
   - swig
   - libpq
-  - python
+  # FIXME: https://github.com/microsoft/MLOS/issues/727
+  - python<3.12
   - pip:
     - bump2version
     - check-jsonschema
