@@ -1,6 +1,6 @@
 # stylechanges branch TODO
 
-- build system rework
+- [ ] build system rework
 	- [x] pyproject.toml
 		- [ ] check that zip/tar files don't include build or _version artifacts
 		- [ ] setup.py drop version.py requirement?
