@@ -60,7 +60,7 @@ dependencies = [
 
 # Meta targets to install everything.
 # NOTE: Be sure to add new extras from above to these.
-full = ["mlos-bench[azure,ssh,storage-sql-duckdb,storage-sql-mysql-storage-sql-postgres,storage-sql-sqlite,flaml,smac]"]
+full = ["mlos-bench[azure,ssh,storage-sql-duckdb,storage-sql-mysql,storage-sql-postgres,storage-sql-sqlite,flaml,smac]"]
 full-tests = [
     "mlos-bench[full]",
     # Test requirements for mlos-bench:
