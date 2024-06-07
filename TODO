@@ -1,0 +1,24 @@
+# stylechanges branch TODO
+
+- build system rework
+	- [x] pyproject.toml
+		- [ ] check that zip/tar files don't include build or _version artifacts
+		- [ ] setup.py drop version.py requirement?
+		- [ ] place version requirement in src dir?
+		- [ ] cleanup comments
+		- [ ] adjust Makefile rules to sanity check install targets?
+	- [ ] double check devcontainer rebuild
+		- [ ] related to version questions
+	- [x] Makefile revamp
+	- [ ] convert other setup.cfg configs over?
+		- [ ] mypy
+		- [ ] pycodestyle
+		- [ ] pydocstyle
+		- [ ] pylint
+		- [ ] flake8
+		- [ ] pytest
+		- [ ] coverage
+
+- [ ] stub in rules for isort and black
+- [ ] require them and make the changes
+- [ ] ignore that revision
