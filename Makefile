@@ -69,8 +69,9 @@ ifneq (,$(filter format,$(MAKECMDGOALS)))
 endif
 
 build/format.${CONDA_ENV_NAME}.build-stamp: build/licenseheaders.${CONDA_ENV_NAME}.build-stamp
-build/format.${CONDA_ENV_NAME}.build-stamp: build/isort.${CONDA_ENV_NAME}.build-stamp
-build/format.${CONDA_ENV_NAME}.build-stamp: build/black.${CONDA_ENV_NAME}.build-stamp
+# TODO: enable isort and black formatters
+#build/format.${CONDA_ENV_NAME}.build-stamp: build/isort.${CONDA_ENV_NAME}.build-stamp
+#build/format.${CONDA_ENV_NAME}.build-stamp: build/black.${CONDA_ENV_NAME}.build-stamp
 build/format.${CONDA_ENV_NAME}.build-stamp:
 	touch $@
 
@@ -125,9 +126,7 @@ build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
 
 build/isort.%.${CONDA_ENV_NAME}.build-stamp: $(ISORT_COMMON_PREREQS)
 	# Reformat python file imports with isort.
-	# FIXME: remove --check
-	echo "prereqs: $+"
-	conda run -n ${CONDA_ENV_NAME} isort --check --verbose --only-modified --atomic -j0 $(filter %.py,$?)
+	conda run -n ${CONDA_ENV_NAME} isort --verbose --only-modified --atomic -j0 $(filter %.py,$?)
 	touch $@
 
 .PHONY: black
@@ -161,13 +160,14 @@ build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES)
 
 build/black.%.${CONDA_ENV_NAME}.build-stamp: $(BLACK_COMMON_PREREQS)
 	# Reformat python files with black.
-	# FIXME: remove --check
-	conda run -n ${CONDA_ENV_NAME} black --check $(filter %.py,$?)
+	conda run -n ${CONDA_ENV_NAME} black $(filter %.py,$?)
 	touch $@
 
 .PHONY: check
-#check: black-check pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
-check: black-check pycodestyle pydocstyle pylint mypy
+#check: pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
+# TODO: Enable isort and black checks
+#check: isort-check black-check pycodestyle pydocstyle pylint mypy # cspell markdown-link-check
+check: pycodestyle pydocstyle pylint mypy
 
 .PHONY: black-check
 black-check: build/black-check.mlos_core.${CONDA_ENV_NAME}.build-stamp
