@@ -26,7 +26,7 @@ MAKEFLAGS += -j$(shell nproc)
 #MAKEFLAGS += -Oline
 
 .PHONY: all
-all: format check test dist dist-test doc
+all: format-check test dist dist-test doc | conda-env
 
 .PHONY: conda-env
 conda-env: build/conda-env.${CONDA_ENV_NAME}.build-stamp
@@ -51,19 +51,27 @@ clean-conda-env:
 	conda env remove -y ${CONDA_INFO_LEVEL} -n ${CONDA_ENV_NAME}
 	rm -f build/conda-env.${CONDA_ENV_NAME}.build-stamp
 
-.PHONY: format
-format: licenseheaders isort black
+.PHONY: format-check
+format-check:
+	$(MAKE) format
+	$(MAKE) check
 
-.NOTPARALLEL: black
+.PHONY: format
+# Since these targets potentially change the files we need to run them in sequence.
+# In future versions of make we can do that by marking each as a .NOTPARALLEL psuedo target.
+# But with make 4.3 that changes the entire Makefile to be serial.
+#format: licenseheaders isort black
+format:
+	$(MAKE) licenseheaders
+	$(MAKE) isort
+	$(MAKE) black
+
 .PHONY: black
 black: conda-env
 black: build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp
 black: build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp
 black: build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp
 
-.NOTPARALLEL: build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp
-.NOTPARALLEL: build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp
-.NOTPARALLEL: build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp
 build/black.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES) pyproject.toml
 build/black.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES) pyproject.toml
 build/black.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) pyproject.toml
@@ -74,16 +82,12 @@ build/black.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NAME}.b
 	# Reformat python files with black.
 	conda run -n ${CONDA_ENV_NAME} black $(filter %.py,$+)
 
-.NOTPARALLEL: isort
 .PHONY: isort
 isort: conda-env
 isort: build/isort.mlos_core.${CONDA_ENV_NAME}.build-stamp
 isort: build/isort.mlos_bench.${CONDA_ENV_NAME}.build-stamp
 isort: build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp
 
-.NOTPARALLEL: build/isort.mlos_core.${CONDA_ENV_NAME}.build-stamp
-.NOTPARALLEL: build/isort.mlos_bench.${CONDA_ENV_NAME}.build-stamp
-.NOTPARALLEL: build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp
 build/isort.mlos_core.${CONDA_ENV_NAME}.build-stamp: $(MLOS_CORE_PYTHON_FILES) pyproject.toml
 build/isort.mlos_bench.${CONDA_ENV_NAME}.build-stamp: $(MLOS_BENCH_PYTHON_FILES) pyproject.toml
 build/isort.mlos_viz.${CONDA_ENV_NAME}.build-stamp: $(MLOS_VIZ_PYTHON_FILES) pyproject.toml
@@ -163,11 +167,9 @@ build/pydocstyle.%.${CONDA_ENV_NAME}.build-stamp: build/conda-env.${CONDA_ENV_NA
 	conda run -n ${CONDA_ENV_NAME} pydocstyle $(filter %.py,$+)
 	touch $@
 
-.NOTPARALLEL: licenseheaders
 .PHONY: licenseheaders
 licenseheaders: build/licenseheaders.${CONDA_ENV_NAME}.build-stamp
 
-.NOTPARALLEL: build/licenseheaders.${CONDA_ENV_NAME}.build-stamp
 build/licenseheaders.${CONDA_ENV_NAME}.build-stamp: $(PYTHON_FILES) $(SCRIPT_FILES) $(SQL_FILES) doc/mit-license.tmpl
 	# Note: to avoid makefile dependency loops, we don't touch the setup.py
 	# files as that would force the conda-env to be rebuilt.
