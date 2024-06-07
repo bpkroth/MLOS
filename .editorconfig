@@ -12,9 +12,10 @@ charset = utf-8
 # Note: this is not currently supported by all editors or their editorconfig plugins.
 max_line_length = 132
 
-[*.pyi?]
-# See Also: black configuration in pyproject.toml
-max_line_length = 88
+# TODO:
+#[*.pyi?]
+## See Also: black configuration in pyproject.toml
+#max_line_length = 88
 
 # Makefiles need tab indentation
 [{Makefile,*.mk}]
