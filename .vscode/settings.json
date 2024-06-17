@@ -125,7 +125,7 @@
     "esbonio.sphinx.confDir": "${workspaceFolder}/doc/source",
     "esbonio.sphinx.buildDir": "${workspaceFolder}/doc/build/",
     "[python]": {
-	// TODO: Enable black formatter
+        // TODO: Enable black formatter
         //"editor.defaultFormatter": "ms-python.black-formatter",
         //"editor.formatOnSave": true,
         //"editor.formatOnSaveMode": "modifications"
