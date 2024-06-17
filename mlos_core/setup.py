@@ -19,22 +19,21 @@ from setuptools import setup
 
 
 try:
-    from _version import VERSION  # pylint: disable=import-private-name
+    from version import VERSION
 except ImportError:
     VERSION = "0.0.1-dev"
-    warning(f"_version.py not found, using dummy _VERSION={VERSION}")
-
+    warning(f"version.py not found, using dummy VERSION={VERSION}")
 
 try:
-    from setuptools_scm import get_version
-    version = get_version(root='..', relative_to=__file__, fallback_version=VERSION)
+    from setuptools_scm import getversion
+    version = getversion(root='..', relative_to=__file__, fallbackversion=VERSION)
     if version is not None:
         VERSION = version
 except ImportError:
-    warning("setuptools_scm not found, using version from _version.py")
+    warning("setuptools_scm not found, using version from version.py")
 except LookupError as e:
     warning(
-        f"setuptools_scm failed to find git version, using version from _version.py: {e}")
+        f"setuptools_scm failed to find git version, using version from version.py: {e}")
 
 
 # A simple routine to read and adjust the README.md for this module into a format

@@ -35,7 +35,7 @@ dynamic = [
 dependencies = [
     # Note: currently mlos-core and mlos-bench are tightly coupled and released as a
     # unit so the versions should match.
-    "mlos-core", # ==" + _VERSION,   # FIXME
+    "mlos-core", # ==" + VERSION,   # FIXME
 
     "ConfigSpace>=0.7.1",
     "requests",

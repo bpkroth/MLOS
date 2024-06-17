@@ -36,7 +36,7 @@ dynamic = [
 dependencies = [
     # Note: currently mlos-viz and mlos-bench are tightly coupled and released as a
     # unit so the versions should match.
-    "mlos-bench", # FIXME: ==" + _VERSION,
+    "mlos-bench", # FIXME: ==" + VERSION,
     "dabl>=0.2.6",
     "matplotlib<3.9",   # FIXME: https://github.com/dabl/dabl/pull/341
 ]
