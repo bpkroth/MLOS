@@ -49,7 +49,9 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
     pkg_dir = os.path.dirname(__file__)
     readme_path = os.path.join(pkg_dir, 'README.md')
     if not os.path.isfile(readme_path):
-        return {}
+        return {
+            'long_description': 'missing'
+        }
     jsonc_re = re.compile(r'```jsonc')
     link_re = re.compile(r'\]\(([^:#)]+)(#[a-zA-Z0-9_-]+)?\)')
     with open(readme_path, mode='r', encoding='utf-8') as readme_fh:
