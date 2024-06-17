@@ -9,8 +9,6 @@ Setup instructions for the mlos_bench package.
 # pylint: disable=duplicate-code
 
 from logging import warning
-from itertools import chain
-from typing import Dict, List
 
 import os
 import re
@@ -47,7 +45,7 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
     readme_path = os.path.join(pkg_dir, 'README.md')
     if not os.path.isfile(readme_path):
         return {
-            'long_description': 'missing'
+            'long_description': 'missing',
         }
     jsonc_re = re.compile(r'```jsonc')
     link_re = re.compile(r'\]\(([^:#)]+)(#[a-zA-Z0-9_-]+)?\)')
@@ -62,36 +60,6 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
             'long_description_content_type': 'text/markdown',
         }
 
-
-extra_requires: Dict[str, List[str]] = {    # pylint: disable=consider-using-namedtuple-or-dataclass
-    # Additional tools for extra functionality.
-    'azure': ['azure-storage-file-share', 'azure-identity', 'azure-keyvault'],
-    'ssh': ['asyncssh'],
-    'storage-sql-duckdb': ['sqlalchemy', 'duckdb_engine'],
-    'storage-sql-mysql': ['sqlalchemy', 'mysql-connector-python'],
-    'storage-sql-postgres': ['sqlalchemy', 'psycopg2'],
-    'storage-sql-sqlite': ['sqlalchemy'],   # sqlite3 comes with python, so we don't need to install it.
-    # Transitive extra_requires from mlos-core.
-    'flaml': ['flaml[blendsearch]'],
-    'smac': ['smac'],
-}
-
-# construct special 'full' extra that adds requirements for all built-in
-# backend integrations and additional extra features.
-extra_requires['full'] = list(set(chain(*extra_requires.values())))
-
-extra_requires['full-tests'] = extra_requires['full'] + [
-    'pytest',
-    'pytest-forked',
-    'pytest-xdist',
-    'pytest-cov',
-    'pytest-local-badge',
-    'pytest-lazy-fixtures',
-    'pytest-docker',
-    'fasteners',
-]
-
-# TODO: Add code to check that "full" and "full-tests" are covered in the config.
 
 setup(
     version=VERSION,
