@@ -406,18 +406,21 @@ bdist_wheel: mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl
 
 mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: MODULE_NAME := mlos_core
 mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: PACKAGE_NAME := mlos_core
+mlos_core/dist/tmp/mlos_core-latest-py3-none-any.whl: mlos_core/dist/tmp/mlos_core-latest.tar.gz
 mlos_core/dist/tmp/mlos_core-latest.tar.gz: $(MLOS_CORE_CONF_FILES) $(MLOS_CORE_PYTHON_FILES)
 mlos_core/dist/tmp/mlos_core-latest.tar.gz: MODULE_NAME := mlos_core
 mlos_core/dist/tmp/mlos_core-latest.tar.gz: PACKAGE_NAME := mlos_core
 
 mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: MODULE_NAME := mlos_bench
 mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: PACKAGE_NAME := mlos_bench
+mlos_bench/dist/tmp/mlos_bench-latest-py3-none-any.whl: mlos_bench/dist/tmp/mlos_bench-latest.tar.gz
 mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: $(MLOS_BENCH_CONF_FILES) $(MLOS_BENCH_PYTHON_FILES)
 mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: MODULE_NAME := mlos_bench
 mlos_bench/dist/tmp/mlos_bench-latest.tar.gz: PACKAGE_NAME := mlos_bench
 
 mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: MODULE_NAME := mlos_viz
 mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: PACKAGE_NAME := mlos_viz
+mlos_viz/dist/tmp/mlos_viz-latest-py3-none-any.whl: mlos_viz/dist/tmp/mlos_viz-latest.tar.gz
 mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: $(MLOS_VIZ_CONF_FILES) $(MLOS_VIZ_PYTHON_FILES)
 mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: MODULE_NAME := mlos_viz
 mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
@@ -426,6 +429,8 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 	mkdir -p $(MODULE_NAME)/dist/tmp
 	rm -f $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar{,.gz}
 	rm -f $(MODULE_NAME)/dist/tmp/$(PACKAGE_NAME)-latest.tar{,.gz}
+	rm -rf $(MODULE_NAME)/build/
+	rm -rf $(MODULE_NAME)/$(MODULE_NAME).egg-info/
 	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 -m build --sdist
 	# Do some sanity checks on the sdist tarball output.
 	BASE_VERS=`conda run -n ${CONDA_ENV_NAME} python3 $(MODULE_NAME)/$(MODULE_NAME)/version.py | cut -d. -f-2 | egrep -x '[0-9.]+' || echo err-unknown-base-version` \
@@ -442,6 +447,8 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 	mkdir -p $(MODULE_NAME)/dist/tmp
 	rm -f $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
 	rm -f $(MODULE_NAME)/dist/tmp/$(MODULE_NAME)-latest-py3-none-any.whl
+	rm -rf $(MODULE_NAME)/build/
+	rm -rf $(MODULE_NAME)/$(MODULE_NAME).egg-info/
 	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 -m build --wheel
 	# Do some sanity checks on the wheel output.
 	BASE_VERS=`conda run -n ${CONDA_ENV_NAME} python3 $(MODULE_NAME)/$(MODULE_NAME)/version.py | cut -d. -f-2 | egrep -o '^[0-9.]+' || echo err-unknown-base-version` \
