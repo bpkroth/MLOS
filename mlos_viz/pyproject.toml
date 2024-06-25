@@ -31,30 +31,9 @@ maintainers = [
 dynamic = [
     "readme",   # urls get dynamically mutated by the build process
     "version",  # managed by setuptools_scm
-]
-
-dependencies = [
-    # Note: currently mlos-viz and mlos-bench are tightly coupled and released as a
-    # unit so the versions should match.
-    "mlos-bench", # FIXME: ==" + VERSION,
-    "dabl>=0.2.6",
-    "matplotlib<3.9",   # FIXME: https://github.com/dabl/dabl/pull/341
-]
-
-[project.optional-dependencies]
-# Dummy for now:
-dabl = ["dabl"]
-# Meta targets to install everything.
-# NOTE: Be sure to add new extras from above to these.
-full = ["mlos-viz[dabl]"]
-full-tests = [
-    "mlos-viz[full]",
-    # Test requirements for mlos-viz:
-    "pytest",
-    "pytest-forked",
-    "pytest-xdist",
-    "pytest-cov",
-    "pytest-local-badge",
+    # managed in combination with version from setuptools_scm
+    "dependencies",
+    "optional-dependencies",
 ]
 
 [project.urls]
