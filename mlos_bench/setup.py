@@ -93,7 +93,7 @@ extra_requires['full-tests'] = extra_requires['full'] + [
 setup(
     version=VERSION,
     install_requires=[
-        'mlos-core==' + _VERSION,
+        'mlos-core==' + VERSION,
         'requests',
         'json5',
         'jsonschema>=4.18.0', 'referencing>=0.29.1',

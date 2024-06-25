@@ -80,7 +80,7 @@ extra_requires['full-tests'] = extra_requires['full'] + [
 setup(
     version=VERSION,
     install_requires=[
-        'mlos-bench==' + _VERSION,
+        'mlos-bench==' + VERSION,
         'dabl>=0.2.6',
         'matplotlib<3.9',   # FIXME: https://github.com/dabl/dabl/pull/341
     ],
