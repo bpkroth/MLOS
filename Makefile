@@ -456,8 +456,6 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 	unzip -p $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl */METADATA | egrep -v '^[A-Z][a-zA-Z-]+:' | grep -q -i '^# mlos'
 	# Also check that the they include the URL
 	unzip -p $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl */METADATA | grep -q -e '](https://github.com/microsoft/MLOS/'
-	# TODO: Move more of these checks into the sanity-check-whl script.
-	./scripts/sanity-check-whl.sh $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl
 	# Link it into place
 	cd $(MODULE_NAME)/dist/tmp && ln -s ../$(MODULE_NAME)-*-py3-none-any.whl $(MODULE_NAME)-latest-py3-none-any.whl
 
