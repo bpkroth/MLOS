@@ -9,6 +9,8 @@ Setup instructions for the mlos_bench package.
 # pylint: disable=duplicate-code
 
 from logging import warning
+from itertools import chain
+from typing import Dict, List
 
 import os
 import re
@@ -60,8 +62,43 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
             'long_description_content_type': 'text/markdown',
         }
 
+extra_requires: Dict[str, List[str]] = {    # pylint: disable=consider-using-namedtuple-or-dataclass
+    # Additional tools for extra functionality.
+    'azure': ['azure-storage-file-share', 'azure-identity', 'azure-keyvault'],
+    'ssh': ['asyncssh'],
+    'storage-sql-duckdb': ['sqlalchemy', 'duckdb_engine'],
+    'storage-sql-mysql': ['sqlalchemy', 'mysql-connector-python'],
+    'storage-sql-postgres': ['sqlalchemy', 'psycopg2'],
+    'storage-sql-sqlite': ['sqlalchemy'],   # sqlite3 comes with python, so we don't need to install it.
+    # Transitive extra_requires from mlos-core.
+    'flaml': ['flaml[blendsearch]'],
+    'smac': ['smac'],
+}
+
+# construct special 'full' extra that adds requirements for all built-in
+# backend integrations and additional extra features.
+extra_requires['full'] = list(set(chain(*extra_requires.values())))
+
+extra_requires['full-tests'] = extra_requires['full'] + [
+    'pytest',
+    'pytest-forked',
+    'pytest-xdist',
+    'pytest-cov',
+    'pytest-local-badge',
+    'pytest-lazy-fixtures',
+    'pytest-docker',
+    'fasteners',
+]
 
 setup(
     version=VERSION,
+    install_requires=[
+        'mlos-core==' + _VERSION,
+        'requests',
+        'json5',
+        'jsonschema>=4.18.0', 'referencing>=0.29.1',
+        'importlib_resources;python_version<"3.10"',
+    ] + extra_requires['storage-sql-sqlite'],   # NOTE: For now sqlite is a fallback storage backend, so we always install it.
+    extras_require=extra_requires,
     **_get_long_desc_from_readme('https://github.com/microsoft/MLOS/tree/main/mlos_bench'),
 )
