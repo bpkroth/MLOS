@@ -9,8 +9,6 @@ Setup instructions for the mlos_viz package.
 # pylint: disable=duplicate-code
 
 from logging import warning
-from itertools import chain
-from typing import Dict, List
 
 import os
 import re
@@ -68,27 +66,7 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
         }
 
 
-extra_requires: Dict[str, List[str]] = {}
-
-# construct special 'full' extra that adds requirements for all built-in
-# backend integrations and additional extra features.
-extra_requires['full'] = list(set(chain(*extra_requires.values())))
-
-extra_requires['full-tests'] = extra_requires['full'] + [
-    'pytest',
-    'pytest-forked',
-    'pytest-xdist',
-    'pytest-cov',
-    'pytest-local-badge',
-]
-
 setup(
     version=VERSION,
-    install_requires=[
-        'mlos-bench==' + VERSION,
-        'dabl>=0.2.6',
-        'matplotlib<3.9',   # FIXME: https://github.com/dabl/dabl/pull/341
-    ],
-    extras_require=extra_requires,
     **_get_long_desc_from_readme('https://github.com/microsoft/MLOS/tree/main/mlos_viz'),
 )

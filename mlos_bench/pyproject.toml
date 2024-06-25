@@ -30,9 +30,48 @@ maintainers = [
 dynamic = [
     "readme",   # urls get dynamically mutated by the build process
     "version",  # managed by setuptools_scm
-    # managed in combination with version from setuptools_scm
-    "dependencies",
-    "optional-dependencies",
+]
+
+dependencies = [
+    # Note: currently mlos-core and mlos-bench are tightly coupled and released as a
+    # unit so the versions should match.
+    "mlos-core", # ==" + VERSION,   # FIXME
+
+    "ConfigSpace>=0.7.1",
+    "requests",
+    "json5",
+    "jsonschema>=4.18.0", "referencing>=0.29.1",
+    "importlib_resources; python_version<'3.10'",
+
+    "sqlalchemy",   # NOTE: For now sqlite is a fallback storage backend, so we always install it.
+]
+
+[project.optional-dependencies]
+# Additional tools for extra functionality.
+"azure" = ["azure-storage-file-share", "azure-identity", "azure-keyvault"]
+"ssh" = ["asyncssh"]
+"storage-sql-duckdb" = ["sqlalchemy", "duckdb_engine"]
+"storage-sql-mysql" = ["sqlalchemy", "mysql-connector-python"]
+"storage-sql-postgres" = ["sqlalchemy", "psycopg2"]
+"storage-sql-sqlite" = ["sqlalchemy"]   # sqlite3 comes with python, so we don't need to install it.
+# Transitive extra_requires from mlos-core.
+"flaml" = ["flaml[blendsearch]"]
+"smac" = ["smac"]
+
+# Meta targets to install everything.
+# NOTE: Be sure to add new extras from above to these.
+full = ["mlos-bench[azure,ssh,storage-sql-duckdb,storage-sql-mysql,storage-sql-postgres,storage-sql-sqlite,flaml,smac]"]
+full-tests = [
+    "mlos-bench[full]",
+    # Test requirements for mlos-bench:
+    "pytest",
+    "pytest-forked",
+    "pytest-xdist",
+    "pytest-cov",
+    "pytest-local-badge",
+    "pytest-lazy-fixtures",
+    "pytest-docker",
+    "fasteners",
 ]
 
 [project.scripts]
