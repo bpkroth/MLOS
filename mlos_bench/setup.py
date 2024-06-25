@@ -17,11 +17,15 @@ import re
 
 from setuptools import setup
 
+PKG_NAME = "mlos_bench"
 
 try:
-    from version import VERSION
-except ImportError:
-    VERSION = '0.0.1-dev'
+    ns = {}
+    with open(f"{PKG_NAME}/version.py", encoding="utf-8") as version_file:
+        exec(version_file.read(), ns)   # pylint: disable=exec-used
+    VERSION = ns['VERSION']
+except OSError:
+    VERSION = "0.0.1-dev"
     warning(f"version.py not found, using dummy VERSION={VERSION}")
 
 try:

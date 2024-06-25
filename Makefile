@@ -428,7 +428,7 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 	rm -f $(MODULE_NAME)/dist/tmp/$(PACKAGE_NAME)-latest.tar{,.gz}
 	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 -m build --sdist
 	# Do some sanity checks on the sdist tarball output.
-	BASE_VERS=`conda run -n ${CONDA_ENV_NAME} python3 $(MODULE_NAME)/_version.py | cut -d. -f-2 | egrep -x '[0-9.]+' || echo err-unknown-base-version` \
+	BASE_VERS=`conda run -n ${CONDA_ENV_NAME} python3 $(MODULE_NAME)/$(MODULE_NAME)/version.py | cut -d. -f-2 | egrep -x '[0-9.]+' || echo err-unknown-base-version` \
 		&& ls $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz | grep -F $$BASE_VERS
 	# Make sure tests were excluded.
 	! ( tar tzf $(MODULE_NAME)/dist/$(PACKAGE_NAME)-*.tar.gz | grep -m1 tests/ )
@@ -444,7 +444,7 @@ mlos_viz/dist/tmp/mlos_viz-latest.tar.gz: PACKAGE_NAME := mlos_viz
 	rm -f $(MODULE_NAME)/dist/tmp/$(MODULE_NAME)-latest-py3-none-any.whl
 	cd $(MODULE_NAME)/ && conda run -n ${CONDA_ENV_NAME} python3 -m build --wheel
 	# Do some sanity checks on the wheel output.
-	BASE_VERS=`conda run -n ${CONDA_ENV_NAME} python3 $(MODULE_NAME)/_version.py | cut -d. -f-2 | egrep -o '^[0-9.]+' || echo err-unknown-base-version` \
+	BASE_VERS=`conda run -n ${CONDA_ENV_NAME} python3 $(MODULE_NAME)/$(MODULE_NAME)/version.py | cut -d. -f-2 | egrep -o '^[0-9.]+' || echo err-unknown-base-version` \
 		&& ls $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl | grep -F $$BASE_VERS
 	# Check to make sure the tests were excluded from the wheel.
 	! ( unzip -t $(MODULE_NAME)/dist/$(MODULE_NAME)-*-py3-none-any.whl | grep -m1 tests/ )
