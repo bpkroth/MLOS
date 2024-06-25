@@ -20,7 +20,7 @@ from setuptools import setup
 PKG_NAME = "mlos_bench"
 
 try:
-    ns = {}
+    ns: Dict[str, str] = {}
     with open(f"{PKG_NAME}/version.py", encoding="utf-8") as version_file:
         exec(version_file.read(), ns)   # pylint: disable=exec-used
     VERSION = ns['VERSION']
@@ -65,6 +65,7 @@ def _get_long_desc_from_readme(base_url: str) -> dict:
             'long_description': ''.join(lines),
             'long_description_content_type': 'text/markdown',
         }
+
 
 extra_requires: Dict[str, List[str]] = {    # pylint: disable=consider-using-namedtuple-or-dataclass
     # Additional tools for extra functionality.
