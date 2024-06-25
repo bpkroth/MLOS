@@ -28,8 +28,8 @@ except OSError:
     warning(f"version.py not found, using dummy VERSION={VERSION}")
 
 try:
-    from setuptools_scm import getversion
-    version = getversion(root='..', relative_to=__file__, fallbackversion=VERSION)
+    from setuptools_scm import get_version
+    version = get_version(root='..', relative_to=__file__, fallback_version=VERSION)
     if version is not None:
         VERSION = version
 except ImportError:
