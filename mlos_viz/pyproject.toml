@@ -59,5 +59,3 @@ mlos_viz = ["py.typed", "**/*.pyi"]
 #universal = 1
 # https://github.com/pypa/wheel/issues/582
 py-limited-api = "cp38"
-
-# FIXME: Make sure the version is correct when we build the wheel.

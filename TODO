@@ -3,8 +3,8 @@
 - [ ] build system rework
 	- [x] pyproject.toml
 		- [ ] check that zip/tar files don't include build or _version artifacts
-		- [ ] setup.py drop version.py requirement?
-		- [ ] place version requirement in src dir? yes - cleaner whl
+		- [-] setup.py drop version.py requirement?
+		- [x] place version requirement in src dir? yes - cleaner whl
 		- [ ] cleanup comments
 		- [ ] adjust Makefile rules to sanity check install targets?
 	- [ ] double check devcontainer rebuild
@@ -12,12 +12,12 @@
 	- [x] Makefile revamp
 	- [ ] convert other setup.cfg configs over?
 		- [ ] mypy
-		- [ ] pycodestyle
-		- [ ] pydocstyle
-		- [ ] pylint
-		- [ ] flake8
-		- [ ] pytest
-		- [ ] coverage
+		- [-] pycodestyle (not supported - drop config once converted to black?)
+		- [ ] pydocstyle (supported - top level)
+		- [ ] pylint (convertable - top level)
+		- [ ] flake8 (not supported - drop configs?)
+		- [ ] pytest (convertable)
+		- [ ] coverage (supported - top level)
 
 - [ ] stub in rules for isort and black
 - [ ] require them and make the changes
