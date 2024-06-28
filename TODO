@@ -11,13 +11,13 @@
 		- [ ] related to version questions
 	- [x] Makefile revamp
 	- [ ] convert other setup.cfg configs over?
-		- [ ] mypy
+		- [ ] mypy (convertable - top level?)
 		- [-] pycodestyle (not supported - drop config once converted to black?)
-		- [ ] pydocstyle (supported - top level)
-		- [ ] pylint (convertable - top level)
+		- [ ] pydocstyle (supported - top level?)
+		- [ ] pylint (convertable - top level?)
 		- [ ] flake8 (not supported - drop configs?)
-		- [ ] pytest (convertable)
-		- [ ] coverage (supported - top level)
+		- [ ] pytest (convertable - top level?)
+		- [ ] coverage (supported - top level?)
 
 - [ ] stub in rules for isort and black
 - [ ] require them and make the changes
