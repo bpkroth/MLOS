@@ -13,7 +13,13 @@ from typing import Any, Dict, Literal, Optional
 import pandas
 
 from mlos_bench.storage.base_experiment_data import ExperimentData
-from mlos_viz import base
+
+from mlos_viz.base import (
+    plot_optimizer_trends,
+    plot_top_n_configs,
+    augment_results_df_with_config_trial_group_stats,
+    limit_top_n_configs,
+)
 from mlos_viz.util import expand_results_data_args
 
 
@@ -76,11 +82,21 @@ def plot(exp_data: Optional[ExperimentData] = None, *,
         ignore_plotter_warnings(plotter_method)
     (results_df, _obj_cols) = expand_results_data_args(exp_data, results_df, objectives)
 
-    base.plot_optimizer_trends(exp_data, results_df=results_df, objectives=objectives)
-    base.plot_top_n_configs(exp_data, results_df=results_df, objectives=objectives, **kwargs)
+    plot_optimizer_trends(exp_data, results_df=results_df, objectives=objectives)
+    plot_top_n_configs(exp_data, results_df=results_df, objectives=objectives, **kwargs)
 
     if MlosVizMethod.DABL:
         import mlos_viz.dabl    # pylint: disable=import-outside-toplevel
         mlos_viz.dabl.plot(exp_data, results_df=results_df, objectives=objectives)
     else:
         raise NotImplementedError(f"Unhandled method: {plotter_method}")
+
+
+# Export some additional utility functions from the base module.
+__all__ = [
+    "augment_results_df_with_config_trial_group_stats",
+    "limit_top_n_configs",
+    "plot",
+    "plot_optimizer_trends",
+    "plot_top_n_configs",
+]

@@ -144,6 +144,8 @@ def augment_results_df_with_config_trial_group_stats(exp_data: Optional[Experime
         result_cols.update(set(ExperimentData.RESULT_COLUMN_PREFIX + col for col in requested_result_cols
                                if ExperimentData.RESULT_COLUMN_PREFIX in results_df.columns))
 
+    # TODO: Drop invalid configs from these considerations.
+
     def compute_zscore_for_group_agg(
             results_groups_perf: "SeriesGroupBy",
             stats_df: pandas.DataFrame,

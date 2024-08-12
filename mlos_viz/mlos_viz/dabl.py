@@ -36,6 +36,8 @@ def plot(exp_data: Optional[ExperimentData] = None, *,
         If not provided, defaults to exp_data.objectives property.
     """
     (results_df, obj_cols) = expand_results_data_args(exp_data, results_df, objectives)
+    # TODO: Remove certain redundant or uninformative columns from the results_df we
+    # feed to dabl (for instance, the config group id).
     for obj_col in obj_cols:
         dabl.plot(X=results_df, target_col=obj_col)
 
