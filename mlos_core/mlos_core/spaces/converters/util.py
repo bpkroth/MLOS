@@ -37,9 +37,9 @@ def monkey_patch_hp_quantization(hp: Hyperparameter) -> Hyperparameter:
     if quantization_bins is None:
         # No quantization requested.
         # Remove any previously applied patches.
-        if hasattr(hp, "sample_value_mlos_orig"):
-            setattr(hp, "sample_value", hp.sample_value_mlos_orig)
-            delattr(hp, "sample_value_mlos_orig")
+        if hasattr(hp, "sample_vector_mlos_orig"):
+            setattr(hp, "sample_vector", hp.sample_vector_mlos_orig)
+            delattr(hp, "sample_vector_mlos_orig")
         return hp
 
     try:
@@ -50,18 +50,18 @@ def monkey_patch_hp_quantization(hp: Hyperparameter) -> Hyperparameter:
     if quantization_bins <= 1:
         raise ValueError(f"{quantization_bins=} :: must be greater than 1.")
 
-    if not hasattr(hp, "sample_value_mlos_orig"):
-        setattr(hp, "sample_value_mlos_orig", hp.sample_value)
+    if not hasattr(hp, "sample_vector_mlos_orig"):
+        setattr(hp, "sample_vector_mlos_orig", hp.sample_vector)
 
-    assert hasattr(hp, "sample_value_mlos_orig")
+    assert hasattr(hp, "sample_vector_mlos_orig")
     setattr(
         hp,
-        "sample_value",
+        "sample_vector",
         lambda size=None, **kwargs: quantize(
-            hp.sample_value_mlos_orig(size, **kwargs),
-            bounds=(hp.lower, hp.upper),
+            hp.sample_vector_mlos_orig(size, **kwargs),
+            bounds=(0, 1),
             bins=quantization_bins,
-        ).astype(type(hp.default_value)),
+        ),
     )
     return hp
 
