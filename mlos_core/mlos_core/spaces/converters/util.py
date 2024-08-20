@@ -11,7 +11,7 @@ from ConfigSpace.hyperparameters import Hyperparameter, NumericalHyperparameter
 QUANTIZATION_BINS_META_KEY = "quantization_bins"
 
 
-def monkey_patch_hp_quantization(hp: Hyperparameter) -> None:
+def monkey_patch_hp_quantization(hp: Hyperparameter) -> Hyperparameter:
     """
     Monkey-patch quantization into the Hyperparameter.
 
@@ -20,12 +20,17 @@ def monkey_patch_hp_quantization(hp: Hyperparameter) -> None:
 
     Parameters
     ----------
-    hp : NumericalHyperparameter
+    hp : Hyperparameter
         ConfigSpace hyperparameter to patch.
+
+    Returns
+    -------
+    hp : Hyperparameter
+        Patched hyperparameter.
     """
 
     if not isinstance(hp, NumericalHyperparameter):
-        return
+        return hp
 
     assert isinstance(hp, NumericalHyperparameter)
     quantization_bins = (hp.meta or {}).get(QUANTIZATION_BINS_META_KEY)
@@ -35,7 +40,7 @@ def monkey_patch_hp_quantization(hp: Hyperparameter) -> None:
         if hasattr(hp, "sample_value_mlos_orig"):
             setattr(hp, "sample_value", hp.sample_value_mlos_orig)
             delattr(hp, "sample_value_mlos_orig")
-        return
+        return hp
 
     try:
         quantization_bins = int(quantization_bins)
@@ -58,9 +63,10 @@ def monkey_patch_hp_quantization(hp: Hyperparameter) -> None:
             bins=quantization_bins,
         ).astype(type(hp.default_value)),
     )
+    return hp
 
 
-def monkey_patch_cs_quantization(cs: ConfigurationSpace) -> None:
+def monkey_patch_cs_quantization(cs: ConfigurationSpace) -> ConfigurationSpace:
     """
     Monkey-patch quantization into the Hyperparameters of a ConfigSpace.
 
@@ -68,6 +74,12 @@ def monkey_patch_cs_quantization(cs: ConfigurationSpace) -> None:
     ----------
     cs : ConfigurationSpace
         ConfigSpace to patch.
+
+    Returns
+    -------
+    cs : ConfigurationSpace
+        Patched ConfigSpace.
     """
     for hp in cs.values():
         monkey_patch_hp_quantization(hp)
+    return cs
