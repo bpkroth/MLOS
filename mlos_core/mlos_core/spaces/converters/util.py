@@ -33,13 +33,14 @@ def monkey_patch_hp_quantization(hp: Hyperparameter) -> Hyperparameter:
         return hp
 
     assert isinstance(hp, NumericalHyperparameter)
+    dist = hp._vector_dist  # pylint: disable=protected-access
     quantization_bins = (hp.meta or {}).get(QUANTIZATION_BINS_META_KEY)
     if quantization_bins is None:
         # No quantization requested.
         # Remove any previously applied patches.
-        if hasattr(hp, "sample_vector_mlos_orig"):
-            setattr(hp, "sample_vector", hp.sample_vector_mlos_orig)
-            delattr(hp, "sample_vector_mlos_orig")
+        if hasattr(dist, "sample_vector_mlos_orig"):
+            setattr(dist, "sample_vector", dist.sample_vector_mlos_orig)
+            delattr(dist, "sample_vector_mlos_orig")
         return hp
 
     try:
@@ -50,16 +51,16 @@ def monkey_patch_hp_quantization(hp: Hyperparameter) -> Hyperparameter:
     if quantization_bins <= 1:
         raise ValueError(f"{quantization_bins=} :: must be greater than 1.")
 
-    if not hasattr(hp, "sample_vector_mlos_orig"):
-        setattr(hp, "sample_vector_mlos_orig", hp.sample_vector)
+    if not hasattr(dist, "sample_vector_mlos_orig"):
+        setattr(dist, "sample_vector_mlos_orig", dist.sample_vector)
 
-    assert hasattr(hp, "sample_vector_mlos_orig")
+    assert hasattr(dist, "sample_vector_mlos_orig")
     setattr(
-        hp,
+        dist,
         "sample_vector",
-        lambda size=None, **kwargs: quantize(
-            hp.sample_vector_mlos_orig(size, **kwargs),
-            bounds=(0, 1),
+        lambda n, *, seed=None: quantize(
+            dist.sample_vector_mlos_orig(n, seed=seed),
+            bounds=(dist.lower_vectorized, dist.upper_vectorized),
             bins=quantization_bins,
         ),
     )
