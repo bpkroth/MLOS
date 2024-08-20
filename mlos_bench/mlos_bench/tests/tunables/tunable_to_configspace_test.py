@@ -52,13 +52,13 @@ def configuration_space() -> ConfigurationSpace:
                 name="vmSize",
                 choices=["Standard_B2s", "Standard_B2ms", "Standard_B4ms"],
                 default_value="Standard_B4ms",
-                meta={"group": "provision", "cost": 100},
+                meta={"group": "provision", "cost": 0},
             ),
             CategoricalHyperparameter(
                 name="idle",
                 choices=["halt", "mwait", "noidle"],
                 default_value="halt",
-                meta={"group": "boot", "cost": 10},
+                meta={"group": "boot", "cost": 0},
             ),
             Integer(
                 name="kernel_sched_latency_ns",
@@ -76,14 +76,14 @@ def configuration_space() -> ConfigurationSpace:
                 bounds=(0, 500000),
                 log=False,
                 default=250000,
-                meta={"group": "kernel", "cost": 3},
+                meta={"group": "kernel", "cost": 0},
             ),
             CategoricalHyperparameter(
                 name=kernel_sched_migration_cost_ns_special,
                 choices=[-1, 0],
                 weights=[0.5, 0.5],
                 default_value=-1,
-                meta={"group": "kernel", "cost": 3},
+                meta={"group": "kernel", "cost": 0},
             ),
             CategoricalHyperparameter(
                 name=kernel_sched_migration_cost_ns_type,
