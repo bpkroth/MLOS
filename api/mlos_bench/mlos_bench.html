@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mlos_bench package &mdash; MLOS 0.2.6.dev106+g6fe46caa9 documentation</title>
+  <title>mlos_bench package &mdash; MLOS 0.2.6.dev129+g2b2a9f0e7 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
@@ -14,7 +14,7 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/documentation_options.js?v=3d6c6caf"></script>
+        <script src="../../_static/documentation_options.js?v=dab48cff"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -37,7 +37,7 @@
             MLOS
           </a>
               <div class="version">
-                0.2.6.dev106+g6fe46caa9
+                0.2.6.dev129+g2b2a9f0e7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -273,7 +273,7 @@ parameter autotuning.</p>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.config_space"><code class="docutils literal notranslate"><span class="pre">Optimizer.config_space</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.current_iteration"><code class="docutils literal notranslate"><span class="pre">Optimizer.current_iteration</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.get_best_observation"><code class="docutils literal notranslate"><span class="pre">Optimizer.get_best_observation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.max_iterations"><code class="docutils literal notranslate"><span class="pre">Optimizer.max_iterations</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.max_suggestions"><code class="docutils literal notranslate"><span class="pre">Optimizer.max_suggestions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.name"><code class="docutils literal notranslate"><span class="pre">Optimizer.name</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.not_converged"><code class="docutils literal notranslate"><span class="pre">Optimizer.not_converged()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.optimizers.html#mlos_bench.optimizers.Optimizer.register"><code class="docutils literal notranslate"><span class="pre">Optimizer.register()</span></code></a></li>
@@ -328,11 +328,15 @@ parameter autotuning.</p>
 <li class="toctree-l2"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler"><code class="docutils literal notranslate"><span class="pre">Scheduler</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.get_best_observation"><code class="docutils literal notranslate"><span class="pre">Scheduler.get_best_observation()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.load_config"><code class="docutils literal notranslate"><span class="pre">Scheduler.load_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.max_trials"><code class="docutils literal notranslate"><span class="pre">Scheduler.max_trials</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.not_done"><code class="docutils literal notranslate"><span class="pre">Scheduler.not_done()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.ran_trials"><code class="docutils literal notranslate"><span class="pre">Scheduler.ran_trials</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.run_trial"><code class="docutils literal notranslate"><span class="pre">Scheduler.run_trial()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.schedule_trial"><code class="docutils literal notranslate"><span class="pre">Scheduler.schedule_trial()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.start"><code class="docutils literal notranslate"><span class="pre">Scheduler.start()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.teardown"><code class="docutils literal notranslate"><span class="pre">Scheduler.teardown()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.trial_config_repeat_count"><code class="docutils literal notranslate"><span class="pre">Scheduler.trial_config_repeat_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.Scheduler.trial_count"><code class="docutils literal notranslate"><span class="pre">Scheduler.trial_count</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mlos_bench.schedulers.html#mlos_bench.schedulers.SyncScheduler"><code class="docutils literal notranslate"><span class="pre">SyncScheduler</span></code></a><ul>
@@ -432,6 +436,7 @@ parameter autotuning.</p>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Trial"><code class="docutils literal notranslate"><span class="pre">Storage.Trial</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.config"><code class="docutils literal notranslate"><span class="pre">Storage.Trial.config()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.opt_targets"><code class="docutils literal notranslate"><span class="pre">Storage.Trial.opt_targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.status"><code class="docutils literal notranslate"><span class="pre">Storage.Trial.status</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.trial_id"><code class="docutils literal notranslate"><span class="pre">Storage.Trial.trial_id</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.tunable_config_id"><code class="docutils literal notranslate"><span class="pre">Storage.Trial.tunable_config_id</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="mlos_bench.storage.html#mlos_bench.storage.Storage.Trial.tunables"><code class="docutils literal notranslate"><span class="pre">Storage.Trial.tunables</span></code></a></li>
@@ -505,7 +510,7 @@ parameter autotuning.</p>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.meta"><code class="docutils literal notranslate"><span class="pre">Tunable.meta</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.name"><code class="docutils literal notranslate"><span class="pre">Tunable.name</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.numerical_value"><code class="docutils literal notranslate"><span class="pre">Tunable.numerical_value</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.quantization"><code class="docutils literal notranslate"><span class="pre">Tunable.quantization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.quantization_bins"><code class="docutils literal notranslate"><span class="pre">Tunable.quantization_bins</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.quantized_values"><code class="docutils literal notranslate"><span class="pre">Tunable.quantized_values</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.range"><code class="docutils literal notranslate"><span class="pre">Tunable.range</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="mlos_bench.tunables.html#mlos_bench.tunables.Tunable.range_weight"><code class="docutils literal notranslate"><span class="pre">Tunable.range_weight</span></code></a></li>
