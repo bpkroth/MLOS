@@ -116,7 +116,10 @@ def test_parse_config_string(config_persistence_service: ConfigPersistenceServic
     tunables_data = config_persistence_service.parse_config(json_str, ConfigSchema.TUNABLE_VALUES)
     assert tunables_data is not None
     assert isinstance(tunables_data, dict)
-    assert len(tunables_data) >= 1
+    assert tunables_data == {
+        "tunable_param_1": "value_1",
+        "tunable_param_2": "value_2",
+    }
     assert tunables_data == config_persistence_service.load_config_file_or_string(
         json_str, ConfigSchema.TUNABLE_VALUES
     )
