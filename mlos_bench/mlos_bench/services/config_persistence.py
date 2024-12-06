@@ -92,7 +92,9 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
                 methods,
                 [
                     self.resolve_path,
+                    self.parse_config,
                     self.load_config,
+                    self.load_config_file_or_string,
                     self.prepare_class_load,
                     self.build_service,
                     self.build_environment,
@@ -160,7 +162,7 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         _LOG.debug("Path not resolved: %s", file_path)
         return file_path
 
-    def load_config(
+    def load_config_file_or_string(
         self,
         json: str,
         schema_type: Optional[ConfigSchema],
@@ -183,16 +185,65 @@ class ConfigPersistenceService(Service, SupportsConfigLoading):
         config : Union[dict, List[dict]]
             Free-format dictionary that contains the configuration.
         """
-        if any(c in json for c in ("{", "[")):
-            # If the path contains braces, it is likely already a json string,
-            # so just parse it.
-            _LOG.info("Load config from json string: %s", json)
-            config: Any = json5.loads(json)
+        json = self.resolve_path(json)
+        if os.path.exists(json):
+            return self.load_config(json, schema_type)
         else:
-            json = self.resolve_path(json)
-            _LOG.info("Load config file: %s", json)
-            with open(json, mode="r", encoding="utf-8") as fh_json:
-                config = json5.load(fh_json)
+            _LOG.debug("File not found. Load config from json string: %s", json)
+            return self.parse_config(json, schema_type)
+
+    def load_config(
+        self,
+        json: str,
+        schema_type: Optional[ConfigSchema],
+    ) -> Dict[str, Any]:
+        """
+        Load JSON config file path. Search for a file relative to
+        :py:attr:`.config_paths` if the input path is not absolute. This method is
+        exported to be used as a :py:class:`.SupportsConfigLoading` type
+        :py:class:`.Service`.
+
+        Parameters
+        ----------
+        json : str
+            Path to the input config file or a JSON string.
+        schema_type : Optional[ConfigSchema]
+            The schema type to validate the config against.
+
+        Returns
+        -------
+        config : Union[dict, List[dict]]
+            Free-format dictionary that contains the configuration.
+        """
+        json = self.resolve_path(json)
+        _LOG.info("Load config file: %s", json)
+        with open(json, mode="r", encoding="utf-8") as fh_json:
+            return self.parse_config(fh_json.read(), schema_type)
+
+    @staticmethod
+    def parse_config(
+        json: str,
+        schema_type: Optional[ConfigSchema],
+    ) -> Dict[str, Any]:
+        """
+        Parse JSON config string. This method is exported to be used as a
+        :py:class:`.SupportsConfigLoading` type :py:class:`.Service`.
+
+        Parameters
+        ----------
+        json : str
+            A JSON string to parse.
+        schema_type : Optional[ConfigSchema]
+            The schema type to validate the config against.
+
+        Returns
+        -------
+        config : Union[dict, List[dict]]
+            Free-format dictionary that contains the configuration.
+        """
+        _LOG.info("Load config from json string: %s", json)
+        config: Any = json5.loads(json)
+
         if schema_type is not None:
             try:
                 schema_type.validate(config)

@@ -105,7 +105,7 @@ def test_load_config(config_persistence_service: ConfigPersistenceService) -> No
     assert len(tunables_data) >= 1
 
 
-def test_load_config_string(config_persistence_service: ConfigPersistenceService) -> None:
+def test_parse_config_string(config_persistence_service: ConfigPersistenceService) -> None:
     """Check if we can load a valid json string as well."""
     json_str = """
     {
@@ -113,7 +113,28 @@ def test_load_config_string(config_persistence_service: ConfigPersistenceService
         "tunable_param_2": "value_2",
     }
     """
-    tunables_data = config_persistence_service.load_config(json_str, ConfigSchema.TUNABLE_VALUES)
+    tunables_data = config_persistence_service.parse_config(json_str, ConfigSchema.TUNABLE_VALUES)
     assert tunables_data is not None
     assert isinstance(tunables_data, dict)
     assert len(tunables_data) >= 1
+    assert tunables_data == config_persistence_service.load_config_file_or_string(
+        json_str, ConfigSchema.TUNABLE_VALUES
+    )
+
+
+def test_load_non_existent_file(config_persistence_service: ConfigPersistenceService) -> None:
+    """Make sure we throw a proper exception when JSON file does not exist."""
+    with pytest.raises(ValueError):
+        config_persistence_service.load_config(
+            "tunable-values/tunable-values-example-MISSING-FILE.jsonc", ConfigSchema.TUNABLE_VALUES
+        )
+
+
+def test_parse_invalid_config_string(config_persistence_service: ConfigPersistenceService) -> None:
+    """Make sure we throw a proper exception on an invalid JSON string."""
+    json_str = """
+        // Invalid JSON string
+        "invalid_json": 1
+    """
+    with pytest.raises(ValueError):
+        config_persistence_service.parse_config(json_str, ConfigSchema.TUNABLE_VALUES)
