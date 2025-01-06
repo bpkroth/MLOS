@@ -5,7 +5,7 @@
 """Version number for the MLOS documentation."""
 
 # NOTE: This should be managed by bumpversion.
-VERSION = "0.6.2"
+VERSION = "0.7.0"
 
 if __name__ == "__main__":
     print(VERSION)
