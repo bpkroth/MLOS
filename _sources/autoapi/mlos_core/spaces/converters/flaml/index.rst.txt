@@ -30,7 +30,7 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: configspace_to_flaml_space(config_space: ConfigSpace.ConfigurationSpace) -> Dict[str, FlamlDomain]
+.. py:function:: configspace_to_flaml_space(config_space: ConfigSpace.ConfigurationSpace) -> dict[str, FlamlDomain]
 
    Converts a ConfigSpace.ConfigurationSpace to dict.
 
@@ -43,15 +43,15 @@ Module Contents
 
 .. py:data:: FlamlDomain
    :type:  TypeAlias
-   :value: flaml.tune.sample.Domain
+   :value: Domain
 
 
    Flaml domain type alias.
 
 .. py:data:: FlamlSpace
    :type:  TypeAlias
-   :value: Dict[str, flaml.tune.sample.Domain]
+   :value: dict[str, Domain]
 
 
-   Flaml space type alias - a `Dict[str, FlamlDomain]`
+   Flaml space type alias - a `dict[str, FlamlDomain]`
 
