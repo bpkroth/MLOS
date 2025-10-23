@@ -171,3 +171,6 @@ build/*.build-stamp
 *.duckdb
 *.db.wal
 *.duckdb.wal
+# pixi environments
+.pixi/*
+!.pixi/config.toml

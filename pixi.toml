@@ -1,0 +1,47 @@
+[workspace]
+authors = ["MLOS Maintainers <mlos-maintainers@service.microsoft.com>"]
+channels = ["conda-forge", "main"]
+name = "mlos"
+platforms = ["noarch"]
+version = "0.6.2"
+
+[tasks]
+
+# conda dependencies
+[dependencies]
+pip = "*"
+python-build = "*"
+jupyter = "*"
+ipykernel = "*"
+nb_conda_kernels = "*"
+matplotlib-base = "<3.9"
+scikit-learn = "*"
+seaborn = "*"
+pandas = "*"
+pyarrow = "*"
+swig = "*"
+libpq = "<17.0"
+python = "*"
+pyrfr = ">=0.9.0"
+
+# pip dependencies
+[pypi-dependencies]
+bump2version = "*"
+check-jsonschema = "*"
+pre-commit = "==4.2.0"
+pycodestyle = "==2.13.0"
+pylint = "==3.3.7"
+tomlkit = "*"
+mypy = "==1.15.0"
+pyright = "==1.1.406"
+pandas-stubs = "*"
+types-beautifulsoup4 = "*"
+types-colorama = "*"
+types-jsonschema = "*"
+types-pygments = "*"
+types-requests = "*"
+types-setuptools = "*"
+pyarrow = "*"
+mlos-core = {path="mlos_core", editable = false}
+mlos-bench = {path="mlos_bench", editable = false}
+mlos-viz = {path="mlos_viz", editable = false}
